@@ -83,3 +83,49 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     });
 });
+
+// Modal Logic
+const modal = document.getElementById('contact-modal');
+
+function openModal() {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    // Small delay to allow display:block to apply before opacity transition
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('opacity-100');
+    modal.classList.add('opacity-0');
+    
+    // Wait for transition to finish
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
+// Intercept #contact links
+document.addEventListener('DOMContentLoaded', () => {
+    const contactLinks = document.querySelectorAll('a[href="#contact"]');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+            // Close mobile menu if open
+            if (typeof toggleMenu === 'function' && !mobileMenu.classList.contains('translate-x-full')) {
+                toggleMenu();
+            }
+        });
+    });
+});
