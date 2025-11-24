@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eticod Case Study - Fluinty</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#06C0B3',
+                        accent: '#45CAC3',
+                        'accent-glow': '#7bdcb5',
+                        secondary: '#0B3D70',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-background text-white overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 backdrop-blur-md bg-background/50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html"
+                class="text-2xl font-display font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                fluinty.
+            </a>
+
+            <div class="flex items-center gap-8">
+                <a href="../index.html#case-studies"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm">
+                <span class="text-sm font-bold text-primary uppercase tracking-wider">Poligrafia</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 leading-tight">
+                Automatyzacja Procesowania Zamówień dla Eticod
+            </h1>
+
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                Inteligentny system przetwarzający zamówienia od e-maila do ERP, oszczędzający 160 godzin miesięcznie.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-12 border-y border-white/5 bg-surface/30">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold text-primary mb-2">160h</div>
+                <div class="text-sm text-gray-400">Zaoszczędzone miesięcznie</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-accent">0%</div>
+                <div class="text-sm text-gray-400">Błędów w danych</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-secondary">24/7</div>
+                <div class="text-sm text-gray-400">Czas pracy systemu</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-white">10x</div>
+                <div class="text-sm text-gray-400">Szybsza obsługa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-6 space-y-24">
+
+            <!-- Client -->
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                <h2 class="text-2xl font-display font-bold text-primary">O Kliencie</h2>
+                <div>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Eticod to lider w branży poligraficznej z 30-letnim doświadczeniem. Specjalizują się w
+                        nowoczesnym druku fleksograficznym i cyfrowym, obsługując tysiące zamówień miesięcznie. Jako
+                        firma stawiająca na innowacje, szukali sposobu na usprawnienie procesu przyjmowania
+                        zamówień.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Challenge -->
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                <h2 class="text-2xl font-display font-bold text-primary">Wyzwanie</h2>
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Proces obsługi zamówień był w pełni manualny. Pracownicy musieli ręcznie przepisywać dane z
+                        e-maili do systemu ERP.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <i data-lucide="x-circle" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="font-bold mb-1">Strata Czasu</h3>
+                                <p class="text-sm text-gray-400">Średnio 160 godzin miesięcznie poświęcano na samo
+                                    przepisywanie danych.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <i data-lucide="alert-octagon" class="w-6 h-6 text-red-400 shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="font-bold mb-1">Ryzyko Błędów</h3>
+                                <p class="text-sm text-gray-400">Ręczne wprowadzanie danych generowało pomyłki,
+                                    które
+                                    kosztowały firmę pieniądze i reputację.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solution -->
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                <h2 class="text-2xl font-display font-bold text-primary">Rozwiązanie</h2>
+                <div class="space-y-8">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Wdrożyliśmy inteligentnego agenta AI, który przejął kontrolę nad procesem zamówień.
+                    </p>
+
+                    <div class="relative border-l-2 border-primary/30 pl-8 space-y-12">
+                        <div class="relative">
+                            <span
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">1. Monitoring Email</h3>
+                            <p class="text-gray-400">System automatycznie skanuje skrzynkę odbiorczą w poszukiwaniu
+                                nowych zamówień.</p>
+                        </div>
+                        <div class="relative">
+                            <span
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">2. Ekstrakcja Danych (OCR/AI)</h3>
+                            <p class="text-gray-400">Zaawansowane algorytmy wyciągają kluczowe informacje z treści
+                                maila
+                                i załączników (PDF, Excel).</p>
+                        </div>
+                        <div class="relative">
+                            <span
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">3. Walidacja i Integracja</h3>
+                            <p class="text-gray-400">Dane są sprawdzane pod kątem poprawności, a następnie
+                                automatycznie
+                                wprowadzane do systemu ERP.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                <h2 class="text-2xl font-display font-bold text-primary">Rezultaty</h2>
+                <div>
+                    <div class="p-8 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-white/10">
+                        <h3 class="text-2xl font-bold mb-6">Transformacja Biznesowa</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <span>Oszczędność czasu</span>
+                                <span class="text-xl font-bold text-green-400">160h / msc</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <span>Błędy przy wprowadzaniu</span>
+                                <span class="text-xl font-bold text-green-400">Wyeliminowane</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>Czas reakcji na zamówienie</span>
+                                <span class="text-xl font-bold text-green-400">Natychmiastowy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Next Case Study -->
+    <section class="py-24 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-500 mb-4">Następna realizacja</p>
+            <h2 class="text-3xl md:text-5xl font-display font-bold mb-8">Art-Tim: Zarządzanie Flotą</h2>
+            <a href="case-study-art-tim.html"
+                class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors">
+                Zobacz Case Study <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
+            &copy; 2025 Fluinty.
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

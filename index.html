@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluinty - Automatyzacja Przyszłości</title>
+    <meta name="description"
+        content="Fluinty - Automatyzuj, Optymalizuj, Rozwijaj. Przyszłość Twojego biznesu zaczyna się tutaj.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#06C0B3',
+                        accent: '#45CAC3',
+                        'accent-glow': '#7bdcb5',
+                        secondary: '#0B3D70',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-background text-white overflow-x-hidden antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 backdrop-blur-md bg-background/50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#"
+                class="text-2xl font-display font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                fluinty.
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="#problem"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Wyzwania</a>
+                <a href="#services"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Rozwiązania</a>
+                <a href="#case-studies"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Realizacje</a>
+                <a href="#pricing"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Cennik</a>
+                <a href="#contact"
+                    class="px-6 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-medium text-sm glow-effect">
+                    Rozpocznij
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col justify-center items-center gap-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white p-2">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#problem" class="mobile-link text-2xl font-display font-medium text-white">Wyzwania</a>
+        <a href="#services" class="mobile-link text-2xl font-display font-medium text-white">Rozwiązania</a>
+        <a href="#case-studies" class="mobile-link text-2xl font-display font-medium text-white">Realizacje</a>
+        <a href="#pricing" class="mobile-link text-2xl font-display font-medium text-white">Cennik</a>
+        <a href="#contact"
+            class="mobile-link px-8 py-3 rounded-full bg-primary text-white font-medium text-lg shadow-lg shadow-primary/25">
+            Rozpocznij
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse-slow">
+            </div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] animate-pulse-slow"
+                style="animation-delay: 2s;"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm animate-fade-in-up">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span class="text-sm font-medium text-gray-300">Nowa era automatyzacji</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight mb-8 leading-tight">
+                <span class="hero-word block opacity-0 translate-y-10 animate-neon-pulse"
+                    style="animation-delay: 0s;">Automatyzuj.</span>
+                <span
+                    class="hero-word block bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary opacity-0 translate-y-10 animate-neon-pulse"
+                    style="animation-delay: 1s;">Optymalizuj.</span>
+                <span class="hero-word block opacity-0 translate-y-10 animate-neon-pulse"
+                    style="animation-delay: 2s;">Rozwijaj.</span>
+            </h1>
+
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-12 animate-fade-in-up" style="animation-delay: 0.2s;">
+                Wdrażamy inteligentnych agentów AI, którzy przejmują powtarzalne zadania. Odzyskaj czas i skup się na
+                strategii.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 animate-fade-in-up"
+                style="animation-delay: 0.3s;">
+                <a href="#contact"
+                    class="px-8 py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:scale-105">
+                    Darmowa Konsultacja
+                </a>
+                <a href="#case-studies"
+                    class="text-gray-300 hover:text-white font-medium transition-colors flex items-center gap-2">
+                    Zobacz Realizacje <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Results Carousel -->
+    <section class="py-12 border-y border-white/5 bg-surface/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Rezultaty Klientów</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Zobacz, jakie wyniki osiągają firmy, które zaufały naszej
+                automatyzacji.</p>
+        </div>
+        <div class="carousel-container relative flex overflow-x-hidden group">
+            <div class="carousel-track flex gap-8 items-center animate-scroll whitespace-nowrap hover:pause px-4">
+                <!-- Item 1 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary mb-1">~160h</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">oszczędności miesięcznie</span>
+                    <span class="text-base text-white font-medium">Automatyzacja procesu zamówień</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent mb-1">~2.5k PLN</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">więcej zysku</span>
+                    <span class="text-base text-white font-medium">Zautomatyzowana obsługa leadów</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-secondary mb-1">+42%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">więcej sprzedaży</span>
+                    <span class="text-base text-white font-medium">Personalizacja ofert</span>
+                </div>
+                <!-- Item 4 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary mb-1">-18%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">kosztów operacyjnych</span>
+                    <span class="text-base text-white font-medium">Inteligentne zarządzanie magazynem</span>
+                </div>
+                <!-- Item 5 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent mb-1">+17%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">wartość zamówienia</span>
+                    <span class="text-base text-white font-medium">Inteligentne rekomendacje</span>
+                </div>
+                <!-- Item 6 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-white mb-1">0%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">błędów w danych</span>
+                    <span class="text-base text-white font-medium">Pełna poprawność</span>
+                </div>
+                <!-- Item 7 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-secondary mb-1">24/7</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">dostępność systemu</span>
+                    <span class="text-base text-white font-medium">Niezawodność</span>
+                </div>
+
+                <!-- Duplicates for seamless scroll -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary mb-1">~160h</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">oszczędności miesięcznie</span>
+                    <span class="text-base text-white font-medium">Automatyzacja procesu zamówień</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent mb-1">~2.5k PLN</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">więcej zysku</span>
+                    <span class="text-base text-white font-medium">Zautomatyzowana obsługa leadów</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-secondary mb-1">+42%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">więcej sprzedaży</span>
+                    <span class="text-base text-white font-medium">Personalizacja ofert</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary mb-1">-18%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">kosztów operacyjnych</span>
+                    <span class="text-base text-white font-medium">Inteligentne zarządzanie magazynem</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent mb-1">+17%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">wartość zamówienia</span>
+                    <span class="text-base text-white font-medium">Inteligentne rekomendacje</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-white mb-1">0%</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">błędów w danych</span>
+                    <span class="text-base text-white font-medium">Pełna poprawność</span>
+                </div>
+                <div class="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 min-w-[300px]">
+                    <span class="text-3xl font-bold text-secondary mb-1">24/7</span>
+                    <span class="text-sm text-gray-400 uppercase tracking-wider mb-2">dostępność systemu</span>
+                    <span class="text-base text-white font-medium">Niezawodność</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-24 bg-surface/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Co Cię blokuje?</h2>
+                    <p class="text-gray-400 text-lg mb-8">Twoi pracownicy tracą czas na powtarzalne czynności, zamiast
+                        skupić się na rozwoju biznesu.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Strata Czasu</h3>
+                                <p class="text-sm text-gray-400">Ręczne wprowadzanie danych, kopiowanie, wklejanie.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
+                                <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Błędy Ludzkie</h3>
+                                <p class="text-sm text-gray-400">Literówki, pomyłki w fakturach, zagubione maile.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
+                                <i data-lucide="trending-down" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Niska Skalowalność</h3>
+                                <p class="text-sm text-gray-400">Więcej klientów = więcej pracy manualnej.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 blur-3xl rounded-full">
+                    </div>
+                    <div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                        <div class="space-y-4">
+                            <!-- Chat UI Mockup -->
+                            <div class="flex gap-4">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+                                    alt="User" class="w-8 h-8 rounded-full object-cover">
+                                <div class="bg-white/10 p-3 rounded-2xl rounded-tl-none text-sm text-gray-300">
+                                    Muszę przepisać te 50 dokumentów do Excela...
+                                </div>
+                            </div>
+                            <div class="flex gap-4 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                                    <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div class="bg-primary/20 p-3 rounded-2xl rounded-tr-none text-sm text-white">
+                                    Zrobione! Wszystkie dane są już w systemie. Co dalej?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Now -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-display font-bold mb-16">Dlaczego Teraz?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="zap" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Przewaga Konkurencyjna</h3>
+                    <p class="text-gray-400">Firmy wdrażające AI rosną 2x szybciej. Nie zostawaj w tyle.</p>
+                </div>
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-accent/50 transition-all group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Zadowolony Zespół</h3>
+                    <p class="text-gray-400">Ludzie nienawidzą nudnej pracy. Daj im narzędzia, by mogli błyszczeć.</p>
+                </div>
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-secondary/50 transition-all group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-secondary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Skalowalność</h3>
+                    <p class="text-gray-400">Obsługuj 10x więcej klientów bez zatrudniania nowych osób.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (6 Cards) -->
+    <section id="services" class="py-24 bg-surface/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Rozwiązania</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Budujemy dedykowane systemy, które rozwiązują Twoje
+                    problemy.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="file-text" class="w-10 h-10 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Obsługa Dokumentów AI</h3>
+                    <p class="text-gray-400 mb-6">AI przetwarza faktury, umowy i dokumenty, wyciągając kluczowe dane.
+                        Oszczędzasz czas i redukujesz koszty.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">90% mniej pracy</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">ROI w 3 msc</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="message-square" class="w-10 h-10 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Inteligentny Asystent</h3>
+                    <p class="text-gray-400 mb-6">Chatbot AI obsługuje zapytania 24/7, rozwiązuje problemy i przekazuje
+                        sprawy do zespołu tylko gdy to konieczne.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full">80% auto</span>
+                        <span class="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full">-60% kosztów</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="shopping-cart" class="w-10 h-10 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Automatyzacja Sprzedaży</h3>
+                    <p class="text-gray-400 mb-6">Od pierwszego kontaktu przez ofertę po zamówienie. AI prowadzi klienta
+                        przez ścieżkę zakupową.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">+35%
+                            konwersji</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Szybka
+                            sprzedaż</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="target" class="w-10 h-10 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Personalizacja Marketingu</h3>
+                    <p class="text-gray-400 mb-6">AI analizuje zachowania klientów i dostosowuje komunikaty
+                        indywidualnie. Zwiększ skuteczność kampanii.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">+40% skuteczność</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">+25% wartość</span>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="settings" class="w-10 h-10 text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Optymalizacja Operacyjna</h3>
+                    <p class="text-gray-400 mb-6">Automatyczne zarządzanie zasobami i procesami. AI przewiduje potrzeby
+                        i eliminuje wąskie gardła.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full">70% szybsze procesy</span>
+                        <span class="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full">Przejrzystość</span>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    <div class="mb-6">
+                        <i data-lucide="bar-chart" class="w-10 h-10 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Analiza & Raportowanie</h3>
+                    <p class="text-gray-400 mb-6">AI zbiera dane z wszystkich źródeł i dostarcza raporty z
+                        rekomendacjami bez godzin w Excelu.</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Decyzje z
+                            danych</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Oszczędność
+                            10h+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Jak wdrażamy?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Proces w 3 krokach. Minimalne ryzyko, szybkie efekty.</p>
+            </div>
+
+            <div class="relative grid md:grid-cols-3 gap-8">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-white/5 z-0">
+                    <div id="process-line" class="h-full bg-gradient-to-r from-primary via-accent to-primary w-0">
+                    </div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10">
+                    <div
+                        class="w-24 h-24 mx-auto bg-surface border border-primary/50 rounded-full flex items-center justify-center text-3xl font-bold text-primary mb-6 shadow-lg shadow-primary/20">
+                        01</div>
+                    <h3 class="text-xl font-bold text-center mb-2">DISCOVER</h3>
+                    <p class="text-center text-gray-400 text-sm mb-4">Mapujemy procesy i znajdujemy wąskie gardła.
+                        Warsztaty 3h.</p>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-sm text-gray-300">
+                        <strong class="block text-primary mb-1">Otrzymujesz:</strong>
+                        Koncepcja wdrożenia + szacowane korzyści
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10">
+                    <div
+                        class="w-24 h-24 mx-auto bg-surface border border-accent/50 rounded-full flex items-center justify-center text-3xl font-bold text-accent mb-6 shadow-lg shadow-accent/20">
+                        02</div>
+                    <h3 class="text-xl font-bold text-center mb-2">AUTOMATE</h3>
+                    <p class="text-center text-gray-400 text-sm mb-4">Budujemy prototyp. Widzisz działający proces w
+                        kilka tygodni.</p>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-sm text-gray-300">
+                        <strong class="block text-accent mb-1">Otrzymujesz:</strong>
+                        Działający proces + pierwsze metryki
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10">
+                    <div
+                        class="w-24 h-24 mx-auto bg-surface border border-primary/50 rounded-full flex items-center justify-center text-3xl font-bold text-primary mb-6 shadow-lg shadow-primary/20">
+                        03</div>
+                    <h3 class="text-xl font-bold text-center mb-2">SCALE</h3>
+                    <p class="text-center text-gray-400 text-sm mb-4">Rozszerzamy rozwiązanie na całą firmę i
+                        monitorujemy 24/7.</p>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-sm text-gray-300">
+                        <strong class="block text-primary mb-1">Otrzymujesz:</strong>
+                        Gotowy system + plan rozwoju
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Preview Section -->
+    <section id="case-studies" class="py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6 text-center md:text-left">
+                <div>
+                    <span class="text-primary font-medium tracking-wider uppercase text-sm">Realizacje</span>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mt-2">Dowody, nie obietnice</h2>
+                </div>
+                <p class="text-gray-400 max-w-md text-right md:text-left">Zobacz, jak pomogliśmy liderom branż
+                    zautomatyzować ich kluczowe procesy.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Case Study Card 1: Eticod -->
+                <a href="pages/case-study-eticod.html"
+                    class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
+                    <!-- Fixed Image -->
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000"
+                        alt="Eticod Automation"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/20">ETICOD</span>
+                            <span class="text-gray-300 text-xs uppercase tracking-wider">Poligrafia</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                            Automatyzacja Procesowania Zamówień</h3>
+                        <p class="text-gray-400 mb-6 line-clamp-2 group-hover:text-gray-300">160 godzin miesięcznie
+                            uwolnionego czasu dzięki inteligentnej automatyzacji od emaila do ERP.</p>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                            <div>
+                                <div class="text-xl font-bold text-white">160h</div>
+                                <div class="text-xs text-gray-500">Miesięcznie</div>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-white">0%</div>
+                                <div class="text-xs text-gray-500">Błędów</div>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-white">24/7</div>
+                                <div class="text-xs text-gray-500">Działanie</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center text-primary font-medium group-hover:gap-2 transition-all">
+                            Zobacz Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Case Study Card 2: Art-Tim -->
+                <a href="pages/case-study-art-tim.html"
+                    class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                    </div>
+                    <!-- Placeholder Image -->
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1000"
+                        alt="Art-Tim Fleet"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-bold border border-accent/20">ART-TIM</span>
+                            <span class="text-gray-300 text-xs uppercase tracking-wider">Logistyka</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
+                            Automatyzacja Zarządzania Flotą</h3>
+                        <p class="text-gray-400 mb-6 line-clamp-2 group-hover:text-gray-300">Kompleksowy system
+                            eliminujący ryzyko strat finansowych i zapewniający 100% kontrolę nad flotą.</p>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                            <div>
+                                <div class="text-xl font-bold text-white">100%</div>
+                                <div class="text-xs text-gray-500">Kontroli</div>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-white">$$$</div>
+                                <div class="text-xs text-gray-500">Oszczędności</div>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-white">Auto</div>
+                                <div class="text-xs text-gray-500">Powiadomienia</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center text-accent font-medium group-hover:gap-2 transition-all">
+                            Zobacz Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-surface/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Pakiety Wdrożeniowe</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Inwestycja, która zwraca się w 1-2
+                    miesiące.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all">
+                    <h3 class="text-xl font-bold mb-2">START</h3>
+                    <div class="text-3xl font-bold text-primary mb-6">od 1000 PLN <span
+                            class="text-sm text-gray-500 font-normal">/msc</span></div>
+                    <p class="text-sm text-gray-400 mb-6">Dla małych firm, pierwsza automatyzacja.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> 1 wybrany proces
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Konfiguracja i
+                            start</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Monitoring 24/7
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Szkolenie
+                            zespołu</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 rounded-xl border border-white/20 text-center hover:bg-white/10 transition-colors">Wybieram
+                        Start</a>
+                </div>
+
+                <!-- Growth (Featured) -->
+                <div
+                    class="p-8 rounded-3xl bg-primary/10 border border-primary/50 relative transform md:-translate-y-4">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                        Najczęściej Wybierany</div>
+                    <h3 class="text-xl font-bold mb-2">WZROST</h3>
+                    <div class="text-3xl font-bold text-white mb-6">od 3000 PLN <span
+                            class="text-sm text-gray-400 font-normal">/msc</span></div>
+                    <p class="text-sm text-gray-300 mb-6">Kompleksowa automatyzacja dla rosnących
+                        firm.</p>
+                    <ul class="space-y-3 text-sm text-gray-200 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Integracja wielu
+                            systemów</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Złożone procesy
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Zaawansowana
+                            analityka</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Priorytetowe
+                            wsparcie</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 rounded-xl bg-primary text-white text-center hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25">Wybieram
+                        Wzrost</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-accent/50 transition-all">
+                    <h3 class="text-xl font-bold mb-2">ENTERPRISE</h3>
+                    <div class="text-3xl font-bold text-accent mb-6">od 7000 PLN <span
+                            class="text-sm text-gray-500 font-normal">/msc</span></div>
+                    <p class="text-sm text-gray-400 mb-6">Dedykowane rozwiązania dla wymagań.</p>
+                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Unikalna
+                            architektura</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Pełna integracja
+                            custom</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Dedykowany
+                            opiekun</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i> Wsparcie
+                            strategiczne</li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 rounded-xl border border-white/20 text-center hover:bg-white/10 transition-colors">Kontakt
+                        Enterprise</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Pytania i Odpowiedzi</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium">
+                        <span>Jak szybko możemy wystartować?</span>
+                        <span class="transition-transform group-open:rotate-180"><i
+                                data-lucide="chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                        Pierwszą automatyzację możemy uruchomić w ciągu 2-4 tygodni. W pakiecie START efekty zobaczysz
+                        już w pierwszym miesiącu.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium">
+                        <span>Czy muszę zmieniać moje obecne systemy?</span>
+                        <span class="transition-transform group-open:rotate-180"><i
+                                data-lucide="chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                        Absolutnie nie! Nasze rozwiązania integrują się z Twoimi obecnymi narzędziami (Gmail, CRM,
+                        Excel, itp.) bez konieczności rewolucji infrastrukturalnej.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium">
+                        <span>Kiedy zobaczę zwrot z inwestycji (ROI)?</span>
+                        <span class="transition-transform group-open:rotate-180"><i
+                                data-lucide="chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                        Większość klientów osiąga zwrot w ciągu 1-2 miesięcy. Jeśli automatyzacja zaoszczędzi Ci 40h
+                        miesięcznie, to przy stawce 50 PLN/h masz 2000 PLN oszczędności od razu.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-all">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-medium">
+                        <span>Czy to bezpieczne? Co jeśli nie zadziała?</span>
+                        <span class="transition-transform group-open:rotate-180"><i
+                                data-lucide="chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                        Zaczynamy od prototypu. Nie płacisz za pełne wdrożenie, dopóki nie zobaczysz, że to działa.
+                        Oferujemy też 30-dniową gwarancję satysfakcji.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-surface/50 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Rozpocznij Transformację</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24h z
+                    pomysłem na automatyzację.</p>
+            </div>
+
+            <form class="space-y-6 bg-white/5 p-8 rounded-3xl border border-white/10">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Imię i Nazwisko</label>
+                        <input type="text" id="name"
+                            class="w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                            placeholder="Jan Kowalski">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Firmowy</label>
+                        <input type="email" id="email"
+                            class="w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                            placeholder="jan@firma.pl">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">O czym chcesz
+                        porozmawiać?</label>
+                    <textarea id="message" rows="4"
+                        class="w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                        placeholder="Opisz krótko swój proces..."></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-bold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-primary/25">
+                    Wyślij Zgłoszenie
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <a href="#" class="text-2xl font-display font-bold tracking-tighter text-white">fluinty.</a>
+                <p class="text-gray-500 text-sm mt-2">Automatyzacja przyszłości.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin"
+                        class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter"
+                        class="w-5 h-5"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook"
+                        class="w-5 h-5"></i></a>
+            </div>
+            <div class="text-gray-500 text-sm">
+                &copy; 2025 Fluinty. Wszelkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
