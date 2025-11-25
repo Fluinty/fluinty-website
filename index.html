@@ -558,102 +558,220 @@
     <!-- Case Studies Preview Section -->
     <section id="case-studies" class="py-32 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div
-                class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6 text-center md:text-left">
+            <div class="flex flex-col mb-16 gap-6 text-center md:text-left">
                 <div>
                     <span class="text-primary-text font-medium tracking-wider uppercase text-sm">Realizacje</span>
                     <h2 class="text-3xl md:text-5xl font-display font-bold mt-2 text-text-main">Dowody, nie obietnice
                     </h2>
                 </div>
-                <p class="text-text-muted max-w-md text-right md:text-left">Zobacz, jak pomogliśmy liderom branż
+                <p class="text-text-muted max-w-md mx-auto md:mx-0">Zobacz, jak pomogliśmy liderom branż
                     zautomatyzować ich kluczowe procesy.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Case Study Card 1: Eticod -->
-                <a href="pages/case-study-eticod.html"
-                    class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10"></div>
-                    <!-- Fixed Image -->
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000"
-                        alt="Eticod Automation"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+            <div class="relative group">
+                <!-- Navigation Buttons -->
+                <button id="prev-case-study"
+                    class="absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 z-30 bg-white border border-gray-100 p-3 rounded-full text-primary shadow-lg hover:scale-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed hidden md:block"
+                    aria-label="Previous case study">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="next-case-study"
+                    class="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 z-30 bg-white border border-gray-100 p-3 rounded-full text-primary shadow-lg hover:scale-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed hidden md:block"
+                    aria-label="Next case study">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
 
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span
-                                class="px-3 py-1 rounded-full bg-primary/60 text-white text-xs font-bold border border-primary/20">ETICOD</span>
-                            <span class="text-white text-xs uppercase tracking-wider">Poligrafia</span>
-                        </div>
-                        <h3 class="text-white md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
-                            Automatyzacja Procesowania Zamówień</h3>
-                        <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">160 godzin miesięcznie
-                            uwolnionego czasu dzięki inteligentnej automatyzacji od emaila do ERP.</p>
+                <!-- Carousel Track -->
+                <div id="case-studies-track"
+                    class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 -mx-4 px-4 md:mx-0 md:px-0">
+                    <!-- Case Study Card 1: Eticod -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="pages/case-study-eticod.html"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <!-- Fixed Image -->
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000"
+                                alt="Eticod Automation"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
 
-                        <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
-                            <div>
-                                <div class="text-xl font-bold text-white">160h</div>
-                                <div class="text-xs text-gray-500">Miesięcznie</div>
-                            </div>
-                            <div>
-                                <div class="text-xl font-bold text-white">0%</div>
-                                <div class="text-xs text-gray-500">Błędów</div>
-                            </div>
-                            <div>
-                                <div class="text-xl font-bold text-white">24/7</div>
-                                <div class="text-xs text-gray-500">Działanie</div>
-                            </div>
-                        </div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-primary/60 text-white text-xs font-bold border border-primary/20">ETICOD</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">Poligrafia</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                    Automatyzacja Procesowania Zamówień</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">160 godzin
+                                    miesięcznie
+                                    uwolnionego czasu dzięki inteligentnej automatyzacji od emaila do ERP.</p>
 
-                        <div class="flex items-center text-primary-text font-medium group-hover:gap-2 transition-all">
-                            Zobacz case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </div>
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">160h</div>
+                                        <div class="text-xs text-gray-500">Miesięcznie</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">0%</div>
+                                        <div class="text-xs text-gray-500">Błędów</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">24/7</div>
+                                        <div class="text-xs text-gray-500">Działanie</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-primary-text font-medium group-hover:gap-2 transition-all">
+                                    Zobacz case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
 
-                <!-- Case Study Card 2: Art-Tim -->
-                <a href="pages/case-study-art-tim.html"
-                    class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                    <!-- Case Study Card 2: Art-Tim -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="pages/case-study-art-tim.html"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <!-- Placeholder Image -->
+                            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1000"
+                                alt="Art-Tim Fleet"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-accent/60 text-white text-xs font-bold border border-accent/20">ART-TIM</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">Logistyka</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
+                                    Automatyzacja Zarządzania Flotą</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">Kompleksowy system
+                                    eliminujący ryzyko strat finansowych i zapewniający 100% kontrolę nad flotą.</p>
+
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">100%</div>
+                                        <div class="text-xs text-gray-500">Kontroli</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">$$$</div>
+                                        <div class="text-xs text-gray-500">Oszczędności</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">Auto</div>
+                                        <div class="text-xs text-gray-500">Powiadomienia</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-accent-text font-medium group-hover:gap-2 transition-all">
+                                    Zobacz case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <!-- Placeholder Image -->
-                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1000"
-                        alt="Art-Tim Fleet"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
 
-                    <div
-                        class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span
-                                class="px-3 py-1 rounded-full bg-accent/60 text-white text-xs font-bold border border-accent/20">ART-TIM</span>
-                            <span class="text-white text-xs uppercase tracking-wider">Logistyka</span>
-                        </div>
-                        <h3 class="text-white md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
-                            Automatyzacja Zarządzania Flotą</h3>
-                        <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">Kompleksowy system
-                            eliminujący ryzyko strat finansowych i zapewniający 100% kontrolę nad flotą.</p>
+                    <!-- Case Study Card 3: Fintech (Placeholder) -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="#"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
+                                alt="Fintech Automation"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
 
-                        <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
-                            <div>
-                                <div class="text-xl font-bold text-white">100%</div>
-                                <div class="text-xs text-gray-500">Kontroli</div>
-                            </div>
-                            <div>
-                                <div class="text-xl font-bold text-white">$$$</div>
-                                <div class="text-xs text-gray-500">Oszczędności</div>
-                            </div>
-                            <div>
-                                <div class="text-xl font-bold text-white">Auto</div>
-                                <div class="text-xs text-gray-500">Powiadomienia</div>
-                            </div>
-                        </div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-secondary/60 text-white text-xs font-bold border border-secondary/20">FINTECH</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">Finanse</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-secondary transition-colors">
+                                    Automatyzacja Księgowości</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">Inteligentny system
+                                    kategoryzacji wydatków i generowania raportów finansowych w czasie rzeczywistym.</p>
 
-                        <div class="flex items-center text-accent-text font-medium group-hover:gap-2 transition-all">
-                            Zobacz case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </div>
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">-80%</div>
+                                        <div class="text-xs text-gray-500">Czasu pracy</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">0</div>
+                                        <div class="text-xs text-gray-500">Pomyłek</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">R-T</div>
+                                        <div class="text-xs text-gray-500">Raporty</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-secondary font-medium group-hover:gap-2 transition-all">
+                                    Wkrótce <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+
+                    <!-- Case Study Card 4: E-commerce (Placeholder) -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="#"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=1000"
+                                alt="E-commerce Automation"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-primary/60 text-white text-xs font-bold border border-primary/20">RETAIL</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">E-commerce</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                    Inteligentna Obsługa Zwrotów</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">Automatyczna
+                                    weryfikacja
+                                    zgłoszeń i generowanie etykiet, skracająca czas obsługi o 90%.</p>
+
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">90%</div>
+                                        <div class="text-xs text-gray-500">Szybciej</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">24h</div>
+                                        <div class="text-xs text-gray-500">Zwrot</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">5/5</div>
+                                        <div class="text-xs text-gray-500">Opinie</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-primary-text font-medium group-hover:gap-2 transition-all">
+                                    Wkrótce <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

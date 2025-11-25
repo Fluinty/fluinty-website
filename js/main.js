@@ -102,7 +102,7 @@ function closeModal() {
     if (!modal) return;
     modal.classList.remove('opacity-100');
     modal.classList.add('opacity-0');
-    
+
     // Wait for transition to finish
     setTimeout(() => {
         modal.classList.add('hidden');
@@ -128,4 +128,82 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
+
+// Case Studies Carousel Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('case-studies-track');
+    const prevBtn = document.getElementById('prev-case-study');
+    const nextBtn = document.getElementById('next-case-study');
+
+    if (track && prevBtn && nextBtn) {
+        const getScrollAmount = () => {
+            const card = track.firstElementChild;
+            // gap-8 is 2rem = 32px
+            return card ? card.offsetWidth + 32 : 0;
+        };
+
+        const scrollNext = () => {
+            const isAtEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+            if (isAtEnd) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            }
+        };
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        const updateButtons = () => {
+            // Use a small tolerance for float calculations
+            const isAtStart = track.scrollLeft <= 5;
+            const isAtEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+
+            prevBtn.disabled = isAtStart;
+            nextBtn.disabled = isAtEnd;
+
+            prevBtn.style.opacity = isAtStart ? '0.5' : '1';
+            prevBtn.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
+
+            nextBtn.style.opacity = isAtEnd ? '0.5' : '1';
+            nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
+        };
+
+        track.addEventListener('scroll', updateButtons);
+        window.addEventListener('resize', updateButtons);
+
+        // Initial check after a short delay to ensure layout is settled
+        setTimeout(updateButtons, 100);
+
+        // Auto Scroll Logic
+        let autoScrollInterval;
+        const startAutoScroll = () => {
+            stopAutoScroll(); // Clear any existing interval
+            autoScrollInterval = setInterval(scrollNext, 3000); // Scroll every 3 seconds
+        };
+
+        const stopAutoScroll = () => {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+            }
+        };
+
+        // Start auto-scroll initially
+        startAutoScroll();
+
+        // Pause on hover/interaction
+        const container = track.parentElement; // The .relative.group container
+        if (container) {
+            container.addEventListener('mouseenter', stopAutoScroll);
+            container.addEventListener('mouseleave', startAutoScroll);
+            container.addEventListener('touchstart', stopAutoScroll);
+            container.addEventListener('touchend', startAutoScroll);
+        }
+    }
 });
