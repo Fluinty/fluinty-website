@@ -120,3 +120,36 @@
 .animate-neon-pulse {
     animation: neonPulse 3s ease-in-out infinite;
 }
+
+/* Text Loop Animation */
+@keyframes textLoop {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    28% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    33% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.animate-text-loop {
+    animation: textLoop 7.5s linear infinite;
+    opacity: 0;
+    /* Start hidden */
+}
