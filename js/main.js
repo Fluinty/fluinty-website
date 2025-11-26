@@ -207,3 +207,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// Savings Calculator Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const hoursSlider = document.getElementById('hours-slider');
+    const costSlider = document.getElementById('cost-slider');
+    const hoursDisplay = document.getElementById('hours-display');
+    const costDisplay = document.getElementById('cost-display');
+
+    // New Elements
+    const manualCostDisplay = document.getElementById('manual-cost-display');
+    const fluintyCostDisplay = document.getElementById('fluinty-cost-display');
+    const savingsDisplay = document.getElementById('savings-display');
+    const fluintyBar = document.getElementById('fluinty-bar');
+
+    if (hoursSlider && costSlider) {
+        function updateCalculator() {
+            const hours = parseInt(hoursSlider.value);
+            const cost = parseInt(costSlider.value);
+
+            // Calculations
+            const monthlyManualCost = hours * cost;
+            const annualManualCost = monthlyManualCost * 12;
+
+            // Assumption: Fluinty reduces cost by 80% (Efficiency Gain)
+            const annualFluintyCost = annualManualCost * 0.2;
+            const annualSavings = annualManualCost - annualFluintyCost;
+
+            // Update displays
+            hoursDisplay.textContent = hours;
+            costDisplay.textContent = cost;
+
+            if (manualCostDisplay) manualCostDisplay.textContent = annualManualCost.toLocaleString('pl-PL') + ' PLN';
+            if (fluintyCostDisplay) fluintyCostDisplay.textContent = annualFluintyCost.toLocaleString('pl-PL') + ' PLN';
+            if (savingsDisplay) savingsDisplay.textContent = annualSavings.toLocaleString('pl-PL');
+
+            // Update Visual Bars
+            // Manual bar is always 100% (reference)
+            // Fluinty bar is 20% (since cost is 20% of manual)
+            if (fluintyBar) {
+                // We keep it fixed at 20% to visually represent the 80% savings constant
+                // Or we could make it dynamic if the efficiency factor changed, but for now it's static logic
+                fluintyBar.style.width = '20%';
+            }
+
+            // Update slider backgrounds (Progress fill)
+            updateSliderBackground(hoursSlider);
+            updateSliderBackground(costSlider);
+        }
+
+        function updateSliderBackground(slider) {
+            const min = parseInt(slider.min);
+            const max = parseInt(slider.max);
+            const val = parseInt(slider.value);
+            const percentage = ((val - min) / (max - min)) * 100;
+
+            // Linear gradient: Teal (filled) | White/10% (empty) for Dark Theme
+            slider.style.background = `linear-gradient(to right, #00C4B4 ${percentage}%, rgba(255, 255, 255, 0.1) ${percentage}%)`;
+        }
+
+        // Event Listeners
+        hoursSlider.addEventListener('input', updateCalculator);
+        costSlider.addEventListener('input', updateCalculator);
+
+        // Initial call
+        updateCalculator();
+    }
+});
