@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const monthlyManualCost = hours * cost;
             const annualManualCost = monthlyManualCost * 12;
 
-            // Assumption: Fluinty reduces cost by 80% (Efficiency Gain)
-            const annualFluintyCost = annualManualCost * 0.2;
+            // Assumption: Fluinty reduces cost by 70% (Efficiency Gain)
+            const annualFluintyCost = annualManualCost * 0.3;
             const annualSavings = annualManualCost - annualFluintyCost;
 
             // Update displays
