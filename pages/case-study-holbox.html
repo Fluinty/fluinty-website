@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art-Tim Case Study - Flu inty</title>
+    <title>Holbox Case Study - Fluinty</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
 
     <!-- Fonts -->
@@ -65,7 +65,7 @@
                     class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót
                 </a>
-                <a href="../en/pages/case-study-art-tim.html"
+                <a href="../en/pages/case-study-holbox.html"
                     class="flex items-center gap-2 transition-transform hover:scale-110" aria-label="Switch to English">
                     <img src="../assets/flags/en.svg" alt="EN" class="w-6 h-auto rounded-sm shadow-sm">
                 </a>
@@ -77,7 +77,7 @@
     <section class="relative min-h-[60vh] flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div
-                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
         </div>
@@ -85,17 +85,16 @@
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <div
                 class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 backdrop-blur-sm">
-                <span class="text-sm font-bold text-accent uppercase tracking-wider">Logistyka</span>
+                <span class="text-sm font-bold text-accent uppercase tracking-wider">Administracja / Sprzedaż</span>
             </div>
 
             <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 leading-tight">
-                Automatyzacja Zarządzania Flotą dla Art-Tim
+                Automatyzacja Raportowania Zamówień dla Holbox
             </h1>
 
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Dzięki zautomatyzowanemu systemowi zarządzania flotą udało się wyeliminować ryzyko kar za przegapione
-                terminy i niezgłoszone relokacje do ubezpieczyciela, zapewnić automatyczne powiadomienia o zmianach
-                lokalizacji oraz zaoszczędzić dziesiątki godzin miesięcznie.
+                Zautomatyzowany system analizujący maile z zamówieniami i generujący raporty, który wyeliminował ręczne
+                przepisywanie danych i błędy ludzkie.
             </p>
         </div>
     </section>
@@ -105,19 +104,19 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
                 <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                <div class="text-sm text-gray-600">Kontroli nad flotą</div>
+                <div class="text-sm text-gray-600">Poprawności danych</div>
             </div>
             <div>
                 <div class="text-4xl font-bold text-accent">Auto</div>
-                <div class="text-sm text-gray-600">Powiadomienia</div>
+                <div class="text-sm text-gray-600">Analiza maili</div>
             </div>
             <div>
                 <div class="text-4xl font-bold text-secondary">0</div>
-                <div class="text-sm text-gray-600">Przegapionych terminów</div>
+                <div class="text-sm text-gray-600">Błędów przy wpisywaniu</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-gray-900">$$$</div>
-                <div class="text-sm text-gray-600">Zabezpieczone finanse</div>
+                <div class="text-4xl font-bold text-gray-900">40h</div>
+                <div class="text-sm text-gray-600">Oszczędności miesięcznie</div>
             </div>
         </div>
     </section>
@@ -126,29 +125,42 @@
     <section class="py-24">
         <div class="max-w-4xl mx-auto px-6 space-y-24">
 
+            <!-- Client -->
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                <h2 class="text-2xl font-display font-bold text-primary">O Kliencie</h2>
+                <div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Holbox to lider w dziedzinie kreatywnych i innowacyjnych ekspozytorów oraz materiałów POS (Point
+                        of Sale). Firma specjalizuje się w projektowaniu, tworzeniu i produkcji standów reklamowych,
+                        dbając o zrównoważony rozwój i ekologię.
+                    </p>
+                </div>
+            </div>
+
             <!-- Challenge -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
                 <h2 class="text-2xl font-display font-bold text-primary">Wyzwanie</h2>
                 <div class="space-y-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        Brak centralnego systemu zarządzania flotą prowadził do chaosu informacyjnego i ryzyka
-                        finansowego.
+                        Na koniec miesiąca pracownicy musieli ręcznie tworzyć raport ze wszystkimi zamówieniami,
+                        przepisując dane z setek maili do Excela. Był to proces żmudny, czasochłonny i podatny na
+                        pomyłki.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="map-pin" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="clock" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Decentralizacja</h3>
-                                <p class="text-sm text-gray-600">Trudności w śledzeniu lokalizacji i stanu pojazdów
-                                    pomiędzy oddziałami.</p>
+                                <h3 class="font-bold mb-1">Ogromna strata czasu</h3>
+                                <p class="text-sm text-gray-600">30-40 godzin miesięcznie poświęcane na manualną pracę.
+                                </p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="file-warning" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Luki w Ubezpieczeniach</h3>
-                                <p class="text-sm text-gray-600">Ryzyko przeoczenia terminów ubezpieczeń i przeglądów,
-                                    grożące wysokimi karami.</p>
+                                <h3 class="font-bold mb-1">Ryzyko błędów</h3>
+                                <p class="text-sm text-gray-600">Ręczne przepisywanie danych z setek zamówień generowało
+                                    pomyłki.</p>
                             </div>
                         </li>
                     </ul>
@@ -160,30 +172,31 @@
                 <h2 class="text-2xl font-display font-bold text-primary">Rozwiązanie</h2>
                 <div class="space-y-8">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        Stworzyliśmy dedykowany system centralizujący zarządzanie flotą z automatycznymi
-                        powiadomieniami.
+                        Wdrożyliśmy automat monitorujący skrzynkę mailową, który wykrywa nowe zamówienia, analizuje ich
+                        treść i automatycznie wpisuje dane do pliku raportowego.
                     </p>
 
                     <div class="relative border-l-2 border-accent/30 pl-8 space-y-12">
                         <div class="relative">
                             <span
                                 class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">1. Centralna Baza Danych</h3>
-                            <p class="text-gray-600">Jeden system gromadzący wszystkie informacje o pojazdach.</p>
+                            <h3 class="text-xl font-bold mb-2">1. Monitoring Poczty</h3>
+                            <p class="text-gray-600">System automatycznie sprawdza skrzynkę w poszukiwaniu nowych maili
+                                z zamówieniami.</p>
                         </div>
                         <div class="relative">
                             <span
                                 class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">2. Automatyczne Przypomnienia</h3>
-                            <p class="text-gray-600">System sam pilnuje terminów ubezpieczeń i przeglądów,
-                                wysyłając powiadomienia z wyprzedzeniem.</p>
+                            <h3 class="text-xl font-bold mb-2">2. Inteligentna Analiza</h3>
+                            <p class="text-gray-600">Algorytm wyciąga kluczowe dane z treści maila na podstawie
+                                zdefiniowanych reguł.</p>
                         </div>
                         <div class="relative">
                             <span
                                 class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">3. Śledzenie Relokacji</h3>
-                            <p class="text-gray-600">Każda zmiana lokalizacji pojazdu jest rejestrowana, co zapewnia
-                                pełną transparentność.</p>
+                            <h3 class="text-xl font-bold mb-2">3. Automatyczny Zapis</h3>
+                            <p class="text-gray-600">Dane są natychmiast dodawane do raportu w Excelu/Sheets, gotowe do
+                                dalszej obróbki.</p>
                         </div>
                     </div>
                 </div>
@@ -194,19 +207,19 @@
                 <h2 class="text-2xl font-display font-bold text-primary">Rezultaty</h2>
                 <div>
                     <div class="p-8 rounded-3xl bg-gradient-to-br from-accent/20 to-primary/20 border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-6">Bezpieczeństwo i Kontrola</h3>
+                        <h3 class="text-2xl font-bold mb-6">Oszczędność i Precyzja</h3>
                         <div class="space-y-6">
                             <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Kontrola nad flotą</span>
-                                <span class="text-xl font-bold text-green-600">100%</span>
+                                <span>Oszczędzony czas</span>
+                                <span class="text-xl font-bold text-green-600">~40h / msc</span>
                             </div>
                             <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Ryzyko kar finansowych</span>
-                                <span class="text-xl font-bold text-green-600">0%</span>
+                                <span>Poprawność danych</span>
+                                <span class="text-xl font-bold text-green-600">100%</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span>Oszczędność czasu</span>
-                                <span class="text-xl font-bold text-green-600">~40h / msc</span>
+                                <span>Zadowolenie pracowników</span>
+                                <span class="text-xl font-bold text-green-600">Wzrost</span>
                             </div>
                         </div>
                     </div>
@@ -221,7 +234,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Previous -->
-                <a href="case-study-eticod.html"
+                <a href="case-study-art-tim.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-left">
                     <div
                         class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 transition-colors">
@@ -231,11 +244,11 @@
                     </div>
                     <h3
                         class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">
-                        Eticod</h3>
+                        Art-Tim</h3>
                 </a>
 
                 <!-- Next -->
-                <a href="case-study-holbox.html"
+                <a href="case-study-pups-choice.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-right">
                     <div
                         class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 justify-end transition-colors">
@@ -245,7 +258,7 @@
                     </div>
                     <h3
                         class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">
-                        Holbox</h3>
+                        Pup's Choice</h3>
                 </a>
             </div>
         </div>

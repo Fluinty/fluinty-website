@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FluintyDebt - Twoje Finansowe Centrum Dowodzenia</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00C2A0", // Updated to match reference (light teal/cyan)
+                        secondary: "#94a3b8", // Muted slate for text
+                        "background-light": "#F8FCFB", // Very light tint of teal/white
+                        "background-dark": "#0F172A", // Dark slate
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E293B",
+                        "text-light": "#1E293B",
+                        "text-dark": "#F1F5F9",
+                        "app-bg": "#F3F7F9", // Light grey-blue for dashboard bg
+                        "app-border": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                    backgroundImage: {
+                        'hero-gradient-light': 'radial-gradient(circle at 10% 20%, rgba(0, 194, 160, 0.05) 0%, rgba(0, 194, 160, 0) 50%)',
+                        'hero-gradient-dark': 'radial-gradient(circle at 50% 50%, rgba(0, 194, 160, 0.15) 0%, rgba(15, 23, 42, 0) 60%)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00C2A0 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        .dark .timeline-line::before {
+            background: #334155;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .rotate-x-12 {
+            transform: rotateX(12deg);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300">
+    <nav
+        class="sticky top-0 z-50 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-gray-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <a href="../index.html" class="flex items-center gap-2">
+                        <div
+                            class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
+                            F</div>
+                        <span class="text-2xl font-bold tracking-tight text-primary">fluinty.</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="#features">Funkcje</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="#process">Proces</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                        href="#pricing">Cennik</a>
+                    <a class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-semibold hover:bg-opacity-90 transition shadow-lg shadow-primary/20"
+                        href="http://localhost:3000">Rozpocznij</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="relative pt-20 pb-20 overflow-hidden bg-hero-gradient-light dark:bg-hero-gradient-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 shadow-sm mb-8 animate-fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Nowa era automatyzacji
+                    finansów</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Twoje Finansowe <br class="hidden md:block" />
+                <span class="gradient-text">Centrum Dowodzenia</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500 dark:text-gray-400 mb-10">
+                Połączyliśmy integrację KSeF z inteligentnym agentem AI. Odzyskuj należności automatycznie, bez
+                angażowania swojego czasu i emocji.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button
+                    class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-opacity-90 transition shadow-xl shadow-primary/25 transform hover:-translate-y-1">
+                    Umów 15-min Demo
+                </button>
+                <button
+                    class="px-8 py-4 bg-white dark:bg-slate-800 text-gray-700 dark:text-white border border-gray-200 dark:border-slate-700 rounded-full font-bold text-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition flex items-center justify-center gap-2">
+                    Zobacz jak to działa
+                    <span class="material-symbols-outlined text-primary text-lg">arrow_forward</span>
+                </button>
+            </div>
+            <div class="mt-24 relative mx-auto max-w-4xl h-[500px] flex items-center justify-center perspective-1000">
+                <div
+                    class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full transform scale-75 animate-pulse-glow">
+                </div>
+                <div
+                    class="absolute w-[600px] h-[600px] border border-primary/10 rounded-full animate-spin [animation-duration:60s]">
+                </div>
+                <div
+                    class="absolute w-[450px] h-[450px] border border-dashed border-primary/20 rounded-full animate-spin [animation-duration:40s] [animation-direction:reverse]">
+                </div>
+                <div
+                    class="relative z-10 w-48 h-48 rounded-full bg-gradient-to-b from-slate-900 to-slate-800 border-4 border-primary shadow-[0_0_60px_rgba(0,194,160,0.4)] flex flex-col items-center justify-center text-white animate-float">
+                    <div class="absolute inset-0 bg-primary/10 rounded-full blur-xl"></div>
+                    <span
+                        class="material-symbols-outlined text-6xl text-primary drop-shadow-[0_0_10px_rgba(0,194,160,0.8)] mb-2">shield_with_heart</span>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-primary/80">Ochrona Aktywna</div>
+                    <div
+                        class="absolute -bottom-6 px-4 py-1 bg-slate-800 rounded-full border border-slate-700 text-xs text-primary font-bold shadow-lg">
+                        Cashflow +24%
+                    </div>
+                </div>
+                <div
+                    class="absolute left-0 top-1/4 md:left-10 lg:-left-4 glass-card p-4 rounded-xl shadow-lg border-l-4 border-l-green-500 animate-float-delayed z-20 max-w-[240px] transform hover:scale-105 transition-transform">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+                            <span class="material-symbols-outlined">payments</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Płatność otrzymana</div>
+                            <div class="text-sm font-bold text-gray-800 dark:text-white">12 450,00 PLN</div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="absolute right-0 top-20 md:right-20 glass-card p-4 rounded-xl shadow-lg border-l-4 border-l-orange-400 animate-float z-20 max-w-[240px] transform hover:scale-105 transition-transform">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+                            <span class="material-symbols-outlined">notifications_active</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Przypomnienie wysłane
+                            </div>
+                            <div class="text-xs font-bold text-gray-800 dark:text-white truncate">FV/2023/12/45 - SMS
+                                &amp; Email</div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="absolute right-4 bottom-1/4 md:right-12 glass-card p-4 rounded-xl shadow-lg border-l-4 border-l-blue-500 animate-float-delayed z-20 max-w-[240px] transform hover:scale-105 transition-transform">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500">
+                            <span class="material-symbols-outlined">cloud_sync</span>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Status systemu</div>
+                            <div class="text-sm font-bold text-gray-800 dark:text-white flex items-center gap-1">
+                                KSeF Połączono
+                                <span class="relative flex h-2 w-2 ml-1">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30 dark:opacity-20"
+                    viewBox="0 0 800 500">
+                    <path d="M400 250 L200 150" fill="none" stroke="#00C2A0" stroke-dasharray="5,5" stroke-width="2">
+                    </path>
+                    <path d="M400 250 L600 120" fill="none" stroke="#00C2A0" stroke-dasharray="5,5" stroke-width="2">
+                    </path>
+                    <path d="M400 250 L650 350" fill="none" stroke="#00C2A0" stroke-dasharray="5,5" stroke-width="2">
+                    </path>
+                </svg>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-white dark:bg-surface-dark border-b border-gray-100 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-7 gap-8 items-center">
+                <div class="md:col-span-3 text-center md:text-right group">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-900/20 text-red-500 mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-4xl">table_view</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">Excel Chaos</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Ręczne wpisywanie, zgubione faktury, brak kontroli nad przeterminowaniami i stres związany z
+                        upominaniem się.
+                    </p>
+                </div>
+                <div class="md:col-span-1 flex justify-center py-4 md:py-0">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gray-50 dark:bg-slate-800 flex items-center justify-center text-gray-400">
+                        <span class="material-symbols-outlined text-2xl md:rotate-0 rotate-90">arrow_forward</span>
+                    </div>
+                </div>
+                <div class="md:col-span-3 text-center md:text-left group">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-4xl">auto_fix_high</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">Fluinty Clarity</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                        Pełna automatyzacja, integracja KSeF, asystenci AI i odzyskany spokój. Twoje finanse wreszcie
+                        pod kontrolą.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-surface-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <div
+                        class="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 dark:bg-blue-900/30 rounded-full blur-2xl">
+                    </div>
+                    <div
+                        class="relative bg-background-light dark:bg-slate-800 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-slate-700">
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary">smart_toy</span>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-slate-700 p-4 rounded-r-2xl rounded-bl-2xl shadow-sm text-sm dark:text-gray-200">
+                                "Cześć! Przypominam o fakturze FV/2023/10/45. Termin minął 3 dni temu. Kiedy możemy
+                                spodziewać się wpłaty?"
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 justify-end">
+                            <div class="bg-primary text-white p-4 rounded-l-2xl rounded-br-2xl shadow-sm text-sm">
+                                "Przepraszam, zapomniałem! Już robię przelew."
+                            </div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-600 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-gray-500 dark:text-gray-300">person</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center text-xs text-gray-400 font-medium uppercase tracking-wider">
+                            Status: Rozwiązane w 45 sekund
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-text-light dark:text-text-dark">Koniec z
+                        niezręcznymi rozmowami o pieniądzach</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        Nikt nie lubi upominać się o swoje pieniądze. Pozwól, że nasz robot zrobi to za Ciebie.
+                        FluintyDebt przejmuje ciężar komunikacji windykacyjnej, zachowując przy tym pełen profesjonalizm
+                        i kulturę biznesową.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-gray-700 dark:text-gray-300">Automatyczne przypomnienia przed i po
+                                terminie</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-gray-700 dark:text-gray-300">Zachowanie dobrych relacji z
+                                kontrahentami</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span class="text-gray-700 dark:text-gray-300">Ty zajmujesz się strategią, my odzyskujemy
+                                cashflow</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-background-light dark:bg-background-dark" id="features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Więcej niż windykacja</h2>
+                <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Kompleksowe narzędzie, które spina Twoje
+                    finanse w jeden sprawnie działający ekosystem.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 group">
+                    <div
+                        class="w-14 h-14 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-blue-500 text-3xl">sync_alt</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Integracja z KSeF</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Pełna integracja z Krajowym Systemem e-Faktur. Automatyczne importowanie faktur sprzedażowych.
+                        System sam wykrywa nowe dokumenty i monitoruje ich terminy płatności.
+                    </p>
+                </div>
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary w-16 h-16 opacity-5 rounded-bl-full"></div>
+                    <div
+                        class="w-14 h-14 bg-teal-50 dark:bg-teal-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-3xl">record_voice_over</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Scenariusze Windykacji</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Agenci głosowi i tekstowi realizujący Twoje scenariusze. Ty ustalasz harmonogram i kanały
+                        kontaktu (SMS, Email, Telefon), a system działa automatycznie.
+                    </p>
+                </div>
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 group">
+                    <div
+                        class="w-14 h-14 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-purple-500 text-3xl">pie_chart</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Kontrola Należności</h3>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Miej pełny wgląd w to, ile pieniędzy jest zamrożonych w niezapłaconych fakturach. Otrzymuj
+                        raporty o przeterminowanych płatnościach w czasie rzeczywistym.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-surface-dark overflow-hidden" id="process">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Workflow</span>
+                <h2 class="text-3xl md:text-4xl font-bold">Eskalacja bez Twojego palca</h2>
+                <p class="mt-4 text-gray-500 dark:text-gray-400">Ty wystawiasz fakturę. My zajmujemy się resztą, jeśli
+                    klient nie zapłaci.</p>
+            </div>
+            <div class="relative timeline-line hidden md:block max-w-5xl mx-auto mb-12"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto relative z-10">
+                <div class="text-center relative group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-white dark:bg-slate-800 border-4 border-gray-100 dark:border-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:border-primary transition-colors duration-300 shadow-sm z-10 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">mail</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Dzień 1 po terminie</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Przyjazne przypomnienie Email o przeoczonej
+                        płatności.</p>
+                </div>
+                <div class="text-center relative group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-white dark:bg-slate-800 border-4 border-gray-100 dark:border-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:border-primary transition-colors duration-300 shadow-sm z-10 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">sms</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Dzień 7 po terminie</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Przypomnienie SMS oraz ponowny mail z prośbą o
+                        kontakt.</p>
+                </div>
+                <div class="text-center relative group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-white dark:bg-slate-800 border-4 border-gray-100 dark:border-slate-700 rounded-full flex items-center justify-center mb-6 group-hover:border-primary transition-colors duration-300 shadow-sm z-10 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">phone_in_talk</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Dzień 14 po terminie</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">AI VoiceBot dzwoni do kontrahenta z uprzejmą
+                        informacją o minionym terminie płatności.</p>
+                </div>
+                <div class="text-center relative group">
+                    <div
+                        class="w-16 h-16 mx-auto bg-white dark:bg-slate-800 border-4 border-red-100 dark:border-red-900/30 rounded-full flex items-center justify-center mb-6 group-hover:border-red-500 transition-colors duration-300 shadow-sm z-10 relative">
+                        <span
+                            class="material-symbols-outlined text-red-300 group-hover:text-red-500 transition-colors">gavel</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Dzień 30 po terminie</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Automatyczne przygotowanie pozwu do e-Sądu (po
+                        Twojej akceptacji).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-gray-50 dark:bg-background-dark" id="pricing">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-white dark:bg-surface-dark rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-slate-700">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-10 md:p-14 border-b md:border-b-0 md:border-r border-gray-100 dark:border-slate-700">
+                        <div class="flex items-center gap-3 mb-8 opacity-60">
+                            <span class="material-symbols-outlined text-3xl text-gray-400">business_center</span>
+                            <h3 class="text-2xl font-bold text-gray-500">Tradycyjny Windykator</h3>
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-red-400 shrink-0">close</span>
+                                <div>
+                                    <p class="font-bold text-gray-700 dark:text-gray-300">Wysoka prowizja</p>
+                                    <p class="text-sm text-gray-500">Zabiera 10-25% odzyskanej kwoty.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-red-400 shrink-0">close</span>
+                                <div>
+                                    <p class="font-bold text-gray-700 dark:text-gray-300">Agresywny styl</p>
+                                    <p class="text-sm text-gray-500">Często psuje relacje biznesowe na zawsze.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-red-400 shrink-0">close</span>
+                                <div>
+                                    <p class="font-bold text-gray-700 dark:text-gray-300">Brak wglądu</p>
+                                    <p class="text-sm text-gray-500">Czekasz na raporty tygodniami.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-10 md:p-14 bg-primary/5 dark:bg-primary/10 relative">
+                        <div class="absolute top-6 right-6">
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-bold rounded-full uppercase tracking-wide">Rekomendowane</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div
+                                class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                                F</div>
+                            <h3 class="text-2xl font-bold text-primary">FluintyDebt</h3>
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                                <div>
+                                    <p class="font-bold text-text-light dark:text-text-dark">0% Prowizji</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Płacisz tylko niski, stały
+                                        abonament. 100% odzyskanych pieniędzy trafia do Ciebie.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                                <div>
+                                    <p class="font-bold text-text-light dark:text-text-dark">Pełna kontrola</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Widzisz postępy w czasie
+                                        rzeczywistym w panelu.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                                <div>
+                                    <p class="font-bold text-text-light dark:text-text-dark">Skuteczność AI</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Działa 24/7, bez urlopów i wahań
+                                        nastroju.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-10">
+                            <button
+                                class="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-opacity-90 transition shadow-lg shadow-primary/20">
+                                Rozpocznij za darmo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-6 h-6 bg-primary rounded-md flex items-center justify-center text-white font-bold text-xs">
+                            F</div>
+                        <span class="text-xl font-bold tracking-tight text-primary">fluinty.</span>
+                    </div>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">
+                        Automatyzujemy przyszłość finansów dla MŚP, przywracając spokój i płynność finansową.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a class="text-gray-400 hover:text-primary transition" href="#"><span
+                                class="material-symbols-outlined">social_leaderboard</span></a>
+                        <a class="text-gray-400 hover:text-primary transition" href="#"><span
+                                class="material-symbols-outlined">smart_display</span></a>
+                        <a class="text-gray-400 hover:text-primary transition" href="#"><span
+                                class="material-symbols-outlined">alternate_email</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 dark:text-white">Produkt</h4>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a class="hover:text-primary transition" href="#">Funkcje</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Integracje KSeF</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Cennik</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Bezpieczeństwo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 dark:text-white">Firma</h4>
+                    <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                        <li><a class="hover:text-primary transition" href="#">O nas</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Kariera</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Blog</a></li>
+                        <li><a class="hover:text-primary transition" href="#">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 dark:text-white">Kontakt</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Warszawa, ul. Prosta 20</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">hello@fluinty.com</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">+48 123 456 789</p>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">© 2026 FluintyDebt. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a class="hover:text-gray-600 dark:hover:text-gray-200" href="#">Prywatność</a>
+                    <a class="hover:text-gray-600 dark:hover:text-gray-200" href="#">Regulamin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

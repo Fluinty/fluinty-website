@@ -95,6 +95,8 @@
                     class="text-sm font-medium text-text-muted hover:text-primary transition-colors">Wyzwania</a>
                 <a href="#services"
                     class="text-sm font-medium text-text-muted hover:text-primary transition-colors">Rozwiązania</a>
+                <a href="#tools"
+                    class="text-sm font-medium text-text-muted hover:text-primary transition-colors">Narzędzia</a>
                 <a href="#case-studies"
                     class="text-sm font-medium text-text-muted hover:text-primary transition-colors">Realizacje</a>
                 <a href="#pricing"
@@ -103,7 +105,7 @@
                     aria-label="Switch to English">
                     <img src="assets/flags/en.svg" alt="EN" class="w-6 h-auto rounded-sm shadow-sm">
                 </a>
-                <a href="#contact"
+                <a href="http://localhost:3000"
                     class="px-6 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-primary-text hover:bg-primary hover:text-white transition-all duration-300 font-medium text-sm glow-effect">
                     Rozpocznij
                 </a>
@@ -124,13 +126,14 @@
         </button>
         <a href="#problem" class="mobile-link text-2xl font-display font-medium text-text-main">Wyzwania</a>
         <a href="#services" class="mobile-link text-2xl font-display font-medium text-text-main">Rozwiązania</a>
+        <a href="#tools" class="mobile-link text-2xl font-display font-medium text-text-main">Narzędzia</a>
         <a href="#case-studies" class="mobile-link text-2xl font-display font-medium text-text-main">Realizacje</a>
         <a href="#pricing" class="mobile-link text-2xl font-display font-medium text-text-main">Cennik</a>
         <a href="en/index.html"
             class="mobile-link flex items-center gap-2 text-text-muted hover:text-primary transition-colors">
             <img src="assets/flags/en.svg" alt="EN" class="w-6 h-auto rounded-sm shadow-sm"> English
         </a>
-        <a href="#contact"
+        <a href="http://localhost:3000"
             class="mobile-link px-8 py-3 rounded-full bg-primary text-white font-medium text-lg shadow-lg shadow-primary/25">
             Rozpocznij
         </a>
@@ -646,6 +649,95 @@
         </div>
     </section>
 
+    <!-- Our Tools Section -->
+    <section id="tools" class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 text-text-main">
+                    Nasze Narzędzia
+                </h2>
+                <p class="text-text-muted max-w-2xl mx-auto">
+                    Specjalistyczne narzędzia zaprojektowane do automatyzacji Twoich finansów i operacji.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Fluinty Debt -->
+                <div
+                    class="group relative bg-white rounded-3xl p-8 border border-gray-100 shadow-soft hover:shadow-lg transition-all overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="shield-check" class="w-32 h-32 text-primary"></i>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-primary"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-text-main mb-3">Fluinty Debt</h3>
+                        <div class="space-y-4 mb-8">
+                            <p class="text-text-muted leading-relaxed">
+                                <strong>Zamień stres na gotówkę.</strong> Fluinty Debt to Twój automatyczny strażnik
+                                płynności finansowej, który pracuje 24/7, by Twoje faktury były opłacane na czas.
+                            </p>
+                            <p class="text-text-muted leading-relaxed">
+                                System integruje się z KSeF, wykrywa opóźnienia i samoczynnie uruchamia proces
+                                windykacji. Kulturalne SMS-y, stanowcze maile i inteligentny VoiceBot wyręczają Cię w
+                                najtrudniejszych rozmowach.
+                            </p>
+                            <ul class="text-sm text-text-muted space-y-2">
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        class="w-4 h-4 text-primary"></i> <strong>Odzyskuj należności 40%
+                                        szybciej</strong></li>
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        class="w-4 h-4 text-primary"></i> <strong>Oszczędzaj 10h miesięcznie</strong> na
+                                    telefonach</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check"
+                                        class="w-4 h-4 text-primary"></i> <strong>Jeden abonament</strong> zamiast
+                                    prowizji dla windykatora</li>
+                            </ul>
+                        </div>
+
+                        <a href="pages/fluinty-debt.html"
+                            class="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-3 transition-all">
+                            Zobacz Więcej <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fluinty Fleet Manager -->
+                <div
+                    class="group relative bg-white rounded-3xl p-8 border border-gray-100 shadow-soft hover:shadow-lg transition-all overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="truck" class="w-32 h-32 text-accent"></i>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
+                                <i data-lucide="truck" class="w-7 h-7 text-accent"></i>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full uppercase tracking-wide">
+                                Wkrótce
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-text-main mb-3">Fluinty Fleet Manager</h3>
+                        <p class="text-text-muted mb-8 leading-relaxed">
+                            Kompleksowe zarządzanie flotą pojazdów. Monitoruj koszty, trasy i serwisy w jednym,
+                            intuicyjnym dashboardzie.
+                        </p>
+
+                        <span class="inline-flex items-center gap-2 text-gray-400 font-bold cursor-not-allowed">
+                            Coming Soon
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Process Section -->
     <section class="py-24 relative">
         <div class="max-w-7xl mx-auto px-6">
@@ -821,6 +913,53 @@
                                     <div>
                                         <div class="text-xl font-bold text-white">Auto</div>
                                         <div class="text-xs text-gray-500">Powiadomienia</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-primary-text font-medium group-hover:gap-2 transition-all">
+                                    Zobacz case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Case Study Card Holbox -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="pages/case-study-holbox.html"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <!-- Placeholder Image -->
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000"
+                                alt="Holbox Order Automation"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-accent/60 text-white text-xs font-bold border border-accent/20">Holbox</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">Administracja</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
+                                    Automatyzacja Raportowania</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">System, który
+                                    oszczędza 40h miesięcznie, eliminując ręczne przepisywanie zamówień z maili.</p>
+
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">40h</div>
+                                        <div class="text-xs text-gray-500">Miesięcznie</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">100%</div>
+                                        <div class="text-xs text-gray-500">Poprawności</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">Auto</div>
+                                        <div class="text-xs text-gray-500">Raporty</div>
                                     </div>
                                 </div>
 
@@ -1180,9 +1319,8 @@
                     class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin"
                         class="w-5 h-5"></i></a>
             </div>
-            <div class="text-gray-500 text-sm">
-                &copy; 2025 Fluinty. Wszelkie prawa zastrzeżone.
-            </div>
+            <p class="text-text-muted text-sm">&copy; 2026 Fluinty. Wszystkie prawa zastrzeżone.</p>
+        </div>
         </div>
     </footer>
 
