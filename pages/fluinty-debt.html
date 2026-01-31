@@ -4,14 +4,26 @@
 <head>
     <!-- Cookiebot Consent Management -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
-        data-blockingmode="auto" type="text/javascript"></script>
+        data-blockingmode="auto" type="text/javascript" async></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
+        // Google Consent Mode v2 - Default all to denied
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+
+        gtag('js', new Date());
         gtag('config', 'G-SZ9P7Y055L');
     </script>
     <meta charset="utf-8" />
