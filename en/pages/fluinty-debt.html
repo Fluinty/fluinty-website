@@ -133,13 +133,31 @@
                         href="http://localhost:3000">Get Started</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center gap-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-600 dark:text-gray-300 p-2">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <a href="#features"
+            class="mobile-link text-2xl font-display font-medium text-text-light dark:text-text-dark">Features</a>
+        <a href="#process"
+            class="mobile-link text-2xl font-display font-medium text-text-light dark:text-text-dark">Process</a>
+        <a href="#pricing"
+            class="mobile-link text-2xl font-display font-medium text-text-light dark:text-text-dark">Pricing</a>
+        <a href="http://localhost:3000"
+            class="mobile-link px-8 py-3 rounded-full bg-primary text-white font-medium text-lg shadow-lg shadow-primary/25">
+            Get Started
+        </a>
+    </div>
     <section class="relative pt-20 pb-20 overflow-hidden bg-hero-gradient-light dark:bg-hero-gradient-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <div
@@ -546,6 +564,11 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
