@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <!-- Cookiebot Consent Management -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+        data-blockingmode="auto" type="text/javascript" async></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        // Google Consent Mode v2 - Default all to denied
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+
+        gtag('js', new Date());
+        gtag('config', 'G-SZ9P7Y055L');
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FleetParts Dashboard - Zarządzanie Flotą</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries" data-cookieconsent="ignore"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3CC1B0",
+                        primaryDark: "#2DA092",
+                        accent: "#7FD1AE",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        navy: "#1e293b",
+                        "soft-teal": "#E0F2F1",
+                        "hub-dark": "#162032",
+                        "hub-accent": "#2DD4BF",
+                    },
+                    fontFamily: {
+                        display: ["'Plus Jakarta Sans'", "sans-serif"],
+                        body: ["'Plus Jakarta Sans'", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.5rem",
+                        '2xl': "2rem",
+                        'pill': "9999px",
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(60, 193, 176, 0.15)',
+                        'glow': '0 0 60px -15px rgba(60, 193, 176, 0.3)',
+                        'hub': '0 0 40px -5px rgba(45, 212, 191, 0.25)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) translateX(-50%)' },
+                            '50%': { transform: 'translateY(-10px) translateX(-50%)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, #3CC1B0 0%, #1e293b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #3CC1B0 0%, #F8FAFC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .bg-mesh {
+            background-color: transparent;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(60, 193, 176, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(60, 193, 176, 0.10) 0px, transparent 50%);
+        }
+
+        .dark .bg-mesh {
+            background-image:
+                radial-gradient(at 0% 0%, rgba(60, 193, 176, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(30, 41, 59, 0.5) 0px, transparent 50%);
+        }
+
+        .dash-line {
+            stroke-dasharray: 6;
+            animation: dash 30s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="font-body bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 antialiased selection:bg-primary selection:text-white transition-colors duration-300">
+    <div class="fixed inset-0 z-[-1] bg-mesh pointer-events-none"></div>
+
+    <nav
+        class="fixed w-full z-50 top-0 start-0 border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a class="flex items-center space-x-2 rtl:space-x-reverse" href="../index.html">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">F</div>
+                <span class="self-center text-xl font-display font-bold whitespace-nowrap dark:text-white">fluinty<span
+                        class="text-primary">.</span></span>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <button
+                    class="text-white bg-primary hover:bg-primaryDark focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-pill text-sm px-5 py-2.5 text-center transition-all shadow-md hover:shadow-lg hidden sm:block"
+                    type="button">
+                    Rozpocznij
+                </button>
+                <button id="mobile-menu-btn" aria-controls="navbar-sticky" aria-expanded="false"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-slate-500 rounded-lg md:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:text-slate-400 dark:hover:bg-slate-700 dark:focus:ring-slate-600"
+                    type="button">
+                    <span class="sr-only">Open main menu</span>
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-slate-100 rounded-lg bg-slate-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent dark:border-slate-700">
+                    <li>
+                        <a class="block py-2 px-3 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-white dark:hover:text-primary"
+                            href="#features">Funkcje</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 px-3 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-white dark:hover:text-primary"
+                            href="#process">Jak to działa</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 px-3 text-slate-900 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-white dark:hover:text-primary"
+                            href="#pricing">Cennik</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center gap-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-slate-600 dark:text-slate-300 p-2">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <a href="#features"
+            class="mobile-link text-2xl font-display font-medium text-slate-800 dark:text-slate-200">Funkcje</a>
+        <a href="#process" class="mobile-link text-2xl font-display font-medium text-slate-800 dark:text-slate-200">Jak
+            to działa</a>
+        <a href="#pricing"
+            class="mobile-link text-2xl font-display font-medium text-slate-800 dark:text-slate-200">Cennik</a>
+        <a href="http://localhost:3000"
+            class="mobile-link px-8 py-3 rounded-full bg-primary text-white font-medium text-lg shadow-lg shadow-primary/25">
+            Rozpocznij
+        </a>
+    </div>
+
+    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        <div class="px-4 mx-auto max-w-7xl text-center sm:px-6 lg:px-8 relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-pill bg-white border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700 animate-fade-in-up">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Inteligentna Flota 2.0</span>
+            </div>
+            <h1
+                class="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white leading-[1.1]">
+                Zapanuj nad <br class="hidden md:block" />
+                kosztami floty z <br />
+                <span class="text-primary">FleetParts Dashboard</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10">
+                Wdrażamy inteligentnych agentów AI. Integracja z systemami dostawców (m.in. InterCars) pozwala przejąć
+                kontrolę nad budżetem. Odzyskaj czas i skup się na strategii.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-primary rounded-pill hover:bg-primaryDark transition-all shadow-glow hover:shadow-lg hover:-translate-y-1"
+                    href="#">
+                    Darmowa Konsultacja
+                </a>
+                <a class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-slate-700 dark:text-slate-200 bg-transparent rounded-pill hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2 group"
+                    href="#">
+                    Zobacz Demo
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl -z-10 dark:bg-primary/5">
+        </div>
+    </section>
+
+    <section class="py-12 px-4 sm:px-6 overflow-hidden">
+        <div class="max-w-5xl mx-auto relative h-[600px] w-full">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10">
+            </div>
+            <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none"
+                viewBox="0 0 100 100">
+                <path class="stroke-primary/30 dash-line" d="M50 50 L25 25" fill="none" stroke-width="0.3"></path>
+                <path class="stroke-primary/30 dash-line" d="M50 50 L75 25" fill="none" stroke-width="0.3"></path>
+                <path class="stroke-primary/30 dash-line" d="M50 50 L25 75" fill="none" stroke-width="0.3"></path>
+                <path class="stroke-primary/30 dash-line" d="M50 50 L75 75" fill="none" stroke-width="0.3"></path>
+            </svg>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
+                <div class="absolute inset-0 bg-primary/20 rounded-full animate-ping blur-md"></div>
+                <div class="absolute -inset-8 border border-dashed border-primary/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                <div
+                    class="w-32 h-32 bg-hub-dark rounded-full flex items-center justify-center shadow-[0_0_50px_-10px_rgba(60,193,176,0.5)] border-4 border-[#1e293b] relative z-20 group">
+                    <div class="absolute inset-0 rounded-full border border-primary/10 animate-pulse"></div>
+                    <i data-lucide="network" class="w-12 h-12 text-primary animate-pulse group-hover:scale-110 transition-transform duration-500"></i>
+                </div>
+                <div class="mt-4 bg-hub-dark px-4 py-1.5 rounded-full border border-primary/30 shadow-lg relative z-20">
+                    <span class="text-[10px] font-bold text-white uppercase tracking-widest whitespace-nowrap">Centrum
+                        Zarządzania</span>
+                </div>
+            </div>
+            <div class="absolute top-[25%] left-[25%] z-20 animate-float w-36 sm:w-44 origin-center"
+                style="transform: translate(-50%, -50%);">
+                <div
+                    class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-blue-500 hover:scale-105 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-slate-800 dark:text-white text-xs sm:text-sm">Poznań</span>
+                        <i data-lucide="pie-chart" class="w-4 h-4 text-blue-500"></i>
+                    </div>
+                    <div class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1">35 aut</div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                        <span class="text-[9px] sm:text-[10px] font-semibold text-slate-600 dark:text-slate-300">Status:
+                            95%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-[25%] left-[75%] z-20 animate-float-delayed w-36 sm:w-44 origin-center"
+                style="transform: translate(-50%, -50%);">
+                <div
+                    class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-emerald-500 hover:scale-105 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-slate-800 dark:text-white text-xs sm:text-sm">Warszawa</span>
+                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    </div>
+                    <div class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1">50 aut</div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                        <span class="text-[9px] sm:text-[10px] font-semibold text-slate-600 dark:text-slate-300">Status:
+                            OK</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-[75%] left-[25%] z-20 animate-float-delayed w-36 sm:w-44 origin-center"
+                style="transform: translate(-50%, -50%);">
+                <div
+                    class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-red-500 hover:scale-105 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-slate-800 dark:text-white text-xs sm:text-sm">Bydgoszcz</span>
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-red-500"></i>
+                    </div>
+                    <div class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1">42 auta</div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-red-600">Status: ALERT</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-[75%] left-[75%] z-20 animate-float w-36 sm:w-44 origin-center"
+                style="transform: translate(-50%, -50%);">
+                <div
+                    class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border-l-4 border-emerald-500 hover:scale-105 transition-transform duration-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-slate-800 dark:text-white text-xs sm:text-sm">Toruń</span>
+                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                    </div>
+                    <div class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1">18 aut</div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                        <span class="text-[9px] sm:text-[10px] font-semibold text-slate-600 dark:text-slate-300">Status:
+                            OK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-16 md:py-20 bg-background-light dark:bg-background-dark relative border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-primary font-bold tracking-wider uppercase text-xs mb-3 block">Prosty Proces</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">
+                    Jak to działa?<br />
+                    Zarządzanie flotą w 3 krokach
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
+                        1
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <i data-lucide="cloud-download" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Automatyczny Import Danych</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        System automatycznie pobiera zamówienia od Twoich dostawców (m.in. InterCars API) oraz innych
+                        źródeł, precyzyjnie przypisując je do oddziałów.
+                    </p>
+                </div>
+                <div
+                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
+                        2
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <i data-lucide="hand" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Szybka Weryfikacja</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        Manager w mniej niż 30 sekund przypisuje zamówienie do konkretnego pojazdu za pomocą
+                        intuicyjnego interfejsu.
+                    </p>
+                </div>
+                <div
+                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
+                        3
+                    </div>
+                    <div
+                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <i data-lucide="trending-up" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Pełna Kontrola Budżetu</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        Śledź wydatki w czasie rzeczywistym. Otrzymuj powiadomienia o zbliżaniu się do limitów i
+                        optymalizuj koszty swojej floty.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 md:py-24 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Wszystko,
+                    czego potrzebuje Twój fleet manager</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-lg">Zintegrowane narzędzia, które zamieniają chaos w
+                    ustrukturyzowane procesy.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cloud-download" class="w-7 h-7 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Import Wielu Dostawców</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Wsparcie wielu dostawców części.
+                        Faktury i zamówienia wpadają do systemu w czasie rzeczywistym.</p>
+                </div>
+                <div
+                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bell-ring" class="w-7 h-7 text-red-500 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Alerty Budżetowe 24/7</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Otrzymuj powiadomienia, zanim
+                        przekroczysz budżet. Pełna kontrola wydatków w każdym momencie.</p>
+                </div>
+                <div
+                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin" class="w-7 h-7 text-emerald-500 dark:text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Zarządzanie Oddziałami</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Centralne zarządzanie wieloma
+                        lokalizacjami. Porównuj koszty i efektywność poszczególnych oddziałów.</p>
+                </div>
+                <div
+                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="brain" class="w-7 h-7 text-purple-500 dark:text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Analityka AI</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Sztuczna inteligencja analizuje
+                        wzorce zakupowe i sugeruje gdzie możesz zaoszczędzić najwięcej.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-50 dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div
+                    class="relative p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 opacity-90 grayscale-[0.5] hover:grayscale-0 transition-all duration-500">
+                    <div
+                        class="absolute -top-4 -left-4 bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 p-2 rounded-full shadow-lg">
+                        <i data-lucide="x" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-700 dark:text-slate-300 mb-4">Chaos w Excelu</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="circle-minus" class="w-5 h-5 text-red-400 mt-1"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Ręczne przepisywanie faktur od
+                                dostawców</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="circle-minus" class="w-5 h-5 text-red-400 mt-1"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Brak wiedzy o kosztach do końca
+                                miesiąca</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="circle-minus" class="w-5 h-5 text-red-400 mt-1"></i>
+                            <span class="text-slate-600 dark:text-slate-400">Nieautoryzowane zakupy przez
+                                pracowników</span>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="relative p-10 rounded-3xl bg-white dark:bg-slate-800 border-2 border-primary shadow-2xl transform md:scale-105 z-10">
+                    <div
+                        class="absolute -top-5 -right-5 bg-primary text-white p-3 rounded-full shadow-lg">
+                        <i data-lucide="check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Pełna kontrola w 30 sekund</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary mt-1"></i>
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Automatyczna synchronizacja
+                                faktur API</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary mt-1"></i>
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Podgląd budżetu w czasie
+                                rzeczywistym</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-primary mt-1"></i>
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Proces akceptacji zamówień
+                                jednym klikiem</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary/5 dark:bg-primary/10 -z-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-slate-900 dark:text-white mb-6">Gotowy na
+                optymalizację swojej floty?</h2>
+            <p class="text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto">Dołącz do firm, które
+                oszczędzają średnio 23% na kosztach części zamiennych w pierwszych 3 miesiącach.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-primary rounded-pill hover:bg-primaryDark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                    href="#">
+                    Umów bezpłatną konsultację
+                </a>
+                <a class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-pill hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
+                    href="#">
+                    Pobierz Case Study
+                </a>
+            </div>
+            <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">Bez karty kredytowej • 14 dni okresu próbnego</p>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <a href="../index.html"
+                    class="text-2xl font-display font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">fluinty.</a>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">Automatyzujemy przyszłość finansów dla MŚP,
+                    przywracając spokój i płynność finansową.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://www.linkedin.com/company/fluinty/" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-400 hover:text-primary transition-colors"><i data-lucide="linkedin"
+                        class="w-5 h-5"></i></a>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <a href="privacypolicy.html"
+                    class="text-sm text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">Polityka
+                    Prywatności</a>
+                <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2026 Fluinty. Wszystkie prawa zastrzeżone.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
