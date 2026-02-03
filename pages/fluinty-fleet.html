@@ -333,54 +333,122 @@
                     Zarządzanie flotą w 3 krokach
                 </h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Timeline Container -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical connecting line (hidden on mobile) -->
                 <div
-                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
-                    <div
-                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
-                        1
-                    </div>
-                    <div
-                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                        <i data-lucide="cloud-download" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Automatyczny Import Danych</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                        System automatycznie pobiera zamówienia od Twoich dostawców (m.in. InterCars API) oraz innych
-                        źródeł, precyzyjnie przypisując je do oddziałów.
-                    </p>
+                    class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary transform -translate-x-1/2">
                 </div>
-                <div
-                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
-                    <div
-                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
-                        2
+
+                <!-- Step 1 -->
+                <div class="relative mb-16 md:mb-24">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <!-- Left side (desktop) -->
+                        <div class="md:w-1/2 md:text-right md:pr-12">
+                            <div
+                                class="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl p-8 border border-primary/20">
+                                <div class="flex items-center justify-center md:justify-end mb-4">
+                                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center">
+                                        <i data-lucide="cloud-download" class="w-8 h-8 text-primary"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Automatyczny Import
+                                    Danych</h3>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    System automatycznie pobiera zamówienia od Twoich dostawców (m.in. InterCars API)
+                                    oraz innych źródeł, precyzyjnie przypisując je do oddziałów.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Center number -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl shadow-xl border-4 border-background-light dark:border-background-dark z-10">
+                                1
+                            </div>
+                        </div>
+                        <!-- Mobile number -->
+                        <div
+                            class="md:hidden w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
+                            1
+                        </div>
+                        <!-- Right side placeholder -->
+                        <div class="hidden md:block md:w-1/2"></div>
                     </div>
-                    <div
-                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                        <i data-lucide="hand" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Szybka Weryfikacja</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                        Manager w mniej niż 30 sekund przypisuje zamówienie do konkretnego pojazdu za pomocą
-                        intuicyjnego interfejsu.
-                    </p>
                 </div>
-                <div
-                    class="group bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-soft border border-slate-100 dark:border-slate-700 relative hover:-translate-y-1 transition-all duration-300">
-                    <div
-                        class="absolute -top-5 left-8 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg border-4 border-background-light dark:border-background-dark">
-                        3
+
+                <!-- Step 2 -->
+                <div class="relative mb-16 md:mb-24">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <!-- Left side placeholder -->
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <!-- Center number -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl shadow-xl border-4 border-background-light dark:border-background-dark z-10">
+                                2
+                            </div>
+                        </div>
+                        <!-- Mobile number -->
+                        <div
+                            class="md:hidden w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
+                            2
+                        </div>
+                        <!-- Right side (desktop) -->
+                        <div class="md:w-1/2 md:pl-12">
+                            <div
+                                class="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl p-8 border border-primary/20">
+                                <div class="flex items-center justify-center md:justify-start mb-4">
+                                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center">
+                                        <i data-lucide="hand" class="w-8 h-8 text-primary"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Szybka Weryfikacja
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Manager w mniej niż 30 sekund przypisuje zamówienie do konkretnego pojazdu za pomocą
+                                    intuicyjnego interfejsu.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                        class="w-14 h-14 bg-soft-teal dark:bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                        <i data-lucide="trending-up" class="w-7 h-7"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <!-- Left side (desktop) -->
+                        <div class="md:w-1/2 md:text-right md:pr-12">
+                            <div
+                                class="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl p-8 border border-primary/20">
+                                <div class="flex items-center justify-center md:justify-end mb-4">
+                                    <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center">
+                                        <i data-lucide="trending-up" class="w-8 h-8 text-primary"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Pełna Kontrola
+                                    Budżetu</h3>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Śledź wydatki w czasie rzeczywistym. Otrzymuj powiadomienia o zbliżaniu się do
+                                    limitów i optymalizuj koszty swojej floty.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Center number -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div
+                                class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl shadow-xl border-4 border-background-light dark:border-background-dark z-10">
+                                3
+                            </div>
+                        </div>
+                        <!-- Mobile number -->
+                        <div
+                            class="md:hidden w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg">
+                            3
+                        </div>
+                        <!-- Right side placeholder -->
+                        <div class="hidden md:block md:w-1/2"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Pełna Kontrola Budżetu</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                        Śledź wydatki w czasie rzeczywistym. Otrzymuj powiadomienia o zbliżaniu się do limitów i
-                        optymalizuj koszty swojej floty.
-                    </p>
                 </div>
             </div>
         </div>
@@ -396,43 +464,47 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div
-                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    class="group p-8 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/30 dark:to-blue-800/20 rounded-2xl border-2 border-blue-200 dark:border-blue-700/50 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 transition-all hover:-translate-y-2">
                     <div
-                        class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="cloud-download" class="w-7 h-7 text-blue-600 dark:text-blue-400"></i>
+                        class="w-16 h-16 bg-blue-500 dark:bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg">
+                        <i data-lucide="cloud-download" class="w-8 h-8 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Import Wielu Dostawców</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Wsparcie wielu dostawców części.
+                    <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-3">Import Wielu Dostawców</h3>
+                    <p class="text-blue-800 dark:text-blue-200 leading-relaxed font-medium">Wsparcie wielu dostawców
+                        części.
                         Faktury i zamówienia wpadają do systemu w czasie rzeczywistym.</p>
                 </div>
                 <div
-                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    class="group p-8 bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-900/30 dark:to-red-800/20 rounded-2xl border-2 border-red-200 dark:border-red-700/50 shadow-lg hover:shadow-2xl hover:shadow-red-500/20 transition-all hover:-translate-y-2">
                     <div
-                        class="w-14 h-14 bg-red-50 dark:bg-red-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="bell-ring" class="w-7 h-7 text-red-500 dark:text-red-400"></i>
+                        class="w-16 h-16 bg-red-500 dark:bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg">
+                        <i data-lucide="bell-ring" class="w-8 h-8 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Alerty Budżetowe 24/7</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Otrzymuj powiadomienia, zanim
+                    <h3 class="text-2xl font-bold text-red-900 dark:text-red-100 mb-3">Alerty Budżetowe 24/7</h3>
+                    <p class="text-red-800 dark:text-red-200 leading-relaxed font-medium">Otrzymuj powiadomienia, zanim
                         przekroczysz budżet. Pełna kontrola wydatków w każdym momencie.</p>
                 </div>
                 <div
-                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    class="group p-8 bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-emerald-900/30 dark:to-emerald-800/20 rounded-2xl border-2 border-emerald-200 dark:border-emerald-700/50 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/20 transition-all hover:-translate-y-2">
                     <div
-                        class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="map-pin" class="w-7 h-7 text-emerald-500 dark:text-emerald-400"></i>
+                        class="w-16 h-16 bg-emerald-500 dark:bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg">
+                        <i data-lucide="map-pin" class="w-8 h-8 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Zarządzanie Oddziałami</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Centralne zarządzanie wieloma
+                    <h3 class="text-2xl font-bold text-emerald-900 dark:text-emerald-100 mb-3">Zarządzanie Oddziałami
+                    </h3>
+                    <p class="text-emerald-800 dark:text-emerald-200 leading-relaxed font-medium">Centralne zarządzanie
+                        wieloma
                         lokalizacjami. Porównuj koszty i efektywność poszczególnych oddziałów.</p>
                 </div>
                 <div
-                    class="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-soft hover:shadow-xl transition-all hover:-translate-y-1">
+                    class="group p-8 bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-900/30 dark:to-purple-800/20 rounded-2xl border-2 border-purple-200 dark:border-purple-700/50 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all hover:-translate-y-2">
                     <div
-                        class="w-14 h-14 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="brain" class="w-7 h-7 text-purple-500 dark:text-purple-400"></i>
+                        class="w-16 h-16 bg-purple-500 dark:bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-lg">
+                        <i data-lucide="brain" class="w-8 h-8 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Analityka AI</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Sztuczna inteligencja analizuje
+                    <h3 class="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-3">Analityka AI</h3>
+                    <p class="text-purple-800 dark:text-purple-200 leading-relaxed font-medium">Sztuczna inteligencja
+                        analizuje
                         wzorce zakupowe i sugeruje gdzie możesz zaoszczędzić najwięcej.</p>
                 </div>
             </div>
