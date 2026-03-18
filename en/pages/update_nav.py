@@ -1,4 +1,7 @@
+import os
 import re
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Navigation templates for each case study
 navigations = {
@@ -8,10 +11,18 @@ navigations = {
     },
     'case-study-art-tim.html': {
         'prev': ('case-study-eticod.html', 'Eticod'),
-        'next': ('case-study-pups-choice.html', "Pup's Choice")
+        'next': ('case-study-holbox.html', "Holbox")
+    },
+    'case-study-holbox.html': {
+        'prev': ('case-study-art-tim.html', 'Art-Tim'),
+        'next': ('case-study-bodtech.html', 'Bodtech')
+    },
+    'case-study-bodtech.html': {
+        'prev': ('case-study-holbox.html', "Holbox"),
+        'next': ('case-study-pups-choice.html', 'Pup\'s Choice')
     },
     'case-study-pups-choice.html': {
-        'prev': ('case-study-art-tim.html', 'Art-Tim'),
+        'prev': ('case-study-bodtech.html', 'Bodtech'),
         'next': ('case-study-viivaa.html', 'Viivaa.de')
     },
     'case-study-viivaa.html': {
@@ -29,7 +40,7 @@ nav_template = '''    <!-- Navigation -->
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-left">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 transition-colors">
                         <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform text-primary"></i>
-                        Poprzednia realizacja
+                        Previous case study
                     </div>
                     <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">{prev_name}</h3>
                 </a>
@@ -38,7 +49,7 @@ nav_template = '''    <!-- Navigation -->
                 <a href="{next_url}"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-right">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 justify-end transition-colors">
-                        Następna realizacja
+                        Next case study
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary"></i>
                     </div>
                     <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">{next_name}</h3>
@@ -48,13 +59,13 @@ nav_template = '''    <!-- Navigation -->
     </section>'''
 
 for filename, nav in navigations.items():
-    filepath = f'c:/Users/Adamn/.gemini/antigravity/scratch/fluinty-redesign/pages/{filename}'
+    filepath = os.path.join(SCRIPT_DIR, filename)
     
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Pattern to match the entire Next Case Study section
-   pattern = r'    <!-- Next Case Study -->.*?    </section>'
+    pattern = r'    <!-- Navigation -->\n    <section class="py-24 border-t border-gray-200">.*?</section>'
     
     # Create the new navigation section
     new_nav = nav_template.format(

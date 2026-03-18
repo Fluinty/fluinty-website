@@ -41,7 +41,7 @@
         rel="stylesheet">
 
     <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" data-cookieconsent="ignore"></script>
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
@@ -228,6 +228,18 @@
         </div>
         <div class="carousel-container relative flex overflow-x-hidden group">
             <div class="carousel-track flex gap-8 items-center animate-scroll whitespace-nowrap hover:pause px-4">
+                <!-- Bodtech Item 1 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary-text mb-1">&lt;5 sec.</span>
+                    <span class="text-sm text-text-muted uppercase tracking-wider mb-2">response time</span>
+                    <span class="text-base text-text-main font-medium">Automated complaint handling</span>
+                </div>
+                <!-- Bodtech Item 2 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent-text mb-1">100%</span>
+                    <span class="text-sm text-text-muted uppercase tracking-wider mb-2">data completeness</span>
+                    <span class="text-base text-text-main font-medium">Elimination of manual follow-ups</span>
+                </div>
                 <!-- Item 1 -->
                 <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
                     <span class="text-3xl font-bold text-primary-text mb-1">~160h</span>
@@ -273,6 +285,18 @@
 
                 <!-- Duplicates for seamless scroll -->
                 <!-- Duplicates for seamless scroll (Simplified for brevity, assume similar updates for duplicates) -->
+                <!-- Bodtech Item 1 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
+                    <span class="text-3xl font-bold text-primary-text mb-1">&lt;5 sec.</span>
+                    <span class="text-sm text-text-muted uppercase tracking-wider mb-2">response time</span>
+                    <span class="text-base text-text-main font-medium">Automated complaint handling</span>
+                </div>
+                <!-- Bodtech Item 2 -->
+                <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
+                    <span class="text-3xl font-bold text-accent-text mb-1">100%</span>
+                    <span class="text-sm text-text-muted uppercase tracking-wider mb-2">data completeness</span>
+                    <span class="text-base text-text-main font-medium">Elimination of manual follow-ups</span>
+                </div>
                 <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-100 shadow-soft min-w-[300px]">
                     <span class="text-3xl font-bold text-primary mb-1">~160h</span>
                     <span class="text-sm text-text-muted uppercase tracking-wider mb-2">oszczędności miesięcznie</span>
@@ -759,6 +783,7 @@
                 <!-- Carousel Track -->
                 <div id="case-studies-track"
                     class="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 -mx-4 px-4 md:mx-0 md:px-0">
+                                        
                     <!-- Case Study Card 1: Eticod -->
                     <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
                         <a href="pages/case-study-eticod.html"
@@ -890,6 +915,51 @@
                                     <div>
                                         <div class="text-xl font-bold text-white">Auto</div>
                                         <div class="text-xs text-gray-500">Reports</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex items-center text-primary-text font-medium group-hover:gap-2 transition-all">
+                                    View case study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Case Study Card: Bodtech -->
+                    <div class="snap-center shrink-0 w-full md:w-[calc(50%-1rem)]">
+                        <a href="pages/case-study-bodtech.html"
+                            class="group relative block h-[500px] rounded-3xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10">
+                            </div>
+                            <!-- Fixed Image -->
+                            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=1000"
+                                alt="Bodtech Automation"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-primary/60 text-white text-xs font-bold border border-primary/20">BODTECH</span>
+                                    <span class="text-white text-xs uppercase tracking-wider">Production / Distribution</span>
+                                </div>
+                                <h3
+                                    class="text-white md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                    Complaint Handling Automation</h3>
+                                <p class="text-gray-300 mb-6 line-clamp-2 group-hover:text-gray-300">AI agent supporting the complaint process from receiving an email with photos to handing over the ready case to an expert.</p>
+
+                                <div class="grid grid-cols-3 gap-4 mb-6 border-t border-white/10 pt-4">
+                                    <div>
+                                        <div class="text-xl font-bold text-white">⚡ Sec.</div>
+                                        <div class="text-xs text-gray-500">Response time</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">📋 0</div>
+                                        <div class="text-xs text-gray-500">Missing data</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">Auto</div>
+                                        <div class="text-xs text-gray-500">Replies</div>
                                     </div>
                                 </div>
 

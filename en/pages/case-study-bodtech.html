@@ -28,7 +28,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holbox Case Study - Fluinty</title>
+    <title>Bodtech Case Study - Fluinty</title>
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
 
     <!-- Fonts -->
@@ -52,9 +52,13 @@
                         background: '#F8FAFC',
                         surface: '#FFFFFF',
                         primary: '#00C4B4',
+                        'primary-text': '#007A70',
                         accent: '#2DD4BF',
-                        'accent-glow': '#7bdcb5',
+                        'accent-text': '#0E7490',
+                        'accent-glow': '#99F6E4',
                         secondary: '#0B3D70',
+                        'text-main': '#0F172A',
+                        'text-muted': '#64748B',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -89,7 +93,7 @@
                     class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
                 </a>
-                <a href="../../pages/case-study-holbox.html"
+                <a href="../../pages/case-study-bodtech.html"
                     class="flex items-center gap-2 transition-transform hover:scale-110" aria-label="Switch to Polish">
                     <img src="../../assets/flags/pl.svg" alt="PL" class="w-6 h-auto rounded-sm shadow-sm">
                 </a>
@@ -101,25 +105,23 @@
     <section class="relative min-h-[60vh] flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div
-                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 backdrop-blur-sm">
-                <span class="text-sm font-bold text-accent uppercase tracking-wider">Administration / Sales</span>
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm">
+                <span class="text-sm font-bold text-primary uppercase tracking-wider">Production / Distribution</span>
             </div>
 
             <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 leading-tight">
-                Order Reporting Automation for Holbox
+                Complaint Handling Automation for Bodtech
             </h1>
 
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                An automated system that analyzes order emails and generates reports, eliminating manual data entry and
-                human errors.
-            </p>
+                Thanks to the implementation of an AI agent, handling complaint processes in multiple languages is immediate, and experts receive complete sorted data with intelligent analysis of damage photos instantly without wasting time on email ping-pong with the customer.</p>
         </div>
     </section>
 
@@ -127,20 +129,20 @@
     <section class="py-12 border-y border-gray-200 bg-surface/30">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                <div class="text-sm text-gray-600">Data accuracy</div>
+                <div class="text-4xl font-bold text-primary mb-2">⚡ Sec.</div>
+                <div class="text-sm text-gray-600">Email response time</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-accent">Auto</div>
-                <div class="text-sm text-gray-600">Email analysis</div>
+                <div class="text-4xl font-bold text-accent">0</div>
+                <div class="text-sm text-gray-600">Missing data after submission</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-secondary">0</div>
-                <div class="text-sm text-gray-600">Entry errors</div>
+                <div class="text-4xl font-bold text-secondary">24/7</div>
+                <div class="text-sm text-gray-600">Receiving and analyzing complaints</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-gray-900">40h</div>
-                <div class="text-sm text-gray-600">Saved monthly</div>
+                <div class="text-4xl font-bold text-gray-900">Real-time</div>
+                <div class="text-sm text-gray-600">Language and completeness detection</div>
             </div>
         </div>
     </section>
@@ -154,9 +156,7 @@
                 <h2 class="text-2xl font-display font-bold text-primary">About Client</h2>
                 <div>
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        Holbox is a leader in creative and innovative displays and POS (Point of Sale) materials. The
-                        company specializes in designing, creating, and producing advertising stands, with a strong
-                        focus on sustainability and ecology.
+                        Bodtech is a dynamically developing production and distribution company in the field of fire safety equipment, connectors, and industrial hoses. They serve customers both from Poland and abroad, which entails diverse correspondence flowing in different languages. Due to the large scale of distribution, they prioritize professional after-sales service.
                     </p>
                 </div>
             </div>
@@ -166,24 +166,21 @@
                 <h2 class="text-2xl font-display font-bold text-primary">Challenge</h2>
                 <div class="space-y-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        At the end of the month, employees had to manually create a report with all orders, transcribing
-                        data from hundreds of emails to Excel. It was a tedious, time-consuming process prone to
-                        mistakes.
+                        Complaints fell into a dedicated email inbox from different customers without uniform structure. They were often incomplete, required manual translation of the description, and classification of photos by employees, followed by an email ping-pong regarding missing data like invoice numbers.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="clock" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Huge time loss</h3>
-                                <p class="text-sm text-gray-600">30-40 hours per month spent on manual work.</p>
+                                <h3 class="font-bold mb-1">Time Loss & Communication Chaos</h3>
+                                <p class="text-sm text-gray-600">An employee manually read each email, looked at the photos, checked if the customer provided everything necessary, manually created a folder with the report, and replied. When something was missing - they had to write asking for completion.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="alert-octagon" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Risk of errors</h3>
-                                <p class="text-sm text-gray-600">Manually transcribing data from hundreds of orders
-                                    generated mistakes.</p>
+                                <h3 class="font-bold mb-1">Long Customer Waiting Time</h3>
+                                <p class="text-sm text-gray-600">Exchanging emails and explanations regarding the type of defect on the attached photos in the appropriate language of the customer took too much time, burdening experts with trivial validation of the concept base and document numbers.</p>
                             </div>
                         </li>
                     </ul>
@@ -195,31 +192,27 @@
                 <h2 class="text-2xl font-display font-bold text-primary">Solution</h2>
                 <div class="space-y-8">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        We implemented an automation monitoring the mailbox, which detects new orders, analyzes their
-                        content, and automatically enters data into the report file.
+                        We implemented a fully autonomous AI agent integrated with the complaint email inbox, capable of intelligently coordinating the entire process from receiving a message to handing over the ready case to an appraiser.
                     </p>
 
-                    <div class="relative border-l-2 border-accent/30 pl-8 space-y-12">
+                    <div class="relative border-l-2 border-primary/30 pl-8 space-y-12">
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">1. Email Monitoring</h3>
-                            <p class="text-gray-600">The system automatically checks the inbox for new emails with
-                                orders.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">1. Receiving & Analysis</h3>
+                            <p class="text-gray-600">An email arrives in the inbox. The agent reads the message, detects the language (PL/EN) in a fraction of a second, extracts customer data, order number, a description of the problem, and intelligently analyzes any attached photos of damages.</p>
                         </div>
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">2. Intelligent Analysis</h3>
-                            <p class="text-gray-600">The algorithm extracts key data from the email content based on
-                                defined rules.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">2. Automated Data Collection (Ping-Pong)</h3>
+                            <p class="text-gray-600">The agent checks the completeness of the submission. If something is missing—such as an invoice number or clear photos of a defect—it replies to the customer in the appropriate language (Polish or English) to request it. This automated "ping-pong" continues until all required information is gathered.</p>
                         </div>
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">3. Automatic Entry</h3>
-                            <p class="text-gray-600">Data is immediately added to the Excel/Sheets report, ready for
-                                further processing.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">3. Handover and Confirmation</h3>
+                            <p class="text-gray-600">Once all necessary information is collected, the agent immediately sends an official confirmation to the customer, assuring them that an expert will now handle their case. At the same time, the fully complete and organized case is sent directly to the human expert with all the required data on a silver platter—completely eliminating noise and scattered conversations.</p>
                         </div>
                     </div>
                 </div>
@@ -227,22 +220,22 @@
 
             <!-- Results -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-                <h2 class="text-2xl font-display font-bold text-primary">Results</h2>
+                <h2 class="text-2xl font-display font-bold text-primary">Implementation Effects</h2>
                 <div>
-                    <div class="p-8 rounded-3xl bg-gradient-to-br from-accent/20 to-primary/20 border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-6">Savings and Precision</h3>
+                    <div class="p-8 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-6">More time for experts, zero customer frustration</h3>
                         <div class="space-y-6">
-                            <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Time saved</span>
-                                <span class="text-xl font-bold text-green-600">~40h / mo</span>
+                            <div class="flex items-center justify-between border-b border-gray-200 pb-4 gap-4">
+                                <span>Manual emailing to collect missing data</span>
+                                <span class="text-xl font-bold text-green-600 text-right">Completely eliminated</span>
                             </div>
-                            <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Data accuracy</span>
-                                <span class="text-xl font-bold text-green-600">100%</span>
+                            <div class="flex items-center justify-between border-b border-gray-200 pb-4 gap-4">
+                                <span>Response and analysis time after receiving email</span>
+                                <span class="text-xl font-bold text-green-600 text-right">Under 5 seconds</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span>Employee satisfaction</span>
-                                <span class="text-xl font-bold text-green-600">Increased</span>
+                            <div class="flex items-center justify-between gap-4">
+                                <span>Completeness of data handed over to the appraiser</span>
+                                <span class="text-xl font-bold text-green-600 text-right">100% Ready</span>
                             </div>
                         </div>
                     </div>
@@ -257,23 +250,23 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Previous -->
-                <a href="case-study-art-tim.html"
+                <a href="case-study-holbox.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-left">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 transition-colors">
                         <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform text-primary"></i>
                         Previous case study
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Art-Tim</h3>
+                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Holbox</h3>
                 </a>
 
                 <!-- Next -->
-                <a href="case-study-bodtech.html"
+                <a href="case-study-pups-choice.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-right">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 justify-end transition-colors">
                         Next case study
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary"></i>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Bodtech</h3>
+                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Pup's Choice</h3>
                 </a>
             </div>
         </div>
@@ -282,7 +275,7 @@
     <!-- Footer -->
     <footer class="bg-surface border-t border-gray-200 py-12">
         <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
-            &copy; 2025 Fluinty.
+            &copy; 2026 Fluinty. All rights reserved.
         </div>
     </footer>
 

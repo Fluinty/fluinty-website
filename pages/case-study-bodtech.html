@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="pl" class="scroll-smooth">
 
 <head>
     <!-- Cookiebot Consent Management -->
@@ -28,8 +28,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holbox Case Study - Fluinty</title>
-    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <title>Bodtech Case Study - Fluinty</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,9 +52,13 @@
                         background: '#F8FAFC',
                         surface: '#FFFFFF',
                         primary: '#00C4B4',
+                        'primary-text': '#007A70',
                         accent: '#2DD4BF',
-                        'accent-glow': '#7bdcb5',
+                        'accent-text': '#0E7490',
+                        'accent-glow': '#99F6E4',
                         secondary: '#0B3D70',
+                        'text-main': '#0F172A',
+                        'text-muted': '#64748B',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -66,7 +70,7 @@
     </script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -87,11 +91,11 @@
             <div class="flex items-center gap-8">
                 <a href="../index.html#case-studies"
                     class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót
                 </a>
-                <a href="../../pages/case-study-holbox.html"
-                    class="flex items-center gap-2 transition-transform hover:scale-110" aria-label="Switch to Polish">
-                    <img src="../../assets/flags/pl.svg" alt="PL" class="w-6 h-auto rounded-sm shadow-sm">
+                <a href="../en/index.html"
+                    class="flex items-center gap-2 transition-transform hover:scale-110" aria-label="Switch to English">
+                    <img src="../assets/flags/en.svg" alt="EN" class="w-6 h-auto rounded-sm shadow-sm">
                 </a>
             </div>
         </div>
@@ -101,25 +105,23 @@
     <section class="relative min-h-[60vh] flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div
-                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20">
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 backdrop-blur-sm">
-                <span class="text-sm font-bold text-accent uppercase tracking-wider">Administration / Sales</span>
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm">
+                <span class="text-sm font-bold text-primary uppercase tracking-wider">Produkcja / Dystrybucja</span>
             </div>
 
             <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 leading-tight">
-                Order Reporting Automation for Holbox
+                Automatyzacja Obsługi Reklamacji dla Bodtech
             </h1>
 
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                An automated system that analyzes order emails and generates reports, eliminating manual data entry and
-                human errors.
-            </p>
+                Dzięki wdrożeniu agenta AI, obsługa procesów reklamacyjnych w wielu językach jest natychmiastowa, a eksperci otrzymują od razu komplet posortowanych danych z inteligentną analizą zdjęć uszkodzeń bez marnowania czasu na ping-pong mailowy z klientem.</p>
         </div>
     </section>
 
@@ -127,20 +129,20 @@
     <section class="py-12 border-y border-gray-200 bg-surface/30">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <div class="text-4xl font-bold text-primary mb-2">100%</div>
-                <div class="text-sm text-gray-600">Data accuracy</div>
+                <div class="text-4xl font-bold text-primary mb-2">⚡ Sek.</div>
+                <div class="text-sm text-gray-600">Czas reakcji na maila</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-accent">Auto</div>
-                <div class="text-sm text-gray-600">Email analysis</div>
+                <div class="text-4xl font-bold text-accent">0</div>
+                <div class="text-sm text-gray-600">Brakujących danych po zgłoszeniu</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-secondary">0</div>
-                <div class="text-sm text-gray-600">Entry errors</div>
+                <div class="text-4xl font-bold text-secondary">24/7</div>
+                <div class="text-sm text-gray-600">Przyjmowanie i analiza reklamacji</div>
             </div>
             <div>
-                <div class="text-4xl font-bold text-gray-900">40h</div>
-                <div class="text-sm text-gray-600">Saved monthly</div>
+                <div class="text-4xl font-bold text-gray-900">Real-time</div>
+                <div class="text-sm text-gray-600">Wykrywanie języka i kompletności opisu</div>
             </div>
         </div>
     </section>
@@ -151,39 +153,34 @@
 
             <!-- Client -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-                <h2 class="text-2xl font-display font-bold text-primary">About Client</h2>
+                <h2 class="text-2xl font-display font-bold text-primary">O Kliencie</h2>
                 <div>
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        Holbox is a leader in creative and innovative displays and POS (Point of Sale) materials. The
-                        company specializes in designing, creating, and producing advertising stands, with a strong
-                        focus on sustainability and ecology.
+                        Bodtech to nowoczesna firma produkcyjno-dystrybucyjna oferująca sprzęt ppoż., złącza i węże przemysłowe. Mają klientów zarówno w Polsce, jak i za granicą, co wiąże się ze zróżnicowaną korespondencją spływającą w różnych językach. Ze względu na dużą skalę dystrybucji, priorytetowo traktują profesjonalną obsługę posprzedażową.
                     </p>
                 </div>
             </div>
 
             <!-- Challenge -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-                <h2 class="text-2xl font-display font-bold text-primary">Challenge</h2>
+                <h2 class="text-2xl font-display font-bold text-primary">Wyzwanie</h2>
                 <div class="space-y-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        At the end of the month, employees had to manually create a report with all orders, transcribing
-                        data from hundreds of emails to Excel. It was a tedious, time-consuming process prone to
-                        mistakes.
+                        Reklamacje wpadały na dedykowaną skrzynkę mailową od różnych klientów bez jednolitego struktury. Często były niekompletne, wymagały ręcznego tłumaczenia opisu i klasyfikowania zdjęć przez pracowników, po czym następował ping-pong z brakiem m.in. numerów faktur.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="clock" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="x-circle" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Huge time loss</h3>
-                                <p class="text-sm text-gray-600">30-40 hours per month spent on manual work.</p>
+                                <h3 class="font-bold mb-1">Strata Czasu i Chaos Komunikacyjny</h3>
+                                <p class="text-sm text-gray-600">Pracownik ręcznie czytał każdy mail, oglądał zdjęcia, sprawdzał czy klient podał wszystko co niezbędne, manualnie zakładał folder ze zgłoszeniem i odpisywał. Gdy czegoś brakowało - musiał pisać o uzupełnienie.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4 p-4 rounded-xl bg-gray-100 border border-gray-200">
-                            <i data-lucide="alert-triangle" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
+                            <i data-lucide="alert-octagon" class="w-6 h-6 text-red-500 shrink-0 mt-1"></i>
                             <div>
-                                <h3 class="font-bold mb-1">Risk of errors</h3>
-                                <p class="text-sm text-gray-600">Manually transcribing data from hundreds of orders
-                                    generated mistakes.</p>
+                                <h3 class="font-bold mb-1">Długi czas oczekiwania klienta</h3>
+                                <p class="text-sm text-gray-600">Wymiana maili i wyjaśnień co do typu usterki na dołączonych zdjęciach w odpowiednim języku klienta zajmowała zbyt dużo czasu, obciążając ekspertów trywialną walidacją bazy pojęć i numerów dokumentów.</p>
                             </div>
                         </li>
                     </ul>
@@ -192,34 +189,30 @@
 
             <!-- Solution -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-                <h2 class="text-2xl font-display font-bold text-primary">Solution</h2>
+                <h2 class="text-2xl font-display font-bold text-primary">Rozwiązanie</h2>
                 <div class="space-y-8">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        We implemented an automation monitoring the mailbox, which detects new orders, analyzes their
-                        content, and automatically enters data into the report file.
+                        Wdrożyliśmy całkowicie autonomicznego agenta AI zintegrowanego ze skrzynką reklamacyjną, który inteligentnie koordynuje cały proces obsługi zgłoszeń od odbioru wiadomości po przekazanie gotowej sprawy rzeczoznawcy.
                     </p>
 
-                    <div class="relative border-l-2 border-accent/30 pl-8 space-y-12">
+                    <div class="relative border-l-2 border-primary/30 pl-8 space-y-12">
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">1. Email Monitoring</h3>
-                            <p class="text-gray-600">The system automatically checks the inbox for new emails with
-                                orders.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">1. Przyjęcie Zgłoszenia i Analiza</h3>
+                            <p class="text-gray-600">Mail wpada na skrzynkę. Agent czyta wiadomość, rozpoznaje język (PL/EN), wyciąga dane klienta, numer zamówienia, opis problemu oraz w samodzielny i sprytny sposób analizuje ewentualnie przesłane zdjęcia uszkodzeń.</p>
                         </div>
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">2. Intelligent Analysis</h3>
-                            <p class="text-gray-600">The algorithm extracts key data from the email content based on
-                                defined rules.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">2. Kompletowanie Danych (Ping-Pong)</h3>
+                            <p class="text-gray-600">Agent sprawdza kompletność zgłoszenia. Jeżeli brakuje np. faktury lub dokładniejszego opisu uszkodzenia, odpisuje klientowi w odpowiednim języku (polskim lub angielskim) z prośbą o uzupełnienie. Ten w pełni zautomatyzowany "ping-pong" trwa aż do momentu skompletowania wszystkich potrzebnych do rozpatrzenia informacji.</p>
                         </div>
                         <div class="relative">
                             <span
-                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-accent border-4 border-background"></span>
-                            <h3 class="text-xl font-bold mb-2">3. Automatic Entry</h3>
-                            <p class="text-gray-600">Data is immediately added to the Excel/Sheets report, ready for
-                                further processing.</p>
+                                class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-primary border-4 border-background"></span>
+                            <h3 class="text-xl font-bold mb-2">3. Potwierdzenie i Przekazanie Ekspertowi</h3>
+                            <p class="text-gray-600">Gdy komplet informacji zostaje zebrany, do klienta leci powiadomienie z potwierdzeniem, że wszystko jest w porządku i ekspert zajmie się sprawą. Jednocześnie gotowa, w pełni uporządkowana sprawa trafia prosto do ludzkiego eksperta ze wszystkimi niezbędnymi danymi - bez szumu i historii wcześniejszych rozmów.</p>
                         </div>
                     </div>
                 </div>
@@ -227,22 +220,22 @@
 
             <!-- Results -->
             <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-                <h2 class="text-2xl font-display font-bold text-primary">Results</h2>
+                <h2 class="text-2xl font-display font-bold text-primary">Efekty Wdrożenia</h2>
                 <div>
-                    <div class="p-8 rounded-3xl bg-gradient-to-br from-accent/20 to-primary/20 border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-6">Savings and Precision</h3>
+                    <div class="p-8 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-6">Więcej czasu dla ekspertów, zero frustracji klientów</h3>
                         <div class="space-y-6">
-                            <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Time saved</span>
-                                <span class="text-xl font-bold text-green-600">~40h / mo</span>
+                            <div class="flex items-center justify-between border-b border-gray-200 pb-4 gap-4">
+                                <span>Ręczne dopytywanie o braki w mailach</span>
+                                <span class="text-xl font-bold text-green-600 text-right">Całkowicie wyeliminowane</span>
                             </div>
-                            <div class="flex items-center justify-between border-b border-gray-200 pb-4">
-                                <span>Data accuracy</span>
-                                <span class="text-xl font-bold text-green-600">100%</span>
+                            <div class="flex items-center justify-between border-b border-gray-200 pb-4 gap-4">
+                                <span>Czas od wpłynięcia maila do reakcji i analizy</span>
+                                <span class="text-xl font-bold text-green-600 text-right">Poniżej 5 sekund</span>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span>Employee satisfaction</span>
-                                <span class="text-xl font-bold text-green-600">Increased</span>
+                            <div class="flex items-center justify-between gap-4">
+                                <span>Gotowość zebranych danych dla rzeczoznawcy</span>
+                                <span class="text-xl font-bold text-green-600 text-right">100% kompletności</span>
                             </div>
                         </div>
                     </div>
@@ -257,23 +250,23 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Previous -->
-                <a href="case-study-art-tim.html"
+                <a href="case-study-holbox.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-left">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 transition-colors">
                         <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform text-primary"></i>
-                        Previous case study
+                        Poprzednia realizacja
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Art-Tim</h3>
+                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Holbox</h3>
                 </a>
 
                 <!-- Next -->
-                <a href="case-study-bodtech.html"
+                <a href="case-study-pups-choice.html"
                     class="group block p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all text-right">
                     <div class="text-sm text-gray-500 group-hover:text-primary mb-2 flex items-center gap-2 justify-end transition-colors">
-                        Next case study
+                        Następna realizacja
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary"></i>
                     </div>
-                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Bodtech</h3>
+                    <h3 class="text-2xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors">Pup's Choice</h3>
                 </a>
             </div>
         </div>
@@ -282,11 +275,11 @@
     <!-- Footer -->
     <footer class="bg-surface border-t border-gray-200 py-12">
         <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
-            &copy; 2025 Fluinty.
+            &copy; 2026 Fluinty.
         </div>
     </footer>
 
-    <script src="../../js/main.js"></script>
+    <script src="../js/main.js"></script>
     <script>
         lucide.createIcons();
     </script>
