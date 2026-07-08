@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://fluinty.pl/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/index.html" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/blog/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/fluinty-debt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/fluinty-debt.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/fluinty-fleet.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-eticod.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-eticod.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-art-tim.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-art-tim.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-viivaa.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-viivaa.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-bodtech.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-bodtech.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-holbox.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-holbox.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/case-study-pups-choice.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/case-study-pups-choice.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/pages/privacypolicy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/pages/privacypolicy.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/fluinty-debt.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/fluinty-debt.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-eticod.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-eticod.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-art-tim.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-art-tim.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-viivaa.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-viivaa.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-bodtech.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-bodtech.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-holbox.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-holbox.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/case-study-pups-choice.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/case-study-pups-choice.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/pages/privacypolicy.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/pages/privacypolicy.html" />
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+</urlset>

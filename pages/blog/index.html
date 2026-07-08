@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+    <!-- Cookiebot Consent Management -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+        data-blockingmode="auto" type="text/javascript" async></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        // Google Consent Mode v2 - Default all to denied
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+
+        gtag('js', new Date());
+        gtag('config', 'G-SZ9P7Y055L');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Automatyzacja procesów AI dla firm | Fluinty</title>
+    <meta name="description"
+        content="Praktyczna wiedza o automatyzacji procesów biznesowych z AI dla MŚP: przetwarzanie dokumentów, obsługa klienta, windykacja, zarządzanie flotą.">
+    <link rel="canonical" href="https://fluinty.pl/pages/blog/index.html">
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest" data-cookieconsent="ignore"></script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8FAFC',
+                        surface: '#FFFFFF',
+                        primary: '#00C4B4',
+                        accent: '#2DD4BF',
+                        'accent-glow': '#7bdcb5',
+                        secondary: '#0B3D70',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Structured data: Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Fluinty",
+        "url": "https://fluinty.pl/pages/blog/index.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Fluinty",
+            "url": "https://fluinty.pl/"
+        }
+    }
+    </script>
+</head>
+
+<body class="bg-background text-gray-900 overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 backdrop-blur-md bg-background/50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../../index.html"
+                class="text-2xl font-display font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                fluinty.
+            </a>
+
+            <div class="flex items-center gap-8">
+                <a href="../../index.html"
+                    class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Powrót
+                </a>
+                <a href="../../en/pages/blog/index.html" class="flex items-center gap-2 transition-transform hover:scale-110"
+                    aria-label="Switch to English">
+                    <img src="../../assets/flags/en.svg" alt="EN" class="w-6 h-auto rounded-sm shadow-sm">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[40vh] flex items-center justify-center pt-32 pb-16 overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 backdrop-blur-sm">
+                <span class="text-sm font-bold text-primary uppercase tracking-wider">Blog</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 leading-tight">
+                Automatyzacja procesów z AI — bez marketingowego żargonu
+            </h1>
+
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Praktyczna wiedza o automatyzacji dla MŚP: przetwarzanie dokumentów, obsługa klienta, windykacja,
+                zarządzanie flotą i wdrożenia AI, które faktycznie się zwracają.
+            </p>
+        </div>
+    </section>
+
+    <!-- Post grid -->
+    <section class="py-12 pb-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div id="post-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!--
+                    POST CARD TEMPLATE — duplicate this block for each new post,
+                    newest first. Keep it in sync with pages/blog/index.html
+                    every time a post is added.
+
+                <a href="SLUG.html"
+                    class="group block rounded-3xl bg-white border border-gray-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all overflow-hidden">
+                    <div class="p-8">
+                        <div class="text-sm text-gray-500 mb-3">DD.MM.RRRR</div>
+                        <h2 class="text-xl font-display font-bold text-gray-900 group-hover:text-primary transition-colors mb-3">
+                            Tytuł artykułu
+                        </h2>
+                        <p class="text-sm text-gray-600 line-clamp-3">Krótki opis / lead artykułu.</p>
+                    </div>
+                </a>
+                -->
+
+                <div class="col-span-full text-center py-16 text-gray-500">
+                    <i data-lucide="pen-line" class="w-8 h-8 mx-auto mb-4 text-primary"></i>
+                    Pierwsze artykuły już wkrótce.
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-sm">
+            &copy; 2026 Fluinty.
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
