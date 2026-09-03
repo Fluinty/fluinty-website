@@ -1,0 +1,213 @@
+  <section class="sec sec-white" aria-labelledby="blog-h" data-animated>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;"
+      viewBox="0 0 460 240" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0.55" class="flow-orb">
+        <animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion>
+      </circle>
+    </svg>
+
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Wiedza</p>
+        <h1 id="blog-h">Jak automatyzujemy. Krok po kroku, na liczbach.</h1>
+        <div class="accent-bar"></div>
+        <p class="lead">Piszemy o tym, co wdrażamy: zamówienia z maili, dokumenty, KSeF, reklamacje, floty. Bez porad ogólnych.</p>
+      </div>
+
+      <!-- filtrowanie do podpiecia, gdy beda wpisy -->
+      <div class="chips" role="group" aria-label="Filtruj wpisy">
+        <button type="button" class="chip chip-hi" aria-pressed="true">Wszystko</button>
+        <button type="button" class="chip" aria-pressed="false">Zamówienia i dokumenty</button>
+        <button type="button" class="chip" aria-pressed="false">KSeF i księgowość</button>
+        <button type="button" class="chip" aria-pressed="false">Windykacja</button>
+        <button type="button" class="chip" aria-pressed="false">Flota</button>
+        <button type="button" class="chip" aria-pressed="false">Za kulisami</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-gray" aria-labelledby="wpisy-h" data-animated>
+    <div class="wrap stack">
+      <h2 class="vh" id="wpisy-h">Wpisy</h2>
+
+      <a class="card sr" href="{{ROOT}}blog/zamowienia-z-maili-do-erp/">
+        <div class="grid grid-2" style="align-items: center;">
+          <div class="stack">
+            <div class="row" style="gap: 12px;">
+              <span class="badge" style="position: static;">WYRÓŻNIONY</span>
+              <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
+            </div>
+            <h3 style="font-size: clamp(24px, 2.6vw, 34px);">Zamówienia z maili do ERP bez API. Jak to działa u Eticodu</h3>
+            <p class="body-2">Zamówienie przychodzi mailem, załącznik ląduje na Dysku, OCR czyta pozycje, a automat wpisuje je do ERP klik po kliku, bo system nie ma API. Od startu zero błędnych wpisów. Cały przebieg, krok po kroku.</p>
+            <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 18px;">
+              <span class="row" style="gap: 10px;">
+                <img src="{{ROOT}}assets/zespol/adam-nelip.jpg" alt="" width="30" height="30"
+                  style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; object-position: top;">
+                <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min &middot; <time datetime="2026-09-12">12.09.2026</time></span>
+              </span>
+              <span class="link-more">Czytaj wpis
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="card card-dark" aria-hidden="true">
+            <div class="row" style="justify-content: space-between;">
+              <p class="label" style="color: var(--teal-2);">Schemat przepływu &middot; Eticod</p>
+              <span style="background: var(--on-dark); border-radius: 7px; padding: 5px 10px; display: inline-flex;">
+                <img src="{{ROOT}}assets/klienci/eticod.svg" alt="" style="height: 14px; width: auto;">
+              </span>
+            </div>
+            <svg style="width: 100%; height: auto;" viewBox="0 0 580 224" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M 80,112 C 140,112 150,62 210,62" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate></path>
+              <path d="M 80,112 C 140,112 150,162 210,162" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4.6s" repeatCount="indefinite"></animate></path>
+              <path d="M 250,62 C 310,62 320,112 380,112" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4.2s" repeatCount="indefinite"></animate></path>
+              <path d="M 250,162 C 310,162 320,112 380,112" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="5s" repeatCount="indefinite"></animate></path>
+              <path d="M 420,112 H 500" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="3.6s" repeatCount="indefinite"></animate></path>
+              <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="0s" repeatCount="indefinite" path="M 80,112 C 140,112 150,62 210,62 M 250,62 C 310,62 320,112 380,112"></animateMotion></circle>
+              <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="2.6s" repeatCount="indefinite" path="M 80,112 C 140,112 150,162 210,162 M 250,162 C 310,162 320,112 380,112"></animateMotion></circle>
+              <circle class="flow-orb" r="3" fill="#2DD4BF" opacity="0.8"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M 420,112 H 500"></animateMotion></circle>
+              <circle cx="400" cy="112" r="24" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.4" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
+              <rect x="40" y="92" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+              <rect x="51" y="105" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
+              <path d="M 52,107 L 60,114 L 68,107" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+              <rect x="210" y="42" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+              <path d="M 223,54 h 14 v 16 h -14 z" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linejoin="round"></path>
+              <path d="M 226,59 h 8 M 226,63 h 8 M 226,67 h 5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linecap="round"></path>
+              <rect x="210" y="142" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+              <path d="M 222,158 v -4 h 4 M 234,154 h 4 v 4 M 222,166 v 4 h 4 M 238,166 v 4 h -4" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M 225,162 h 10" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linecap="round"></path>
+              <rect x="378" y="90" width="44" height="44" rx="12" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.2"></rect>
+              <rect x="391" y="103" width="18" height="18" rx="2" stroke="#2DD4BF" stroke-opacity="0.9" stroke-width="1.4"></rect>
+              <path d="M 391,112 h 18 M 400,103 v 18" stroke="#2DD4BF" stroke-opacity="0.9" stroke-width="1.4"></path>
+              <rect x="500" y="92" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+              <ellipse cx="520" cy="104.5" rx="8" ry="3.2" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></ellipse>
+              <path d="M 512,104.5 v 12 c 0,4.2 16,4.2 16,0 v -12 M 512,110.5 c 0,4.2 16,4.2 16,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+              <text x="60" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">mail od klienta</text>
+              <text x="230" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">TOR 1 · treść maila</text>
+              <text x="230" y="204" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">TOR 2 · OCR z Dysku</text>
+              <text x="400" y="156" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">arkusz i log</text>
+              <text x="520" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">ERP bez API</text>
+              <text x="460" y="100" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">klik po kliku</text>
+            </svg>
+            <p class="small">Dwa tory, jeden arkusz, wpis do ERP klik po kliku.</p>
+          </div>
+        </div>
+      </a>
+
+      <div class="grid grid-3 sr-grid">
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">KSeF i księgowość</p>
+          <h3>KSeF w biurze rachunkowym: co automatyzować w pierwszej kolejności</h3>
+          <p class="body-2" style="flex-grow: 1;">Nie wszystko naraz. Które kroki obsługi faktur zabierają najwięcej czasu i od którego z nich zacząć, żeby wynik było widać w arkuszu, nie w prezentacji.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min &middot; 15.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
+          <h3>Ile kosztuje ręczne przepisywanie zamówień. Rachunek na 20–25 minutach</h3>
+          <p class="body-2" style="flex-grow: 1;">Jedno zamówienie to 20–25 minut ręcznej pracy. Jak z tej liczby wyliczyć koszt miesięczny i czego w takim rachunku zwykle brakuje.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min &middot; 17.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
+          <h3>Data wysyłki bez weekendów i inne pułapki, które automat musi znać</h3>
+          <p class="body-2" style="flex-grow: 1;">Termin wysyłki to zawsze ostatni dzień roboczy, nie kalendarzowy. Skąd agent to wie i jakie inne reguły trzeba mu wpisać, zanim ruszy na produkcję.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 19.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
+          <h3>2 400 dokumentów zakupowych bez jednej ręcznej poprawki. Co za tym stoi</h3>
+          <p class="body-2" style="flex-grow: 1;">Dokumenty zakupowe z maili i z Dysku, na produkcji od listopada 2025. Co sprawdzamy przed wpisem do arkusza i dlaczego dokument z pustym polem idzie do człowieka.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 8 min &middot; 22.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Windykacja</p>
+          <h3>Przypomnienie o płatności, które nie psuje relacji z klientem</h3>
+          <p class="body-2" style="flex-grow: 1;">Kiedy wysłać pierwsze przypomnienie, jak brzmi trzecie i w którym momencie sprawa ma trafić do człowieka. Progi, które da się ustawić raz i zapomnieć.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 24.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
+          <h3>Reklamacje ze zdjęciami: jak agent czyta to, co wysłał klient</h3>
+          <p class="body-2" style="flex-grow: 1;">Zdjęcie z telefonu, opis w języku klienta, często bez numeru reklamacji. Jak agent składa z tego komplet dla rzeczoznawcy i kiedy oddaje sprawę człowiekowi.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min &middot; 26.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
+          <h3>Self-healing: co robi agent, kiedy ERP nie odpowiada</h3>
+          <p class="body-2" style="flex-grow: 1;">ERP nie odpowiada, sesja wygasła, formularz się zmienił. Co agent robi sam po nieudanej próbie, a co trafia do nas raportem.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 29.09.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+
+        <article class="card sr">
+          <p class="label" style="color: var(--teal-text);">Flota</p>
+          <h3>Koszt per pojazd: dlaczego nikt nie chce przypisywać faktur</h3>
+          <p class="body-2" style="flex-grow: 1;">Zakup w hurtowni to jedna faktura na kilkanaście aut. Jak wygląda proces, w którym przypisanie kosztu zajmuje 30 sekund, a nie wieczór z Excelem.</p>
+          <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min &middot; 01.10.2026</span>
+            <span class="chip chip-mono">wkrótce</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-navy bg-grid" aria-labelledby="blog-cta" data-animated>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <svg width="380" height="66" viewBox="0 0 380 66" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 62,33 H 168" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate></path>
+          <path d="M 212,33 H 318" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate></path>
+          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion></circle>
+          <circle cx="190" cy="33" r="24" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.4" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
+          <rect x="28" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+          <rect x="36" y="26" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
+          <path d="M 37,28 L 45,35 L 53,28" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+          <rect x="168" y="11" width="44" height="44" rx="12" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.2"></rect>
+          <path d="M 190,19 L 193.2,29.8 204,33 193.2,36.2 190,47 186.8,36.2 176,33 186.8,29.8 Z" fill="#2DD4BF" opacity="0.9"></path>
+          <rect x="318" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+          <path d="M 328,33 l 4.5,4.5 9,-9.5" stroke="#2DD4BF" stroke-opacity="0.9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <h2 id="blog-cta">Opowiedzcie nam o jednym procesie.</h2>
+        <p class="lead">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem korzyści. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <a class="btn btn-primary glow" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
+        <p class="small row" style="gap: 12px; font-family: var(--mono);">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span aria-hidden="true">&middot;</span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>

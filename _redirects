@@ -1,0 +1,28 @@
+# Pliki robocze i dokumentacja nie maja byc publiczne.
+# Netlify nie obsluguje wzorca /*.rozszerzenie ani placeholderow z sufiksem,
+# dlatego kazda sciezka jest wypisana jawnie.
+/add_favicon.py            /404.html  404
+/add_favicon_to_pages.py   /404.html  404
+/fix_cookiebot.py          /404.html  404
+/remove_social.py          /404.html  404
+/reorder.py                /404.html  404
+/repair_index.py           /404.html  404
+/update_linkedin.py        /404.html  404
+/CLAUDE.md                 /404.html  404
+/DEPLOYMENT_GUIDE.md       /404.html  404
+/GIT_WORKFLOW.md           /404.html  404
+/README.md                 /404.html  404
+/pages/nav-snippet.html    /404.html  404
+/en/pages/nav-snippet.html /404.html  404
+# Nowa strona (wrzesien 2026): stare adresy prowadza na nowe.
+/pages/case-study-eticod.html        /realizacje/eticod/            301
+/pages/case-study-art-tim.html       /realizacje/art-tim/           301
+/pages/case-study-bodtech.html       /realizacje/bodtech/           301
+/pages/case-study-holbox.html        /realizacje/holbox/            301
+/pages/case-study-pups-choice.html   /                              301
+/pages/case-study-viivaa.html        /                              301
+/pages/fluinty-debt.html             /produkty/fluintydebt/         301
+/pages/fluinty-fleet.html            /produkty/fluintyfleet/        301
+/pages/privacypolicy.html            /polityka-prywatnosci/         301
+/pages/blog/index.html               /blog/                         301
+/pages/blog/co-to-jest-automatyzacja-procesow-biznesowych.html  /blog/  301
