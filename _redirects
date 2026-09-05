@@ -15,14 +15,14 @@
 /pages/nav-snippet.html    /404.html  404
 /en/pages/nav-snippet.html /404.html  404
 # Nowa strona (wrzesien 2026): stare adresy prowadza na nowe.
-/pages/case-study-eticod.html        /realizacje/eticod/            301
-/pages/case-study-art-tim.html       /realizacje/art-tim/           301
-/pages/case-study-bodtech.html       /realizacje/bodtech/           301
-/pages/case-study-holbox.html        /realizacje/holbox/            301
-/pages/case-study-pups-choice.html   /                              301
-/pages/case-study-viivaa.html        /                              301
-/pages/fluinty-debt.html             /produkty/fluintydebt/         301
-/pages/fluinty-fleet.html            /produkty/fluintyfleet/        301
-/pages/privacypolicy.html            /polityka-prywatnosci/         301
-/pages/blog/index.html               /blog/                         301
-/pages/blog/co-to-jest-automatyzacja-procesow-biznesowych.html  /blog/  301
+/pages/case-study-eticod.html        /realizacje/eticod/            301!
+/pages/case-study-art-tim.html       /realizacje/art-tim/           301!
+/pages/case-study-bodtech.html       /realizacje/bodtech/           301!
+/pages/case-study-holbox.html        /realizacje/holbox/            301!
+/pages/case-study-pups-choice.html   /                              301!
+/pages/case-study-viivaa.html        /                              301!
+/pages/fluinty-debt.html             /produkty/fluintydebt/         301!
+/pages/fluinty-fleet.html            /produkty/fluintyfleet/        301!
+/pages/privacypolicy.html            /polityka-prywatnosci/         301!
+/pages/blog/index.html               /blog/                         301!
+/pages/blog/co-to-jest-automatyzacja-procesow-biznesowych.html  /blog/  301!
