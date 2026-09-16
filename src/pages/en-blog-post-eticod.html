@@ -35,20 +35,21 @@
 
       <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
         <div class="stack sr" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
-          <h2 id="two-tracks" style="font-size: clamp(23px, 2.4vw, 30px);">Two tracks: the email body and the attachment from Drive</h2>
-          <p class="body-2">The agent watches the orders inbox and picks out order emails from the rest of the
-            correspondence. Each order then moves along two tracks. The first track reads the email body: who is
-            ordering, what, how much and by when. The second track saves the attachment to Google Drive and runs OCR
-            on it in Gemini. PDFs arrive in different layouts, so the extraction cannot rely on a single fixed template.</p>
-          <p class="body-2">Both tracks end in the same Google Sheets spreadsheet. The sheet is both a queue and a
-            log: every row records the source the data was read from. Only from there does the order go to the
-            ERP.</p>
+          <h2 id="dwa-tory" style="font-size: clamp(23px, 2.4vw, 30px);">Two lanes: the email body and the attachment from Drive</h2>
+          <p class="body-2">The agent watches the order inbox and picks the order emails out of the rest of the
+            correspondence. Each order then goes down two lanes. The first lane reads the email body: who is
+            ordering, what, how much and by when. The second lane saves the attachment to Google Drive and runs OCR
+            on it in Gemini. PDFs arrive in different layouts, so the extraction cannot rely on a single fixed
+            template.</p>
+          <p class="body-2">Both lanes end in the same Google Sheets spreadsheet. The sheet is a queue and a log at
+            the same time: every row records the source the data was read from. Only from there does the order go
+            to the ERP.</p>
           <p class="body-2">A separate rule covers the dispatch date. The deadline in the email does not always fall
             on a working day. The system works out the dispatch date itself: always the last working day, skipping
             weekends automatically. It is a small thing, but without it an order “for Saturday” lands in the ERP with
             a date on which nobody is working.</p>
 
-          <h2 id="field-checks" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">Field checks before
+          <h2 id="kontrola-pol" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">Field checks before
             anything reaches the system</h2>
           <p class="body-2">The ERP entry is the last step, not the first. Before the automation makes it, it checks
             that every field is there: customer, line items, quantities, deadlines. If anything is missing, the order
@@ -59,23 +60,24 @@
             The ERP entry is the last step, not the first. Anything uncertain stops earlier.
           </blockquote>
           <p class="body-2">That is the only situation in which someone on the team touches the process. They do not
-            correct the entry in the ERP; they fill in the gap in the sheet. The rest happens without them.</p>
+            correct the entry in the ERP; they fill in the missing piece in the sheet. The rest happens without
+            them.</p>
 
-          <h2 id="erp-with-no-api" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">An ERP with no API: the
+          <h2 id="erp-bez-api" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">An ERP with no API: the
             automation clicks what a person would click</h2>
           <p class="body-2">Eticod's ERP exposes no API. There is no way to send it an order in a single request.
             Instead, a browser automation logs into the system and makes the entry in its interface, click by click,
             exactly the way an employee used to. The difference is that it does it the same way every time and leaves
             a trace of every operation in the log.</p>
-          <p class="body-2">This required no change to the system and no new module. What it did require was gathering
-            the access details and a technical account before the start, not along the way.</p>
+          <p class="body-2">This required no change to the system and no new module. What it did require was
+            collecting the access details and a technical account before launch, not along the way.</p>
           <p class="body-2">What this adds up to. Entering one order by hand took 20–25 minutes. Today it takes 0,
             and since launch not a single incorrect entry has reached the ERP. At Eticod that comes to around 160
             hours a month, calculated from 20–25 minutes per order. We do not measure it with a stopwatch; we
             calculate it from the volume, and that is how we label the figure in the case study.</p>
           <p class="body-2">If your orders also arrive by email and someone retypes them, do the same sum: number of
-            orders times the time for one entry. We work out how much of that you can realistically recover on a
-            free call.</p>
+            orders times the time for one entry. How much of that you can realistically recover is something we work
+            out on a free call.</p>
 
           <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
             <a class="link-more" href="{{ROOT}}en/blog/">
@@ -86,14 +88,14 @@
           </p>
         </div>
 
-        <aside class="card sr" aria-label="From this implementation"
+        <aside class="card sr" aria-label="From this deployment"
           style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 18px;">
-          <p class="eyebrow">From this implementation</p>
+          <p class="eyebrow">From this deployment</p>
           <p class="row" style="gap: 12px;">
             <span style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; display: inline-flex; align-items: center;">
               <img src="{{ROOT}}assets/klienci/eticod.svg" alt="Eticod" style="height: 16px; width: auto;">
             </span>
-            <span class="label">Label printing</span>
+            <span class="label">Label printing company</span>
           </p>
           <ul class="metrics" style="border-top: 1px solid var(--line); padding-top: 18px; gap: 16px;">
             <li class="metric">
@@ -106,7 +108,7 @@
             </li>
             <li class="metric">
               <span class="metric-num" style="font-size: clamp(26px, 2.6vw, 34px);">20–25 min</span>
-              <span class="metric-lab">by hand per order, now 0</span>
+              <span class="metric-lab">of manual work per order, now 0</span>
             </li>
           </ul>
           <p style="border-top: 1px solid var(--line); padding-top: 18px;">
@@ -148,8 +150,8 @@
         </svg>
 
         <h2 id="cta-h">Tell us about one process.</h2>
-        <p class="lead" style="max-width: 580px;">Within 24 hours we come back with an automation idea and a
-          calculation of the benefits. The call is free and commits you to nothing.</p>
+        <p class="lead" style="max-width: 580px;">Within 24 hours we come back with an automation proposal and the
+          benefits worked out. The call is free and commits you to nothing.</p>
         <a class="btn btn-primary glow" href="{{ROOT}}en/contact/">Book a free consultation</a>
         <p class="row small" style="gap: 24px; justify-content: center; font-family: var(--mono);">
           <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>

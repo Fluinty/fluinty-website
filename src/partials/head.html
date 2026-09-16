@@ -2,6 +2,8 @@
 <html lang="{{LANG}}">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Cookiebot Consent Management -->
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
     data-blockingmode="auto" type="text/javascript" async></script>
@@ -24,8 +26,6 @@
     gtag('config', 'G-SZ9P7Y055L');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}}</title>
   <meta name="description" content="{{DESC}}">
   <link rel="canonical" href="https://fluinty.pl{{PATH}}">
@@ -39,15 +39,16 @@
   <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" type="image/png" href="{{ROOT}}assets/favicon.png">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="{{ROOT}}css/site.css">
 </head>
 
 <body>
-  <a class="skip" href="#main">Przejdź do treści</a>

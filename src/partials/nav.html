@@ -1,3 +1,4 @@
+  <a class="skip" href="#main">Przejdź do treści</a>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="{{ROOT}}" aria-label="Fluinty, strona główna">
@@ -32,20 +33,20 @@
       </div>
     </div>
 
-    <div class="nav-drawer" id="menu-mobile" data-open="false">
-      <a href="{{ROOT}}#realizacje">Realizacje</a>
-      <a href="{{ROOT}}#co-automatyzujemy">Co automatyzujemy</a>
-      <a href="{{ROOT}}#produkty">Produkty</a>
-      <a href="{{ROOT}}#zespol">Zespół</a>
-      <a href="{{ROOT}}#cennik">Cennik</a>
-      <a href="{{ROOT}}kontakt/">Kontakt</a>
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="{{ROOT}}#realizacje"{{ACTIVE_REALIZACJE}}>Realizacje</a>
+      <a href="{{ROOT}}#co-automatyzujemy"{{ACTIVE_CO}}>Co automatyzujemy</a>
+      <a href="{{ROOT}}#produkty"{{ACTIVE_PRODUKTY}}>Produkty</a>
+      <a href="{{ROOT}}#zespol"{{ACTIVE_ZESPOL}}>Zespół</a>
+      <a href="{{ROOT}}#cennik"{{ACTIVE_CENNIK}}>Cennik</a>
+      <a href="{{ROOT}}kontakt/"{{ACTIVE_KONTAKT}}>Kontakt</a>
       <div class="drawer-foot">
         <a class="btn btn-primary" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
         <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
         <a href="tel:+48509843514">+48 509 843 514</a>
         <a href="{{ALT}}" hreflang="en" lang="en">EN</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">

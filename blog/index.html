@@ -2,6 +2,8 @@
 <html lang="pl">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Cookiebot Consent Management -->
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
     data-blockingmode="auto" type="text/javascript" async></script>
@@ -24,8 +26,6 @@
     gtag('config', 'G-SZ9P7Y055L');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog: jak automatyzujemy procesy w MŚP | Fluinty</title>
   <meta name="description" content="Piszemy o tym, co wdrażamy: zamówienia z maili, dokumenty, reklamacje, floty. Bez porad ogólnych.">
   <link rel="canonical" href="https://fluinty.pl/blog/">
@@ -41,13 +41,15 @@
   <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../css/site.css">
 </head>
 
@@ -87,7 +89,7 @@
       </div>
     </div>
 
-    <div class="nav-drawer" id="menu-mobile" data-open="false">
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
       <a href="../#realizacje">Realizacje</a>
       <a href="../#co-automatyzujemy">Co automatyzujemy</a>
       <a href="../#produkty">Produkty</a>
@@ -100,10 +102,10 @@
         <a href="tel:+48509843514">+48 509 843 514</a>
         <a href="/en/blog/" hreflang="en" lang="en">EN</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
   <section class="sec sec-white" aria-labelledby="blog-h" data-animated>
     <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;"
@@ -230,7 +232,7 @@
 
         <article class="card sr">
           <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
-          <h3>2 400 dokumentów zakupowych bez jednej ręcznej poprawki. Co za tym stoi</h3>
+          <h3>2&nbsp;400 dokumentów zakupowych bez jednej ręcznej poprawki. Co za tym stoi</h3>
           <p class="body-2" style="flex-grow: 1;">Dokumenty zakupowe z maili i z Dysku, na produkcji od listopada 2025. Co sprawdzamy przed wpisem do arkusza i dlaczego dokument z pustym polem idzie do człowieka.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
             <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 8 min &middot; 22.09.2026</span>
@@ -338,7 +340,7 @@
           <h2>Firma</h2>
           <ul>
             <li><a href="../blog/">Blog</a></li>
-            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (otwiera się w nowej karcie)</span></a></li>
             <li><a href="../polityka-prywatnosci/">Polityka prywatności</a></li>
           </ul>
         </div>

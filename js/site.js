@@ -4,30 +4,65 @@
   'use strict';
   var root = document.documentElement;
   root.classList.add('js');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = motionQuery.matches;
+
+  /* --- SMIL w SVG (<animate>, <animateMotion>) nie slucha prefers-reduced-motion
+         ani animation-play-state, wiec pauzujemy je z JS --- */
+  var svgsIn = function (el) { return Array.prototype.slice.call(el.querySelectorAll('svg')); };
+  var pauseSvg = function (svg) { if (typeof svg.pauseAnimations === 'function') svg.pauseAnimations(); };
+  var playSvg = function (svg) { if (!reduce && typeof svg.unpauseAnimations === 'function') svg.unpauseAnimations(); };
+  var pauseAllSvg = function () { svgsIn(document).forEach(pauseSvg); };
+  if (reduce) pauseAllSvg();
+  if (typeof motionQuery.addEventListener === 'function') {
+    motionQuery.addEventListener('change', function (e) { reduce = e.matches; if (reduce) pauseAllSvg(); });
+  }
+  // jedno miejsce dla klasy .paused: CSS zatrzymuje keyframes, tu dodatkowo SMIL w srodku
+  var setPaused = function (el, off) {
+    el.classList.toggle('paused', off);
+    svgsIn(el).forEach(off ? pauseSvg : playSvg);
+  };
 
   /* --- menu mobilne --- */
   var burger = document.querySelector('[data-menu-toggle]');
   var drawer = document.getElementById('menu-mobile');
   if (burger && drawer) {
+    var header = burger.closest('header') || drawer.parentNode;
+    var isOpen = function () { return drawer.getAttribute('data-open') === 'true'; };
+    // elementy naglowka, ktore da sie zobaczyc (pasek zostaje widoczny nad otwarta szuflada)
+    var focusables = function () {
+      return Array.prototype.filter.call(header.querySelectorAll('a[href], button:not([disabled])'), function (el) {
+        return el.getClientRects().length > 0;
+      });
+    };
     var setMenu = function (open) {
       drawer.setAttribute('data-open', open ? 'true' : 'false');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.setAttribute('data-menu', open ? 'open' : 'closed');
       burger.querySelector('[data-icon-open]').hidden = open;
       burger.querySelector('[data-icon-close]').hidden = !open;
+      if (open) { var first = drawer.querySelector('a[href]'); if (first) first.focus(); }
     };
     burger.addEventListener('click', function () {
-      setMenu(drawer.getAttribute('data-open') !== 'true');
+      setMenu(!isOpen());
     });
     drawer.addEventListener('click', function (e) {
       if (e.target.closest('a')) setMenu(false);
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') { setMenu(false); burger.focus(); }
+      if (e.key === 'Escape' && isOpen()) { setMenu(false); burger.focus(); }
+    });
+    // Tab krazy po pasku i szufladzie, nie ucieka pod nakladke do tresci
+    header.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !isOpen()) return;
+      var list = focusables();
+      if (!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 900) setMenu(false);
+      if (window.innerWidth > 900 && isOpen()) setMenu(false);
     });
   }
 
@@ -120,7 +155,8 @@
     btn.setAttribute('aria-label', L.stop);
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1"></rect><rect x="9" y="3" width="3" height="10" rx="1"></rect></svg>';
     btn.addEventListener('click', function () {
-      var stopped = m.classList.toggle('paused');
+      var stopped = !m.classList.contains('paused');
+      setPaused(m, stopped);
       btn.setAttribute('aria-pressed', stopped ? 'true' : 'false');
       btn.setAttribute('aria-label', stopped ? L.go : L.stop);
       btn.innerHTML = stopped
@@ -134,7 +170,7 @@
   var animated = Array.prototype.slice.call(document.querySelectorAll('[data-animated]'));
   if (animated.length && 'IntersectionObserver' in window) {
     var iop = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { en.target.classList.toggle('paused', !en.isIntersecting); });
+      entries.forEach(function (en) { setPaused(en.target, !en.isIntersecting); });
     }, { rootMargin: '120px' });
     animated.forEach(function (el) { iop.observe(el); });
   }

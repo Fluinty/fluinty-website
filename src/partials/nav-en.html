@@ -1,3 +1,4 @@
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="{{ROOT}}en/" aria-label="Fluinty, home page">
@@ -32,20 +33,20 @@
       </div>
     </div>
 
-    <div class="nav-drawer" id="menu-mobile" data-open="false">
-      <a href="{{ROOT}}en/#case-studies">Case studies</a>
-      <a href="{{ROOT}}en/#what-we-automate">What we automate</a>
-      <a href="{{ROOT}}en/#products">Products</a>
-      <a href="{{ROOT}}en/#team">Team</a>
-      <a href="{{ROOT}}en/#pricing">Pricing</a>
-      <a href="{{ROOT}}en/contact/">Contact</a>
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="{{ROOT}}en/#case-studies"{{ACTIVE_REALIZACJE}}>Case studies</a>
+      <a href="{{ROOT}}en/#what-we-automate"{{ACTIVE_CO}}>What we automate</a>
+      <a href="{{ROOT}}en/#products"{{ACTIVE_PRODUKTY}}>Products</a>
+      <a href="{{ROOT}}en/#team"{{ACTIVE_ZESPOL}}>Team</a>
+      <a href="{{ROOT}}en/#pricing"{{ACTIVE_CENNIK}}>Pricing</a>
+      <a href="{{ROOT}}en/contact/"{{ACTIVE_KONTAKT}}>Contact</a>
       <div class="drawer-foot">
         <a class="btn btn-primary" href="{{ROOT}}en/contact/">Book a free consultation</a>
         <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
         <a href="tel:+48509843514">+48 509 843 514</a>
         <a href="{{ALT}}" hreflang="pl" lang="pl">PL</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">

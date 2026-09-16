@@ -2,6 +2,8 @@
 <html lang="pl">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Cookiebot Consent Management -->
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
     data-blockingmode="auto" type="text/javascript" async></script>
@@ -24,8 +26,6 @@
     gtag('config', 'G-SZ9P7Y055L');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bodtech: reklamacje ze zdjęciami obsługiwane automatycznie | Fluinty</title>
   <meta name="description" content="Agent czyta zgłoszenia reklamacyjne w kilku językach, rozpoznaje zdjęcia, zakłada folder i rejestr, a prośbę o kontakt z człowiekiem przekazuje od razu.">
   <link rel="canonical" href="https://fluinty.pl/realizacje/bodtech/">
@@ -41,13 +41,15 @@
   <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../../css/site.css">
 </head>
 
@@ -87,8 +89,8 @@
       </div>
     </div>
 
-    <div class="nav-drawer" id="menu-mobile" data-open="false">
-      <a href="../../#realizacje">Realizacje</a>
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="../../#realizacje" aria-current="page">Realizacje</a>
       <a href="../../#co-automatyzujemy">Co automatyzujemy</a>
       <a href="../../#produkty">Produkty</a>
       <a href="../../#zespol">Zespół</a>
@@ -100,10 +102,10 @@
         <a href="tel:+48509843514">+48 509 843 514</a>
         <a href="/en/case-studies/bodtech/" hreflang="en" lang="en">EN</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
   <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="bodtech-h" data-animated>
     <div class="wrap grid-hero">
@@ -224,7 +226,7 @@
             <rect x="467.1" y="118" width="44" height="44" rx="12" fill="rgba(148,190,233,0.1)" stroke="#2DD4BF" stroke-opacity="0.65" stroke-width="1.2"></rect>
             <path d="M 489.1,126 L 492.3,136.8 503.1,140 492.3,143.2 489.1,154 485.9,143.2 475.1,140 485.9,136.8 Z" fill="#2DD4BF" opacity="0.9"></path>
             <circle cx="489.1" cy="140" r="26" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="26" to="42" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.45" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
-            <text x="489.1" y="179" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">agent AI &#183; zdjęcia</text>
+            <text x="489.1" y="179" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">agent AI &middot; zdjęcia</text>
             <rect x="669.3" y="123" width="34" height="34" rx="10" fill="rgba(148,190,233,0.08)" stroke="#2DD4BF" stroke-opacity="0.5"></rect>
             <path d="M 677.3,132 h 18 v 12 h -10 l -4,4 v -4 h -4 z" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linejoin="round"></path>
             <text x="686.3" y="171" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">dopytanie</text>
@@ -386,7 +388,7 @@
           <h2>Firma</h2>
           <ul>
             <li><a href="../../blog/">Blog</a></li>
-            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (otwiera się w nowej karcie)</span></a></li>
             <li><a href="../../polityka-prywatnosci/">Polityka prywatności</a></li>
           </ul>
         </div>
