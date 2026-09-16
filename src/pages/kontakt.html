@@ -77,8 +77,10 @@
 
       <div class="grid grid-2 sr-grid">
         <div class="card">
-          <!-- ENDPOINT FORMULARZA DO USTALENIA: Formspree albo mail na kontakt@fluinty.pl -->
-          <form class="stack" method="post" action="#">
+          <!-- Netlify Forms: zgloszenia laduja w panelu Netlify (Forms), powiadomienia mailowe wlacza sie tam jednym kliknieciem. -->
+          <form class="stack" name="kontakt" method="post" action="{{ROOT}}dziekujemy/" data-netlify="true" netlify-honeypot="firma">
+            <input type="hidden" name="form-name" value="kontakt">
+            <p class="vh" aria-hidden="true"><label>Nie wypełniaj tego pola: <input name="firma" tabindex="-1" autocomplete="off"></label></p>
             <div class="field">
               <label for="imie">Imię</label>
               <input id="imie" name="imie" type="text" autocomplete="given-name" required>

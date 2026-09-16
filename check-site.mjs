@@ -10,7 +10,7 @@ const PAGES = [
   'produkty/fluintydebt/index.html', 'produkty/fluintyfleet/index.html',
   'ksiegowosc-i-ksef/index.html', 'kontakt/index.html',
   'blog/index.html', 'blog/zamowienia-z-maili-do-erp/index.html',
-  'polityka-prywatnosci/index.html',
+  'polityka-prywatnosci/index.html', 'dziekujemy/index.html',
 ]
 
 const BANNED = [/Sistrade/i, /LUXE/, /Tax-Libris/i, /440 tys/i, /7\s*900/, /24\s*900/, /39 zł\s*\/\s*pojazd/i, /potwierdził klient/i, /potwierdzone przez klienta/i]
