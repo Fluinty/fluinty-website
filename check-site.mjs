@@ -11,6 +11,10 @@ const PAGES = [
   'ksiegowosc-i-ksef/index.html', 'kontakt/index.html',
   'blog/index.html', 'blog/zamowienia-z-maili-do-erp/index.html',
   'polityka-prywatnosci/index.html', 'dziekujemy/index.html',
+  'en/index.html', 'en/case-studies/eticod/index.html', 'en/case-studies/iim-marbella/index.html', 'en/case-studies/art-tim/index.html',
+  'en/case-studies/holbox/index.html', 'en/case-studies/bodtech/index.html', 'en/case-studies/tax-net/index.html',
+  'en/products/fluintydebt/index.html', 'en/products/fluintyfleet/index.html', 'en/contact/index.html',
+  'en/blog/index.html', 'en/blog/email-orders-into-erp/index.html', 'en/thank-you/index.html', 'en/privacy-policy/index.html',
 ]
 
 const BANNED = [/Sistrade/i, /LUXE/, /Tax-Libris/i, /440 tys/i, /7\s*900/, /24\s*900/, /39 zł\s*\/\s*pojazd/i, /potwierdził klient/i, /potwierdzone przez klienta/i]

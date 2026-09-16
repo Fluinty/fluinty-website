@@ -13,43 +13,43 @@
 
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Wiedza</p>
-        <h1 id="blog-h">Jak automatyzujemy. Krok po kroku, na liczbach.</h1>
+        <p class="eyebrow">Know-how</p>
+        <h1 id="blog-h">How we automate. Step by step, with the numbers.</h1>
         <div class="accent-bar"></div>
-        <p class="lead">Piszemy o tym, co wdrażamy: zamówienia z maili, dokumenty, reklamacje, floty. Bez porad ogólnych.</p>
+        <p class="lead">We write about what we build: email orders, documents, complaints, fleets. No generic advice.</p>
       </div>
 
-      <!-- filtrowanie do podpiecia, gdy beda wpisy -->
-      <div class="chips" role="group" aria-label="Filtruj wpisy">
-        <button type="button" class="chip chip-hi" aria-pressed="true">Wszystko</button>
-        <button type="button" class="chip" aria-pressed="false">Zamówienia i dokumenty</button>
-        <button type="button" class="chip" aria-pressed="false">Windykacja</button>
-        <button type="button" class="chip" aria-pressed="false">Flota</button>
-        <button type="button" class="chip" aria-pressed="false">Za kulisami</button>
+      <!-- filtering to be wired up once there are posts -->
+      <div class="chips" role="group" aria-label="Filter posts">
+        <button type="button" class="chip chip-hi" aria-pressed="true">All</button>
+        <button type="button" class="chip" aria-pressed="false">Orders and documents</button>
+        <button type="button" class="chip" aria-pressed="false">Receivables</button>
+        <button type="button" class="chip" aria-pressed="false">Fleet</button>
+        <button type="button" class="chip" aria-pressed="false">Behind the scenes</button>
       </div>
     </div>
   </section>
 
   <section class="sec sec-gray" aria-labelledby="wpisy-h" data-animated>
     <div class="wrap stack">
-      <h2 class="vh" id="wpisy-h">Wpisy</h2>
+      <h2 class="vh" id="wpisy-h">Posts</h2>
 
-      <a class="card sr" href="{{ROOT}}blog/zamowienia-z-maili-do-erp/">
+      <a class="card sr" href="{{ROOT}}en/blog/email-orders-into-erp/">
         <div class="grid grid-2" style="align-items: center;">
           <div class="stack">
             <div class="row" style="gap: 12px;">
-              <span class="badge" style="position: static;">WYRÓŻNIONY</span>
-              <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
+              <span class="badge" style="position: static;">FEATURED</span>
+              <p class="label" style="color: var(--teal-text);">Orders and documents</p>
             </div>
-            <h3 style="font-size: clamp(24px, 2.6vw, 34px);">Zamówienia z maili do ERP bez API. Jak to działa u Eticodu</h3>
-            <p class="body-2">Zamówienie przychodzi mailem, załącznik ląduje na Dysku, OCR czyta pozycje, a automat wpisuje je do ERP klik po kliku, bo system nie ma API. Od startu zero błędnych wpisów. Cały przebieg, krok po kroku.</p>
+            <h3 style="font-size: clamp(24px, 2.6vw, 34px);">Email orders into an ERP with no API. How it works at Eticod</h3>
+            <p class="body-2">An order arrives by email, the attachment lands in Drive, OCR reads the line items, and the agent enters them into the ERP click by click, because the system has no API. Zero incorrect entries since launch. The whole process, step by step.</p>
             <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 18px;">
               <span class="row" style="gap: 10px;">
                 <img src="{{ROOT}}assets/zespol/adam-nelip.jpg" alt="" width="30" height="30"
                   style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; object-position: top;">
-                <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min &middot; <time datetime="2026-09-12">12.09.2026</time></span>
+                <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min read &middot; <time datetime="2026-09-12">12 Sep 2026</time></span>
               </span>
-              <span class="link-more">Czytaj wpis
+              <span class="link-more">Read the post
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
               </span>
             </div>
@@ -57,7 +57,7 @@
 
           <div class="card card-dark" aria-hidden="true">
             <div class="row" style="justify-content: space-between;">
-              <p class="label" style="color: var(--teal-2);">Schemat przepływu &middot; Eticod</p>
+              <p class="label" style="color: var(--teal-2);">Process flow &middot; Eticod</p>
               <span style="background: var(--on-dark); border-radius: 7px; padding: 5px 10px; display: inline-flex;">
                 <img src="{{ROOT}}assets/klienci/eticod.svg" alt="" style="height: 14px; width: auto;">
               </span>
@@ -87,14 +87,14 @@
               <rect x="500" y="92" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
               <ellipse cx="520" cy="104.5" rx="8" ry="3.2" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></ellipse>
               <path d="M 512,104.5 v 12 c 0,4.2 16,4.2 16,0 v -12 M 512,110.5 c 0,4.2 16,4.2 16,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
-              <text x="60" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">mail od klienta</text>
-              <text x="230" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">TOR 1 · treść maila</text>
-              <text x="230" y="204" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">TOR 2 · OCR z Dysku</text>
-              <text x="400" y="156" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">arkusz i log</text>
-              <text x="520" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">ERP bez API</text>
-              <text x="460" y="100" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">klik po kliku</text>
+              <text x="60" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">customer email</text>
+              <text x="230" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">LANE 1 · email body</text>
+              <text x="230" y="204" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">LANE 2 · OCR from Drive</text>
+              <text x="400" y="156" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">sheet and log</text>
+              <text x="520" y="152" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">ERP, no API</text>
+              <text x="460" y="100" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="1">click by click</text>
             </svg>
-            <p class="small">Dwa tory, jeden arkusz, wpis do ERP klik po kliku.</p>
+            <p class="small">Two lanes, one sheet, an ERP entry click by click.</p>
           </div>
         </div>
       </a>
@@ -102,72 +102,72 @@
       <div class="grid grid-3 sr-grid">
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
-          <h3>Ile kosztuje ręczne przepisywanie zamówień. Rachunek na 20–25 minutach</h3>
-          <p class="body-2" style="flex-grow: 1;">Jedno zamówienie to 20–25 minut ręcznej pracy. Jak z tej liczby wyliczyć koszt miesięczny i czego w takim rachunku zwykle brakuje.</p>
+          <p class="label" style="color: var(--teal-text);">Orders and documents</p>
+          <h3>The cost of retyping orders by hand. The maths behind 20–25 minutes</h3>
+          <p class="body-2" style="flex-grow: 1;">One order takes 20–25 minutes of manual work. How to turn that number into a monthly cost, and what such calculations usually leave out.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min &middot; 17.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min read &middot; 17 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
-          <h3>Data wysyłki bez weekendów i inne pułapki, które automat musi znać</h3>
-          <p class="body-2" style="flex-grow: 1;">Termin wysyłki to zawsze ostatni dzień roboczy, nie kalendarzowy. Skąd agent to wie i jakie inne reguły trzeba mu wpisać, zanim ruszy na produkcję.</p>
+          <p class="label" style="color: var(--teal-text);">Behind the scenes</p>
+          <h3>Dispatch dates that skip weekends, and other traps the agent has to know about</h3>
+          <p class="body-2" style="flex-grow: 1;">The dispatch date is always the last working day, not the last calendar day. How the agent knows that, and which other rules it needs written in before it goes into production.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 19.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min read &middot; 19 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Zamówienia i dokumenty</p>
-          <h3>2&nbsp;400 dokumentów zakupowych bez jednej ręcznej poprawki. Co za tym stoi</h3>
-          <p class="body-2" style="flex-grow: 1;">Dokumenty zakupowe z maili i z Dysku, na produkcji od listopada 2025. Co sprawdzamy przed wpisem do arkusza i dlaczego dokument z pustym polem idzie do człowieka.</p>
+          <p class="label" style="color: var(--teal-text);">Orders and documents</p>
+          <h3>2,400 purchase documents without a single manual correction. What is behind it</h3>
+          <p class="body-2" style="flex-grow: 1;">Purchase documents from email and from Drive, in production since November 2025. What we check before a row goes into the sheet, and why a document with an empty field goes to a person.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 8 min &middot; 22.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 8 min read &middot; 22 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Windykacja</p>
-          <h3>Przypomnienie o płatności, które nie psuje relacji z klientem</h3>
-          <p class="body-2" style="flex-grow: 1;">Kiedy wysłać pierwsze przypomnienie, jak brzmi trzecie i w którym momencie sprawa ma trafić do człowieka. Progi, które da się ustawić raz i zapomnieć.</p>
+          <p class="label" style="color: var(--teal-text);">Receivables</p>
+          <h3>A payment reminder that does not damage the customer relationship</h3>
+          <p class="body-2" style="flex-grow: 1;">When to send the first reminder, what the third one says, and at what point the case should go to a person. Thresholds you can set once and forget.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 24.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min read &middot; 24 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
-          <h3>Reklamacje ze zdjęciami: jak agent czyta to, co wysłał klient</h3>
-          <p class="body-2" style="flex-grow: 1;">Zdjęcie z telefonu, opis w języku klienta, często bez numeru reklamacji. Jak agent składa z tego komplet dla rzeczoznawcy i kiedy oddaje sprawę człowiekowi.</p>
+          <p class="label" style="color: var(--teal-text);">Behind the scenes</p>
+          <h3>Complaints with photos: how the agent reads what the customer sent</h3>
+          <p class="body-2" style="flex-grow: 1;">A photo from a phone, a description in the customer's own language, often with no complaint number. How the agent assembles a complete file for the assessor, and when it hands the case to a person.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min &middot; 26.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 6 min read &middot; 26 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Za kulisami</p>
-          <h3>Self-healing: co robi agent, kiedy ERP nie odpowiada</h3>
-          <p class="body-2" style="flex-grow: 1;">ERP nie odpowiada, sesja wygasła, formularz się zmienił. Co agent robi sam po nieudanej próbie, a co trafia do nas raportem.</p>
+          <p class="label" style="color: var(--teal-text);">Behind the scenes</p>
+          <h3>Self-healing: what the agent does when the ERP stops responding</h3>
+          <p class="body-2" style="flex-grow: 1;">The ERP is not responding, the session has expired, the form has changed. What the agent does on its own after a failed attempt, and what reaches us as a report.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min &middot; 29.09.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 5 min read &middot; 29 Sep 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
 
         <article class="card sr">
-          <p class="label" style="color: var(--teal-text);">Flota</p>
-          <h3>Koszt per pojazd: dlaczego nikt nie chce przypisywać faktur</h3>
-          <p class="body-2" style="flex-grow: 1;">Zakup w hurtowni to jedna faktura na kilkanaście aut. Jak wygląda proces, w którym przypisanie kosztu zajmuje 30 sekund, a nie wieczór z Excelem.</p>
+          <p class="label" style="color: var(--teal-text);">Fleet</p>
+          <h3>Cost per vehicle: why nobody wants to assign the invoices</h3>
+          <p class="body-2" style="flex-grow: 1;">A wholesale purchase is one invoice covering a dozen or so vehicles. What a process looks like where assigning the cost takes 30 seconds, not an evening in Excel.</p>
           <div class="row" style="justify-content: space-between; border-top: 1px solid var(--line-soft); padding-top: 14px;">
-            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min &middot; 01.10.2026</span>
-            <span class="chip chip-mono">wkrótce</span>
+            <span class="small" style="font-family: var(--mono);">Adam Nelip &middot; 4 min read &middot; 1 Oct 2026</span>
+            <span class="chip chip-mono">coming soon</span>
           </div>
         </article>
       </div>
@@ -190,9 +190,9 @@
           <rect x="318" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
           <path d="M 328,33 l 4.5,4.5 9,-9.5" stroke="#2DD4BF" stroke-opacity="0.9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
-        <h2 id="blog-cta">Opowiedzcie nam o jednym procesie.</h2>
-        <p class="lead">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem korzyści. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
-        <a class="btn btn-primary glow" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
+        <h2 id="blog-cta">Tell us about one process.</h2>
+        <p class="lead">Within 24 hours we come back with an automation idea and a calculation of the benefits. The call is free and there is no commitment.</p>
+        <a class="btn btn-primary glow" href="{{ROOT}}en/contact/">Book a free consultation</a>
         <p class="small row" style="gap: 12px; font-family: var(--mono);">
           <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
           <span aria-hidden="true">&middot;</span>

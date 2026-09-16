@@ -82,16 +82,25 @@
   var hoursVal = document.getElementById('calc-h-val');
   var rateVal = document.getElementById('calc-r-val');
   if (hours && rate && out) {
-    var pl = function (n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+    // jezyk strony decyduje o formacie liczb i jednostkach
+    var en = (document.documentElement.lang || 'pl').indexOf('en') === 0;
+    var fmt = function (n) {
+      return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, en ? ',' : ' ');
+    };
     var recalc = function () {
       var h = parseInt(hours.value, 10);
       var r = parseInt(rate.value, 10);
       var month = h * r;
       var year = month * 12;
+      // etat liczymy wzgledem 168 h miesiecznie (pelny etat), tak jak na makiecie
+      var etat = (Math.round(h / 168 * 10) / 10).toString();
+      if (!en) etat = etat.replace('.', ',');
       if (hoursVal) hoursVal.textContent = h + ' h';
-      if (rateVal) rateVal.textContent = r + ' zł';
-      out.textContent = pl(year) + ' zł';
-      if (sub) sub.textContent = pl(month) + ' zł miesięcznie · około ' + (Math.round(h / 168 * 10) / 10).toString().replace('.', ',') + ' etatu';
+      if (rateVal) rateVal.textContent = en ? r + ' PLN' : r + ' zł';
+      out.textContent = en ? fmt(year) + ' PLN' : fmt(year) + ' zł';
+      if (sub) sub.textContent = en
+        ? fmt(month) + ' PLN a month · about ' + etat + ' FTE'
+        : fmt(month) + ' zł miesięcznie · około ' + etat + ' etatu';
     };
     hours.addEventListener('input', recalc);
     rate.addEventListener('input', recalc);
@@ -99,17 +108,21 @@
   }
 
   /* --- karuzela logotypow: przycisk pauzy (WCAG 2.2.2, ruch dluzszy niz 5 s) --- */
+  var isEn = (document.documentElement.lang || 'pl').indexOf('en') === 0;
+  var L = isEn
+    ? { stop: 'Pause the logo carousel', go: 'Resume the logo carousel' }
+    : { stop: 'Zatrzymaj przesuwanie logotypów', go: 'Wznów przesuwanie logotypów' };
   document.querySelectorAll('.marquee').forEach(function (m) {
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'marquee-pause';
     btn.setAttribute('aria-pressed', 'false');
-    btn.setAttribute('aria-label', 'Zatrzymaj przesuwanie logotypów');
+    btn.setAttribute('aria-label', L.stop);
     btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1"></rect><rect x="9" y="3" width="3" height="10" rx="1"></rect></svg>';
     btn.addEventListener('click', function () {
       var stopped = m.classList.toggle('paused');
       btn.setAttribute('aria-pressed', stopped ? 'true' : 'false');
-      btn.setAttribute('aria-label', stopped ? 'Wznów przesuwanie logotypów' : 'Zatrzymaj przesuwanie logotypów');
+      btn.setAttribute('aria-label', stopped ? L.go : L.stop);
       btn.innerHTML = stopped
         ? '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.5l7 4.5-7 4.5z"></path></svg>'
         : '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1"></rect><rect x="9" y="3" width="3" height="10" rx="1"></rect></svg>';
