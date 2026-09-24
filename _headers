@@ -1,0 +1,3 @@
+# Decks for clients: never indexed
+/dla/*
+  X-Robots-Tag: noindex, nofollow
