@@ -845,13 +845,16 @@ h1,h2,h3,p{margin:0}
 </script>
 
 <script>
-/* Licznik otwarć decku. Wkleja go wrzuc_do_repo.py na końcu każdego decku, podmieniając
-   https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec na adres Apps Scriptu (sledzenie/decki.gs). Bez cookies, bez IP, bez
-   zewnętrznych bibliotek. Liczy tylko na fluinty.pl, więc podglądy lokalne nic nie wysyłają.
+/* Licznik otwarć decku. Wkleja go wrzuc_do_repo.py na końcu każdego decku. Bez cookies,
+   bez IP, bez zewnętrznych bibliotek. Liczy tylko na fluinty.pl, więc podglądy lokalne nic
+   nie wysyłają.
+   Dane idą na /dla/_z w NASZEJ domenie, a Netlify przekazuje je do Apps Scriptu (reguła
+   w _redirects, pilnuje jej wrzuc_do_repo.py). Wprost do script.google.com przez sendBeacon
+   blokowała je EasyPrivacy (reguła *$ping,third-party), domyślna w uBlock Origin, AdGuard i Brave.
    ?my=1 w adresie wyłącza liczenie na tym urządzeniu na stałe (?my=0 włącza z powrotem). */
 (function(){
-  var ADRES='https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec';
-  if(!/(^|\.)fluinty\.pl$/.test(location.hostname) || !navigator.sendBeacon) return;
+  var ADRES='/dla/_z';
+  if(!/(^|\.)fluinty\.pl$/.test(location.hostname) || !window.fetch) return;
   function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
   var my=/[?&]my=([01])/.exec(location.search);
   if(my) ls('fl_nie_licz',my[1]);
@@ -874,7 +877,8 @@ h1,h2,h3,p{margin:0}
   function wyslij(){
     if(!liczone) return;
     var j=JSON.stringify(st); if(j===wyslane) return; wyslane=j;
-    try{navigator.sendBeacon(ADRES,j);}catch(e){}
+    try{fetch(ADRES,{method:'POST',body:j,keepalive:true,redirect:'manual',headers:{'Content-Type':'text/plain'}}).catch(function(){});}
+    catch(e){try{navigator.sendBeacon(ADRES,j);}catch(e2){}}
   }
   // Skanery linków w poczcie otwierają stronę, zanim zrobi to człowiek. Liczymy dopiero
   // po 5 s na wierzchu albo po pierwszym ruchu człowieka.
