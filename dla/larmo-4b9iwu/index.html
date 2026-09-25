@@ -739,6 +739,14 @@ h1,h2,h3,p{margin:0}
     new IntersectionObserver(function(en){
       en.forEach(function(x){ if(x.isIntersecting && mq.matches && !seen){seen=true;playDemo();} });
     },{threshold:.35}).observe(demo);
+    // narrow mode: the cover plan and the numbers animate once they scroll into view
+    var cover=slides[0], counts=stage.querySelector('[data-kind="count"]'), coverSeen=false, countSeen=false;
+    new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting && mq.matches && !coverSeen){coverSeen=true;enter(cover);} });
+    },{threshold:.35}).observe(cover.querySelector('.plan'));
+    new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting && mq.matches && !countSeen){countSeen=true;enter(counts);} });
+    },{threshold:.35}).observe(counts.querySelector('.nums'));
   }
 
   var m=/^#s(\d+)$/.exec(location.hash||'');
