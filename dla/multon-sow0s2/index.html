@@ -794,5 +794,69 @@ h1,h2,h3,p{margin:0}
 })();
 </script>
 
+<script>
+/* Licznik otwarć decku. Wkleja go wrzuc_do_repo.py na końcu każdego decku, podmieniając
+   https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec na adres Apps Scriptu (sledzenie/decki.gs). Bez cookies, bez IP, bez
+   zewnętrznych bibliotek. Liczy tylko na fluinty.pl, więc podglądy lokalne nic nie wysyłają.
+   ?my=1 w adresie wyłącza liczenie na tym urządzeniu na stałe (?my=0 włącza z powrotem). */
+(function(){
+  var ADRES='https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec';
+  if(!/(^|\.)fluinty\.pl$/.test(location.hostname) || !navigator.sendBeacon) return;
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  var my=/[?&]my=([01])/.exec(location.search);
+  if(my) ls('fl_nie_licz',my[1]);
+  if(ls('fl_nie_licz')==='1') return;
+
+  var deck=((location.pathname.match(/\/dla\/([^\/]+)/)||[])[1]||'').toLowerCase();
+  if(!deck) return;
+  var v=''; for(var i=0;i<16;i++) v+='abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random()*36)];
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var mq=window.matchMedia('(max-width: 900px), (max-height: 500px) and (max-width: 1000px)');
+  var ref=''; try{ref=document.referrer?new URL(document.referrer).hostname:'';}catch(e){}
+  if(ref===location.hostname) ref='';
+  var st={v:v,d:deck,n:0,dev:mq.matches?'telefon':'komputer',max:1,of:slides.length,t:0,demo:false,cal:false,ref:ref};
+  var liczone=false, widoczne=0, naDemo=0, wyslane='';
+
+  function slajd(){
+    if(!mq.matches){ var a=document.querySelector('.slide.active'); return a?slides.indexOf(a)+1:1; }
+    var n=1; slides.forEach(function(s,i){ if(s.getBoundingClientRect().top<innerHeight*.6) n=i+1; }); return n;
+  }
+  function wyslij(){
+    if(!liczone) return;
+    var j=JSON.stringify(st); if(j===wyslane) return; wyslane=j;
+    try{navigator.sendBeacon(ADRES,j);}catch(e){}
+  }
+  // Skanery linków w poczcie otwierają stronę, zanim zrobi to człowiek. Liczymy dopiero
+  // po 5 s na wierzchu albo po pierwszym ruchu człowieka.
+  function start(){
+    if(liczone) return; liczone=true;
+    st.dev=mq.matches?'telefon':'komputer';
+    var n=(Number(ls('fl_w_'+deck))||0)+1; ls('fl_w_'+deck,String(n)); st.n=n;
+    wyslij();
+  }
+  ['pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,start,{passive:true,once:true});});
+
+  setInterval(function(){
+    if(document.visibilityState!=='visible') return;
+    widoczne++; st.t=widoczne;
+    if(widoczne>=5) start();
+    var s=slajd(); if(s>st.max) st.max=s;
+    var cur=slides[s-1];
+    if(cur && cur.dataset.kind==='demo'){ if(++naDemo>=8) st.demo=true; }
+    if(widoczne%15===0) wyslij();
+  },1000);
+
+  var zmiana=null;
+  function poZmianie(){ clearTimeout(zmiana); zmiana=setTimeout(function(){ var s=slajd(); if(s>st.max){st.max=s;wyslij();} },700); }
+  addEventListener('scroll',poZmianie,{passive:true});
+  addEventListener('keyup',poZmianie); addEventListener('click',poZmianie); addEventListener('pointerup',poZmianie);
+
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){
+    a.addEventListener('click',function(){ start(); st.cal=true; wyslane=''; wyslij(); });
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') wyslij(); });
+  addEventListener('pagehide',wyslij);
+})();
+</script>
 </body>
 </html>
