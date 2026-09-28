@@ -167,8 +167,7 @@ p,li{text-wrap:pretty}
 /* 1 -> 2: the cover eyepiece becomes the tomato lens (View Transitions, forward only) */
 .slide.active .eyefig .eyewrap,.slide.active .lens.p1{view-transition-name:okular}
 ::view-transition-group(okular){animation-duration:.9s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
-::view-transition-old(root){animation-duration:.2s}
-::view-transition-new(root){animation-duration:.35s;animation-delay:.15s}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
 .deck.vt .slide{transition:none!important}
 .slide.morph .lens.p1,.slide.morph .lens.p1 svg{animation:none!important}
 .slide.play .ring2{animation:spin 1.4s cubic-bezier(.3,.6,.2,1) both}
