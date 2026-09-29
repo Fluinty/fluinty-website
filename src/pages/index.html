@@ -160,8 +160,8 @@
             <span class="label">Ekspozytory i POS</span>
             <span class="logo-tile" style="height: 40px; min-width: 0;"><img src="{{ROOT}}assets/klienci/holbox.svg" alt="Holbox" style="max-height: 18px;"></span>
           </div>
-          <h3>Zamówienia same trafiają do raportów</h3>
-          <p class="body-2" style="flex-grow: 1;">Agent wykrywa zamówienie w skrzynce, czyta dokument z załącznika i uzupełnia arkusz zamówień.</p>
+          <h3>Faktury same trafiają do raportów</h3>
+          <p class="body-2" style="flex-grow: 1;">Agent wykrywa faktury na skrzynce, czyta dokument z załącznika i uzupełnia arkusz z fakturami.</p>
           <div class="metric" style="border-top: 1px solid var(--line-soft); padding-top: 18px;">
             <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);"><span class="metric-num" style="font-size: inherit;" data-count-to="40" data-count-from="0">40</span> h/mies.</p>
             <p class="metric-lab">mniej ręcznego przepisywania</p>
@@ -180,7 +180,7 @@
           <h3>Koszty zakupów flotowych pod kontrolą</h3>
           <p class="body-2" style="flex-grow: 1;">Dwa wdrożenia: zakupy z Inter Cars przypisane do pojazdów i oddziałów oraz zarządzanie flotą, od przeglądów po polisy. Kierownik widzi koszt każdego auta.</p>
           <div class="metric" style="border-top: 1px solid var(--line-soft); padding-top: 18px;">
-            <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);">87 &rarr; <span class="metric-num" style="font-size: inherit;" data-count-to="50" data-count-from="87">50</span> tys. zł</p>
+            <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);">&minus;<span class="metric-num" style="font-size: inherit;" data-count-to="30" data-count-from="0">30</span>%</p>
             <p class="metric-lab">miesięczne koszty zakupów, w 4 miesiące</p>
           </div>
           <span class="link-more">Zobacz case study
@@ -218,7 +218,7 @@
               <span class="h3" style="font-size: 15.5px; min-width: 150px;">IIM Marbella</span>
               <span class="label" style="min-width: 180px;">Nieruchomości</span>
               <span class="small" style="flex: 1 1 240px;">Asystent AI dla agentów nieruchomości i cold mailing prowadzony od domen po odpowiedzi.</span>
-              <span class="chip-mono" style="color: var(--teal-text); text-transform: none;">wdrożenie w toku</span>
+              <span class="chip-mono" style="color: var(--teal-text); text-transform: none;">wdrożone</span>
               <span class="link-more">case study
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
               </span>
@@ -328,6 +328,12 @@
           <li class="chip">Google Gemini</li>
           <li class="chip">Supabase</li>
           <li class="chip">Portal Inter Cars</li>
+          <li class="chip">Google Calendar</li>
+          <li class="chip">OpenAI</li>
+          <li class="chip">Pipedrive</li>
+          <li class="chip">Instantly</li>
+          <li class="chip">Resales Online</li>
+          <li class="chip">Inmobalia</li>
           <li class="chip chip-hi">System bez API? Automat klika jak człowiek</li>
         </ul>
       </div>
@@ -365,7 +371,7 @@
         <output id="calc-out" aria-live="polite" class="metric-num" style="display: block; font-size: clamp(34px, 4.4vw, 62px);">86&nbsp;400 zł</output>
         <p class="small" id="calc-sub">7&nbsp;200 zł miesięcznie &middot; około 0,7 etatu</p>
         <div class="stack" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-          <p class="body-2">Ile z tego realnie odzyskać, liczymy na bezpłatnej rozmowie.</p>
+          <p class="body-2">Ile z tego realnie odzyskać, liczymy podczas audytu.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
             <a class="link-more" href="{{ROOT}}#cennik">Zobacz, jak zaczynamy
@@ -459,11 +465,11 @@
           <dl class="stack">
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">Start</dt>
-              <dd class="small" style="color: var(--text);">bezpłatna rozmowa, potem audyt za 2&nbsp;900 zł</dd>
+              <dd class="small" style="color: var(--text);">bezpłatna rozmowa, potem audyt za 1&nbsp;500 zł</dd>
             </div>
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">Koszt miesięczny</dt>
-              <dd class="small" style="color: var(--text);">opieka od 1&nbsp;500 zł z monitoringiem</dd>
+              <dd class="small" style="color: var(--text);">opieka od 500 zł, tylko jeśli chcecie</dd>
             </div>
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">Gdy się zepsuje</dt>
@@ -486,7 +492,7 @@
         <p class="eyebrow">Jak zaczynamy i ile to kosztuje</p>
         <h2 id="cennik-h">Pierwszy krok jest bezpłatny.</h2>
         <div class="accent-bar"></div>
-        <p class="lead">Potem każdy etap ma stałą cenę i czas, i kończy się Waszą decyzją. Skalujemy wtedy, kiedy widzicie liczby.</p>
+        <p class="lead">Potem jeden proces na start, a o wdrożeniu decydujecie dopiero wtedy, gdy widzicie liczby.</p>
       </div>
 
       <ol class="grid sr-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
@@ -497,51 +503,53 @@
             <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">0 zł</span>
             <span class="small">45 minut</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">Mapujemy jeden proces i liczymy korzyści na głos. W 24 godziny dostajecie pomysł na automatyzację.</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Najpierw Wy: o czym chcecie porozmawiać i gdzie sami widzicie, że ucieka czas. Potem nasze pomysły dla Was.</p>
           <p class="small" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 14px; color: var(--teal-text); font-weight: 600;">Bez zobowiązań</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
-          <span class="badge">Zaliczany w 100%</span>
+          <span class="badge">Odliczany od wdrożenia</span>
           <h3 class="label">01 &middot; Audyt</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">2&nbsp;900 zł</span>
-            <span class="small">netto &middot; 2 dni</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">1&nbsp;500 zł</span>
+            <span class="small">netto &middot; około 2 dni</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">Jeden obszar procesowy. Wychodzicie z listą procesów do automatyzacji i wyliczeniem korzyści.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Zaliczany w 100% na poczet wdrożenia</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Razem z Wami rozkładamy robotę na kroki. Liczymy powtarzalność procesów i zwrot z inwestycji. Dostajecie dokument: co warto zmienić, a czego lepiej nie ruszać.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Kwotę audytu odliczamy od wdrożenia</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">02 &middot; Pilot</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">9,9–16,9</span>
-            <span class="small">tys. zł &middot; 2–3 tyg.</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">od 2&nbsp;000 zł</span>
+            <span class="small">2–3 tyg.</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">Jeden proces, zawsze na produkcji. Działa na Waszych danych, zanim zdecydujecie o skali.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Stała cena, bez stawek godzinowych</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Jeden proces i jedna liczba, po której poznacie, czy działa. Po Waszej stronie wszystko chodzi jak dotąd.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Po miesiącu decydujecie: zostaje, poprawiamy albo wyłączamy</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">03 &middot; Wdrożenie</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">20–60</span>
-            <span class="small">tys. zł &middot; 4–12 tyg.</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">od 5&nbsp;000 zł</span>
+            <span class="small">3–7 tyg.</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">Rozszerzamy na całą firmę. Płatność 40/30/30 za odebrane fazy, gwarancja wyniku z mierzalnym warunkiem.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Cena zależy od procesu, nie od branży</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Zakres wprost z dokumentu po audycie. Płacicie etapami, nigdy za godziny.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">60 dni gwarancji wyniku. Jeśli efektu nie ma, poprawiamy bez kosztów</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">04 &middot; Opieka</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">od 1&nbsp;500 zł</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">od 500 zł</span>
             <span class="small">/ mies.</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">Monitoring 24/7, naprawy i rozwój procesu. Odpowiedzialność za działający system, nie utrzymanie serwera.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Pierwszy miesiąc gratis</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Utrzymanie i drobne poprawki. Tylko jeśli chcecie, wdrożenie działa i bez niej. Coś padnie w nocy, reagujemy my, nie Wy.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Pierwszy miesiąc bez faktury, rezygnacja od ręki</p>
         </li>
       </ol>
+
+      <p class="small sr" style="margin-top: 18px; max-width: 72ch;">Kwoty są orientacyjne. Dokładną wycenę pilota i wdrożenia podajemy po audycie, kiedy znamy systemy, czasochłonność procesów i koszt ewentualnych błędów. Wszystkie kwoty netto.</p>
 
       <ul class="grid grid-3 sr" style="margin-top: clamp(28px, 3.5vw, 40px); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: clamp(20px, 2.4vw, 26px);">
         <li class="row" style="gap: 12px; flex-wrap: nowrap; align-items: flex-start;">
@@ -691,8 +699,8 @@
               style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
             <div class="stack-s" style="min-width: 0;">
               <h3>Adam Nelip</h3>
-              <p class="label" style="color: var(--teal-text);">Współzałożyciel &middot; sprzedaż i wdrożenia</p>
-              <p class="small">Wcześniej prawie trzy lata przy produktach IT w McKinsey &amp; Company, potem w Vazco i Aidar Solutions: od wymagań i UX po budżet i zespół. Zaczynał od programowania robotów przemysłowych. W Fluinty prowadzi sprzedaż i wdrożenia.</p>
+              <p class="label" style="color: var(--teal-text);">Współzałożyciel</p>
+              <p class="small">Wcześniej prawie trzy lata przy produktach IT w McKinsey &amp; Company, potem w Vazco i Aidar Solutions: od wymagań i UX po budżet i zespół. Zaczynał od programowania robotów przemysłowych.</p>
             </div>
           </div>
           <ul class="chips">
@@ -710,8 +718,8 @@
               style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
             <div class="stack-s" style="min-width: 0;">
               <h3>Patryk Bielecki</h3>
-              <p class="label" style="color: var(--teal-text);">Współzałożyciel &middot; architektura i build</p>
-              <p class="small">Na co dzień Senior Product Manager w Semrush, gdzie buduje produkt mierzący widoczność marek w ChatGPT, Gemini i Perplexity. Wcześniej pięć lat produktu w Sztokholmie, przedtem Brainhub i SAP Hybris. W Fluinty odpowiada za architekturę rozwiązań.</p>
+              <p class="label" style="color: var(--teal-text);">Współzałożyciel</p>
+              <p class="small">Na co dzień Senior Product Manager w Semrush, gdzie buduje produkt mierzący widoczność marek w ChatGPT, Gemini i Perplexity. Wcześniej pięć lat produktu w Sztokholmie, przedtem Brainhub i SAP Hybris.</p>
             </div>
           </div>
           <ul class="chips">
@@ -779,7 +787,7 @@
             <h3>Jak szybko wystartujemy?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">Audyt to dwa dni. Pilot działa na produkcji w 2–3 tygodnie. Pełne wdrożenie zamyka się w 4–12 tygodni od decyzji.</div>
+          <div class="answer">Audyt to dwa dni. Pilot działa na produkcji w 2–3 tygodnie. Wdrożenie trwa od trzech do siedmiu tygodni, zależnie od zakresu prac.</div>
         </details>
 
         <details>
@@ -795,7 +803,7 @@
             <h3>Co, jeśli nie zadziała?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">Każde wdrożenie ma gwarancję wyniku z mierzalnym warunkiem, ustalonym przed startem. Po nieudanej próbie agent sam diagnozuje błąd i się naprawia, a raport trafia na Wasz kanał. Warunek zapisujemy w umowie. Jeśli nie zostanie spełniony, ostatnia transza 30% nie jest płatna, a poprawki robimy bez dopłaty.</div>
+          <div class="answer">Każde wdrożenie ma 60 dni gwarancji wyniku. Jeśli efektu nie ma, poprawiamy bez kosztów. Po nieudanej próbie agent sam diagnozuje błąd i się naprawia, a raport trafia na Wasz kanał.</div>
         </details>
 
         <details>

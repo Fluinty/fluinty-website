@@ -24,7 +24,7 @@
           <dl class="metrics" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); align-items: end;">
             <div class="metric" style="flex-direction: column-reverse; align-items: flex-start;">
               <dt class="metric-lab">agent dla agentów</dt>
-              <dd><span class="chip chip-mono" style="border-color: rgba(45,212,191,.45); background: transparent; color: var(--teal-2);"><span class="status-dot"></span>WDROŻENIE W TOKU</span></dd>
+              <dd><span class="chip chip-mono" style="border-color: rgba(45,212,191,.45); background: transparent; color: var(--teal-2);"><span class="status-dot"></span>WDROŻONE</span></dd>
             </div>
             <div class="metric" style="flex-direction: column-reverse; align-items: flex-start;">
               <dt class="metric-lab">agentów w biurze</dt>
@@ -38,7 +38,7 @@
         </div>
 
         <ul class="chips">
-          <li class="chip chip-mono" style="text-transform: none;">STATUS &middot; agent zbudowany, przed uruchomieniem</li>
+          <li class="chip chip-mono" style="text-transform: none;">STATUS &middot; oba wdrożenia działają</li>
           <li class="chip chip-mono" style="text-transform: none;">SYSTEMY &middot; CRM klienta, mail, n8n</li>
           <li class="chip chip-mono" style="text-transform: none;">DO CZŁOWIEKA &middot; decyzja, do kogo wrócić i co wysłać</li>
         </ul>
@@ -50,7 +50,7 @@
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5"><circle cx="8" cy="5.5" r="2.5"></circle><path d="M3 13.5c0-3 10-3 10 0"></path></svg>
             agent &middot; IIM Marbella
           </span>
-          <span class="row" style="gap: 7px;"><span class="status-square"></span> PODGLĄD</span>
+          <span class="row" style="gap: 7px;"><span class="status-dot"></span> ONLINE</span>
         </div>
         <div class="console-body">
           <div class="log-line" style="animation-delay: .6s;"><span class="ts">06:30:00</span><span>skan skrzynki i CRM zakończony</span></div>
@@ -200,14 +200,14 @@
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">WYNIKI</p>
-        <h2 id="wyniki">Kanał pracuje, agent czeka na start.</h2>
+        <h2 id="wyniki">Kanał pracuje, agent też.</h2>
         <div class="accent-bar"></div>
       </div>
 
       <div class="grid grid-3 sr-grid">
         <div class="card card-hi">
-          <p><span class="chip chip-hi chip-mono"><span class="status-dot" style="background: var(--teal);"></span>WDROŻENIE W TOKU</span></p>
-          <p class="small">Agent dla agentów jest zbudowany, przed uruchomieniem. Cold mailing pracuje, odpowiedzi trafiają do CRM jako leady. Wyniki podamy, gdy będą policzone.</p>
+          <p><span class="chip chip-hi chip-mono"><span class="status-dot" style="background: var(--teal);"></span>WDROŻONE</span></p>
+          <p class="small">Oba wdrożenia działają. Agent co rano oddaje handlowcom gotową listę, cold mailing pracuje, a odpowiedzi trafiają do CRM jako leady. Wyniki podamy, gdy będą policzone.</p>
         </div>
         <div class="card">
           <p class="label">ZAKRES, NIE WYNIK</p>

@@ -269,8 +269,8 @@
             <span class="label">Displays and POS</span>
             <span class="logo-tile" style="height: 40px; min-width: 0;"><img src="../assets/klienci/holbox.svg" alt="Holbox" style="max-height: 18px;"></span>
           </div>
-          <h3>Orders land in the reports on their own</h3>
-          <p class="body-2" style="flex-grow: 1;">The agent spots an order in the inbox, reads the attached document and fills in the order sheet.</p>
+          <h3>Invoices land in the reports on their own</h3>
+          <p class="body-2" style="flex-grow: 1;">The agent spots invoices in the inbox, reads the attached document and fills in the invoice sheet.</p>
           <div class="metric" style="border-top: 1px solid var(--line-soft); padding-top: 18px;">
             <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);"><span class="metric-num" style="font-size: inherit;" data-count-to="40" data-count-from="0">40</span> h/month</p>
             <p class="metric-lab">less manual retyping</p>
@@ -289,7 +289,7 @@
           <h3>Fleet purchase costs under control</h3>
           <p class="body-2" style="flex-grow: 1;">Two implementations: Inter Cars purchases assigned to vehicles and branches, and fleet management from inspections to insurance policies. The manager sees the cost of every vehicle.</p>
           <div class="metric" style="border-top: 1px solid var(--line-soft); padding-top: 18px;">
-            <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);">87 &rarr; <span class="metric-num" style="font-size: inherit;" data-count-to="50" data-count-from="87">50</span>k PLN</p>
+            <p class="metric-num" style="font-size: clamp(26px, 2.4vw, 32px);">&minus;<span class="metric-num" style="font-size: inherit;" data-count-to="30" data-count-from="0">30</span>%</p>
             <p class="metric-lab">monthly purchase costs, within 4 months</p>
           </div>
           <span class="link-more">Read the case study
@@ -327,7 +327,7 @@
               <span class="h3" style="font-size: 15.5px; min-width: 150px;">IIM Marbella</span>
               <span class="label" style="min-width: 180px;">Real estate</span>
               <span class="small" style="flex: 1 1 240px;">An AI assistant for estate agents, plus cold email run from domains to replies.</span>
-              <span class="chip-mono" style="color: var(--teal-text); text-transform: none;">in progress</span>
+              <span class="chip-mono" style="color: var(--teal-text); text-transform: none;">live</span>
               <span class="link-more">case study
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
               </span>
@@ -437,6 +437,12 @@
           <li class="chip">Google Gemini</li>
           <li class="chip">Supabase</li>
           <li class="chip">Inter Cars portal</li>
+          <li class="chip">Google Calendar</li>
+          <li class="chip">OpenAI</li>
+          <li class="chip">Pipedrive</li>
+          <li class="chip">Instantly</li>
+          <li class="chip">Resales Online</li>
+          <li class="chip">Inmobalia</li>
           <li class="chip chip-hi">A system with no API? The automation clicks the way a person would</li>
         </ul>
       </div>
@@ -474,7 +480,7 @@
         <output id="calc-out" aria-live="polite" class="metric-num" style="display: block; font-size: clamp(34px, 4.4vw, 62px);">86,400 PLN</output>
         <p class="small" id="calc-sub">7,200 PLN a month &middot; about 0.7 FTE</p>
         <div class="stack" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-          <p class="body-2">We work out how much of that you can realistically get back on a free call.</p>
+          <p class="body-2">We work out how much of that you can realistically get back during the audit.</p>
           <div class="btn-row">
             <a class="btn btn-primary" href="../en/contact/">Book a free consultation</a>
             <a class="link-more" href="../en/#pricing">See how we start
@@ -568,11 +574,11 @@
           <dl class="stack">
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">Start</dt>
-              <dd class="small" style="color: var(--text);">a free call, then an audit for 2,900 PLN</dd>
+              <dd class="small" style="color: var(--text);">a free call, then an audit for 1,500 PLN</dd>
             </div>
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">Monthly cost</dt>
-              <dd class="small" style="color: var(--text);">care from 1,500 PLN, monitoring included</dd>
+              <dd class="small" style="color: var(--text);">care from 500 PLN, only if you want it</dd>
             </div>
             <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
               <dt class="label">When it breaks</dt>
@@ -595,7 +601,7 @@
         <p class="eyebrow">How we start and what it costs</p>
         <h2 id="pricing-h">The first step is free.</h2>
         <div class="accent-bar"></div>
-        <p class="lead">After that, every stage has a fixed price and timeframe, and ends with your decision. We scale once you can see the numbers.</p>
+        <p class="lead">Then one process to start with, and you decide on the rollout only once you can see the numbers.</p>
       </div>
 
       <ol class="grid sr-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
@@ -606,51 +612,53 @@
             <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">0 PLN</span>
             <span class="small">45 minutes</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">We map one process and work out the benefits with you on the call. Within 24 hours you get an automation proposal.</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">You go first: what you want to talk about and where you can see time slipping away. Then our ideas for you.</p>
           <p class="small" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 14px; color: var(--teal-text); font-weight: 600;">No commitment</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
-          <span class="badge">Credited in full</span>
+          <span class="badge">Deducted from the rollout</span>
           <h3 class="label">01 &middot; Audit</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">2,900 PLN</span>
-            <span class="small">net &middot; 2 days</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">1,500 PLN</span>
+            <span class="small">net &middot; about 2 days</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">One process area. You leave with a list of processes to automate and the benefits worked out.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Credited in full against the rollout</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Together we break the work down into steps. We count how repetitive the processes are and the return on investment. You get a document: what is worth changing and what is better left alone.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">The audit fee is deducted from the rollout</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">02 &middot; Pilot</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">9.9–16.9</span>
-            <span class="small">k PLN &middot; 2–3 weeks</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">from 2,000 PLN</span>
+            <span class="small">2–3 weeks</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">One process, always in production. It runs on your data before you decide on the scale.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">Fixed price, no hourly rates</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">One process and one number that tells you whether it works. On your side everything runs as it does today.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">After a month you decide: it stays, we improve it, or we switch it off</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">03 &middot; Rollout</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">20–60</span>
-            <span class="small">k PLN &middot; 4–12 weeks</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">from 5,000 PLN</span>
+            <span class="small">3–7 weeks</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">We extend it across the whole company. Payment 40/30/30 for accepted phases, a results guarantee with a measurable condition.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">The price depends on the process, not the industry</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">The scope comes straight from the audit document. You pay in stages, never by the hour.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">60-day results guarantee. If there is no effect, we fix it at no cost</p>
         </li>
 
         <li class="card sr" style="margin-top: 12px;">
           <h3 class="label">04 &middot; Care</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
-            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">from 1,500 PLN</span>
+            <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">from 500 PLN</span>
             <span class="small">/ month</span>
           </p>
-          <p class="small" style="flex-grow: 1; color: var(--text-2);">24/7 monitoring, fixes and further development of the process. Responsibility for a working system, not for keeping a server running.</p>
-          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">First month free</p>
+          <p class="small" style="flex-grow: 1; color: var(--text-2);">Maintenance and small fixes. Only if you want it, the rollout works without it. If something breaks at night, we respond, not you.</p>
+          <p class="small" style="border-top: 1px solid var(--line-soft); padding-top: 14px;">First month free of charge, cancel any time</p>
         </li>
       </ol>
+
+      <p class="small sr" style="margin-top: 18px; max-width: 72ch;">The amounts are indicative. We give an exact quote for the pilot and the rollout after the audit, once we know the systems, how long the processes take and what errors cost. All amounts are net.</p>
 
       <ul class="grid grid-3 sr" style="margin-top: clamp(28px, 3.5vw, 40px); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: clamp(20px, 2.4vw, 26px);">
         <li class="row" style="gap: 12px; flex-wrap: nowrap; align-items: flex-start;">
@@ -800,8 +808,8 @@
               style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
             <div class="stack-s" style="min-width: 0;">
               <h3>Adam Nelip</h3>
-              <p class="label" style="color: var(--teal-text);">Co-founder &middot; sales and implementations</p>
-              <p class="small">Previously almost three years on IT products at McKinsey &amp; Company, then at Vazco and Aidar Solutions: from requirements and UX to budget and team. He started out programming industrial robots. At Fluinty he runs sales and implementations.</p>
+              <p class="label" style="color: var(--teal-text);">Co-founder</p>
+              <p class="small">Previously almost three years on IT products at McKinsey &amp; Company, then at Vazco and Aidar Solutions: from requirements and UX to budget and team. He started out programming industrial robots.</p>
             </div>
           </div>
           <ul class="chips">
@@ -819,8 +827,8 @@
               style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
             <div class="stack-s" style="min-width: 0;">
               <h3>Patryk Bielecki</h3>
-              <p class="label" style="color: var(--teal-text);">Co-founder &middot; architecture and build</p>
-              <p class="small">By day a Senior Product Manager at Semrush, where he builds a product that measures brand visibility in ChatGPT, Gemini and Perplexity. Before that, five years in product roles in Stockholm, and earlier Brainhub and SAP Hybris. At Fluinty he is responsible for solution architecture.</p>
+              <p class="label" style="color: var(--teal-text);">Co-founder</p>
+              <p class="small">By day a Senior Product Manager at Semrush, where he builds a product that measures brand visibility in ChatGPT, Gemini and Perplexity. Before that, five years in product roles in Stockholm, and earlier Brainhub and SAP Hybris.</p>
             </div>
           </div>
           <ul class="chips">
@@ -888,7 +896,7 @@
             <h3>How quickly can we start?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">The audit takes two days. The pilot is running in production within 2–3 weeks. A full rollout closes within 4–12 weeks of the decision.</div>
+          <div class="answer">The audit takes two days. The pilot is running in production within 2–3 weeks. It takes three to seven weeks, depending on the scope.</div>
         </details>
 
         <details>
@@ -904,7 +912,7 @@
             <h3>What if it does not work?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">Every implementation comes with a results guarantee and a measurable condition, agreed before the start. After a failed attempt, the agent diagnoses the error and fixes itself, and a report goes to your channel. The condition is written into the contract. If it is not met, the final 30% instalment is not payable and we make the fixes at no extra charge.</div>
+          <div class="answer">Every rollout comes with a 60-day results guarantee. If there is no effect, we fix it at no cost. After a failed attempt, the agent diagnoses the error and fixes itself, and a report goes to your channel.</div>
         </details>
 
         <details>
