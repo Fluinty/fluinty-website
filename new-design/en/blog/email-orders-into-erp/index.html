@@ -51,7 +51,7 @@
   <link rel="stylesheet" href="../../../css/site.css">
 </head>
 
-<body>
+<body class="page-blog">
   <div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
@@ -106,16 +106,39 @@
 
   <main id="main" tabindex="-1">
 
-  <section class="sec sec-white" aria-labelledby="post-h" data-animated>
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (makieta Blog l. 219-230, BlogPost l. 157-168) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      /* cele dotyku min. 40 px */
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    /* hero: wjazd po kolei jak w makiecie (BlogPost l. 73-79) */
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    /* podpis autora: awatar zostaje obok tekstu, tekst lamie sie obok niego */
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+  </style>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
     <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
       fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
       <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
       <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
       <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
-      <circle class="flow-orb" r="2.8" fill="#00C4B4" opacity="0.55">
-        <animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion>
-      </circle>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
     </svg>
 
     <div class="wrap" style="position: relative;">
@@ -230,7 +253,17 @@
     </div>
   </section>
 
-  <section class="sec sec-navy bg-grid" aria-labelledby="cta-h" data-animated>
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
         <svg width="380" height="66" viewBox="0 0 380 66" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -241,8 +274,8 @@
           <path d="M 212,33 H 318" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8">
             <animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate>
           </path>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95">
-            <animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion>
+          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0">
+            <set attributeName="opacity" to="0.95" begin="0.4s"></set><animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion>
           </circle>
           <circle cx="190" cy="33" r="24" stroke="#2DD4BF" stroke-width="1" fill="none">
             <animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate>
@@ -261,9 +294,9 @@
         <p class="lead" style="max-width: 580px;">Within 24 hours we come back with an automation proposal and the
           benefits worked out. The call is free and commits you to nothing.</p>
         <a class="btn btn-primary glow" href="../../../en/contact/">Book a free consultation</a>
-        <p class="row small" style="gap: 24px; justify-content: center; font-family: var(--mono);">
+        <p class="row small cta-contacts">
           <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
-          <span aria-hidden="true" style="width: 4px; height: 4px; background: #4E7099; border-radius: 50%; display: inline-block;"></span>
+          <span class="cta-dot" aria-hidden="true"></span>
           <a href="tel:+48509843514">+48 509 843 514</a>
         </p>
       </div>

@@ -51,7 +51,7 @@
   <link rel="stylesheet" href="../../css/site.css">
 </head>
 
-<body>
+<body class="page-blog">
   <div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
@@ -106,7 +106,47 @@
 
   <main id="main" tabindex="-1">
 
-  <section class="sec sec-white" aria-labelledby="blog-h" data-animated>
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (makieta Blog l. 219-230, BlogPost l. 157-168) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+    }
+    /* karta "Schemat przeplywu · Eticod": oddychajaca poswiata w prawym gornym rogu (makieta Blog l. 118) */
+    [data-feat-flow] { overflow: hidden; }
+    [data-feat-flow] > * { position: relative; }
+    [data-feat-flow] > .feat-glow { position: absolute; top: -90px; right: -90px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(0,196,180,.16), transparent 70%); pointer-events: none; animation: ambient 7s ease-in-out infinite; }
+    [data-feat-flow] { container-type: inline-size; }
+    /* waski schemat (telefon, 901-1000 px): napisy w SVG mialyby 4-6 px, wiec je chowamy; zostaje podpis pod schematem */
+    @container (max-width: 350px) { [data-feat-flow] svg text { display: none; } }
+    /* wpis wyrozniony do 900 px: schemat pod tekstem, na cala szerokosc karty */
+    @media (max-width: 900px) { [data-posts] .card > .grid-2 { grid-template-columns: minmax(0, 1fr); } }
+    /* siatka wpisow: 3 kolumny jak w makiecie (Blog l. 160); grid-3 przy tresci 1200 px dawal 4 */
+    [data-posts] .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); }
+    /* autor wpisu wyroznionego: awatar zostaje obok podpisu, podpis lamie sie obok niego */
+    [data-posts] .row > .row { flex-wrap: nowrap; }
+    /* telefon: cele dotyku min. 40 px */
+    @media (max-width: 640px) {
+      [data-blog-hero] .chip { min-height: 40px; }
+      [data-cta-deco] .cta-contacts a { display: inline-flex; align-items: center; min-height: 40px; }
+    }
+    /* hero: wjazd po kolei i rosnaca kreska jak w makiecie (Blog l. 16-20, 33-35) */
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes pbBar { from { width: 0; } to { width: 64px; } }
+    [data-blog-hero] .sec-head > *, [data-blog-hero] .chips { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-blog-hero] .sec-head > :nth-child(2) { animation-delay: .18s; }
+    [data-blog-hero] .sec-head > .accent-bar { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .18s both, pbBar .8s cubic-bezier(.2,.7,.2,1) .35s both; }
+    [data-blog-hero] .sec-head > :nth-child(4) { animation-delay: .31s; }
+    [data-blog-hero] .chips { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-blog-hero] .sec-head > *, [data-blog-hero] .chips { animation: none !important; } }
+  </style>
+
+  <section class="sec sec-white" aria-labelledby="blog-h" data-animated data-blog-hero>
     <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;"
       viewBox="0 0 460 240" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true">
@@ -114,9 +154,7 @@
       <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
       <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
       <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
-      <circle r="2.8" fill="#00C4B4" opacity="0.55" class="flow-orb">
-        <animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion>
-      </circle>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
     </svg>
 
     <div class="wrap">
@@ -138,7 +176,7 @@
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="wpisy-h" data-animated>
+  <section class="sec sec-gray" aria-labelledby="wpisy-h" data-animated data-posts>
     <div class="wrap stack">
       <h2 class="vh" id="wpisy-h">Posts</h2>
 
@@ -163,7 +201,8 @@
             </div>
           </div>
 
-          <div class="card card-dark" aria-hidden="true">
+          <div class="card card-dark" data-feat-flow aria-hidden="true">
+            <div class="feat-glow"></div>
             <div class="row" style="justify-content: space-between;">
               <p class="label" style="color: var(--teal-2);">Process flow &middot; Eticod</p>
               <span style="background: var(--on-dark); border-radius: 7px; padding: 5px 10px; display: inline-flex;">
@@ -177,8 +216,8 @@
               <path d="M 250,162 C 310,162 320,112 380,112" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="5s" repeatCount="indefinite"></animate></path>
               <path d="M 420,112 H 500" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="3.6s" repeatCount="indefinite"></animate></path>
               <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="0s" repeatCount="indefinite" path="M 80,112 C 140,112 150,62 210,62 M 250,62 C 310,62 320,112 380,112"></animateMotion></circle>
-              <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="2.6s" repeatCount="indefinite" path="M 80,112 C 140,112 150,162 210,162 M 250,162 C 310,162 320,112 380,112"></animateMotion></circle>
-              <circle class="flow-orb" r="3" fill="#2DD4BF" opacity="0.8"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M 420,112 H 500"></animateMotion></circle>
+              <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.6s"></set><animateMotion dur="5.2s" begin="2.6s" repeatCount="indefinite" path="M 80,112 C 140,112 150,162 210,162 M 250,162 C 310,162 320,112 380,112"></animateMotion></circle>
+              <circle class="flow-orb" r="3" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.8" begin="1.2s"></set><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M 420,112 H 500"></animateMotion></circle>
               <circle cx="400" cy="112" r="24" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.4" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
               <rect x="40" y="92" width="40" height="40" rx="11" fill="#091626" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
               <rect x="51" y="105" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
@@ -282,13 +321,23 @@
     </div>
   </section>
 
-  <section class="sec sec-navy bg-grid" aria-labelledby="blog-cta" data-animated>
+  <section class="sec sec-navy glow-bottom" aria-labelledby="blog-cta" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
         <svg width="380" height="66" viewBox="0 0 380 66" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M 62,33 H 168" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate></path>
           <path d="M 212,33 H 318" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8"><animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate></path>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion></circle>
+          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.4s"></set><animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion></circle>
           <circle cx="190" cy="33" r="24" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.4" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
           <rect x="28" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
           <rect x="36" y="26" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
@@ -301,9 +350,9 @@
         <h2 id="blog-cta">Tell us about one process.</h2>
         <p class="lead">Within 24 hours we come back with an automation proposal and the benefits worked out. The call is free and commits you to nothing.</p>
         <a class="btn btn-primary glow" href="../../en/contact/">Book a free consultation</a>
-        <p class="small row" style="gap: 12px; font-family: var(--mono);">
+        <p class="row small cta-contacts">
           <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
-          <span aria-hidden="true">&middot;</span>
+          <span class="cta-dot" aria-hidden="true"></span>
           <a href="tel:+48509843514">+48 509 843 514</a>
         </p>
       </div>

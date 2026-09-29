@@ -49,9 +49,10 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../../../css/site.css">
+  <link rel="stylesheet" href="../../../css/case.css">
 </head>
 
-<body>
+<body class="page-case">
   <div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
@@ -106,76 +107,269 @@
 
   <main id="main" tabindex="-1">
 
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="taxnet-h" data-animated>
-    <div class="wrap">
-      <div class="grid-hero">
-        <div class="stack">
-          <nav aria-label="Breadcrumb">
-            <ol class="row label" style="gap: 8px;">
-              <li><a href="../../../en/#case-studies">Case studies</a></li>
-              <li aria-hidden="true">/</li>
-              <li><span aria-current="page" style="color: var(--teal-2);">Tax-Net</span></li>
-            </ol>
-          </nav>
-          <div class="row" style="gap: 14px;">
-            <span style="display: inline-flex; align-items: center; background: var(--on-dark); border-radius: 8px; padding: 7px 12px;"><img src="../../../assets/klienci/taxnet.png" alt="Tax-Net" style="height: 16px; width: auto;"></span>
-            <p class="label" style="color: var(--teal-2);">Accounting firm &middot; Katowice, Poland</p>
-          </div>
-          <h1 id="taxnet-h">Google traffic almost <span class="mark">doubled.</span></h1>
-          <p class="lead">Tax-Net S.A. is a NewConnect-listed group with a 30-year history: an accounting firm and a tax advisory practice. We look after their content on an ongoing basis: articles written to rank in Google and the LinkedIn profile.</p>
-          <dl class="metrics" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
-            <div class="metric" style="flex-direction: column-reverse;">
-              <dt class="metric-lab">organic visits a month, Semrush estimate</dt>
-              <dd class="metric-num">176 &rarr; 349</dd>
-            </div>
-            <div class="metric" style="flex-direction: column-reverse;">
-              <dt class="metric-lab">keywords in Google's top 3 results, Semrush estimate</dt>
-              <dd class="metric-num">7 of 9</dd>
-            </div>
-            <div class="metric" style="flex-direction: column-reverse;">
-              <dt class="metric-lab">domain Authority Score, Semrush estimate</dt>
-              <dd class="metric-num">9 &rarr; 14</dd>
-            </div>
-          </dl>
+  <style>
+    /* Okladka Tax-Net: kartka ksiegi z kratka (Lp., pytanie klienta, Wn, Ma). Kratka sie rysuje, w wierszach
+       wpisuja sie pytania klientow biura, pierwsze odrywa sie od kartki i laduje jako trzeci wynik w wyszukiwarce.
+       Wokol biegnie petla tresci (kalendarz, frazy, ekspert, publikacja, pozycje i z powrotem) z kulkami,
+       a w rogu dwa prawdziwe punkty ruchu: 176 i 349, szacunek Semrush. Ruch z klockow cs-a-* (css/case.css),
+       wlasny tylko lot wiersza (x-fly). Calosc konczy sie przed 3 s. */
+    .cs-art[data-case="taxnet"] .x-loop   { fill: none; stroke: rgba(45,212,191,.38); stroke-width: 1.5; stroke-linejoin: round; }
+    .cs-art[data-case="taxnet"] .x-chev   { fill: none; stroke: var(--teal-2); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-art[data-case="taxnet"] .x-node   { fill: var(--ink); stroke: var(--teal-2); stroke-width: 1.5; }
+    .cs-art[data-case="taxnet"] .x-ico    { fill: none; stroke: var(--teal-2); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-art[data-case="taxnet"] .x-star   { fill: var(--teal-2); }
+    .cs-art[data-case="taxnet"] .x-paper  { fill: rgba(255,255,255,.035); }
+    .cs-art[data-case="taxnet"] .x-head   { fill: rgba(45,212,191,.08); }
+    .cs-art[data-case="taxnet"] .x-rule-o { fill: none; stroke: rgba(255,255,255,.7); stroke-width: 1.4; }
+    .cs-art[data-case="taxnet"] .x-rule-h { fill: none; stroke: rgba(45,212,191,.6); stroke-width: 1.4; }
+    .cs-art[data-case="taxnet"] .x-rule   { fill: none; stroke: rgba(45,212,191,.26); stroke-width: 1; }
+    .cs-art[data-case="taxnet"] .x-ph     { fill: none; stroke: rgba(255,255,255,.13); stroke-width: 7; stroke-linecap: round; }
+    .cs-art[data-case="taxnet"] .x-hl     { fill: rgba(45,212,191,.18); }
+    .cs-art[data-case="taxnet"] .x-q      { font-family: var(--body); font-size: 21px; font-weight: 500; fill: var(--on-dark); }
+    .cs-art[data-case="taxnet"] .x-hn     { font-family: var(--mono); font-size: 21px; font-weight: 500; fill: var(--on-dark-3); }
+    .cs-art[data-case="taxnet"] .x-shadow { fill: rgba(2,8,18,.55); }
+    .cs-art[data-case="taxnet"] .x-serp   { fill: #F4F8FC; }
+    .cs-art[data-case="taxnet"] .x-field  { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1; }
+    .cs-art[data-case="taxnet"] .x-mag    { fill: none; stroke: #64748B; stroke-width: 1.6; stroke-linecap: round; }
+    .cs-art[data-case="taxnet"] .x-query  { font-family: var(--body); font-size: 21px; font-weight: 400; fill: #0F172A; }
+    .cs-art[data-case="taxnet"] .x-rank   { font-family: var(--mono); font-size: 16.5px; font-weight: 500; fill: #64748B; }
+    .cs-art[data-case="taxnet"] .x-r-t    { fill: #0B3D70; opacity: .5; }
+    .cs-art[data-case="taxnet"] .x-r-u    { fill: #5FB8AE; opacity: .8; }
+    .cs-art[data-case="taxnet"] .x-r-s    { fill: #CBD5E1; }
+    .cs-art[data-case="taxnet"] .x-ours   { fill: #E6F9F7; stroke: var(--teal); stroke-width: 1.6; }
+    .cs-art[data-case="taxnet"] .x-rank-3 { font-family: var(--mono); font-size: 16.5px; font-weight: 600; fill: var(--teal-text); }
+    .cs-art[data-case="taxnet"] .x-ours-t { font-family: var(--body); font-size: 21px; font-weight: 600; fill: #0B3D70; }
+    .cs-art[data-case="taxnet"] .x-ours-u { fill: var(--teal); }
+    .cs-art[data-case="taxnet"] .x-n176   { font-family: var(--display); font-size: 27px; font-weight: 700; fill: var(--on-dark-3); }
+    .cs-art[data-case="taxnet"] .x-n349   { font-family: var(--display); font-size: 33px; font-weight: 700; fill: var(--teal-2); }
+    /* podpisy petli dostaja obwodke w kolorze tla, bo rura z tla hero przechodzi za nimi (1024-1440) */
+    .cs-art[data-case="taxnet"] .x-lab    { paint-order: stroke fill; stroke: var(--ink); stroke-width: 6px; stroke-linejoin: round; }
+    /* pierwsze pytanie odrywa sie od kartki i laduje jako trzeci wynik (stan koncowy = miejsce 3) */
+    .cs-art[data-case="taxnet"] .x-fly    { transform-box: fill-box; transform-origin: 50% 50%; }
+    .cs-art[data-case="taxnet"].play .x-fly { animation: x-fly .9s 1.75s cubic-bezier(.5,0,.2,1) both; }
+    @keyframes x-fly {
+      0%   { opacity: 0; transform: translate(-224px, -235px); }
+      18%  { opacity: 1; transform: translate(-220px, -243px) scale(1.04); }
+      100% { opacity: 1; transform: none; }
+    }
+
+    /* demo: slupki wyszukiwan, szkic z pieczatka, akceptacja doradcy (bursztyn, potem turkus) */
+    section[data-case="taxnet"] .t-vol { display: block; width: calc(var(--v) * 76px); height: 8px; margin-top: 5px; border-radius: 4px; background: linear-gradient(90deg, #5FB8AE, var(--teal)); }
+    section[data-case="taxnet"] .t-draft { position: relative; }
+    section[data-case="taxnet"] .t-badge { margin-left: auto; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; border: 1px solid var(--line); background: #EEF2F6; color: var(--text-2); }
+    section[data-case="taxnet"] .t-title { font: 600 15px/1.35 var(--body); color: var(--text); padding-right: 128px; }
+    section[data-case="taxnet"] .t-lines { display: flex; flex-direction: column; gap: 7px; padding: 2px 0 4px; }
+    section[data-case="taxnet"] .t-lines i { display: block; height: 7px; border-radius: 4px; background: #E2E8F0; }
+    section[data-case="taxnet"] .t-lines i:nth-child(1) { width: 96%; }
+    section[data-case="taxnet"] .t-lines i:nth-child(2) { width: 88%; }
+    section[data-case="taxnet"] .t-lines i:nth-child(3) { width: 92%; }
+    section[data-case="taxnet"] .t-lines i:nth-child(4) { width: 58%; }
+    section[data-case="taxnet"] .t-appr { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 12px; padding: 7px 10px; border-radius: 8px; background: linear-gradient(90deg, var(--cs-amber-bg), rgba(253,241,223,.35) 92%); }
+    section[data-case="taxnet"] .t-appr .cs-k, section[data-case="taxnet"] .t-appr .cs-v { color: var(--cs-amber-text); }
+    section[data-case="taxnet"] .t-appr .t-ok { display: none; }
+    section[data-case="taxnet"] .t-appr.is-ok { background: #E6F9F7; }
+    section[data-case="taxnet"] .t-appr.is-ok .cs-k, section[data-case="taxnet"] .t-appr.is-ok .cs-v { color: var(--teal-text); }
+    section[data-case="taxnet"] .t-appr.is-ok .t-wait { display: none; }
+    section[data-case="taxnet"] .t-appr.is-ok .t-ok { display: inline; }
+    section[data-case="taxnet"] .t-stamp { position: absolute; top: 40px; right: 14px; padding: 5px 9px; border: 2px solid var(--teal-text); border-radius: 5px; background: rgba(255,255,255,.9); font: 700 11.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--teal-text); transform: rotate(-7deg); }
+    section[data-case="taxnet"] .cs-demo.cs-running .t-stamp.on { animation: t-stamp .5s cubic-bezier(.3,1.6,.5,1) both; }
+    @keyframes t-stamp { from { opacity: 0; transform: rotate(-7deg) scale(1.9); } to { opacity: 1; transform: rotate(-7deg) scale(1); } }
+
+    /* wyniki: wykres z hero (makieta) jako HTML, zeby napisy byly czytelne takze na telefonie */
+    section[data-case="taxnet"] .t-res { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(16px, 2.4vw, 28px); align-items: stretch; margin-bottom: clamp(20px, 2.5vw, 36px); }
+    section[data-case="taxnet"] .t-chart { display: flex; flex-direction: column; }
+    section[data-case="taxnet"] .t-chart .console-bar { flex-wrap: wrap; row-gap: 4px; }
+    section[data-case="taxnet"] .t-chart .console-bar > span { white-space: nowrap; }
+    section[data-case="taxnet"] .t-chart-b { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-items: end; padding: 20px clamp(10px, 2vw, 20px) 6px; }
+    section[data-case="taxnet"] .t-grp { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+    section[data-case="taxnet"] .t-grp-h { min-height: 2.7em; display: flex; align-items: flex-start; justify-content: center; text-align: center; font: 400 11.5px/1.35 var(--mono); letter-spacing: .08em; color: var(--on-dark-2); }
+    section[data-case="taxnet"] .t-bars { display: flex; justify-content: center; align-items: flex-end; gap: 24px; width: 100%; height: 170px; border-bottom: 1px solid rgba(148,190,233,.2); }
+    section[data-case="taxnet"] .t-col { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 7px; width: 36px; flex: none; }
+    section[data-case="taxnet"] .t-col b { font: 700 15px/1 var(--display); color: var(--on-dark-3); white-space: nowrap; }
+    section[data-case="taxnet"] .t-col em { font: 500 11px/1 var(--mono); font-style: normal; color: var(--teal-2); }
+    section[data-case="taxnet"] .t-col i { display: block; width: 36px; height: calc(var(--h) * 130px); border-radius: 4px 4px 0 0; background: rgba(148,190,233,.3); transform-origin: 50% 100%; }
+    section[data-case="taxnet"] .t-after b { color: var(--white); }
+    section[data-case="taxnet"] .t-after i { background: var(--teal-2); opacity: .9; }
+    section[data-case="taxnet"] .t-labs { display: flex; justify-content: center; gap: 24px; margin-top: 9px; }
+    section[data-case="taxnet"] .t-labs span { display: flex; justify-content: center; width: 36px; font: 400 11px/1.2 var(--mono); color: var(--on-dark-3); white-space: nowrap; }
+    section[data-case="taxnet"] .t-chart-f { padding: 12px 20px 18px; font: 400 11.5px/1.4 var(--mono); letter-spacing: .04em; color: var(--on-dark-3); }
+    section[data-case="taxnet"] .t-chart.in .t-col i { animation: growUp .9s cubic-bezier(.3,.6,.2,1) both; animation-delay: calc(.3s + var(--k, 0) * .09s); }
+    section[data-case="taxnet"] .t-cards { display: grid; gap: 12px; }
+    section[data-case="taxnet"] .t-cards .card { flex-direction: row-reverse; justify-content: flex-end; align-items: center; gap: 18px; padding: 20px 24px; }
+    section[data-case="taxnet"] .t-cards .metric-num { flex: none; min-width: 3.3em; font-size: clamp(30px, 3vw, 42px); white-space: nowrap; }
+    section[data-case="taxnet"] .t-cards .metric-lab { font-size: 14px; }
+    @media (max-width: 900px) { section[data-case="taxnet"] .t-res { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 480px) {
+      section[data-case="taxnet"] .t-cards .card { gap: 12px; padding: 16px 18px; align-items: baseline; }
+      section[data-case="taxnet"] .t-cards .metric-num { min-width: 0; font-size: 27px; }
+      section[data-case="taxnet"] .t-cards .metric-lab { font-size: 13px; }
+      section[data-case="taxnet"] .t-col, section[data-case="taxnet"] .t-col i, section[data-case="taxnet"] .t-labs span { width: 30px; }
+      section[data-case="taxnet"] .t-chart-b { padding-inline: 8px; gap: 4px; }
+      section[data-case="taxnet"] .t-bars, section[data-case="taxnet"] .t-labs { gap: 20px; }
+      section[data-case="taxnet"] .t-labs { align-items: flex-start; }
+      section[data-case="taxnet"] .t-labs span + span { margin-top: 1.35em; }
+    }
+
+    /* hero: liczby w jednej linii (makieta 38 px), na telefonie liczba i opis w wierszu jak w makiecie mobilnej */
+    section[data-case="taxnet"].cs-hero .metric-num { font-size: clamp(26px, 2.4vw, 36px); white-space: nowrap; }
+    @media (max-width: 640px) {
+      section[data-case="taxnet"].cs-hero .metrics { grid-template-columns: minmax(0, 1fr) !important; gap: 12px; }
+      section[data-case="taxnet"].cs-hero .metric { flex-direction: row-reverse !important; justify-content: flex-end; align-items: baseline; gap: 12px; }
+      section[data-case="taxnet"].cs-hero .metric-num { flex: none; font-size: 26px; }
+    }
+    /* telefon: okruszek i linki ze strzalka maja cel dotyku min. 40 px (padding + ujemny margines, uklad bez zmian) */
+    @media (max-width: 767px) {
+      section[data-case="taxnet"] nav[aria-label] a { display: inline-block; padding-block: 13px; margin-block: -13px; }
+      section[data-case="taxnet"] .link-more { padding-block: 11px; margin-block: -11px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      section[data-case="taxnet"] .t-chart .t-col i, section[data-case="taxnet"] .t-stamp { animation: none !important; }
+    }
+  </style>
+
+  <section class="sec sec-dark bg-grid bg-glow cs-hero" aria-labelledby="taxnet-h" data-case="taxnet" data-animated>
+    <svg class="bg-deco" viewBox="0 0 1440 640" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,54 H 840 Q 872,54 872,86 V 120" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,40 H 1170 Q 1138,40 1138,72 V 108" stroke="rgba(45,212,191,0.09)" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230" stroke="rgba(45,212,191,0.11)" stroke-width="2" stroke-linejoin="round"></path>
+      <circle cx="872" cy="86" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <rect x="868" y="116" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="226" y="528" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="1s"></set><animateMotion dur="11s" begin="1s" repeatCount="indefinite" path="M -20,54 H 840 Q 872,54 872,86 V 120"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="5s"></set><animateMotion dur="13s" begin="5s" repeatCount="indefinite" path="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230"></animateMotion></circle>
+    </svg>
+    <div class="wrap grid-hero">
+      <div class="stack">
+        <nav aria-label="Breadcrumb">
+          <ol class="label row" style="gap: 8px;">
+            <li><a href="../../../en/#case-studies">Case studies</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page" style="color: var(--teal-2);">Tax-Net</span></li>
+          </ol>
+        </nav>
+        <div class="row" style="gap: 14px;">
+          <span style="display: inline-flex; align-items: center; background: var(--on-dark); border-radius: 8px; padding: 7px 12px;"><img src="../../../assets/klienci/taxnet.png" alt="Tax-Net" style="height: 16px; width: auto;"></span>
+          <p class="label" style="color: var(--teal-2);">Accounting firm &middot; Katowice, Poland</p>
         </div>
-        <div class="console" aria-hidden="true">
-          <div class="console-bar">
-            <span class="row" style="gap: 10px;">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round"><path d="M2 13.5h12M4.5 11V7.5M8 11V3.5M11.5 11V6"></path></svg>
-              <span>results &middot; Tax-Net</span>
-            </span>
-            <span style="color: var(--teal-2); letter-spacing: .08em;">5 MONTHS OF SERVICE</span>
+        <h1 id="taxnet-h">Google traffic almost <span class="mark">doubled.</span></h1>
+        <p class="lead">Tax-Net S.A. is a NewConnect-listed group with a 30-year history: an accounting firm and a tax advisory practice. We look after their content on an ongoing basis: articles written to rank in Google and the LinkedIn profile.</p>
+        <dl class="metrics" style="grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));">
+          <div class="metric" style="flex-direction: column-reverse;">
+            <dt class="metric-lab">organic visits a month, Semrush estimate</dt>
+            <dd class="metric-num">176 &rarr; 349</dd>
           </div>
-          <div class="console-body">
-            <svg aria-hidden="true" style="display: block; width: 100%; height: auto;" viewBox="0 0 432 216" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="16" y1="186.5" x2="416" y2="186.5" stroke="rgba(148,190,233,0.2)" stroke-width="1"></line>
-              <text x="72" y="16" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">ORGANIC TRAFFIC</text>
-              <rect x="24" y="120.4" width="36" height="65.6" rx="4" fill="rgba(148,190,233,0.3)"></rect>
-              <rect x="84" y="56" width="36" height="130" rx="4" fill="#2DD4BF" opacity="0.9"></rect>
-              <text x="42" y="112" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#9AAEC4">176</text>
-              <text x="102" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">349 <tspan font-family="IBM Plex Mono, monospace" font-size="11" font-weight="500" fill="#2DD4BF">+98%</tspan></text>
-              <text x="42" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">March</text>
-              <text x="102" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">August</text>
-              <text x="216" y="16" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">KEYWORDS IN TOP 3</text>
-              <rect x="168" y="56" width="36" height="130" rx="4" fill="rgba(148,190,233,0.3)"></rect>
-              <rect x="228" y="84.9" width="36" height="101.1" rx="4" fill="#2DD4BF" opacity="0.9"></rect>
-              <text x="186" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#9AAEC4">9</text>
-              <text x="246" y="77" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">7</text>
-              <text x="186" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">tracked</text>
-              <text x="246" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">in top 3</text>
-              <text x="360" y="16" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">AUTHORITY SCORE</text>
-              <rect x="312" y="102.4" width="36" height="83.6" rx="4" fill="rgba(148,190,233,0.3)"></rect>
-              <rect x="372" y="56" width="36" height="130" rx="4" fill="#2DD4BF" opacity="0.9"></rect>
-              <text x="330" y="94" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#9AAEC4">9</text>
-              <text x="390" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">14</text>
-              <text x="330" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">March</text>
-              <text x="390" y="206" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9AAEC4">August</text>
-            </svg>
-            <p class="label" style="text-transform: none; letter-spacing: .04em;">Semrush estimate, March vs August 2026</p>
+          <div class="metric" style="flex-direction: column-reverse;">
+            <dt class="metric-lab">keywords in Google's top 3 results, Semrush estimate</dt>
+            <dd class="metric-num">7 of 9</dd>
           </div>
-        </div>
+          <div class="metric" style="flex-direction: column-reverse;">
+            <dt class="metric-lab">domain Authority Score, Semrush estimate</dt>
+            <dd class="metric-num">9 &rarr; 14</dd>
+          </div>
+        </dl>
       </div>
-      <ul class="chips" style="margin-top: 40px;">
+
+      <div class="cs-hero-art">
+        <figure class="cs-art" data-case="taxnet" role="img" aria-label="Drawing: a ledger page with the columns No., client question, Dr and Cr. The rows hold questions from the firm's clients: lump sum or flat tax, closing the year, when to switch. The first question lifts off the page and becomes the third search result. Around it runs a loop: calendar, keywords, expert, publishing, rankings and back again. Beside it, Google traffic by Semrush estimate: 176 visits a month in March and 349 in August.">
+          <svg viewBox="0 4 600 416" aria-hidden="true" focusable="false">
+            <!-- petla tresci wokol kartki: tor, kierunek, kulki (SMIL, po narysowaniu toru) -->
+            <path class="x-loop cs-a-draw" pathLength="1" d="M84 40H540A28 28 0 0 1 568 68V382A28 28 0 0 1 540 410H60A28 28 0 0 1 32 382V68A28 28 0 0 1 60 40Z" style="--d: 1.9s; --t: 1s;"></path>
+            <path class="x-chev cs-a-fade" d="M562 219L568 227L574 219" style="--d: 2.35s;"></path>
+            <path class="x-chev cs-a-fade" d="M436 404L428 410L436 416" style="--d: 2.55s;"></path>
+            <path class="x-chev cs-a-fade" d="M26 231L32 223L38 231" style="--d: 2.75s;"></path>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.9" begin="3s"></set><animateMotion dur="10s" begin="3s" repeatCount="indefinite" path="M84 40H540A28 28 0 0 1 568 68V382A28 28 0 0 1 540 410H60A28 28 0 0 1 32 382V68A28 28 0 0 1 60 40Z"></animateMotion></circle>
+            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.8" begin="8s"></set><animateMotion dur="10s" begin="8s" repeatCount="indefinite" path="M84 40H540A28 28 0 0 1 568 68V382A28 28 0 0 1 540 410H60A28 28 0 0 1 32 382V68A28 28 0 0 1 60 40Z"></animateMotion></circle>
+            <!-- wezly petli: kalendarz, frazy, ekspert, publikacja, pozycje -->
+            <g class="cs-a-pop" style="--d: 2s;"><rect class="x-node" x="74" y="30" width="20" height="20" rx="5"></rect><path class="x-ico" d="M79 36H89V45H79ZM79 39H89M82 34V37M86 34V37"></path></g>
+            <g class="cs-a-pop" style="--d: 2.15s;"><rect class="x-node" x="182" y="30" width="20" height="20" rx="5"></rect><circle class="x-ico" cx="190.5" cy="38.5" r="4"></circle><path class="x-ico" d="M193.5 41.5L197 45"></path></g>
+            <g class="cs-a-pop" style="--d: 2.3s;"><rect class="x-node" x="287" y="27" width="26" height="26" rx="7"></rect><path class="x-star" d="M300 31.5L301.9 38.1 308.5 40 301.9 41.9 300 48.5 298.1 41.9 291.5 40 298.1 38.1Z"></path></g>
+            <g class="cs-a-pop" style="--d: 2.45s;"><rect class="x-node" x="398" y="30" width="20" height="20" rx="5"></rect><path class="x-ico" d="M408 45V35M404 39L408 35 412 39M403 46.5H413"></path></g>
+            <g class="cs-a-pop" style="--d: 2.6s;"><rect class="x-node" x="506" y="30" width="20" height="20" rx="5"></rect><path class="x-ico" d="M511 46V42M516 46V38.5M521 46V35"></path></g>
+            <text class="cs-t cs-small x-lab cs-a-fade" x="84" y="20" text-anchor="middle" style="--d: 2s;">calendar</text>
+            <text class="cs-t cs-small x-lab cs-a-fade" x="192" y="20" text-anchor="middle" style="--d: 2.15s;">keywords</text>
+            <text class="cs-t cs-small x-lab cs-a-fade" x="300" y="20" text-anchor="middle" style="--d: 2.3s;">expert</text>
+            <text class="cs-t cs-small x-lab cs-a-fade" x="408" y="20" text-anchor="middle" style="--d: 2.45s;">publish</text>
+            <text class="cs-t cs-small x-lab cs-a-fade" x="516" y="20" text-anchor="middle" style="--d: 2.6s;">rankings</text>
+
+            <!-- kartka ksiegi: kratka rysuje sie, w wierszach pytania klientow biura -->
+            <rect class="x-paper cs-a-fade" x="56" y="72" width="340" height="232" rx="3" style="--t: .4s;"></rect>
+            <rect class="x-head cs-a-fade" x="56" y="72" width="340" height="32" style="--d: .15s;"></rect>
+            <path class="x-rule-o cs-a-draw" pathLength="1" d="M56 72H396V304H56Z" style="--t: .6s;"></path>
+            <path class="x-rule-h cs-a-draw" pathLength="1" d="M56 104H396" style="--d: .2s; --t: .45s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M56 144H396" style="--d: .26s; --t: .45s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M56 184H396" style="--d: .32s; --t: .45s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M56 224H396" style="--d: .38s; --t: .45s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M56 264H396" style="--d: .44s; --t: .45s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M92 72V304" style="--d: .25s; --t: .5s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M324 72V304M327 72V304" style="--d: .3s; --t: .5s;"></path>
+            <path class="x-rule cs-a-draw" pathLength="1" d="M360 72V304" style="--d: .35s; --t: .5s;"></path>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="94" text-anchor="middle" style="--d: .45s;">No.</text>
+            <text class="cs-t cs-small cs-a-fade" x="104" y="94" style="--d: .5s;">CLIENT QUESTION</text>
+            <text class="cs-t cs-small cs-a-fade" x="343.5" y="94" text-anchor="middle" style="--d: .55s;">Dr</text>
+            <text class="cs-t cs-small cs-a-fade" x="378" y="94" text-anchor="middle" style="--d: .6s;">Cr</text>
+            <text class="x-hn cs-narrow cs-a-fade" x="343.5" y="96" text-anchor="middle" style="--d: .55s;">Dr</text>
+            <text class="x-hn cs-narrow cs-a-fade" x="378" y="96" text-anchor="middle" style="--d: .6s;">Cr</text>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="130" text-anchor="middle" style="--d: .6s;">1</text>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="170" text-anchor="middle" style="--d: .78s;">2</text>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="210" text-anchor="middle" style="--d: .95s;">3</text>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="250" text-anchor="middle" style="--d: 1.1s;">4</text>
+            <text class="cs-t cs-small cs-a-fade" x="74" y="290" text-anchor="middle" style="--d: 1.2s;">5</text>
+            <rect class="x-hl cs-a-wipe" x="98" y="113" width="218" height="26" rx="3" style="--d: 1.5s; --t: .35s;"></rect>
+            <text class="x-q cs-a-wipe" x="102" y="131" style="--d: .6s; --t: .45s;">Lump sum or flat tax?</text>
+            <text class="x-q cs-a-wipe" x="102" y="171" style="--d: .78s; --t: .4s;">Closing the year?</text>
+            <text class="x-q cs-a-wipe" x="102" y="211" style="--d: .95s; --t: .4s;">When can I switch?</text>
+            <path class="x-ph cs-a-draw" pathLength="1" d="M104 245H214" style="--d: 1.1s; --t: .3s;"></path>
+            <path class="x-ph cs-a-draw" pathLength="1" d="M104 285H172" style="--d: 1.2s; --t: .3s;"></path>
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M370 133L386 117M377 117H386V126" style="--d: 1.7s; --t: .3s;"></path>
+
+            <!-- wyniki wyszukiwania: pytanie z kartki laduje na miejscu 3 -->
+            <g class="cs-a-rise" style="--d: 1.15s; --t: .5s;">
+              <rect class="x-shadow" x="306" y="236" width="252" height="168" rx="12"></rect>
+              <rect class="x-serp" x="300" y="228" width="252" height="168" rx="12"></rect>
+              <rect class="x-field" x="312" y="240" width="228" height="30" rx="15"></rect>
+              <circle class="x-mag" cx="327" cy="254" r="5"></circle>
+              <path class="x-mag" d="M331 258L335 262"></path>
+              <text class="x-query cs-a-wipe" x="342" y="262" style="--d: 1.4s; --t: .4s;">lump sum or flat tax</text>
+              <g class="cs-a-fade" style="--d: 1.55s;">
+                <text class="x-rank cs-small" x="318" y="290" text-anchor="middle">1</text>
+                <rect class="x-r-t" x="332" y="280" width="150" height="8" rx="4"></rect>
+                <rect class="x-r-u" x="332" y="292" width="92" height="5" rx="2.5"></rect>
+                <rect class="x-r-s" x="332" y="301" width="196" height="5" rx="2.5"></rect>
+              </g>
+              <g class="cs-a-fade" style="--d: 1.65s;">
+                <text class="x-rank cs-small" x="318" y="324" text-anchor="middle">2</text>
+                <rect class="x-r-t" x="332" y="314" width="128" height="8" rx="4"></rect>
+                <rect class="x-r-u" x="332" y="326" width="80" height="5" rx="2.5"></rect>
+                <rect class="x-r-s" x="332" y="335" width="180" height="5" rx="2.5"></rect>
+              </g>
+            </g>
+            <g class="x-fly">
+              <rect class="x-ours" x="306" y="346" width="240" height="40" rx="7"></rect>
+              <text class="x-rank-3 cs-small" x="316" y="371" text-anchor="middle">3</text>
+              <text class="x-ours-t" x="326" y="366">Lump sum or flat tax?</text>
+              <rect class="x-ours-u" x="326" y="374" width="88" height="4" rx="2"></rect>
+            </g>
+
+            <!-- dwa prawdziwe punkty: ruch z Google w marcu i w sierpniu, szacunek Semrush -->
+            <text class="cs-t cs-small cs-a-fade" x="56" y="330" style="--d: 2.1s;">Semrush estimate</text>
+            <text class="x-hn cs-narrow cs-a-fade" x="56" y="332" style="--d: 2.1s;">Semrush estimate</text>
+            <text class="x-n176 cs-a-fade" x="56" y="384" style="--d: 2.2s;">176</text>
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M108 374L168 356M157 354.1L168 356L159.8 363.7" style="--d: 2.3s; --t: .35s;"></path>
+            <text class="x-n349 cs-a-pop" x="176" y="368" style="--d: 2.55s;">349</text>
+            <text class="cs-t cs-small cs-a-fade" x="56" y="404" style="--d: 2.3s;">March</text>
+            <text class="cs-t cs-small cs-a-fade" x="176" y="391" style="--d: 2.6s;">August</text>
+          </svg>
+        </figure>
+        <p class="cs-cap">The advisers' know-how goes into articles that keep working in Google.</p>
+        <a class="link-more" href="#przyklad">
+          See the example below
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ul class="chips" style="margin-top: clamp(28px, 3.5vw, 44px);">
         <li class="chip chip-mono" style="text-transform: none;">START &middot; March 2026</li>
         <li class="chip chip-mono" style="text-transform: none;">MEASUREMENT &middot; March vs August 2026, 5 months</li>
         <li class="chip chip-mono" style="text-transform: none;">SCOPE &middot; LinkedIn and SEO, ongoing service</li>
@@ -186,7 +380,7 @@
   </section>
 
   <section class="sec sec-white" aria-labelledby="wyzwanie">
-    <div class="wrap grid grid-2">
+    <div class="wrap grid grid-2" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
       <div class="stack sr">
         <p class="eyebrow">The challenge</p>
         <h2 id="wyzwanie">The knowledge was in people's heads, not in Google.</h2>
@@ -210,9 +404,137 @@
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="rozwiazanie" data-animated>
+  <section class="sec sec-gray" id="przyklad" aria-labelledby="przyklad-h" data-case="taxnet">
     <div class="wrap">
-      <div class="flow sr" style="margin-bottom: clamp(32px, 4vw, 52px);">
+      <div class="cs-demo-top">
+        <div class="sec-head sr">
+          <p class="eyebrow">An example with a made-up topic</p>
+          <h2 id="przyklad-h">What it looks like on an example.</h2>
+          <div class="accent-bar"></div>
+          <p class="lead">Four questions from the advisers, and one of them becomes a topic. AI writes the draft, and it only goes live once an adviser has signed it off.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm cs-replay" data-cs-replay hidden>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2v3h3"></path></svg>
+          Play it again
+        </button>
+      </div>
+
+      <div class="cs-demo" data-cs-demo data-split="2">
+        <div class="cs-col cs-in">
+          <p class="cs-colh">Questions and keywords &middot; example</p>
+          <article class="cs-doc">
+            <header><span class="cs-fmt">list</span><b>Client questions</b><em>from the advisers</em></header>
+            <ul class="cs-inbox">
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">adviser &middot; call with a client</span>
+                <span class="cs-subj"><span class="cs-hl" data-f="q1">Lump sum or flat tax for the new year?</span></span>
+                <span class="cs-snip">Several clients asked about it this month.</span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="700">new topic</span><span class="cs-tag cs-tag-done" data-at="4" data-t="2000">published</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">adviser &middot; client email</span>
+                <span class="cs-subj"><span class="cs-hl" data-f="w2">When can I change how I am taxed?</span></span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="800">post exists</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">adviser &middot; meeting</span>
+                <span class="cs-subj"><span class="cs-hl" data-f="w3">What should I prepare before year-end?</span></span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="900">post exists</span></span>
+              </li>
+              <li class="cs-mail is-skip" data-at="1" data-late="1 1000 is-skip">
+                <span class="cs-from">adviser &middot; phone</span>
+                <span class="cs-subj">Request for a copy of the August return</span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="1000">client matter</span></span>
+              </li>
+            </ul>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="2 0 cs-scan">
+            <header><span class="cs-fmt">research</span><b>Keywords for the topic</b><em>example</em></header>
+            <div class="cs-scroll">
+              <table class="cs-spec">
+                <thead><tr><th scope="col">Keyword</th><th scope="col">Searches</th><th scope="col">Decision</th></tr></thead>
+                <tbody>
+                  <tr class="cs-hl" data-f="f1"><td>lump sum or flat tax</td><td><span class="t-vol" style="--v: .92;"></span></td><td class="cs-nowrap cs-b"><span data-at="2" data-t="400">main</span></td></tr>
+                  <tr class="cs-hl" data-f="w2"><td>changing tax form</td><td><span class="t-vol" style="--v: .64;"></span></td><td class="cs-nowrap"><span data-at="2" data-t="850">post exists</span></td></tr>
+                  <tr class="cs-hl" data-f="f3"><td>tax form for sole traders</td><td><span class="t-vol" style="--v: .4;"></span></td><td class="cs-nowrap"><span data-at="2" data-t="1250">for later</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-col cs-mid">
+          <ol class="cs-steps">
+            <li class="cs-step" data-step="1" data-dur="1900"><span class="cs-n">01</span><p>A client question goes into the calendar</p></li>
+            <li class="cs-step" data-step="2" data-dur="1700"><span class="cs-n">02</span><p>Keyword and competition research</p></li>
+            <li class="cs-step" data-step="3" data-dur="2700"><span class="cs-n">03</span><p>AI draft, substance from an adviser</p></li>
+            <li class="cs-step" data-step="4" data-dur="2200"><span class="cs-n">04</span><p>Publishing with internal links</p></li>
+            <li class="cs-step" data-step="5" data-dur="2000"><span class="cs-n">05</span><p>Google ranking, lessons back to the calendar</p></li>
+          </ol>
+          <div class="cs-tally">
+            <div data-at="4" data-t="2000"><b>1</b><span>article live, with two internal links</span></div>
+            <div class="cs-w" data-at="3" data-t="2100"><b>1</b><span>adviser sign-off before publishing</span></div>
+            <div class="cs-z" data-at="5" data-t="1400"><b>1</b><span>new topic goes back into the calendar</span></div>
+          </div>
+        </div>
+
+        <div class="cs-col cs-out">
+          <p class="cs-colh">Calendar and website &middot; example</p>
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Topic calendar</b><em>example</em></div>
+            <div class="cs-fr" data-at="1" data-t="950" data-r="q1" data-f="t-top" data-fly="Lump sum or flat tax?"><span class="cs-k">Topic</span><span class="cs-v">Lump sum or flat tax for the new year?</span><span class="cs-s">question 1</span></div>
+            <div class="cs-fr" data-at="2" data-t="500" data-r="f1" data-fly="lump sum or flat tax"><span class="cs-k">Keyword</span><span class="cs-v">lump sum or flat tax</span><span class="cs-s">research, r.&nbsp;1</span></div>
+            <div class="cs-fr" data-at="2" data-t="950" data-r="w2"><span class="cs-k">Skip</span><span class="cs-v">changing tax form<small>a post already exists, it gets a link</small></span><span class="cs-s">research, r.&nbsp;2</span></div>
+            <div class="cs-fr" data-at="5" data-t="400"><span class="cs-k">Ranking</span><span class="cs-v">top 3 in Google<small>before: not in the results</small></span><span class="cs-s">tracking</span></div>
+            <div class="cs-fr" data-at="5" data-t="950" data-r="f3" data-fly="tax form for sole traders"><span class="cs-k">Next</span><span class="cs-v">tax form for sole traders</span><span class="cs-s">research, r.&nbsp;3</span></div>
+          </article>
+          <article class="cs-card t-draft" data-at="3">
+            <p class="cs-card-h"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13.5l1-3.6L11.2 2.7a1.4 1.4 0 0 1 2 2L6 11.9z M9.8 4.1l2 2"></path></svg>Article draft<span class="t-badge" data-at="3" data-t="300">AI draft</span></p>
+            <b class="t-title">Lump sum or flat tax for the new year?</b>
+            <span class="t-lines" aria-hidden="true"><i data-at="3" data-t="400"></i><i data-at="3" data-t="550"></i><i data-at="3" data-t="700"></i><i data-at="3" data-t="850"></i></span>
+            <div class="t-appr cs-gap is-ok" data-at="3" data-t="1100" data-late="3 2000 is-ok"><span class="cs-k">Substance</span><span class="cs-v"><span class="t-wait">waiting for an adviser</span><span class="t-ok">signed off by an adviser</span></span></div>
+            <span class="t-stamp" data-at="3" data-t="2050">approved</span>
+          </article>
+          <div class="cs-human" data-at="3" data-t="1400">
+            <b>To a human</b>
+            <p>An adviser checks the substance of the draft and signs it off. Without that, the text does not go live.</p>
+          </div>
+          <article class="cs-sys" data-at="4">
+            <div class="cs-sys-h"><i></i><i></i><i></i><span>Firm's website &middot; new post</span><em>publishing</em></div>
+            <div class="cs-sys-b">
+              <div class="cs-sys-f"><span>Title</span><span class="cs-field"><span data-at="4" data-t="350" data-r="t-top" data-fly="Lump sum or flat tax for the new year?">Lump sum or flat tax for the new year?</span></span></div>
+              <div class="cs-sys-f"><span>Links to</span><span class="cs-field"><span data-at="4" data-t="850" data-r="w2 w3">When to change your tax form<br>How to prepare for year-end</span></span></div>
+            </div>
+            <div class="cs-sys-foot">
+              <span class="cs-saved" data-at="4" data-t="1900"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>published</span>
+              <span class="cs-sys-btn">Publish<svg class="cs-cursor" data-at="4" data-t="1650" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 2l11 6.2-4.6 1.1 2.6 5-2.1 1-2.5-5L4 13.6z" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"></path></svg></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-log">
+          <div class="cs-log-h">
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v3h-3"></path></svg>content loop log</span>
+            <span style="color: var(--teal-2);"><span class="status-square"></span> EXAMPLE</span>
+          </div>
+          <ol class="cs-log-b">
+            <li data-at="1" data-t="1100"><span class="ts">01</span><span>4 questions: 1 new topic, 2 already have a post, 1 client matter</span></li>
+            <li data-at="2" data-t="1300"><span class="ts">02</span><span>main keyword “lump sum or flat tax”, no duplicate post</span></li>
+            <li data-at="3" data-t="900"><span class="ts">03</span><span>AI draft ready, waiting for an adviser</span></li>
+            <li class="cs-ok" data-at="3" data-t="2100"><span class="ts">03</span><span>adviser signed off the substance</span></li>
+            <li data-at="4" data-t="2000"><span class="ts">04</span><span>post published, 2 internal links</span></li>
+            <li data-at="5" data-t="600"><span class="ts">05</span><span>“lump sum or flat tax”: top 3 in Google</span></li>
+            <li class="cs-ok" data-at="5" data-t="1400"><span class="ts">05</span><span>lesson for the calendar: tax form for sole traders</span><span class="caret"></span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="cs-note"><b>AI does not sign off the substance.</b> Only a text an adviser has checked goes live. The questions, keywords, posts and ranking are made up; the real results (Semrush estimates) are in the Results section.</p>
+    </div>
+  </section>
+
+  <section class="sec sec-white" aria-labelledby="rozwiazanie">
+    <div class="wrap stack" style="gap: clamp(32px, 4vw, 52px);">
+      <div class="flow sr" data-animated>
         <div class="flow-head">
           <p class="label" style="color: var(--teal-2);">Process flow</p>
           <p class="h3" style="color: var(--white);">The content loop: from topic calendar to rankings and back</p>
@@ -241,53 +563,67 @@
             <path d="M 860.8,148 v -6 M 867.8,148 v -11 M 874.8,148 v -15" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linecap="round"></path>
             <text x="867.8" y="171" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">Google rankings</text>
             <text x="50.5" y="96" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">CONTENT CADENCE &middot; LESSONS FEED BACK INTO THE CALENDAR</text>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 127.8,140 H 282.4"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 317.1,140 H 470.2"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 523.8,140 H 661.1"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.4s" begin="3.5s" repeatCount="indefinite" path="M 695.8,140 H 850.4"></animateMotion></circle>
-            <path d="M 867.8,164 C 867.8,262 110.4,262 110.4,164" stroke="rgba(45,212,191,0.25)" stroke-width="1.5" stroke-dasharray="3 7"><animate attributeName="stroke-dashoffset" from="0" to="140" dur="7s" repeatCount="indefinite"></animate></path><circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0.95"><animateMotion dur="8s" begin="1s" repeatCount="indefinite" path="M 867.8,164 C 867.8,262 110.4,262 110.4,164"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.2s"></set><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 127.8,140 H 282.4"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.3s"></set><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 317.1,140 H 470.2"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.4s"></set><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 523.8,140 H 661.1"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="3.5s"></set><animateMotion dur="5.4s" begin="3.5s" repeatCount="indefinite" path="M 695.8,140 H 850.4"></animateMotion></circle>
+            <path d="M 867.8,164 C 867.8,262 110.4,262 110.4,164" stroke="rgba(45,212,191,0.25)" stroke-width="1.5" stroke-dasharray="3 7"><animate attributeName="stroke-dashoffset" from="0" to="140" dur="7s" repeatCount="indefinite"></animate></path><circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1s"></set><animateMotion dur="8s" begin="1s" repeatCount="indefinite" path="M 867.8,164 C 867.8,262 110.4,262 110.4,164"></animateMotion></circle>
           </svg>
         </div>
         <p class="flow-cap">A topic from the calendar goes through keyword research, a text written with an expert and publishing, and the Google rankings feed back into the calendar as lessons for the next topics.</p>
       </div>
-      <div class="sec-head sr">
+
+      <div class="stack sr">
         <p class="eyebrow">The solution</p>
         <h2 id="rozwiazanie">A steady content cadence that works in the background.</h2>
         <div class="accent-bar"></div>
       </div>
-      <ol class="stack sr" style="max-width: 860px;">
-        <li class="row" style="align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono">01</span>
-          <div class="stack-s" style="gap: 4px;">
-            <h3>Topic calendar</h3>
+
+      <ol class="sr" style="display: flex; flex-direction: column; max-width: 860px;">
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">01</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Topic calendar</h3>
             <p class="body-2">Topics come from the questions the firm's clients ask, not at random.</p>
           </div>
         </li>
-        <li class="row" style="align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono">02</span>
-          <div class="stack-s" style="gap: 4px;">
-            <h3>Keyword research</h3>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">02</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Keyword research</h3>
             <p class="body-2">We check what people actually search for and what the text is up against.</p>
           </div>
         </li>
-        <li class="row" style="align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono">03</span>
-          <div class="stack-s" style="gap: 4px;">
-            <h3>Texts written with experts</h3>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">03</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Texts written with experts</h3>
             <p class="body-2">AI writes the drafts; the advisers sign off on the substance.</p>
           </div>
         </li>
-        <li class="row" style="align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono">04</span>
-          <div class="stack-s" style="gap: 4px;">
-            <h3>Publishing and linking</h3>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">04</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Publishing and linking</h3>
             <p class="body-2">The article goes live on the website, linked into the rest of the site.</p>
           </div>
         </li>
-        <li class="row" style="align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono">05</span>
-          <div class="stack-s" style="gap: 4px;">
-            <h3>Rank tracking</h3>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; flex: none; align-self: flex-start; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">05</span>
+          <div>
+            <h3 style="margin-bottom: 4px;">Rank tracking</h3>
             <p class="body-2">We see what made it into the top 3 and plan the next topics.</p>
           </div>
         </li>
@@ -295,58 +631,98 @@
     </div>
   </section>
 
-  <section class="sec sec-mint" aria-labelledby="wyniki">
+  <section class="sec sec-mint" aria-labelledby="wyniki" data-case="taxnet">
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Results</p>
         <h2 id="wyniki">Measured after five months of service.</h2>
         <div class="accent-bar"></div>
       </div>
-      <dl class="grid grid-3 sr-grid" style="margin-bottom: clamp(20px, 2.5vw, 36px);">
-        <div class="card sr" style="flex-direction: column-reverse; gap: 8px;">
-          <dt class="metric-lab">organic traffic: from 176 to 349 visits a month, Semrush estimate</dt>
-          <dd class="metric-num">+98%</dd>
+      <div class="t-res">
+        <div class="console t-chart sr" aria-hidden="true">
+          <div class="console-bar">
+            <span class="row" style="gap: 10px;">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round"><path d="M2 13.5h12M4.5 11V7.5M8 11V3.5M11.5 11V6"></path></svg>
+              <span>results &middot; Tax-Net</span>
+            </span>
+            <span style="color: var(--teal-2); letter-spacing: .08em;">5 MONTHS OF SERVICE</span>
+          </div>
+          <div class="t-chart-b">
+            <div class="t-grp">
+              <p class="t-grp-h">ORGANIC TRAFFIC</p>
+              <div class="t-bars">
+                <span class="t-col"><b>176</b><i style="--h: .505; --k: 0;"></i></span>
+                <span class="t-col t-after"><b>349 <em>+98%</em></b><i style="--h: 1; --k: 1;"></i></span>
+              </div>
+              <p class="t-labs"><span>March</span><span>August</span></p>
+            </div>
+            <div class="t-grp">
+              <p class="t-grp-h">KEYWORDS IN TOP&nbsp;3</p>
+              <div class="t-bars">
+                <span class="t-col"><b>9</b><i style="--h: 1; --k: 2;"></i></span>
+                <span class="t-col t-after"><b>7</b><i style="--h: .778; --k: 3;"></i></span>
+              </div>
+              <p class="t-labs"><span>tracked</span><span>in top 3</span></p>
+            </div>
+            <div class="t-grp">
+              <p class="t-grp-h">AUTHORITY SCORE</p>
+              <div class="t-bars">
+                <span class="t-col"><b>9</b><i style="--h: .643; --k: 4;"></i></span>
+                <span class="t-col t-after"><b>14</b><i style="--h: 1; --k: 5;"></i></span>
+              </div>
+              <p class="t-labs"><span>March</span><span>August</span></p>
+            </div>
+          </div>
+          <p class="t-chart-f">Semrush estimate, March vs August 2026</p>
         </div>
-        <div class="card sr" style="flex-direction: column-reverse; gap: 8px;">
-          <dt class="metric-lab">targeted keywords in the top 3 results, Semrush estimate</dt>
-          <dd class="metric-num">7 of 9</dd>
-        </div>
-        <div class="card sr" style="flex-direction: column-reverse; gap: 8px;">
-          <dt class="metric-lab">domain Authority Score, Semrush estimate</dt>
-          <dd class="metric-num">9 &rarr; 14</dd>
-        </div>
-      </dl>
-      <div class="card sr" style="flex-direction: row; align-items: center; gap: 16px; max-width: 860px;">
-        <span class="label" style="color: var(--teal-text); white-space: nowrap;">Reference</span>
-        <p class="body-2">A reference contact at the client is available on request, during the call.</p>
+        <dl class="t-cards sr-grid">
+          <div class="card sr">
+            <dt class="metric-lab">organic traffic: from 176 to 349 visits a month, Semrush estimate</dt>
+            <dd class="metric-num">+98%</dd>
+          </div>
+          <div class="card sr">
+            <dt class="metric-lab">targeted keywords in the top 3 results, Semrush estimate</dt>
+            <dd class="metric-num">7 of 9</dd>
+          </div>
+          <div class="card sr">
+            <dt class="metric-lab">domain Authority Score, Semrush estimate</dt>
+            <dd class="metric-num">9 &rarr; 14</dd>
+          </div>
+        </dl>
+      </div>
+      <p class="card sr" style="flex-direction: row; align-items: center; flex-wrap: wrap; gap: 16px; max-width: 860px;">
+        <span class="label" style="color: var(--teal-text);">Reference</span>
+        <span class="body-2">A reference contact at the client is available on request, during the call.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="sec sec-white" aria-labelledby="zakres" style="padding-block: clamp(36px, 4vw, 56px);">
+    <div class="wrap">
+      <h2 id="zakres" class="vh">Scope</h2>
+      <div class="row sr" style="gap: 28px;">
+        <p class="label">Service scope</p>
+        <ul class="chips">
+          <li class="chip">Content calendar</li>
+          <li class="chip">Keyword research</li>
+          <li class="chip">Expert articles</li>
+          <li class="chip">Internal linking</li>
+          <li class="chip">LinkedIn</li>
+          <li class="chip">Rank tracking</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="sec sec-white" aria-labelledby="zakres">
-    <div class="wrap row sr" style="gap: 28px;">
-      <h2 id="zakres" class="vh">Scope</h2>
-      <p class="label" style="white-space: nowrap;">Service scope</p>
-      <ul class="chips">
-        <li class="chip">Content calendar</li>
-        <li class="chip">Keyword research</li>
-        <li class="chip">Expert articles</li>
-        <li class="chip">Internal linking</li>
-        <li class="chip">LinkedIn</li>
-        <li class="chip">Rank tracking</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="sec sec-navy" aria-labelledby="taxnet-cta" data-animated style="background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%);">
+  <section class="sec sec-navy" aria-labelledby="taxnet-cta" data-case="taxnet" data-animated style="background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%);">
     <div class="wrap">
-      <div class="stack sr" style="align-items: center; text-align: center; max-width: 720px; margin-inline: auto;">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 720px; margin-inline: auto; gap: 22px;">
         <h2 id="taxnet-cta">Tell us about a similar process.</h2>
         <p class="lead">Within 24 hours we come back with an automation idea and a calculation of the benefits. The call is free.</p>
         <a class="btn btn-primary glow" href="../../../en/contact/">Book a free consultation</a>
         <div class="btn-row" style="justify-content: center; gap: 32px;">
           <a class="link-more" href="../../../en/#case-studies">Back to all case studies <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg></a>
-          <a class="link-more" href="../../../en/case-studies/eticod/">Next case study: Eticod<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg></a>
+          <a class="link-more" href="../../../en/case-studies/eticod/">Next case study: Eticod <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg></a>
         </div>
       </div>
     </div>
@@ -404,6 +780,7 @@
   </footer>
 
   <script src="../../../js/site.js" defer></script>
+  <script src="../../../js/case.js" defer></script>
 </body>
 
 </html>

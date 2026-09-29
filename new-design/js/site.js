@@ -39,8 +39,11 @@
       drawer.setAttribute('data-open', open ? 'true' : 'false');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.setAttribute('data-menu', open ? 'open' : 'closed');
-      burger.querySelector('[data-icon-open]').hidden = open;
-      burger.querySelector('[data-icon-close]').hidden = !open;
+      // na <svg> wlasciwosc .hidden nic nie robi, dziala tylko atrybut
+      burger.querySelector('[data-icon-open]').toggleAttribute('hidden', open);
+      burger.querySelector('[data-icon-close]').toggleAttribute('hidden', !open);
+      // szuflada zaczyna sie pod naglowkiem, gdziekolwiek on teraz jest (np. pod paskiem podgladu)
+      if (open) drawer.style.top = Math.max(0, Math.round(header.getBoundingClientRect().bottom)) + 'px';
       if (open) { var first = drawer.querySelector('a[href]'); if (first) first.focus(); }
     };
     burger.addEventListener('click', function () {
@@ -62,7 +65,7 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 900 && isOpen()) setMenu(false);
+      if (window.innerWidth > 1100 && isOpen()) setMenu(false);
     });
   }
 
@@ -186,6 +189,7 @@
     }
     var box = demo.closest('.wrap');
     var btn = box && box.querySelector('[data-demo-replay]');
+    if (btn && reduce) btn.hidden = true;
     if (btn) btn.addEventListener('click', play);
   });
 })();

@@ -49,9 +49,10 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../../../css/site.css">
+  <link rel="stylesheet" href="../../../css/case.css">
 </head>
 
-<body>
+<body class="page-case">
   <div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
@@ -106,72 +107,212 @@
 
   <main id="main" tabindex="-1">
 
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="holbox-h" data-animated>
-    <div class="wrap stack" style="gap: 34px;">
+  <style>
+    /* Okladka Holbox: ekspozytor podlogowy z tektury, jak rysunek konstruktora. Najpierw plaski wykroj
+       (ciecie turkusem, bigi przerywane, wymiary w mm), potem strzalka skladania i ten sam arkusz jako stojak
+       w rzucie izometrycznym: tyl z naglowkiem, boki, cokol, polki wskakuja po kolei, a na nich staja kartki
+       jak wiersze arkusza. Ruch z klockow cs-a-* (css/case.css), czasy w style. */
+    .cs-art[data-case="holbox"] .h-blank  { fill: rgba(214,178,120,.14); }
+    .cs-art[data-case="holbox"] .h-cut    { fill: none; stroke: var(--teal-2); stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+    .cs-art[data-case="holbox"] .h-crease { fill: none; stroke: rgba(255,255,255,.62); stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .cs-art[data-case="holbox"] .h-back, .cs-art[data-case="holbox"] .h-lside, .cs-art[data-case="holbox"] .h-rside,
+    .cs-art[data-case="holbox"] .h-plinth, .cs-art[data-case="holbox"] .h-shelf, .cs-art[data-case="holbox"] .h-edge
+                                          { stroke: rgba(255,255,255,.8); stroke-width: 1.3; stroke-linejoin: round; }
+    .cs-art[data-case="holbox"] .h-back   { fill: #282219; }
+    .cs-art[data-case="holbox"] .h-lside  { fill: #352C22; }
+    .cs-art[data-case="holbox"] .h-plinth { fill: #3E3328; }
+    .cs-art[data-case="holbox"] .h-shelf  { fill: #5B4A37; }
+    .cs-art[data-case="holbox"] .h-edge   { fill: #43382B; }
+    .cs-art[data-case="holbox"] .h-rside  { fill: #4A3D2F; }
+    .cs-art[data-case="holbox"] .h-grid   { fill: none; stroke: var(--teal-2); stroke-width: 1.2; opacity: .8; }
+    .cs-art[data-case="holbox"] .h-card   { fill: #F4F8FC; }
+    .cs-art[data-case="holbox"] .h-card-l { fill: none; stroke: #B6C2D1; stroke-width: 1; }
+    .cs-art[data-case="holbox"] .h-bar    { fill: none; stroke: #64748B; stroke-width: 2.6; stroke-linecap: round; }
+    /* polki wskakuja z gory z lekkim przeskokiem (bez skalowania, zeby nie wystawaly za bok), kartki staja od dolu */
+    @keyframes h-drop  { from { opacity: 0; transform: translateY(-16px); } 40% { opacity: 1; } }
+    @keyframes h-stand { from { opacity: 0; transform: scaleY(0); } 50% { opacity: 1; } }
+    .cs-art[data-case="holbox"].play .h-a-drop  { animation: h-drop var(--t, .5s) var(--d, 0s) cubic-bezier(.3,1.6,.5,1) both; }
+    .cs-art[data-case="holbox"].play .h-a-stand { transform-box: fill-box; transform-origin: 50% 100%; animation: h-stand var(--t, .45s) var(--d, 0s) cubic-bezier(.3,1.35,.5,1) both; }
+    /* na waskim rysunku wymiary i legenda sa schowane, wiec podpis podchodzi blizej */
+    @container (max-width: 399px) { .cs-art[data-case="holbox"] svg { margin-bottom: -6%; } }
+    .cs-art[data-case="holbox"] .h-n      { font-family: var(--mono); font-size: 22px; font-weight: 500; letter-spacing: .06em; fill: var(--on-dark-3); }
 
-      <nav aria-label="Breadcrumb">
-        <ol class="row label" style="gap: 8px;">
-          <li><a href="../../../en/#case-studies">Case studies</a></li>
-          <li aria-hidden="true">/</li>
-          <li><span aria-current="page" style="color: var(--teal-2);">Holbox</span></li>
-        </ol>
-      </nav>
+    /* hero: trzy liczby w rzedzie jak w makiecie, na telefonie liczba i opis w jednym wierszu (makieta mobilna) */
+    [data-case="holbox"] .h-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 20px clamp(20px, 2.8vw, 40px); width: 100%; margin-top: 4px; }
+    [data-case="holbox"] .h-metrics .metric { flex-direction: column-reverse; justify-content: flex-end; max-width: 200px; }
+    [data-case="holbox"] .h-metrics .metric-num { font-size: clamp(28px, 2.7vw, 38px); }
+    @media (max-width: 640px) {
+      [data-case="holbox"] .h-metrics { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+      [data-case="holbox"] .h-metrics .metric { flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 12px; max-width: none; }
+      [data-case="holbox"] .h-metrics .metric-num { flex: none; font-size: 23px; }
+    }
 
-      <div class="grid-hero">
-        <div class="stack" style="align-items: flex-start; gap: 24px;">
-          <div class="row" style="gap: 14px;">
-            <span style="background: var(--on-dark); border-radius: 8px; padding: 6px 12px; display: inline-flex; align-items: center;">
-              <img src="../../../assets/klienci/holbox.svg" alt="Holbox" width="44" height="18" style="height: 18px; width: auto;">
-            </span>
-            <span class="label" style="color: var(--teal-2); letter-spacing: .12em;">Displays and POS &middot; Gliwice, Poland</span>
-          </div>
+    /* demo: pliki na Dysku, przekazanie miedzy workflowami, skan z telefonu, arkusz faktur */
+    [data-case="holbox"] .h-files, [data-case="holbox"] .h-hand { display: flex; flex-wrap: wrap; gap: 6px; }
+    [data-case="holbox"] .cs-file.h-moved { background: var(--white); border-style: dashed; color: var(--text-3); text-decoration: line-through; }
+    [data-case="holbox"] .cs-tag.h-tag-w { border-color: var(--cs-amber); background: var(--cs-amber-bg); color: var(--cs-amber-text); }
+    [data-case="holbox"] .h-photo { padding: 12px 14px 14px; background: #E6EAEF; }
+    [data-case="holbox"] .h-photo .cs-lines { padding: 8px 12px 8px 0; background: #FBFAF6; border-radius: 2px; transform: rotate(-1.2deg); box-shadow: 0 8px 16px -10px rgba(15,23,42,.45); }
+    [data-case="holbox"] .h-blur { display: inline-block; filter: blur(2.4px); }
+    [data-case="holbox"] .h-sheet th:first-child, [data-case="holbox"] .h-sheet td:first-child { padding-right: 4px; }
+    [data-case="holbox"] .h-sheet .h-rn { width: 1%; font-family: var(--mono); font-size: 11.5px; color: var(--text-3); background: #F5F8FB; }
+    [data-case="holbox"] .h-sheet .h-prev td { color: var(--text-3); }
+    [data-case="holbox"] .h-sheet td.cs-b, [data-case="holbox"] .h-sheet th:last-child { text-align: right; }
+    [data-case="holbox"] .h-sheet th { white-space: normal; vertical-align: bottom; }
+    @media (max-width: 1100px) { [data-case="holbox"] .h-sheet .h-rn { display: none; } }
+    /* wyniki: trzy kafle w rzedzie jak w makiecie, bez sieroty 2+1 na tablecie; na telefonie jeden pod drugim */
+    [data-case="holbox"] .h-res { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    [data-case="holbox"] .h-res .metric { justify-content: flex-end; } /* column-reverse: liczby trzymaja gorna linie */
+    @media (max-width: 640px) { [data-case="holbox"] .h-res { grid-template-columns: minmax(0, 1fr); } }
+    /* telefon: cele dotyku min. 40 px bez przesuwania ukladu (okruszki, link do przykladu, linki pod CTA) */
+    @media (max-width: 767px) {
+      [data-case="holbox"] nav ol a { display: inline-flex; align-items: center; padding-block: 13px; margin-block: -13px; }
+      [data-case="holbox"] .link-more { padding-block: 9px; margin-block: -9px; }
+    }
+    @media (max-width: 699px) {
+      [data-case="holbox"] .h-sheet { font-size: 12px; }
+      [data-case="holbox"] .h-sheet th, [data-case="holbox"] .h-sheet td { padding-inline: 6px; }
+      [data-case="holbox"] .h-sheet th:nth-child(2), [data-case="holbox"] .h-sheet td:nth-child(2) { padding-left: 12px; }
+      [data-case="holbox"] .h-sheet th:last-child, [data-case="holbox"] .h-sheet td:last-child { padding-right: 12px; }
+    }
+  </style>
 
-          <h1 id="holbox-h">Email invoices find their own way <span class="mark">into the reports.</span></h1>
-
-          <p class="lead" style="max-width: 560px;">Holbox Poland designs and manufactures cardboard displays and POS materials. Invoices arrive by email, and the data from each document goes into the invoice sheet on its own.</p>
-
-          <dl class="row" style="gap: 28px 40px; align-items: flex-start; margin-top: 10px;">
-            <div class="metric" style="flex-direction: column-reverse;">
-              <dt class="metric-lab">less retyping every month</dt>
-              <dd class="metric-num"><span data-count-to="40" data-count-from="0">40</span> h</dd>
-            </div>
-            <div class="metric" style="flex-direction: column-reverse; max-width: 200px;">
-              <dt class="metric-lab">manual corrections across about 2,400 documents</dt>
-              <dd class="metric-num">0</dd>
-            </div>
-            <div class="metric" style="flex-direction: column-reverse; max-width: 200px;">
-              <dt class="metric-lab">in production since November</dt>
-              <dd class="metric-num">2025</dd>
-            </div>
-          </dl>
+  <section class="sec sec-dark bg-grid bg-glow cs-hero" data-case="holbox" aria-labelledby="holbox-h" data-animated>
+    <svg class="bg-deco" viewBox="0 0 1440 640" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,54 H 840 Q 872,54 872,86 V 120" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,40 H 1170 Q 1138,40 1138,72 V 108" stroke="rgba(45,212,191,0.09)" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230" stroke="rgba(45,212,191,0.11)" stroke-width="2" stroke-linejoin="round"></path>
+      <circle cx="872" cy="86" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <rect x="868" y="116" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="226" y="528" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="1s"></set><animateMotion dur="11s" begin="1s" repeatCount="indefinite" path="M -20,54 H 840 Q 872,54 872,86 V 120"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="5s"></set><animateMotion dur="13s" begin="5s" repeatCount="indefinite" path="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230"></animateMotion></circle>
+    </svg>
+    <div class="wrap grid-hero">
+      <div class="stack" style="align-items: flex-start; gap: 24px;">
+        <nav aria-label="Breadcrumb">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="../../../en/#case-studies">Case studies</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page" style="color: var(--teal-2);">Holbox</span></li>
+          </ol>
+        </nav>
+        <div class="row" style="gap: 14px;">
+          <span style="background: var(--on-dark); border-radius: 8px; padding: 6px 12px; display: inline-flex; align-items: center;">
+            <img src="../../../assets/klienci/holbox.svg" alt="Holbox" width="63" height="26" style="height: 26px; width: auto; max-width: none;">
+          </span>
+          <span class="label" style="color: var(--teal-2); letter-spacing: .12em;">Displays and POS &middot; Gliwice, Poland</span>
         </div>
 
-        <div class="console" aria-hidden="true">
-          <div class="console-bar">
-            <span class="row" style="gap: 10px;">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2"></rect><path d="M2 4.5 8 9l6-4.5"></path></svg>
-              <span>agent &middot; Holbox invoices</span>
-            </span>
-            <span class="row" style="gap: 7px; color: var(--teal-2); font-size: 11.5px;"><span class="status-dot"></span> ONLINE</span>
+        <h1 id="holbox-h">Email invoices find their own way <span class="mark">into the reports.</span></h1>
+
+        <p class="lead" style="max-width: 560px;">Holbox Poland designs and manufactures cardboard displays and POS materials. Invoices arrive by email, and the data from each document goes into the invoice sheet on its own.</p>
+
+        <dl class="h-metrics">
+          <div class="metric">
+            <dt class="metric-lab">less retyping every month</dt>
+            <dd class="metric-num"><span data-count-to="40" data-count-from="0">40</span> h</dd>
           </div>
-          <div class="console-body">
-            <div class="log-line" style="animation-delay: .6s;"><span class="ts">10:12:04</span><span>new invoice in the inbox</span></div>
-            <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">10:12:06</span><span>attachment saved to Drive</span></div>
-            <div class="log-line" style="animation-delay: 2.4s;"><span class="ts">10:12:08</span><span>document read: 12 fields</span></div>
-            <div class="log-line" style="animation-delay: 3.3s;"><span class="ts">10:12:09</span><span>completeness OK, written to the sheet</span></div>
-            <div class="log-line log-line-ok" style="animation-delay: 4.2s;"><span class="ts">10:12:09</span><span>done &middot; file moved to processed</span></div>
-            <div class="log-line" style="animation-delay: 5.1s; align-items: center;"><span class="ts">10:12:10</span><span>waiting for the next email</span><span class="caret"></span></div>
+          <div class="metric">
+            <dt class="metric-lab">manual corrections across about 2,400 documents</dt>
+            <dd class="metric-num">0</dd>
           </div>
-        </div>
+          <div class="metric">
+            <dt class="metric-lab">in production since November</dt>
+            <dd class="metric-num">2025</dd>
+          </div>
+        </dl>
       </div>
 
-      <ul class="chips">
+      <div class="cs-hero-art">
+        <figure class="cs-art" data-case="holbox" role="img" aria-label="Drawing of a cardboard floor display. On the left, the flat die-cut blank made from one sheet: cut lines, creases between the back and the sides, and slots for the shelves, with dimensions of 400, 600 and 400 mm. A folding arrow leads to the assembled stand in an isometric view: a back with a header, two sides, a plinth and four shelves, each holding a card divided into cells like a spreadsheet row. Example dimensions 600 by 400 by 1600 mm.">
+          <svg viewBox="0 14 600 394" aria-hidden="true" focusable="false">
+            <!-- wykroj: arkusz tektury, ciecie turkusem, bigi przerywane, wymiary w mm -->
+            <path class="h-blank cs-a-fade" d="M30 320L48 125L90 125L90 86Q135 60.5 180 86L180 125L222 125L240 320Z" style="--d: .15s; --t: .7s;"></path>
+            <path class="h-cut cs-a-draw" pathLength="1" d="M30 320L48 125L90 125L90 86Q135 60.5 180 86L180 125L222 125L240 320Z" style="--t: 1s;"></path>
+            <path class="h-cut cs-a-fade" d="M53.4 297.5H71.4M198.6 297.5H216.6M123 297.5H147M58.3 252.5H76.3M193.8 252.5H211.8M123 252.5H147M63.1 207.5H81.1M188.9 207.5H206.9M123 207.5H147M68 162.5H86M184.1 162.5H202.1M123 162.5H147" style="--d: .75s; --t: .3s;"></path>
+            <path class="h-crease cs-a-fade" d="M90 125V320M180 125V320" style="--d: .9s; --t: .4s;"></path>
+            <text class="cs-t cs-small cs-a-fade" x="135" y="112" text-anchor="middle" style="--d: .5s;">blank</text>
+            <text class="h-n cs-narrow cs-a-fade" x="30" y="66" style="--d: .5s;">BLANK</text>
+            <g class="cs-small cs-a-fade" style="--d: 1.05s;">
+              <path class="cs-ln-2" d="M30 340H240M30 334V346M90 334V346M180 334V346M240 334V346"></path>
+              <text class="cs-t" x="60" y="362" text-anchor="middle">400</text>
+              <text class="cs-t" x="135" y="362" text-anchor="middle">600</text>
+              <text class="cs-t" x="210" y="362" text-anchor="middle">400</text>
+            </g>
+            <g class="cs-small cs-a-fade" style="--d: 1.15s;">
+              <path class="h-cut" d="M30 393h22"></path><text class="cs-t" x="60" y="398">cut</text>
+              <path class="h-crease" d="M114 393h22"></path><text class="cs-t" x="144" y="398">crease</text>
+            </g>
+            <!-- skladanie -->
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M250 204C280 180 314 180 348 200" style="--d: 1.1s; --t: .45s;"></path>
+            <path class="cs-acc cs-a-fade" d="M339 193L348 200L337 203" style="--d: 1.5s; --t: .2s;"></path>
+            <text class="cs-t cs-small cs-a-fade" x="299" y="230" text-anchor="middle" style="--d: 1.3s;">folding</text>
+            <!-- ekspozytor zlozony, rzut izometryczny: tyl z naglowkiem, bok od srodka, cokol, polki z kartkami, bok z zewnatrz -->
+            <g class="cs-a-rise" style="--d: 1.3s; --t: .5s;">
+              <path class="h-back" d="M421.2 279L506.9 328.5L506.9 74.4Q464 29.8 421.2 24.9Z"></path>
+              <path class="h-grid" d="M421.2 64.5L506.9 114M449.7 81L449.7 41.4M478.3 97.5L478.3 57.9M421.2 43L506.9 92.5"></path>
+            </g>
+            <g class="cs-a-wipe-l" style="--d: 1.45s; --t: .45s;"><path class="h-lside" d="M364 312L421.2 279L421.2 64.5L381.1 87.6Z"></path></g>
+            <g class="cs-a-rise" style="--d: 1.35s; --t: .5s;"><path class="h-plinth" d="M364 312L449.7 361.5L451.7 335.6L366 286.1Z"></path></g>
+            <g class="h-a-drop" style="--d: 1.8s;">
+              <path class="h-shelf" d="M366 286.1L451.7 335.6L506.9 303.8L421.2 254.3Z"></path>
+              <path class="h-edge" d="M366 286.1L451.7 335.6L451.7 342.2L366 292.7Z"></path>
+            </g>
+            <g class="h-a-stand" style="--d: 2.1s; --t: .45s;">
+              <path class="h-card" d="M383.1 284.5L454.6 325.7L454.6 297.7L383.1 256.4Z"></path>
+              <path class="h-card-l" d="M406.9 298.2L406.9 270.2M430.8 312L430.8 283.9"></path><path class="h-bar" d="M386.3 272.2L403.8 282.4M410.1 286L423.9 294M433.9 299.7L447.7 307.7"></path>
+            </g>
+            <g class="h-a-drop" style="--d: 1.9s;">
+              <path class="h-shelf" d="M369.9 234.3L455.7 283.8L506.9 254.3L421.2 204.8Z"></path>
+              <path class="h-edge" d="M369.9 234.3L455.7 283.8L455.7 290.4L369.9 240.9Z"></path>
+            </g>
+            <g class="h-a-stand" style="--d: 2.3s; --t: .45s;">
+              <path class="h-card" d="M387.1 232.7L458.5 273.9L458.5 245.9L387.1 204.6Z"></path>
+              <path class="h-card-l" d="M410.9 246.4L410.9 218.4M434.7 260.2L434.7 232.1"></path><path class="h-bar" d="M390.2 220.5L407.8 230.6M414 234.2L427.9 242.2M437.9 248L451.7 255.9"></path>
+            </g>
+            <g class="h-a-drop" style="--d: 2s;">
+              <path class="h-shelf" d="M373.9 182.5L459.6 232L506.9 204.8L421.2 155.3Z"></path>
+              <path class="h-edge" d="M373.9 182.5L459.6 232L459.6 238.6L373.9 189.1Z"></path>
+            </g>
+            <g class="h-a-stand" style="--d: 2.4s; --t: .45s;">
+              <path class="h-card" d="M391 180.9L462.5 222.1L462.5 194.1L391 152.8Z"></path>
+              <path class="h-card-l" d="M414.9 194.6L414.9 166.6M438.7 208.4L438.7 180.3"></path><path class="h-bar" d="M394.2 168.7L411.7 178.8M418 182.4L431.8 190.4M441.8 196.2L455.6 204.2"></path>
+            </g>
+            <g class="h-a-drop" style="--d: 2.2s;">
+              <path class="h-shelf" d="M377.8 130.8L463.6 180.3L506.9 155.3L421.2 105.8Z"></path>
+              <path class="h-edge" d="M377.8 130.8L463.6 180.3L463.6 186.9L377.8 137.4Z"></path>
+            </g>
+            <g class="h-a-stand" style="--d: 2.5s; --t: .45s;">
+              <path class="h-card" d="M395 129.1L466.4 170.4L466.4 142.3L395 101.1Z"></path>
+              <path class="h-card-l" d="M418.8 142.9L418.8 114.8M442.6 156.6L442.6 128.6"></path><path class="h-bar" d="M398.1 116.9L415.7 127M422 130.6L435.8 138.6M445.8 144.4L459.6 152.4"></path>
+            </g>
+            <g class="cs-a-wipe-l" style="--d: 1.55s; --t: .45s;"><path class="h-rside" d="M449.7 361.5L506.9 328.5L506.9 114L466.9 137.1Z"></path></g>
+            <g class="cs-small cs-a-fade" style="--d: 2.3s;">
+              <path class="cs-ln-2" d="M345.4 322.7L431.2 372.2M349 320.7L341.9 324.8M434.7 370.2L427.6 374.3M468.3 372.2L525.5 339.2M464.7 370.2L471.9 374.3M525.5 339.2L525.5 75.2M521.9 73.2L529 77.3M521.9 337.2L529 341.3"></path>
+              <path class="cs-ln-3" d="M506.9 74.4L529 87.2"></path>
+              <text class="cs-t" transform="translate(377.1 353.9) rotate(30)" text-anchor="middle" dy="6">600</text>
+              <text class="cs-t" transform="translate(508 362.2) rotate(-30)" text-anchor="middle" dy="6">400</text>
+              <text class="cs-t" transform="translate(534.3 212.3) rotate(-90)" text-anchor="middle" dy="6">1600</text>
+              <text class="cs-t" x="590" y="398" text-anchor="end">mm, example</text>
+            </g>
+          </svg>
+        </figure>
+        <p class="cs-cap">A display folds up from one sheet of cardboard. Emailed invoices come together in one report sheet.</p>
+        <a class="link-more" href="#przyklad">
+          See the example below
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ul class="chips" style="margin-top: clamp(28px, 3.5vw, 44px);">
         <li class="chip chip-mono" style="text-transform: none; letter-spacing: .06em;">START &middot; November 2025</li>
         <li class="chip chip-mono" style="text-transform: none; letter-spacing: .06em;">VOLUME &middot; about 2,400 documents</li>
         <li class="chip chip-mono" style="text-transform: none; letter-spacing: .06em;">SYSTEMS &middot; Gmail, Google Drive, Gemini (OCR), Google Sheets</li>
         <li class="chip chip-mono" style="text-transform: none; letter-spacing: .06em;">TO A HUMAN &middot; documents with empty fields</li>
       </ul>
-
     </div>
   </section>
 
@@ -201,7 +342,174 @@
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="rozwiazanie">
+  <section class="sec sec-gray" id="przyklad" data-case="holbox" aria-labelledby="przyklad-h">
+    <div class="wrap">
+      <div class="cs-demo-top">
+        <div class="sec-head sr">
+          <p class="eyebrow">An example with made-up invoices</p>
+          <h2 id="przyklad-h">What it looks like on an example.</h2>
+          <div class="accent-bar"></div>
+          <p class="lead">Four emails in the inbox, three with an invoice. The two complete ones go into the sheet, and the scan with an unreadable due date waits for a person.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm cs-replay" data-cs-replay hidden>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2v3h3"></path></svg>
+          Play it again
+        </button>
+      </div>
+
+      <div class="cs-demo" data-cs-demo data-split="2">
+        <div class="cs-col cs-in">
+          <p class="cs-colh">Invoice inbox &middot; example</p>
+          <article class="cs-doc">
+            <header><span class="cs-fmt">inbox</span><b>Received</b><em>4 new</em></header>
+            <ul class="cs-inbox">
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">invoices@sample-cardboard.example</span>
+                <span class="cs-subj">Invoice FV/2026/11/0482</span>
+                <span class="cs-snip">Attachment: <span class="cs-hl" data-f="fa">FV_2026_11_0482.pdf</span></span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="780">invoice A</span><span class="cs-tag cs-tag-done" data-at="5" data-t="1900">processed</span></span>
+              </li>
+              <li class="cs-mail is-skip" data-at="1" data-late="1 700 is-skip">
+                <span class="cs-from">sales@sample-shop.example</span>
+                <span class="cs-subj">Question about a display design</span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="820">skipped</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">office@sample-uv-print.example</span>
+                <span class="cs-subj">FV 118/11/2026, UV printing</span>
+                <span class="cs-snip">Attachment: <span class="cs-hl" data-f="fb">FV_118_11_2026.pdf</span></span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="900">invoice B</span><span class="cs-tag cs-tag-done" data-at="5" data-t="2000">processed</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">billing@sample-courier.example</span>
+                <span class="cs-subj">Invoice for parcels, October</span>
+                <span class="cs-snip">Attachment: <span class="cs-hl" data-f="fc">IMG_4471.jpg</span>, a phone photo</span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="1020">invoice C</span><span class="cs-tag h-tag-w" data-at="4" data-t="1300">on hold</span></span>
+              </li>
+            </ul>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 200 cs-scan">
+            <header><span class="cs-fmt">PDF A</span><b>FV_2026_11_0482.pdf</b><em>p.&nbsp;1</em></header>
+            <ol class="cs-lines">
+              <li><span>Seller: <span class="cs-hl" data-f="a1">Sample Cardboard Ltd</span></span></li>
+              <li><span>VAT invoice no. <span class="cs-hl" data-f="a2">FV/2026/11/0482</span></span></li>
+              <li><span>Issue date: <span class="cs-hl" data-f="a3">03/11/2026</span></span></li>
+              <li><span>Payment due: <span class="cs-hl" data-f="a3">28/11/2026</span></span></li>
+            </ol>
+            <div class="cs-scroll">
+              <table class="cs-spec">
+                <thead><tr><th scope="col">Line</th><th scope="col">Item</th><th scope="col">Net</th><th scope="col">Gross</th></tr></thead>
+                <tbody>
+                  <tr class="cs-hl" data-f="a4"><td>1</td><td>5-ply corrugated board, sheets</td><td class="cs-nowrap">6,240.00</td><td class="cs-nowrap cs-b">7,675.20</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 1300 cs-scan">
+            <header><span class="cs-fmt">PDF B</span><b>FV_118_11_2026.pdf</b><em>p.&nbsp;1</em></header>
+            <ol class="cs-lines">
+              <li><span><span class="cs-hl" data-f="b-ok">Sample UV Print Ltd &middot; FV 118/11/2026</span></span></li>
+              <li><span><span class="cs-hl" data-f="b-ok">Issued 04/11/2026, due 05/12/2026</span></span></li>
+              <li><span><span class="cs-hl" data-f="b-ok">UV printing on board: net 3,915.00, gross PLN 4,815.45</span></span></li>
+            </ol>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 1750 cs-scan">
+            <header><span class="cs-fmt">JPG C</span><b>IMG_4471.jpg</b><em>phone photo</em></header>
+            <div class="h-photo">
+              <ol class="cs-lines">
+                <li><span>Sample Courier Ltd</span></li>
+                <li><span>Invoice FK 77/10/2026</span></li>
+                <li><span>Payment due: <span class="cs-hl" data-f="c-term"><span class="h-blur" aria-hidden="true">14/11/2026</span><span class="vh">unreadable</span></span></span></li>
+                <li><span>Amount due: PLN 506.76</span></li>
+              </ol>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-col cs-mid">
+          <ol class="cs-steps">
+            <li class="cs-step" data-step="1" data-dur="1300"><span class="cs-n">01</span><p>Picks out the invoice emails</p></li>
+            <li class="cs-step" data-step="2" data-dur="1500"><span class="cs-n">02</span><p>Workflow 1 saves the attachments to Drive</p></li>
+            <li class="cs-step" data-step="3" data-dur="2700"><span class="cs-n">03</span><p>Workflow 2 reads the fields from the PDFs and the scan</p></li>
+            <li class="cs-step" data-step="4" data-dur="1700"><span class="cs-n">04</span><p>Checks completeness, an empty field goes to a person</p></li>
+            <li class="cs-step" data-step="5" data-dur="2700"><span class="cs-n">05</span><p>Sheet entry and log, files moved to processed</p></li>
+          </ol>
+          <div class="cs-tally">
+            <div data-at="5" data-t="100"><b data-count="rows">2</b><span>invoices written to the sheet</span></div>
+            <div class="cs-w" data-at="4" data-t="1200"><b>1</b><span>empty field, waiting for a person</span></div>
+            <div class="cs-z" data-at="5" data-t="2100"><b>0</b><span>manual corrections in the sheet</span></div>
+          </div>
+        </div>
+
+        <div class="cs-col cs-out">
+          <div class="cs-card" data-at="2" data-late="3 0 cs-scan">
+            <p class="cs-card-h"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1.5 4.5a1 1 0 0 1 1-1h3.6l1.5 1.7h5.9a1 1 0 0 1 1 1v6.3a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1z"></path></svg>Drive &middot; Invoices / to process</p>
+            <div class="h-files">
+              <span class="cs-file h-moved" data-at="2" data-t="350" data-r="fa" data-f="mv-a" data-fly="" data-late="5 1450 h-moved">FV_2026_11_0482.pdf</span>
+              <span class="cs-file h-moved" data-at="2" data-t="650" data-r="fb" data-f="mv-b" data-fly="" data-late="5 1600 h-moved">FV_118_11_2026.pdf</span>
+              <span class="cs-file" data-at="2" data-t="950" data-r="fc" data-fly="">IMG_4471.jpg</span>
+            </div>
+            <p class="h-hand"><span class="cs-tag cs-tag-ok" data-at="2" data-t="1250">workflow 1 &middot; saved</span><span class="cs-tag cs-tag-done" data-at="3" data-t="100">workflow 2 &middot; picked up</span></p>
+            <p class="cs-card-h" data-at="5" data-t="1350"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1.5 4.5a1 1 0 0 1 1-1h3.6l1.5 1.7h5.9a1 1 0 0 1 1 1v6.3a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1z"></path></svg>Drive &middot; Invoices / processed</p>
+            <div class="h-files">
+              <span class="cs-file" data-at="5" data-t="1450" data-r="mv-a" data-fly="">FV_2026_11_0482.pdf</span>
+              <span class="cs-file" data-at="5" data-t="1600" data-r="mv-b" data-fly="">FV_118_11_2026.pdf</span>
+            </div>
+          </div>
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Fields read, invoice A</b><em>example</em></div>
+            <div class="cs-fr" data-at="3" data-t="450" data-r="a1" data-f="a-ok" data-fly=""><span class="cs-k">Supplier</span><span class="cs-v">Sample Cardboard Ltd</span><span class="cs-s">PDF A, l.&nbsp;1</span></div>
+            <div class="cs-fr" data-at="3" data-t="800" data-r="a2" data-f="a-ok" data-fly=""><span class="cs-k">Invoice no.</span><span class="cs-v">FV/2026/11/0482</span><span class="cs-s">PDF A, l.&nbsp;2</span></div>
+            <div class="cs-fr" data-at="3" data-t="1150" data-r="a3" data-f="a-ok" data-fly="03/11 · 28/11/2026"><span class="cs-k">Date, due</span><span class="cs-v">03/11/2026 &middot; 28/11/2026</span><span class="cs-s">PDF A, l.&nbsp;3–4</span></div>
+            <div class="cs-fr" data-at="3" data-t="1500" data-r="a4" data-f="a-ok" data-fly="6,240.00 · 7,675.20 PLN"><span class="cs-k">Net, gross</span><span class="cs-v">6,240.00 &middot; 7,675.20&nbsp;PLN</span><span class="cs-s">PDF A, line&nbsp;1</span></div>
+          </article>
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Completeness check</b><em>example</em></div>
+            <div class="cs-fr" data-at="4" data-t="150" data-r="a-ok" data-f="a-row"><span class="cs-k">Invoice A</span><span class="cs-v">6 of 6 fields, complete</span><span class="cs-s">read A</span></div>
+            <div class="cs-fr" data-at="4" data-t="400" data-r="b-ok" data-f="b-row"><span class="cs-k">Invoice B</span><span class="cs-v">6 of 6 fields, complete</span><span class="cs-s">PDF B, l.&nbsp;1–3</span></div>
+            <div class="cs-fr cs-gap" data-at="4" data-t="650" data-r="c-term" data-fly="empty field"><span class="cs-k">Invoice C</span><span class="cs-v">empty field: payment due date unreadable<small>not written to the sheet</small></span><span class="cs-s">scan C, l.&nbsp;3</span></div>
+          </article>
+          <div class="cs-human" data-at="4" data-t="1250">
+            <b>To a person</b>
+            <p>Invoice C waits for a person. The automation does not guess the due date, and a document with an empty field never reaches the sheet.</p>
+          </div>
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Invoice sheet</b><em>example</em></div>
+            <div class="cs-scroll">
+              <table class="cs-spec h-sheet">
+                <thead><tr><th scope="col" class="h-rn"><span class="vh">Row</span></th><th scope="col">Supplier</th><th scope="col">Invoice no.</th><th scope="col">Due</th><th scope="col">Gross, PLN</th></tr></thead>
+                <tbody>
+                  <tr class="h-prev"><td class="h-rn">213</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td class="cs-b">&hellip;</td></tr>
+                  <tr data-at="5" data-t="200" data-r="a-row" data-fly="FV/2026/11/0482" data-tick="rows"><td class="h-rn">214</td><td>Sample Cardboard</td><td>FV/<wbr>2026/<wbr>11/<wbr>0482</td><td class="cs-nowrap">28/11/2026</td><td class="cs-nowrap cs-b">7,675.20</td></tr>
+                  <tr data-at="5" data-t="600" data-r="b-row" data-fly="FV 118/11/2026" data-tick="rows"><td class="h-rn">215</td><td>Sample UV Print</td><td>FV 118/<wbr>11/<wbr>2026</td><td class="cs-nowrap">05/12/2026</td><td class="cs-nowrap cs-b">4,815.45</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-log">
+          <div class="cs-log-h">
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2"></rect><path d="M2 4.5 8 9l6-4.5"></path></svg>agent log &middot; email invoices</span>
+            <span style="color: var(--teal-2);"><span class="status-square"></span> EXAMPLE</span>
+          </div>
+          <ol class="cs-log-b">
+            <li data-at="1" data-t="1100"><span class="ts">10:12:04</span><span>4 new emails: 3 with an invoice, 1 skipped</span></li>
+            <li data-at="2" data-t="1350"><span class="ts">10:12:06</span><span>workflow 1: 3 attachments in Invoices/to process</span></li>
+            <li data-at="3" data-t="2300"><span class="ts">10:12:08</span><span>workflow 2: read 3 files, 2 PDFs and 1 scan</span></li>
+            <li data-at="4" data-t="1100"><span class="ts">10:12:09</span><span>IMG_4471.jpg on hold: payment due date empty</span></li>
+            <li data-at="5" data-t="1100"><span class="ts">10:12:09</span><span>FV/2026/11/0482 written to the sheet</span></li>
+            <li data-at="5" data-t="1450"><span class="ts">10:12:10</span><span>FV 118/11/2026 written to the sheet</span></li>
+            <li class="cs-ok" data-at="5" data-t="2000"><span class="ts">10:12:10</span><span>done &middot; 2 files in processed</span></li>
+            <li data-at="5" data-t="2400"><span class="ts">10:12:11</span><span>waiting for the next email</span><span class="caret"></span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="cs-note"><b>The automation does not guess unreadable fields.</b> Only a complete invoice goes into the sheet, and a document with an empty field waits for a person. The companies, emails, invoice numbers, amounts and dates are made up.</p>
+    </div>
+  </section>
+
+  <section class="sec sec-white" aria-labelledby="rozwiazanie">
     <div class="wrap">
 
       <div class="flow sr" style="margin-bottom: clamp(32px, 4vw, 52px);" data-animated>
@@ -238,11 +546,11 @@
             <text x="946.7" y="271" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">sheet + log</text>
             <text x="50.5" y="46" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">WORKFLOW 1 &middot; INBOX</text>
             <text x="50.5" y="196" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">WORKFLOW 2 &middot; OCR AND SHEET</text>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 127.8,90 H 314"></animateMotion></circle>
-            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 331.3,112 C 331.3,112 331.3,218 331.3,218"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="2.4s" repeatCount="indefinite" path="M 352.6,240 H 515.1"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.8s" begin="3.5s" repeatCount="indefinite" path="M 553.8,240 H 724.2"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.4s" begin="4.6s" repeatCount="indefinite" path="M 758.9,240 H 929.3"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.2s"></set><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 127.8,90 H 314"></animateMotion></circle>
+            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.3s"></set><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 331.3,112 C 331.3,112 331.3,218 331.3,218"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.4s"></set><animateMotion dur="5.2s" begin="2.4s" repeatCount="indefinite" path="M 352.6,240 H 515.1"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="3.5s"></set><animateMotion dur="4.8s" begin="3.5s" repeatCount="indefinite" path="M 553.8,240 H 724.2"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="4.6s"></set><animateMotion dur="5.4s" begin="4.6s" repeatCount="indefinite" path="M 758.9,240 H 929.3"></animateMotion></circle>
           </svg>
         </div>
         <p class="flow-cap">The first workflow watches the inbox and puts the attachment on Drive. The second picks the file up from Drive, reads the fields with OCR, checks that nothing is missing and writes the document to the sheet, with a log.</p>
@@ -307,7 +615,7 @@
     </div>
   </section>
 
-  <section class="sec sec-mint" aria-labelledby="wyniki">
+  <section class="sec sec-mint" data-case="holbox" aria-labelledby="wyniki">
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Results</p>
@@ -315,7 +623,7 @@
         <div class="accent-bar"></div>
       </div>
 
-      <dl class="grid grid-3 sr-grid" style="margin-bottom: 36px;">
+      <dl class="grid grid-3 sr-grid h-res" style="margin-bottom: 36px;">
         <div class="card metric" style="flex-direction: column-reverse; gap: 8px;">
           <dt class="metric-lab">less manual retyping a month</dt>
           <dd class="metric-num">40 h</dd>
@@ -354,7 +662,7 @@
     </div>
   </section>
 
-  <section class="sec sec-navy" aria-labelledby="cta-holbox" data-animated>
+  <section class="sec sec-navy" data-case="holbox" aria-labelledby="cta-holbox" data-animated style="background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%);">
     <div class="wrap">
       <div class="stack sr" style="align-items: center; gap: 22px; max-width: 720px; margin-inline: auto; text-align: center;">
         <h2 id="cta-holbox">Tell us about a similar process.</h2>
@@ -426,6 +734,7 @@
   </footer>
 
   <script src="../../../js/site.js" defer></script>
+  <script src="../../../js/case.js" defer></script>
 </body>
 
 </html>
