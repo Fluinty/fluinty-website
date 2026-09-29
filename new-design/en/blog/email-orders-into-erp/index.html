@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cookiebot Consent Management -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+    data-blockingmode="auto" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L" data-cookieconsent="ignore"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-SZ9P7Y055L');
+  </script>
+
+  <title>Email orders into an ERP with no API. How it works at Eticod | Fluinty</title>
+  <meta name="description" content="Two lanes, a completeness check and an entry into a system that has no API. The story of a deployment with zero incorrect entries since launch.">
+  <link rel="canonical" href="https://fluinty.pl/new-design/en/blog/email-orders-into-erp/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fluinty">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://fluinty.pl/new-design/en/blog/email-orders-into-erp/">
+  <meta property="og:title" content="Email orders into an ERP with no API. How it works at Eticod | Fluinty">
+  <meta property="og:description" content="Two lanes, a completeness check and an entry into a system that has no API. The story of a deployment with zero incorrect entries since launch.">
+  <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/new-design/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/new-design/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../../css/site.css">
+</head>
+
+<body>
+  <div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../../en/" aria-label="Fluinty, home page">
+        <img src="../../../assets/logo.png" alt="" width="28" height="28">
+        <span class="brand-word">fluinty.</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main">
+        <a href="../../../en/#case-studies">Case studies</a>
+        <a href="../../../en/#what-we-automate">What we automate</a>
+        <a href="../../../en/#products">Products</a>
+        <a href="../../../en/#team">Team</a>
+        <a href="../../../en/#pricing">Pricing</a>
+        <a href="../../../en/contact/">Contact</a>
+      </nav>
+
+      <div class="nav-side">
+        <a class="nav-lang" href="/new-design/blog/zamowienia-z-maili-do-erp/" hreflang="pl" lang="pl">PL</a>
+        <a class="nav-cta" href="../../../en/contact/">Free consultation</a>
+        <a class="nav-pill" href="../../../en/contact/">Book</a>
+        <button class="nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"
+          aria-label="Menu">
+          <svg data-icon-open width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg data-icon-close hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="../../../en/#case-studies">Case studies</a>
+      <a href="../../../en/#what-we-automate">What we automate</a>
+      <a href="../../../en/#products">Products</a>
+      <a href="../../../en/#team">Team</a>
+      <a href="../../../en/#pricing">Pricing</a>
+      <a href="../../../en/contact/">Contact</a>
+      <div class="drawer-foot">
+        <a class="btn btn-primary" href="../../../en/contact/">Book a free consultation</a>
+        <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+        <a href="tel:+48509843514">+48 509 843 514</a>
+        <a href="/new-design/blog/zamowienia-z-maili-do-erp/" hreflang="pl" lang="pl">PL</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle class="flow-orb" r="2.8" fill="#00C4B4" opacity="0.55">
+        <animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion>
+      </circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Breadcrumbs">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="../../../en/blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Orders and documents</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Email orders into an ERP with no API. How it works at Eticod</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="../../../assets/zespol/adam-nelip.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);">Adam Nelip &middot; 6 min read &middot; <time datetime="2026-09-12">12 September 2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">Eticod is a label printing company. Orders arrive by email: in the
+          message body or as a PDF attachment. Entering one into the ERP by hand took 20–25 minutes. Since March 2026
+          an agent has been doing it, even though the system has no API. Below is the whole flow, step by step.</p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <div class="stack sr" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+          <h2 id="dwa-tory" style="font-size: clamp(23px, 2.4vw, 30px);">Two lanes: the email body and the attachment from Drive</h2>
+          <p class="body-2">The agent watches the order inbox and picks the order emails out of the rest of the
+            correspondence. Each order then goes down two lanes. The first lane reads the email body: who is
+            ordering, what, how much and by when. The second lane saves the attachment to Google Drive and runs OCR
+            on it in Gemini. PDFs arrive in different layouts, so the extraction cannot rely on a single fixed
+            template.</p>
+          <p class="body-2">Both lanes end in the same Google Sheets spreadsheet. The sheet is a queue and a log at
+            the same time: every row records the source the data was read from. Only from there does the order go
+            to the ERP.</p>
+          <p class="body-2">A separate rule covers the dispatch date. The deadline in the email does not always fall
+            on a working day. The system works out the dispatch date itself: always the last working day, skipping
+            weekends automatically. It is a small thing, but without it an order “for Saturday” lands in the ERP with
+            a date on which nobody is working.</p>
+
+          <h2 id="kontrola-pol" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">Field checks before
+            anything reaches the system</h2>
+          <p class="body-2">The ERP entry is the last step, not the first. Before the automation makes it, it checks
+            that every field is there: customer, line items, quantities, deadlines. If anything is missing, the order
+            goes no further. It goes back to a person with a note saying which field could not be read, and a link
+            to the source.</p>
+          <blockquote class="h3"
+            style="border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text);">
+            The ERP entry is the last step, not the first. Anything uncertain stops earlier.
+          </blockquote>
+          <p class="body-2">That is the only situation in which someone on the team touches the process. They do not
+            correct the entry in the ERP; they fill in the missing piece in the sheet. The rest happens without
+            them.</p>
+
+          <h2 id="erp-bez-api" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">An ERP with no API: the
+            automation clicks what a person would click</h2>
+          <p class="body-2">Eticod's ERP exposes no API. There is no way to send it an order in a single request.
+            Instead, a browser automation logs into the system and makes the entry in its interface, click by click,
+            exactly the way an employee used to. The difference is that it does it the same way every time and leaves
+            a trace of every operation in the log.</p>
+          <p class="body-2">This required no change to the system and no new module. What it did require was
+            collecting the access details and a technical account before launch, not along the way.</p>
+          <p class="body-2">What this adds up to. Entering one order by hand took 20–25 minutes. Today it takes 0,
+            and since launch not a single incorrect entry has reached the ERP. At Eticod that comes to around 160
+            hours a month, calculated from 20–25 minutes per order. We do not measure it with a stopwatch; we
+            calculate it from the volume, and that is how we label the figure in the case study.</p>
+          <p class="body-2">If your orders also arrive by email and someone retypes them, do the same sum: number of
+            orders times the time for one entry. How much of that you can realistically recover is something we work
+            out on a free call.</p>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="../../../en/blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              All posts
+            </a>
+          </p>
+        </div>
+
+        <aside class="card sr" aria-label="From this deployment"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 18px;">
+          <p class="eyebrow">From this deployment</p>
+          <p class="row" style="gap: 12px;">
+            <span style="background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; display: inline-flex; align-items: center;">
+              <img src="../../../assets/klienci/eticod.svg" alt="Eticod" style="height: 16px; width: auto;">
+            </span>
+            <span class="label">Label printing company</span>
+          </p>
+          <ul class="metrics" style="border-top: 1px solid var(--line); padding-top: 18px; gap: 16px;">
+            <li class="metric">
+              <span class="metric-num" style="font-size: clamp(26px, 2.6vw, 34px);">160 h</span>
+              <span class="metric-lab">a month, calculated from 20–25 minutes per order</span>
+            </li>
+            <li class="metric">
+              <span class="metric-num" style="font-size: clamp(26px, 2.6vw, 34px);">0</span>
+              <span class="metric-lab">incorrect ERP entries since launch</span>
+            </li>
+            <li class="metric">
+              <span class="metric-num" style="font-size: clamp(26px, 2.6vw, 34px);">20–25 min</span>
+              <span class="metric-lab">of manual work per order, now 0</span>
+            </li>
+          </ul>
+          <p style="border-top: 1px solid var(--line); padding-top: 18px;">
+            <a class="link-more" href="../../../en/case-studies/eticod/">Read the case study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
+            </a>
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-navy bg-grid" aria-labelledby="cta-h" data-animated>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <svg width="380" height="66" viewBox="0 0 380 66" fill="none" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid meet" style="opacity: .9; max-width: 100%; height: auto;" aria-hidden="true">
+          <path d="M 62,33 H 168" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8">
+            <animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 212,33 H 318" stroke="rgba(45,212,191,0.4)" stroke-width="1.5" stroke-dasharray="5 8">
+            <animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"></animate>
+          </path>
+          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95">
+            <animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 62,33 H 318"></animateMotion>
+          </circle>
+          <circle cx="190" cy="33" r="24" stroke="#2DD4BF" stroke-width="1" fill="none">
+            <animate attributeName="r" from="24" to="40" dur="2.8s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" from="0.4" to="0" dur="2.8s" repeatCount="indefinite"></animate>
+          </circle>
+          <rect x="28" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+          <rect x="36" y="26" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
+          <path d="M 37,28 L 45,35 L 53,28" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+          <rect x="168" y="11" width="44" height="44" rx="12" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.2"></rect>
+          <path d="M 190,19 L 193.2,29.8 204,33 193.2,36.2 190,47 186.8,36.2 176,33 186.8,29.8 Z" fill="#2DD4BF" opacity="0.9"></path>
+          <rect x="318" y="16" width="34" height="34" rx="10" fill="#082A4E" stroke="#2DD4BF" stroke-opacity="0.45"></rect>
+          <path d="M 328,33 l 4.5,4.5 9,-9.5" stroke="#2DD4BF" stroke-opacity="0.9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+        <h2 id="cta-h">Tell us about one process.</h2>
+        <p class="lead" style="max-width: 580px;">Within 24 hours we come back with an automation proposal and the
+          benefits worked out. The call is free and commits you to nothing.</p>
+        <a class="btn btn-primary glow" href="../../../en/contact/">Book a free consultation</a>
+        <p class="row small" style="gap: 24px; justify-content: center; font-family: var(--mono);">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span aria-hidden="true" style="width: 4px; height: 4px; background: #4E7099; border-radius: 50%; display: inline-block;"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="stack-s">
+          <a class="brand" href="../../../en/">
+            <img src="../../../assets/logo.png" alt="" width="24" height="24">
+            <span class="brand-word" style="font-size: 22px;">fluinty.</span>
+          </a>
+          <p style="font-size: 14px; color: #8FB0CC; line-height: 1.6;">AI automation agency for Polish SMEs.
+            Katowice, Poland.</p>
+        </div>
+
+        <div>
+          <h2>Site</h2>
+          <ul>
+            <li><a href="../../../en/#case-studies">Case studies</a></li>
+            <li><a href="../../../en/#what-we-automate">What we automate</a></li>
+            <li><a href="../../../en/#products">Products</a></li>
+            <li><a href="../../../en/#pricing">Pricing</a></li>
+            <li><a href="../../../en/#team">Team</a></li>
+            <li><a href="../../../en/contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="../../../en/blog/">Blog</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li>
+            <li><a href="../../../en/privacy-policy/">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a></li>
+            <li><a href="tel:+48509843514">+48 509 843 514</a></li>
+            <li>Góreckiego 15/60,<br>40-204 Katowice, Poland</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Fluinty sp. z o.o. &middot; VAT ID PL9542896747 &middot; KRS 0001201664</span>
+        <span style="font-family: var(--mono); font-size: 12px;">automation &middot; AI agents &middot; SMEs</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/site.js" defer></script>
+</body>
+
+</html>
