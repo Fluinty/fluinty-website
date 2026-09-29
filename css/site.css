@@ -314,3 +314,28 @@ html:not(.js) .sr { opacity: 1; transform: none; }
   .metric-bordered { border-left: 0; padding-left: 0; }
   .flow svg { min-width: 620px; }
 }
+
+/* --- demo na stronie glownej (zmyslony przyklad: faktura z maila do arkusza) --- */
+.demo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.35fr); gap: clamp(14px, 2vw, 22px); }
+.demo-col { background: var(--gray); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px, 2vw, 24px); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.demo-list { display: flex; flex-direction: column; gap: 10px; }
+.demo-item { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; }
+.demo-from { color: var(--text-3); font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; }
+.demo-file { font-weight: 600; color: var(--text); overflow-wrap: anywhere; }
+.demo-steps ol { display: flex; flex-direction: column; gap: 12px; counter-reset: krok; }
+.demo-steps li { counter-increment: krok; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-2); }
+.demo-steps li::before { content: counter(krok); flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--mint); color: var(--teal-text); font: 600 12px/22px var(--mono); text-align: center; }
+.demo-scroll { overflow-x: auto; }
+.demo-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.demo-table th { text-align: left; font: 400 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); padding: 0 10px 8px 0; white-space: nowrap; }
+.demo-table td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.demo-ok { color: var(--teal-text); font-weight: 600; }
+.demo-warn { color: #8A4B00; font-weight: 600; }
+.js .demo [style*="--d"] { opacity: 0; }
+.js .demo.run [style*="--d"] { animation: logIn .5s ease-out forwards; animation-delay: calc(var(--d) * .6s + .2s); }
+@media (max-width: 900px) { .demo { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .js .demo [style*="--d"] { opacity: 1 !important; animation: none !important; } }
+
+/* --- kalendarz Calendly na stronie kontaktu --- */
+.calendly { display: block; width: 100%; height: 720px; border: 0; background: var(--white); }
+@media (max-width: 640px) { .calendly { height: 1060px; } }

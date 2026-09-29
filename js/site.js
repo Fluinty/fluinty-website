@@ -174,4 +174,18 @@
     }, { rootMargin: '120px' });
     animated.forEach(function (el) { iop.observe(el); });
   }
+  /* --- demo na stronie glownej: rusza, gdy wjedzie na ekran; przycisk puszcza je od nowa --- */
+  document.querySelectorAll('[data-demo]').forEach(function (demo) {
+    var play = function () { demo.classList.remove('run'); void demo.offsetWidth; demo.classList.add('run'); };
+    if (reduce || !('IntersectionObserver' in window)) { demo.classList.add('run'); }
+    else {
+      var iod = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { play(); iod.unobserve(demo); } });
+      }, { threshold: 0.35 });
+      iod.observe(demo);
+    }
+    var box = demo.closest('.wrap');
+    var btn = box && box.querySelector('[data-demo-replay]');
+    if (btn) btn.addEventListener('click', play);
+  });
 })();

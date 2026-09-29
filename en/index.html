@@ -449,6 +449,52 @@
     </div>
   </section>
 
+  <!-- ===================== DEMO ===================== -->
+  <section class="sec sec-white" aria-labelledby="demo-h" id="demo">
+    <div class="wrap">
+      <div class="sec-head sr">
+        <p class="eyebrow">Example</p>
+        <h2 id="demo-h">This is what it looks like in practice.</h2>
+        <div class="accent-bar"></div>
+        <p class="lead">Invoices arrive in the inbox as they do today. The automation reads each one, enters the data into the sheet, and sets aside anything it is not sure about. The companies, amounts and files are made up.</p>
+      </div>
+      <div class="demo sr" data-demo>
+        <div class="demo-col">
+          <p class="label">Invoice inbox · example</p>
+          <ul class="demo-list">
+            <li class="demo-item" style="--d: 0;"><span class="demo-from">invoices@example-cartons.example</span><span class="demo-file">INV_2026_09_114.pdf</span></li>
+            <li class="demo-item" style="--d: 1;"><span class="demo-from">billing@example-print.example</span><span class="demo-file">INV-0931-09-2026.pdf</span></li>
+            <li class="demo-item" style="--d: 2;"><span class="demo-from">office@example-transport.example</span><span class="demo-file">invoice_scan.jpg · photo from a phone</span></li>
+          </ul>
+        </div>
+        <div class="demo-col demo-steps">
+          <p class="label">Automation</p>
+          <ol>
+            <li style="--d: 3;">recognises the invoice and the supplier</li>
+            <li style="--d: 4;">reads the VAT ID, amounts and due date</li>
+            <li style="--d: 5;">checks that every field is filled in</li>
+            <li style="--d: 6;">enters it into the sheet and writes the log</li>
+          </ol>
+        </div>
+        <div class="demo-col">
+          <p class="label">Invoice sheet</p>
+          <div class="demo-scroll">
+            <table class="demo-table">
+              <thead><tr><th scope="col">Supplier</th><th scope="col">Gross</th><th scope="col">Due</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <tr style="--d: 7;"><td>Example Cartons</td><td>4,305.00 PLN</td><td>14 Oct</td><td><span class="demo-ok">entered</span></td></tr>
+                <tr style="--d: 8;"><td>Example Print</td><td>1,968.00 PLN</td><td>21 Oct</td><td><span class="demo-ok">entered</span></td></tr>
+                <tr style="--d: 9;"><td>Example Transport</td><td>?</td><td>7 Oct</td><td><span class="demo-warn">to clarify: amount unreadable</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small" style="--d: 10;">2 entered · 1 to clarify · 0 manual corrections</p>
+        </div>
+      </div>
+      <p style="margin-top: 18px;"><button type="button" class="btn btn-ghost btn-sm" data-demo-replay>Play it again</button></p>
+    </div>
+  </section>
+
   <!-- ===================== CALCULATOR ===================== -->
   <section class="sec sec-mint" aria-labelledby="calculator-h" id="calculator">
     <div class="wrap grid-hero">
@@ -492,105 +538,36 @@
     </div>
   </section>
 
-  <!-- ===================== INSTEAD OF ===================== -->
-  <section class="sec sec-white" aria-labelledby="zamiast-h">
+  <!-- ===================== JAK PRACUJEMY ===================== -->
+  <section class="sec sec-white" aria-labelledby="zasady-h">
     <div class="wrap">
       <div class="sec-head sr">
-        <p class="eyebrow">Instead of</p>
-        <h2 id="zamiast-h">A full-time hire, a freelancer, a software house, or us.</h2>
+        <p class="eyebrow">How we work</p>
+        <h2 id="zasady-h">Four principles we stick to.</h2>
         <div class="accent-bar"></div>
-        <p class="lead">Four routes to the same goal. They differ in who maintains the process once it is running.</p>
       </div>
-
-      <div class="grid grid-4 sr-grid">
-        <div class="card sr">
-          <h3>Full-time hire</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">recruiting and onboarding a person</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Monthly cost</dt>
-              <dd class="small">the calculator result above</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">When it breaks</dt>
-              <dd class="small">a person fixes it by hand</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Makes sense when</dt>
-              <dd class="small">every task needs a decision</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card sr">
-          <h3>Freelancer n8n / Make</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">usually the cheapest way to start</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Monthly cost</dt>
-              <dd class="small">hourly rate, no cap</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">When it breaks</dt>
-              <dd class="small">you wait for them to pick up the phone</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Makes sense when</dt>
-              <dd class="small">one simple automation with no ERP</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card sr">
-          <h3>Software house</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">quoted per project, long lead time</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Monthly cost</dt>
-              <dd class="small">service contract sold separately</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">When it breaks</dt>
-              <dd class="small">a ticket in their support system</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Makes sense when</dt>
-              <dd class="small">you are building your own system from scratch</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card card-hi sr">
-          <h3 style="color: var(--teal-text);">Fluinty</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small" style="color: var(--text);">a free call, then an audit for 1,500 PLN</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Monthly cost</dt>
-              <dd class="small" style="color: var(--text);">care from 500 PLN, only if you want it</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">When it breaks</dt>
-              <dd class="small" style="color: var(--text);">the agent diagnoses and fixes itself, the rest reaches us as a report</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Makes sense when</dt>
-              <dd class="small" style="color: var(--text);">a repetitive process on your systems, even with no API</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
+      <ol class="grid grid-4 sr-grid">
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">01</p>
+          <h3>We leave alone what a person does better.</h3>
+          <p class="body-2">Talking to the customer and judging the case stay with you. The automation takes what looks the same every time.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">02</p>
+          <h3>We work with what already works for you.</h3>
+          <p class="body-2">Your team keeps using email, files and Excel as it does today. If an off-the-shelf tool solves it for less, we will say so.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">03</p>
+          <h3>If it does not pay off, we say so before the contract.</h3>
+          <p class="body-2">Automation pays for itself where someone does the same thing dozens of times a month. We work it out with you, and we would rather lose the job than invoice for something that will not pay back.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">04</p>
+          <h3>We start with one process.</h3>
+          <p class="body-2">Only when the first one works and everyone is happy do we move on to the next.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -610,7 +587,7 @@
           <h3 class="label" style="color: var(--teal-text);">00 &middot; Call</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
             <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">0 PLN</span>
-            <span class="small">45 minutes</span>
+            <span class="small">30 minutes</span>
           </p>
           <p class="small" style="flex-grow: 1; color: var(--text-2);">You go first: what you want to talk about and where you can see time slipping away. Then our ideas for you.</p>
           <p class="small" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 14px; color: var(--teal-text); font-weight: 600;">No commitment</p>
@@ -676,14 +653,14 @@
       </ul>
 
       <div class="row sr" style="justify-content: space-between; gap: 24px; margin-top: clamp(24px, 3vw, 36px);">
-        <p style="font-weight: 600;">Start with a free call. 45 minutes, no commitment.</p>
+        <p style="font-weight: 600;">Start with a free call. 30 minutes, no commitment.</p>
         <a class="btn btn-primary" href="../en/contact/">Book a free consultation</a>
       </div>
     </div>
   </section>
 
   <!-- ===================== PRODUCTS ===================== -->
-  <section class="sec sec-white" aria-labelledby="products-h" id="products" data-animated>
+  <section class="sec sec-white" aria-labelledby="products-h" id="products" style="padding-block: clamp(44px, 5vw, 72px);">
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Products</p>
@@ -692,97 +669,14 @@
       </div>
 
       <div class="grid grid-2 sr-grid">
-        <a class="card sr" href="../en/products/fluintydebt/">
-          <h3 style="font-size: clamp(22px, 2.2vw, 26px);">Fluinty<span style="color: var(--teal-text);">Debt</span></h3>
-          <p class="body-2" style="flex-grow: 1;">B2B debt collection on autopilot. The system reads KSeF, spots late payments and runs the process itself: a polite SMS, a firm email, a VoiceBot for the hardest calls.</p>
-
-          <div class="console" aria-hidden="true">
-            <div class="console-bar">
-              <span>Receivables monitor &middot; KSeF</span>
-              <span class="row" style="gap: 7px;"><span class="status-square"></span> PREVIEW</span>
-            </div>
-            <div class="console-body">
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/08/141</span><span>12,400 PLN</span>
-                <span style="background: rgba(0,196,180,.15); color: var(--teal-2); font-size: 11px; padding: 3px 9px; border-radius: 99px;">paid</span>
-              </div>
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/08/158</span><span>8,900 PLN</span>
-                <span style="border: 1px solid rgba(148,190,233,.25); font-size: 11px; padding: 3px 9px; border-radius: 99px;">SMS reminder</span>
-              </div>
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/07/096</span><span>21,300 PLN</span>
-                <span style="border: 1px solid rgba(45,212,191,.4); color: var(--teal-2); font-size: 11px; padding: 3px 9px; border-radius: 99px;">VoiceBot tomorrow</span>
-              </div>
-              <div class="row" style="gap: 10px; flex-wrap: nowrap;">
-                <span style="white-space: nowrap; font-size: 11px;">recovered this month</span>
-                <span style="flex-grow: 1; height: 5px; border-radius: 3px; background: rgba(148,190,233,.15); overflow: hidden; display: block;"><span style="display: block; height: 100%; width: 78%; border-radius: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-2));"></span></span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Integration with KSeF and payment monitoring</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>SMS, email and VoiceBot in one sequence</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>One subscription instead of a debt collector's commission</span>
-            </li>
-          </ul>
-
+        <a class="card sr" href="../en/products/fluintydebt/" style="flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+          <span class="stack-s" style="gap: 4px;"><span class="h3">Fluinty<span style="color: var(--teal-text);">Debt</span></span><span class="body-2">B2B debt collection on autopilot.</span></span>
           <span class="link-more">See FluintyDebt
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
           </span>
         </a>
-
-        <a class="card sr" href="../en/products/fluintyfleet/">
-          <h3 style="font-size: clamp(22px, 2.2vw, 26px);">Fluinty<span style="color: var(--teal-text);">Fleet</span></h3>
-          <p class="body-2" style="flex-grow: 1;">Fleet costs in one place. Supplier orders, including Inter Cars, assigned to vehicles and branches. The manager verifies a purchase in 30 seconds.</p>
-
-          <div class="console" aria-hidden="true">
-            <div class="console-bar">
-              <span>Cost per vehicle &middot; this month</span>
-              <span class="row" style="gap: 7px;"><span class="status-square"></span> P-05 &middot; 87% OF BUDGET</span>
-            </div>
-            <div class="console-body">
-              <div class="row" style="gap: 14px; align-items: flex-end; height: 62px; flex-wrap: nowrap;">
-                <span style="width: 26px; height: 32px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 54px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 22px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 44px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 60px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--teal-2), rgba(0,196,180,.35)); flex: none;"></span>
-              </div>
-              <div class="row" style="gap: 14px; flex-wrap: nowrap; font-size: 11px;">
-                <span style="width: 26px; text-align: center;">P-01</span>
-                <span style="width: 26px; text-align: center;">P-02</span>
-                <span style="width: 26px; text-align: center;">P-03</span>
-                <span style="width: 26px; text-align: center;">P-04</span>
-                <span style="width: 26px; text-align: center;">P-05</span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Order import from multiple suppliers</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Cost per vehicle and branch, in real time</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Budget alerts before you go over the limits</span>
-            </li>
-          </ul>
-
+        <a class="card sr" href="../en/products/fluintyfleet/" style="flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+          <span class="stack-s" style="gap: 4px;"><span class="h3">Fluinty<span style="color: var(--teal-text);">Fleet</span></span><span class="body-2">Fleet costs in one place.</span></span>
           <span class="link-more">See FluintyFleet
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
           </span>
@@ -842,46 +736,8 @@
     </div>
   </section>
 
-  <!-- ===================== DATA AND ACCESS ===================== -->
-  <section class="sec sec-white" aria-labelledby="dane-h">
-    <div class="wrap">
-      <div class="sec-head sr">
-        <p class="eyebrow">Data and access</p>
-        <h2 id="dane-h">Your data stays with you.</h2>
-        <div class="accent-bar"></div>
-        <p class="lead">Four rules that apply to every implementation. No exceptions for small processes.</p>
-      </div>
-
-      <div class="grid grid-4 sr-grid">
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"></rect><rect x="3" y="13" width="18" height="7" rx="2"></rect><path d="M7 7.5h.01M7 16.5h.01"></path></svg></span>
-          <h3 style="font-size: 18px;">Automations run on our own n8n server</h3>
-          <p class="small">Not on someone else's no-code platform. Logs, data and access stay under our control, and on request we set up an instance on your side.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5v5c0 4.6 3.4 8.4 8 9.5 4.6-1.1 8-4.9 8-9.5v-5L12 3Z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
-          <h3 style="font-size: 18px;">AI models only receive what needs to be read</h3>
-          <p class="small">A fragment of an email or a document, with no history. We use the OpenAI and Google APIs, whose terms do not allow models to be trained on your data.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="14" r="4"></circle><path d="M11 11l9-8M16 6l2 2M13 9l2 2"></path></svg></span>
-          <h3 style="font-size: 18px;">Access with the minimum scope</h3>
-          <p class="small">A technical account with permissions only for the inbox and the system that handles the process. When the engagement ends, you revoke it with one click.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M8 13h8M8 17h5"></path></svg></span>
-          <h3 style="font-size: 18px;">A data processing agreement and a log of every operation</h3>
-          <p class="small">We sign a data processing agreement. Every read and every entry leaves a trace in the log, with a link to the source.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== FAQ ===================== -->
-  <section class="sec sec-gray" aria-labelledby="faq-h" id="faq">
+  <section class="sec sec-white" aria-labelledby="faq-h" id="faq">
     <div class="wrap grid grid-2" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
       <div class="sec-head sr" style="margin-bottom: 0;">
         <p class="eyebrow">FAQ</p>
@@ -928,7 +784,7 @@
             <h3>Where do our emails and invoices go?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">To our n8n server, and to the AI models only the fragment needed for reading. Nothing is used to train models. Details in the Data and access section.</div>
+          <div class="answer">The automations run on our own n8n server, not on someone else's no-code platform, and on request we set up an instance on your side. AI models only receive the fragment of an email or document that needs to be read, through the OpenAI and Google APIs, whose terms do not allow training models on your data. We get access through a technical account limited to the inbox and the system the process uses, and you can revoke it with one click. We sign a data processing agreement, and every read and every entry leaves a trace in the log.</div>
         </details>
 
         <details>

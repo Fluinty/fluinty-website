@@ -449,6 +449,52 @@
     </div>
   </section>
 
+  <!-- ===================== DEMO ===================== -->
+  <section class="sec sec-white" aria-labelledby="demo-h" id="demo">
+    <div class="wrap">
+      <div class="sec-head sr">
+        <p class="eyebrow">Przykład</p>
+        <h2 id="demo-h">Tak to wygląda w praktyce.</h2>
+        <div class="accent-bar"></div>
+        <p class="lead">Faktury przychodzą na skrzynkę jak dziś. Automat czyta każdą, wpisuje dane do arkusza, a to, czego nie jest pewien, odkłada do wyjaśnienia. Firmy, kwoty i pliki są zmyślone.</p>
+      </div>
+      <div class="demo sr" data-demo>
+        <div class="demo-col">
+          <p class="label">Skrzynka faktur · przykład</p>
+          <ul class="demo-list">
+            <li class="demo-item" style="--d: 0;"><span class="demo-from">faktury@przyklad-karton.example</span><span class="demo-file">FV_2026_09_114.pdf</span></li>
+            <li class="demo-item" style="--d: 1;"><span class="demo-from">rozliczenia@przyklad-druk.example</span><span class="demo-file">FV-0931-09-2026.pdf</span></li>
+            <li class="demo-item" style="--d: 2;"><span class="demo-from">biuro@przyklad-transport.example</span><span class="demo-file">skan_faktury.jpg · zdjęcie z telefonu</span></li>
+          </ul>
+        </div>
+        <div class="demo-col demo-steps">
+          <p class="label">Automat</p>
+          <ol>
+            <li style="--d: 3;">rozpoznaje fakturę i dostawcę</li>
+            <li style="--d: 4;">czyta NIP, kwoty i termin płatności</li>
+            <li style="--d: 5;">sprawdza komplet pól</li>
+            <li style="--d: 6;">wpisuje do arkusza i zapisuje log</li>
+          </ol>
+        </div>
+        <div class="demo-col">
+          <p class="label">Arkusz faktur</p>
+          <div class="demo-scroll">
+            <table class="demo-table">
+              <thead><tr><th scope="col">Dostawca</th><th scope="col">Brutto</th><th scope="col">Termin</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <tr style="--d: 7;"><td>Przykład Karton</td><td>4&nbsp;305,00 zł</td><td>14.10</td><td><span class="demo-ok">wpisana</span></td></tr>
+                <tr style="--d: 8;"><td>Przykład Druk</td><td>1&nbsp;968,00 zł</td><td>21.10</td><td><span class="demo-ok">wpisana</span></td></tr>
+                <tr style="--d: 9;"><td>Przykład Transport</td><td>?</td><td>07.10</td><td><span class="demo-warn">do wyjaśnienia: nieczytelna kwota</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small" style="--d: 10;">2 wpisane · 1 do wyjaśnienia · 0 poprawek ręcznych</p>
+        </div>
+      </div>
+      <p style="margin-top: 18px;"><button type="button" class="btn btn-ghost btn-sm" data-demo-replay>Pokaż jeszcze raz</button></p>
+    </div>
+  </section>
+
   <!-- ===================== KALKULATOR ===================== -->
   <section class="sec sec-mint" aria-labelledby="kalkulator-h" id="kalkulator">
     <div class="wrap grid-hero">
@@ -492,105 +538,36 @@
     </div>
   </section>
 
-  <!-- ===================== ZAMIAST ===================== -->
-  <section class="sec sec-white" aria-labelledby="zamiast-h">
+  <!-- ===================== JAK PRACUJEMY ===================== -->
+  <section class="sec sec-white" aria-labelledby="zasady-h">
     <div class="wrap">
       <div class="sec-head sr">
-        <p class="eyebrow">Zamiast</p>
-        <h2 id="zamiast-h">Etat, freelancer, software house albo my.</h2>
+        <p class="eyebrow">Jak pracujemy</p>
+        <h2 id="zasady-h">Cztery zasady, których się trzymamy.</h2>
         <div class="accent-bar"></div>
-        <p class="lead">Cztery drogi do tego samego celu. Różnią się tym, kto utrzymuje proces, kiedy już działa.</p>
       </div>
-
-      <div class="grid grid-4 sr-grid">
-        <div class="card sr">
-          <h3>Etat</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">rekrutacja i wdrożenie osoby</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Koszt miesięczny</dt>
-              <dd class="small">wynik kalkulatora wyżej</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Gdy się zepsuje</dt>
-              <dd class="small">człowiek poprawia ręcznie</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Ma sens, gdy</dt>
-              <dd class="small">każde zadanie wymaga decyzji</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card sr">
-          <h3>Freelancer n8n / Make</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">zwykle najtaniej na starcie</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Koszt miesięczny</dt>
-              <dd class="small">stawka godzinowa, bez limitu</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Gdy się zepsuje</dt>
-              <dd class="small">czekacie, aż odbierze telefon</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Ma sens, gdy</dt>
-              <dd class="small">jeden prosty automat bez ERP</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card sr">
-          <h3>Software house</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small">wycena od projektu, długi start</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Koszt miesięczny</dt>
-              <dd class="small">umowa serwisowa osobno</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Gdy się zepsuje</dt>
-              <dd class="small">zgłoszenie w systemie ticketów</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 12px;">
-              <dt class="label">Ma sens, gdy</dt>
-              <dd class="small">budujecie własny system od zera</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="card card-hi sr">
-          <h3 style="color: var(--teal-text);">Fluinty</h3>
-          <dl class="stack">
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Start</dt>
-              <dd class="small" style="color: var(--text);">bezpłatna rozmowa, potem audyt za 1&nbsp;500 zł</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Koszt miesięczny</dt>
-              <dd class="small" style="color: var(--text);">opieka od 500 zł, tylko jeśli chcecie</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Gdy się zepsuje</dt>
-              <dd class="small" style="color: var(--text);">agent sam diagnozuje i naprawia, reszta trafia do nas raportem</dd>
-            </div>
-            <div class="stack-s" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 12px;">
-              <dt class="label">Ma sens, gdy</dt>
-              <dd class="small" style="color: var(--text);">powtarzalny proces na Waszych systemach, także bez API</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
+      <ol class="grid grid-4 sr-grid">
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">01</p>
+          <h3>Nie ruszamy tego, co człowiek zrobi lepiej.</h3>
+          <p class="body-2">Rozmowa z klientem i ocena sprawy zostają u Was. Automat bierze to, co za każdym razem wygląda tak samo.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">02</p>
+          <h3>Pracujemy na tym, co już u Was działa.</h3>
+          <p class="body-2">Wasz zespół korzysta z poczty, plików i Excela tak jak dziś. Jeśli gotowe narzędzie załatwi sprawę taniej, powiemy to wprost.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">03</p>
+          <h3>Jeśli się nie opłaca, mówimy to przed umową.</h3>
+          <p class="body-2">Automat zwraca się tam, gdzie ktoś robi to samo dziesiątki razy w miesiącu. Liczymy to razem z Wami i wolimy stracić zlecenie niż wystawić fakturę za coś, co się nie zwróci.</p>
+        </li>
+        <li class="card sr">
+          <p class="label" style="color: var(--teal-text);">04</p>
+          <h3>Zaczynamy od jednego procesu.</h3>
+          <p class="body-2">Dopiero kiedy pierwszy działa i wszyscy są zadowoleni, bierzemy się za kolejny.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -610,7 +587,7 @@
           <h3 class="label" style="color: var(--teal-text);">00 &middot; Rozmowa</h3>
           <p class="row" style="gap: 6px; align-items: baseline;">
             <span class="h3" style="font-size: clamp(24px, 2.4vw, 28px);">0 zł</span>
-            <span class="small">45 minut</span>
+            <span class="small">30 minut</span>
           </p>
           <p class="small" style="flex-grow: 1; color: var(--text-2);">Najpierw Wy: o czym chcecie porozmawiać i gdzie sami widzicie, że ucieka czas. Potem nasze pomysły dla Was.</p>
           <p class="small" style="border-top: 1px solid rgba(0,196,180,.25); padding-top: 14px; color: var(--teal-text); font-weight: 600;">Bez zobowiązań</p>
@@ -676,14 +653,14 @@
       </ul>
 
       <div class="row sr" style="justify-content: space-between; gap: 24px; margin-top: clamp(24px, 3vw, 36px);">
-        <p style="font-weight: 600;">Zacznij od bezpłatnej rozmowy. 45 minut, bez zobowiązań.</p>
+        <p style="font-weight: 600;">Zacznij od bezpłatnej rozmowy. 30 minut, bez zobowiązań.</p>
         <a class="btn btn-primary" href="kontakt/">Umów bezpłatną konsultację</a>
       </div>
     </div>
   </section>
 
   <!-- ===================== PRODUKTY ===================== -->
-  <section class="sec sec-white" aria-labelledby="produkty-h" id="produkty" data-animated>
+  <section class="sec sec-white" aria-labelledby="produkty-h" id="produkty" style="padding-block: clamp(44px, 5vw, 72px);">
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Produkty</p>
@@ -692,97 +669,14 @@
       </div>
 
       <div class="grid grid-2 sr-grid">
-        <a class="card sr" href="produkty/fluintydebt/">
-          <h3 style="font-size: clamp(22px, 2.2vw, 26px);">Fluinty<span style="color: var(--teal-text);">Debt</span></h3>
-          <p class="body-2" style="flex-grow: 1;">Windykacja B2B na autopilocie. System czyta KSeF, wykrywa opóźnienia i sam prowadzi proces: kulturalny SMS, stanowczy mail, VoiceBot do najtrudniejszych rozmów.</p>
-
-          <div class="console" aria-hidden="true">
-            <div class="console-bar">
-              <span>Monitor należności &middot; KSeF</span>
-              <span class="row" style="gap: 7px;"><span class="status-square"></span> PODGLĄD</span>
-            </div>
-            <div class="console-body">
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/08/141</span><span>12 400 zł</span>
-                <span style="background: rgba(0,196,180,.15); color: var(--teal-2); font-size: 11px; padding: 3px 9px; border-radius: 99px;">zapłacona</span>
-              </div>
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/08/158</span><span>8 900 zł</span>
-                <span style="border: 1px solid rgba(148,190,233,.25); font-size: 11px; padding: 3px 9px; border-radius: 99px;">przypomnienie SMS</span>
-              </div>
-              <div class="row" style="justify-content: space-between; gap: 10px;">
-                <span>FV 2026/07/096</span><span>21 300 zł</span>
-                <span style="border: 1px solid rgba(45,212,191,.4); color: var(--teal-2); font-size: 11px; padding: 3px 9px; border-radius: 99px;">VoiceBot jutro</span>
-              </div>
-              <div class="row" style="gap: 10px; flex-wrap: nowrap;">
-                <span style="white-space: nowrap; font-size: 11px;">odzyskane w tym mies.</span>
-                <span style="flex-grow: 1; height: 5px; border-radius: 3px; background: rgba(148,190,233,.15); overflow: hidden; display: block;"><span style="display: block; height: 100%; width: 78%; border-radius: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-2));"></span></span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Integracja z KSeF i monitoringiem płatności</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>SMS, mail i VoiceBot w jednej sekwencji</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Jeden abonament zamiast prowizji windykatora</span>
-            </li>
-          </ul>
-
+        <a class="card sr" href="produkty/fluintydebt/" style="flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+          <span class="stack-s" style="gap: 4px;"><span class="h3">Fluinty<span style="color: var(--teal-text);">Debt</span></span><span class="body-2">Windykacja B2B na autopilocie.</span></span>
           <span class="link-more">Zobacz FluintyDebt
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
           </span>
         </a>
-
-        <a class="card sr" href="produkty/fluintyfleet/">
-          <h3 style="font-size: clamp(22px, 2.2vw, 26px);">Fluinty<span style="color: var(--teal-text);">Fleet</span></h3>
-          <p class="body-2" style="flex-grow: 1;">Koszty floty w jednym miejscu. Zamówienia od dostawców, m.in. Inter Cars, przypisane do pojazdów i oddziałów. Kierownik weryfikuje zakup w 30 sekund.</p>
-
-          <div class="console" aria-hidden="true">
-            <div class="console-bar">
-              <span>Koszt na pojazd &middot; ten miesiąc</span>
-              <span class="row" style="gap: 7px;"><span class="status-square"></span> P-05 &middot; 87% BUDŻETU</span>
-            </div>
-            <div class="console-body">
-              <div class="row" style="gap: 14px; align-items: flex-end; height: 62px; flex-wrap: nowrap;">
-                <span style="width: 26px; height: 32px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 54px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 22px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 44px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(45,212,191,.7), rgba(0,196,180,.25)); flex: none;"></span>
-                <span style="width: 26px; height: 60px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--teal-2), rgba(0,196,180,.35)); flex: none;"></span>
-              </div>
-              <div class="row" style="gap: 14px; flex-wrap: nowrap; font-size: 11px;">
-                <span style="width: 26px; text-align: center;">P-01</span>
-                <span style="width: 26px; text-align: center;">P-02</span>
-                <span style="width: 26px; text-align: center;">P-03</span>
-                <span style="width: 26px; text-align: center;">P-04</span>
-                <span style="width: 26px; text-align: center;">P-05</span>
-              </div>
-            </div>
-          </div>
-
-          <ul class="stack-s" style="border-top: 1px solid var(--line-soft); padding-top: 20px;">
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Import zamówień od wielu dostawców</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Koszt per pojazd i oddział, w czasie rzeczywistym</span>
-            </li>
-            <li class="row" style="gap: 12px; flex-wrap: nowrap;">
-              <span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex: none;"></span>
-              <span>Alerty budżetowe, zanim przekroczycie limity</span>
-            </li>
-          </ul>
-
+        <a class="card sr" href="produkty/fluintyfleet/" style="flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+          <span class="stack-s" style="gap: 4px;"><span class="h3">Fluinty<span style="color: var(--teal-text);">Fleet</span></span><span class="body-2">Koszty floty w jednym miejscu.</span></span>
           <span class="link-more">Zobacz FluintyFleet
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
           </span>
@@ -842,46 +736,8 @@
     </div>
   </section>
 
-  <!-- ===================== DANE I DOSTĘPY ===================== -->
-  <section class="sec sec-white" aria-labelledby="dane-h">
-    <div class="wrap">
-      <div class="sec-head sr">
-        <p class="eyebrow">Dane i dostępy</p>
-        <h2 id="dane-h">Wasze dane zostają u Was.</h2>
-        <div class="accent-bar"></div>
-        <p class="lead">Cztery zasady, które obowiązują w każdym wdrożeniu. Bez wyjątków dla małych procesów.</p>
-      </div>
-
-      <div class="grid grid-4 sr-grid">
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"></rect><rect x="3" y="13" width="18" height="7" rx="2"></rect><path d="M7 7.5h.01M7 16.5h.01"></path></svg></span>
-          <h3 style="font-size: 18px;">Automaty działają na naszym serwerze n8n</h3>
-          <p class="small">Nie na cudzej platformie no-code. Logi, dane i dostępy są pod naszą kontrolą, a na życzenie stawiamy instancję u Was.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5v5c0 4.6 3.4 8.4 8 9.5 4.6-1.1 8-4.9 8-9.5v-5L12 3Z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
-          <h3 style="font-size: 18px;">Do modeli AI trafia tylko to, co trzeba odczytać</h3>
-          <p class="small">Fragment maila albo dokumentu, bez historii. Korzystamy z API OpenAI i Google, których warunki nie pozwalają uczyć modeli na Waszych danych.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="14" r="4"></circle><path d="M11 11l9-8M16 6l2 2M13 9l2 2"></path></svg></span>
-          <h3 style="font-size: 18px;">Dostępy z minimalnym zakresem</h3>
-          <p class="small">Konto techniczne z uprawnieniami tylko do skrzynki i systemu, który obsługuje proces. Po zakończeniu współpracy odbieracie je jednym kliknięciem.</p>
-        </div>
-
-        <div class="card sr">
-          <span aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0,196,180,.09); border: 1px solid rgba(0,196,180,.28); display: flex; align-items: center; justify-content: center; flex: none; color: var(--teal-text);"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M8 13h8M8 17h5"></path></svg></span>
-          <h3 style="font-size: 18px;">Umowa powierzenia i log każdej operacji</h3>
-          <p class="small">Podpisujemy umowę powierzenia przetwarzania danych. Każdy odczyt i wpis ma ślad w logu, z linkiem do źródła.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== FAQ ===================== -->
-  <section class="sec sec-gray" aria-labelledby="faq-h" id="faq">
+  <section class="sec sec-white" aria-labelledby="faq-h" id="faq">
     <div class="wrap grid grid-2" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
       <div class="sec-head sr" style="margin-bottom: 0;">
         <p class="eyebrow">FAQ</p>
@@ -928,7 +784,7 @@
             <h3>Gdzie trafiają nasze maile i faktury?</h3>
             <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
           </summary>
-          <div class="answer">Na nasz serwer n8n, a do modeli AI tylko fragment potrzebny do odczytu. Nic nie jest używane do uczenia modeli. Szczegóły w sekcji Dane i dostępy.</div>
+          <div class="answer">Automaty działają na naszym serwerze n8n, nie na cudzej platformie no-code, a na życzenie stawiamy instancję u Was. Do modeli AI trafia tylko fragment maila albo dokumentu potrzebny do odczytu, przez API OpenAI i Google, których warunki nie pozwalają uczyć modeli na Waszych danych. Dostęp dostajemy przez konto techniczne tylko do skrzynki i systemu, który obsługuje proces, i odbieracie go jednym kliknięciem. Podpisujemy umowę powierzenia, a każdy odczyt i wpis ma ślad w logu.</div>
         </details>
 
         <details>

@@ -6,6 +6,11 @@ import { dirname, join } from 'node:path'
 
 const SRC = 'src'
 const CHECK = process.argv.includes('--check')
+// --base new-design: podglad calej strony pod fluinty.pl/new-design/ (noindex, pasek z informacja)
+const BASE_ARG = process.argv.indexOf('--base')
+const BASE = BASE_ARG > -1 ? process.argv[BASE_ARG + 1].replace(/^\/|\/$/g, '') : ''
+const PREFIX = BASE ? '/' + BASE : ''
+const OUT_DIR = BASE ? join('preview', BASE) : '.'
 const SITE = 'https://fluinty.pl'
 
 const partial = (name) => readFileSync(join(SRC, 'partials', name + '.html'), 'utf8')
@@ -28,7 +33,7 @@ const PL = [
   { src: 'produkt-debt',     out: 'produkty/fluintydebt/index.html',     path: '/produkty/fluintydebt/',    alt: '/en/products/fluintydebt/',             active: 'PRODUKTY',   title: 'FluintyDebt: przypomnienia o płatnościach bez windykatora | Fluinty', desc: 'System pilnuje terminów płatności na danych z KSeF i banku, wysyła przypomnienia w Waszym imieniu i eskaluje sprawy do człowieka.' },
   { src: 'produkt-fleet',    out: 'produkty/fluintyfleet/index.html',    path: '/produkty/fluintyfleet/',   alt: '/en/products/fluintyfleet/',            active: 'PRODUKTY',   title: 'FluintyFleet: koszty floty per pojazd i terminy | Fluinty', desc: 'Import faktur od dostawców, koszt przypisany do pojazdu i przypomnienia o polisach oraz przeglądach miesiąc wcześniej.' },
   { src: 'ksiegowosc',       out: 'ksiegowosc-i-ksef/index.html',        path: '/ksiegowosc-i-ksef/',       alt: null,                                    active: 'CO',         title: 'Księgowość i KSeF: integracja i automat księgujący | Fluinty', desc: 'Porządkujemy wdrożenia KSeF 2.0 i budujemy automat, który proponuje dekrety, a wątpliwe dokumenty odsyła do księgowej.' },
-  { src: 'kontakt',          out: 'kontakt/index.html',                  path: '/kontakt/',                 alt: '/en/contact/',                          active: 'KONTAKT',    title: 'Kontakt: bezpłatna konsultacja 45 minut | Fluinty', desc: 'Wybierzcie termin rozmowy o jednym procesie albo prezentacji produktu. Bez zobowiązań, w 24 godziny wracamy z pomysłem.' },
+  { src: 'kontakt',          out: 'kontakt/index.html',                  path: '/kontakt/',                 alt: '/en/contact/',                          active: 'KONTAKT',    title: 'Kontakt: bezpłatna konsultacja 30 minut | Fluinty', desc: 'Wybierzcie termin rozmowy o jednym procesie albo prezentacji produktu. Bez zobowiązań, w 24 godziny wracamy z pomysłem.' },
   { src: 'blog',             out: 'blog/index.html',                     path: '/blog/',                    alt: '/en/blog/',                             active: null,        title: 'Blog: jak automatyzujemy procesy w MŚP | Fluinty', desc: 'Piszemy o tym, co wdrażamy: zamówienia z maili, dokumenty, reklamacje, floty. Bez porad ogólnych.' },
   { src: 'blog-post-eticod', out: 'blog/zamowienia-z-maili-do-erp/index.html', path: '/blog/zamowienia-z-maili-do-erp/', alt: '/en/blog/email-orders-into-erp/', active: null, title: 'Zamówienia z maili do ERP bez API. Jak to działa u Eticodu | Fluinty', desc: 'Dwa tory, kontrola kompletu danych i wpis do systemu, który nie wystawia API. Opis wdrożenia, w którym od startu nie było ani jednego błędnego wpisu.' },
   { src: 'dziekujemy',       out: 'dziekujemy/index.html',               path: '/dziekujemy/',              alt: '/en/thank-you/',                        active: null,        title: 'Dziękujemy za wiadomość | Fluinty', desc: 'Wiadomość dotarła. Odpisujemy w 24 godziny.' },
@@ -45,7 +50,7 @@ const EN = [
   { src: 'en-case-taxnet',      out: 'en/case-studies/tax-net/index.html',           path: '/en/case-studies/tax-net/',         alt: '/realizacje/tax-net/',            active: 'REALIZACJE', title: 'Tax-Net: content and SEO for an accounting firm | Fluinty', desc: 'Ongoing content and SEO work: organic traffic from 176 to 349 in five months, seven of nine keywords in the top 3. Semrush estimate.' },
   { src: 'en-produkt-debt',     out: 'en/products/fluintydebt/index.html',           path: '/en/products/fluintydebt/',         alt: '/produkty/fluintydebt/',          active: 'PRODUKTY',   title: 'FluintyDebt: payment reminders without a debt collector | Fluinty', desc: 'The system watches due dates on e-invoice and bank data, sends reminders in your name and escalates cases to a human.' },
   { src: 'en-produkt-fleet',    out: 'en/products/fluintyfleet/index.html',          path: '/en/products/fluintyfleet/',        alt: '/produkty/fluintyfleet/',         active: 'PRODUKTY',   title: 'FluintyFleet: fleet costs per vehicle and deadlines | Fluinty', desc: 'Supplier invoices imported, every cost assigned to a vehicle, and reminders for insurance and inspections a month ahead.' },
-  { src: 'en-kontakt',          out: 'en/contact/index.html',                        path: '/en/contact/',                      alt: '/kontakt/',                       active: 'KONTAKT',    title: 'Contact: a free 45-minute consultation | Fluinty', desc: 'Pick a slot to talk about one process or see a product demo. No commitment, we come back with a proposal within 24 hours.' },
+  { src: 'en-kontakt',          out: 'en/contact/index.html',                        path: '/en/contact/',                      alt: '/kontakt/',                       active: 'KONTAKT',    title: 'Contact: a free 30-minute consultation | Fluinty', desc: 'Pick a slot to talk about one process or see a product demo. No commitment, we come back with a proposal within 24 hours.' },
   { src: 'en-blog',             out: 'en/blog/index.html',                           path: '/en/blog/',                         alt: '/blog/',                          active: null,        title: 'Blog: how we automate processes in SMEs | Fluinty', desc: 'We write about what we build: email orders, documents, complaints, fleets. No generic advice.' },
   { src: 'en-blog-post-eticod', out: 'en/blog/email-orders-into-erp/index.html',     path: '/en/blog/email-orders-into-erp/',   alt: '/blog/zamowienia-z-maili-do-erp/', active: null,       title: 'Email orders into an ERP with no API. How it works at Eticod | Fluinty', desc: 'Two lanes, a completeness check and an entry into a system that has no API. The story of a deployment with zero incorrect entries since launch.' },
   { src: 'en-dziekujemy',       out: 'en/thank-you/index.html',                      path: '/en/thank-you/',                    alt: '/dziekujemy/',                    active: null,        title: 'Thanks for your message | Fluinty', desc: 'Your message is in. We reply within 24 hours.' },
@@ -75,12 +80,13 @@ function build() {
 
     const plPath = page.lang === 'pl' ? page.path : page.alt
     const enPath = page.lang === 'en' ? page.path : page.alt
-    const hreflang = page.alt
+    let hreflang = page.alt
       ? [`  <link rel="alternate" hreflang="pl" href="${SITE}${plPath}">`,
          `  <link rel="alternate" hreflang="en" href="${SITE}${enPath}">`,
          `  <link rel="alternate" hreflang="x-default" href="${SITE}${plPath}">`].join('\n')
       : ''
-    const altHref = page.alt || (page.lang === 'pl' ? '/en/' : '/')
+    const altHref = PREFIX + (page.alt || (page.lang === 'pl' ? '/en/' : '/'))
+    if (BASE) hreflang = '  <meta name="robots" content="noindex, nofollow">'
 
     let html = HEAD + parts.nav + '\n' + body.trimEnd() + '\n' + parts.footer
     html = html
@@ -88,7 +94,7 @@ function build() {
       .replace(/\{\{LOCALE\}\}/g, parts.locale)
       .replace(/\{\{TITLE\}\}/g, page.title)
       .replace(/\{\{DESC\}\}/g, page.desc)
-      .replace(/\{\{PATH\}\}/g, page.path)
+      .replace(/\{\{PATH\}\}/g, PREFIX + page.path)
       .replace(/\{\{HREFLANG\}\}/g, hreflang)
       .replace(/\{\{ALT\}\}/g, altHref)
       .replace(/\{\{NAV_CTA\}\}/g, navCta)
@@ -97,6 +103,15 @@ function build() {
     for (const key of ACTIVE_KEYS) {
       html = html.replace(new RegExp(`\\{\\{ACTIVE_${key}\\}\\}`, 'g'),
         page.active === key ? ' aria-current="page"' : '')
+    }
+
+    if (BASE) {
+      html = html
+        .replace('href="/favicon.ico"', `href="${PREFIX}/favicon.ico"`)
+        .replace('href="/apple-touch-icon.png"', `href="${PREFIX}/apple-touch-icon.png"`)
+        .replace('<a class="skip"', (page.lang === 'pl'
+          ? '<div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Podgląd nowej strony fluinty.pl. Wersja robocza, nie dla klientów.</div>\n  <a class="skip"'
+          : '<div style="background:#00C4B4;color:#0B3D70;font:600 13px/1.4 var(--body);text-align:center;padding:8px 16px;">Preview of the new fluinty.pl. Work in progress.</div>\n  <a class="skip"'))
     }
 
     const left = html.match(/\{\{[A-Z_]+\}\}/g)
@@ -108,8 +123,9 @@ function build() {
     if ((html.match(/<h1\b/g) || []).length !== 1) problems.push(`${page.out}: ma byc dokladnie jeden <h1>`)
 
     if (!CHECK) {
-      mkdirSync(dirname(page.out) === '.' ? '.' : dirname(page.out), { recursive: true })
-      writeFileSync(page.out, html, 'utf8')
+      const target = join(OUT_DIR, page.out)
+      mkdirSync(dirname(target), { recursive: true })
+      writeFileSync(target, html, 'utf8')
     }
     written.push(page.out)
   }
