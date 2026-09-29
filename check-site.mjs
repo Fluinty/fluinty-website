@@ -17,7 +17,7 @@ const PAGES = [
   'en/blog/index.html', 'en/blog/email-orders-into-erp/index.html', 'en/thank-you/index.html', 'en/privacy-policy/index.html',
 ]
 
-const BANNED = [/Sistrade/i, /LUXE/, /Tax-Libris/i, /440 tys/i, /7\s*900/, /24\s*900/, /39 zł\s*\/\s*pojazd/i, /potwierdził klient/i, /potwierdzone przez klienta/i]
+const BANNED = [/Sistrade/i, /LUXE/, /Tax-Libris/i, /440 tys/i, /7\s*900/, /24\s*900/, /39 zł\s*\/\s*pojazd/i, /potwierdził klient/i, /potwierdzone przez klienta/i, /Kontakt referencyjny/i, /reference contact at the client/i]
 
 let bad = 0
 const note = (page, msg) => { console.log(`  ! ${page}: ${msg}`); bad++ }
