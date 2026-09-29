@@ -526,6 +526,10 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .slide.play .listen-foot{animation:fadein .6s .5s both}
 /* slide 8: the same mould, a size larger */
 .mmold{width:300px;height:202px;flex:none}
+/* contact links: mail, phone and website open on click, the underline shows they are links */
+.contact a,.m-rep a,.m-person .c a,a.lnk{color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,196,180,.55);padding-bottom:1px;transition:color .2s,border-color .2s}
+.contact a:hover,.m-rep a:hover,.m-person .c a:hover,a.lnk:hover{color:var(--teal-ink);border-color:currentColor}
+.dark .contact a:hover,.dark a.lnk:hover{color:var(--teal)}
 
 /* ---------- controls ---------- */
 .ctrl{position:fixed;right:86px;top:calc(14px + env(safe-area-inset-top,0px));display:flex;gap:4px;align-items:center;background:rgba(3,26,49,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:40px;padding:5px;z-index:5;color:#fff;font:500 13px/1 var(--mono);transition:opacity .4s}
@@ -857,7 +861,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <div class="q"><span class="k">Narzędzia</span><div><h3>Proces, program albo automat</h3><p>Czasem wystarczy uporządkować proces albo połączyć dwa programy. Czasem budujemy automat albo asystenta AI.</p></div></div>
       <div class="q"><span class="k">Skąd ten deck</span><div><h3>Z&nbsp;Waszej strony, zamiast ogólnej oferty</h3><p>Na hali macie centrum z&nbsp;podajnikiem palet, frezarkę 5-osiową i&nbsp;robota. Przejrzeliśmy mega-plast.pl pod kątem biura: zapytań, wycen i&nbsp;dokumentów.</p></div></div>
     </div>
-    <div class="listen-foot"><div class="m-rep"><small>Wasz kontakt u&nbsp;nas</small><b>Przemysław Kałuszka</b><span>przemyslaw.kaluszka@fluinty.pl · +48 668 344 111</span></div></div>
+    <div class="listen-foot"><div class="m-rep"><small>Wasz kontakt u&nbsp;nas</small><b>Przemysław Kałuszka</b><span><a href="mailto:przemyslaw.kaluszka@fluinty.pl">przemyslaw.kaluszka@fluinty.pl</a> · <a href="tel:+48668344111">+48 668 344 111</a></span></div></div>
   </div>
 </section>
 
@@ -1076,7 +1080,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="1"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></a>
       <p class="m-cta-s">Termin wybieracie w&nbsp;kalendarzu Adama Nelipa z&nbsp;Fluinty. Zaproszenie z&nbsp;linkiem do rozmowy przychodzi od razu na maila.</p>
       <div class="m-other">Wolicie napisać albo zadzwonić?
-        <div class="contact"><span>przemyslaw.kaluszka@fluinty.pl</span><span>+48 668 344 111</span><span>fluinty.pl</span></div>
+        <div class="contact"><span><a href="mailto:przemyslaw.kaluszka@fluinty.pl">przemyslaw.kaluszka@fluinty.pl</a></span><span><a href="tel:+48668344111">+48 668 344 111</a></span><span><a href="https://fluinty.pl" target="_blank" rel="noopener">fluinty.pl</a></span></div>
       </div>
     </div>
     <div class="close-r">
