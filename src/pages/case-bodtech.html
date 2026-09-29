@@ -1,26 +1,99 @@
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="bodtech-h" data-animated>
+  <style>
+    /* Okladka Bodtech: maszyna do odlewania cisnieniowego w przekroju, jak rysunek technologa. Tlok wciska
+       ciekly stop z komory przez kanal wlewowy do wneki, forma sie rozchodzi, odlew zlacza stygnie
+       (pomaranczowy, potem metal), aparat robi zdjecie z blyskiem, pekniecie przy kolnierzu zaznacza sie
+       na bursztynowo, a trzy dymki mowia to samo w trzech jezykach. Ruch z klockow cs-a-* (css/case.css)
+       plus cztery wlasne ruchy tej okladki (bt-push, bt-open, bt-flow, bt-hot, bt-flash), tylko pod .play. */
+    .cs-art[data-case="bodtech"] .b-bar   { fill: none; stroke: rgba(255,255,255,.2); stroke-width: 5; stroke-linecap: round; }
+    .cs-art[data-case="bodtech"] .b-hatch { fill: url(#bt-hatch); }
+    .cs-art[data-case="bodtech"] .b-cav   { fill: var(--ink); stroke: rgba(255,255,255,.45); stroke-width: 1; stroke-dasharray: 3 3; }
+    .cs-art[data-case="bodtech"] .b-void  { fill: var(--ink); }
+    .cs-art[data-case="bodtech"] .b-rod   { fill: #16263A; stroke: rgba(255,255,255,.8); stroke-width: 1.2; }
+    .cs-art[data-case="bodtech"] .b-tip   { fill: #33465E; stroke: rgba(255,255,255,.8); stroke-width: 1.2; }
+    .cs-art[data-case="bodtech"] .b-cast  { fill: #5B6B80; stroke: rgba(255,255,255,.85); stroke-width: 1.3; stroke-linejoin: round; }
+    .cs-art[data-case="bodtech"] .b-hot   { fill: #FF8A3D; opacity: 0; }
+    .cs-art[data-case="bodtech"] .b-flow  { fill: none; stroke: #FF8A3D; stroke-width: 7; stroke-linecap: butt; stroke-linejoin: round; opacity: 0; }
+    .cs-art[data-case="bodtech"] .b-pour  { fill: none; stroke: #FFB066; stroke-width: 4; stroke-linecap: butt; opacity: 0; }
+    .cs-art[data-case="bodtech"] .b-arrow { fill: none; stroke: var(--teal-2); stroke-width: 1.4; stroke-dasharray: 4 5; stroke-linecap: round; }
+    .cs-art[data-case="bodtech"] .b-head  { fill: none; stroke: var(--teal-2); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-art[data-case="bodtech"] .b-photo { fill: rgba(148,190,233,.06); }
+    .cs-art[data-case="bodtech"] .b-ring  { fill: none; stroke: rgba(255,255,255,.55); stroke-width: 1.2; }
+    .cs-art[data-case="bodtech"] .b-claw  { fill: none; stroke: #8C9BAD; stroke-width: 9; }
+    .cs-art[data-case="bodtech"] .b-bore  { fill: var(--ink); stroke: rgba(255,255,255,.8); stroke-width: 1.3; }
+    .cs-art[data-case="bodtech"] .b-crack { fill: none; stroke: #F5A524; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-art[data-case="bodtech"] .b-mark  { fill: none; stroke: #F5A524; stroke-width: 1.5; stroke-dasharray: 3 3; }
+    .cs-art[data-case="bodtech"] .b-flash { fill: #FFFFFF; opacity: 0; }
+    .cs-art[data-case="bodtech"] .b-bub   { fill: #13283F; stroke: rgba(148,190,233,.5); stroke-width: 1.2; stroke-linejoin: round; }
+    .cs-art[data-case="bodtech"] .b-word  { font-family: var(--body); font-size: 22px; font-weight: 600; fill: var(--on-dark); }
+    .cs-art[data-case="bodtech"] .b-n     { font-family: var(--mono); font-size: 21px; font-weight: 500; letter-spacing: .04em; fill: var(--on-dark-3); }
+    .cs-art[data-case="bodtech"].play .b-push  { animation: bt-push var(--t, .6s) var(--d, 0s) cubic-bezier(.5,0,.25,1) both; }
+    .cs-art[data-case="bodtech"].play .b-open  { animation: bt-open var(--t, .6s) var(--d, 0s) cubic-bezier(.45,0,.3,1) both; }
+    .cs-art[data-case="bodtech"].play .b-flow,
+    .cs-art[data-case="bodtech"].play .b-pour  { stroke-dasharray: 1; animation: bt-flow var(--t, .7s) var(--d, 0s) linear both; }
+    .cs-art[data-case="bodtech"].play .b-hot   { animation: bt-hot var(--t, 1s) var(--d, 0s) ease-out both; }
+    .cs-art[data-case="bodtech"].play .b-flash { animation: bt-flash var(--t, .45s) var(--d, 0s) ease-out both; }
+    @keyframes bt-push  { from { transform: translateX(-116px); } }
+    @keyframes bt-open  { from { transform: translateX(-44px); } }
+    @keyframes bt-flow  { 0% { stroke-dashoffset: 1; opacity: 1; } 55% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+    @keyframes bt-hot   { 0% { opacity: 0; } 18% { opacity: 1; } 55% { opacity: .9; } 100% { opacity: 0; } }
+    @keyframes bt-flash { 0% { opacity: 0; } 18% { opacity: .55; } 100% { opacity: 0; } }
+
+    /* Demo Bodtech: zdjecia w mailu, tlumaczenia pod tekstem po niemiecku, pliki z opisem, pole oceny */
+    section[data-case="bodtech"] .bt-tr { display: block; margin-top: 1px; font-size: 12.5px; line-height: 1.45; font-style: italic; color: var(--text-3); }
+    section[data-case="bodtech"] .bt-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 4px 14px 14px 32px; }
+    section[data-case="bodtech"] .bt-ph { position: relative; overflow: hidden; margin: 0; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: #F5F8FB; transition: background-color .45s ease, border-color .45s ease; }
+    section[data-case="bodtech"] .bt-ph.cs-lit { background: var(--cs-hl); border-color: var(--teal); box-shadow: none; }
+    section[data-case="bodtech"] .bt-ph svg { display: block; width: 100%; height: auto; border-radius: 5px; }
+    section[data-case="bodtech"] .bt-ph figcaption { margin-top: 4px; font: 500 11px/1.3 var(--mono); color: var(--text-3); overflow-wrap: anywhere; }
+    section[data-case="bodtech"] .bt-ring { opacity: 0; transition: opacity .35s ease; }
+    section[data-case="bodtech"] .bt-marked .bt-ring { opacity: 1; }
+    section[data-case="bodtech"] .bt-files { display: flex; flex-direction: column; gap: 7px; }
+    section[data-case="bodtech"] .bt-files li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+    section[data-case="bodtech"] .bt-files li > span:last-child { font-size: 13.5px; line-height: 1.4; color: var(--text); }
+    section[data-case="bodtech"] .bt-msg { font-size: 14px; font-weight: 600; line-height: 1.45; color: var(--text); }
+    section[data-case="bodtech"] .cs-card .bt-tr { margin-top: -5px; }
+    section[data-case="bodtech"] .cs-tag.bt-tag-h { border-color: var(--cs-amber); background: var(--cs-amber-bg); color: var(--cs-amber-text); }
+    section[data-case="bodtech"] .cs-fr.bt-hatch { background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(100,116,139,.12) 7px 8.5px); }
+    section[data-case="bodtech"] .cs-fr.bt-hatch .cs-v { font-weight: 500; font-style: italic; color: var(--text-2); }
+    @media (max-width: 380px) { section[data-case="bodtech"] .bt-photos { padding-left: 14px; gap: 6px; } }
+    /* tablet: dwie waskie kolumny, wiec zrodlo wiersza schodzi pod wartosc (jak na telefonie), zeby nazwa firmy nie lamala sie w srodku slowa */
+    /* telefon: cele dotyku min. 40 px (okruszki bez zmiany ukladu, "Przyklad nizej" i linki w CTA) */
+    @media (max-width: 767px) {
+      [data-bt-hero] nav a { display: inline-block; padding-block: 13px; margin-block: -13px; }
+      [data-bt-hero] .link-more, [data-bt-cta] .link-more { min-height: 40px; }
+    }
+    @media (min-width: 700px) and (max-width: 999px) { section[data-case="bodtech"] .cs-fr { grid-template-columns: 82px minmax(0, 1fr); } section[data-case="bodtech"] .cs-s { grid-column: 2; text-align: left; white-space: normal; } }
+  </style>
+
+  <section class="sec sec-dark bg-grid bg-glow cs-hero" aria-labelledby="bodtech-h" data-animated data-bt-hero>
+    <svg class="bg-deco" viewBox="0 0 1440 640" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,54 H 840 Q 872,54 872,86 V 120" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,40 H 1170 Q 1138,40 1138,72 V 108" stroke="rgba(45,212,191,0.09)" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230" stroke="rgba(45,212,191,0.11)" stroke-width="2" stroke-linejoin="round"></path>
+      <circle cx="872" cy="86" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <rect x="868" y="116" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="226" y="528" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="1s"></set><animateMotion dur="11s" begin="1s" repeatCount="indefinite" path="M -20,54 H 840 Q 872,54 872,86 V 120"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="5s"></set><animateMotion dur="13s" begin="5s" repeatCount="indefinite" path="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230"></animateMotion></circle>
+    </svg>
     <div class="wrap grid-hero">
       <div class="stack">
         <nav aria-label="Okruszki">
-          <ol class="row label">
+          <ol class="label row" style="gap: 8px;">
             <li><a href="{{ROOT}}#realizacje">Realizacje</a></li>
             <li aria-hidden="true">/</li>
             <li><span aria-current="page" style="color: var(--teal-2);">Bodtech</span></li>
           </ol>
         </nav>
-
-        <p class="row">
-          <span class="logo-tile" style="height: 42px; min-width: 0; padding: 8px 14px;">
-            <img src="{{ROOT}}assets/klienci/bodtech.png" alt="Bodtech">
+        <div class="row" style="gap: 14px;">
+          <span style="display: inline-flex; align-items: center; background: var(--on-dark); border-radius: 8px; padding: 6px 12px;">
+            <img src="{{ROOT}}assets/klienci/bodtech.png" alt="Bodtech" width="480" height="134" style="height: 28px; width: auto;">
           </span>
-          <span class="label" style="color: var(--teal-2);">Odlewnia ciśnieniowa &middot; Wodzisław Śląski</span>
-        </p>
-
+          <p class="label" style="color: var(--teal-2);">Odlewnia ciśnieniowa &middot; Wodzisław Śląski</p>
+        </div>
         <h1 id="bodtech-h">Reklamacja kompletna, zanim zobaczy ją <span class="mark">rzeczoznawca.</span></h1>
-
         <p class="lead">Bodtech odlewa złącza i sprzęt przeciwpożarowy, z klientami w wielu krajach. Zgłoszenia reklamacyjne przychodzą w różnych językach, ze zdjęciami uszkodzeń.</p>
-
-        <dl class="row" style="gap: 32px; align-items: flex-start;">
+        <dl class="row" style="gap: 20px clamp(24px, 3vw, 40px); align-items: flex-start;">
           <div class="metric" style="flex-direction: column-reverse;">
             <dt class="metric-lab">zgłoszeń miesięcznie</dt>
             <dd class="metric-num">ok. 20</dd>
@@ -36,63 +109,320 @@
         </dl>
       </div>
 
-      <div class="console" aria-hidden="true">
-        <div class="console-bar">
-          <span class="row" style="gap: 10px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--teal-2);">
-              <rect x="1.5" y="3" width="13" height="10" rx="2"></rect>
-              <path d="M2 4.5 8 9l6-4.5"></path>
-            </svg>
-            agent &middot; reklamacje Bodtech
-          </span>
-          <span class="row" style="gap: 7px; color: var(--teal-2);"><span class="status-dot"></span> ONLINE</span>
-        </div>
-        <div class="console-body">
-          <div class="log-line" style="animation-delay: .6s;"><span class="ts">11:02:11</span><span>nowe zgłoszenie: DE, 3 zdjęcia</span></div>
-          <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">11:02:14</span><span>zdjęcia opisane, folder reklamacji założony</span></div>
-          <div class="log-line" style="animation-delay: 2.4s;"><span class="ts">11:02:16</span><span>brak numeru partii, dopytuję po niemiecku</span></div>
-          <div class="log-line" style="animation-delay: 3.3s;"><span class="ts">12:47:03</span><span>odpowiedź: nr reklamacji 2026/31, rejestr zaktualizowany</span></div>
-          <div class="log-line log-line-ok" style="animation-delay: 4.2s;"><span class="ts">12:47:04</span><span>gotowe &middot; komplet dla rzeczoznawcy</span></div>
-          <div class="log-line" style="animation-delay: 5.1s;"><span class="ts">12:47:05</span><span>czekam na kolejne zgłoszenie</span><span class="caret"></span></div>
-        </div>
+      <div class="cs-hero-art">
+        <figure class="cs-art" data-case="bodtech" role="img" aria-label="Przekrój maszyny do odlewania ciśnieniowego: tłok wciska ciekły stop z komory przez kanał wlewowy do formy, forma się rozchodzi i wychodzi odlew złącza do węża pożarniczego. Obok zdjęcie odlewu z zaznaczonym pęknięciem przy kołnierzu i trzy dymki z tym samym słowem po niemiecku, angielsku i polsku: Riss, crack, pęknięcie.">
+          <svg viewBox="0 22 600 380" aria-hidden="true" focusable="false">
+            <defs>
+              <pattern id="bt-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V7" stroke="rgba(255,255,255,.14)" stroke-width="1.2"></path></pattern>
+              <clipPath id="bt-clip"><rect x="44" y="236" width="160" height="44"></rect></clipPath>
+            </defs>
+            <!-- podloga, loze, kolumny -->
+            <path class="cs-ln-3" d="M8 312H344"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M20 298H340V312H20Z" style="--t: .6s;"></path>
+            <path class="b-bar cs-a-draw" pathLength="1" d="M128 70H336" style="--d: .1s; --t: .6s;"></path>
+            <path class="b-bar cs-a-draw" pathLength="1" d="M128 288H336" style="--d: .15s; --t: .6s;"></path>
+            <!-- cylinder wtrysku, plyta stala, polowka stala formy w przekroju z odciskiem wneki -->
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M10 238H44V278H10Z" style="--d: .1s; --t: .5s;"></path>
+            <path class="cs-ln cs-a-draw" pathLength="1" d="M134 60H158V298H134Z" style="--d: .05s; --t: .7s;"></path>
+            <g class="cs-a-fade" style="--d: .35s; --t: .5s;">
+              <rect class="b-hatch" x="158" y="92" width="50" height="180"></rect>
+              <path class="b-cav" d="M190 124H208V226H190V222H178V208H190V142H178V128H190Z"></path>
+            </g>
+            <path class="cs-ln cs-a-draw" pathLength="1" d="M158 92H208V272H158Z" style="--d: .2s; --t: .7s;"></path>
+            <!-- komora wtrysku z otworem wlewowym i kanal do wneki -->
+            <path class="b-void" d="M44 250H202V268H44Z M194 226H202V250H194Z"></path>
+            <path class="cs-ln cs-a-draw" pathLength="1" d="M44 250H70M90 250H194V226M202 226V268H44" style="--d: .3s; --t: .6s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M64 236L72 250M96 236L88 250" style="--d: .4s; --t: .3s;"></path>
+            <!-- stop wlany do komory, potem wciskany tlokiem przez kanal do wneki -->
+            <path class="b-pour" pathLength="1" d="M80 206V256" style="--d: .35s; --t: .5s;"></path>
+            <path class="b-flow" pathLength="1" d="M70 259H198V228" style="--d: .75s; --t: .75s;"></path>
+            <g clip-path="url(#bt-clip)">
+              <g class="b-push" style="--d: .7s; --t: .6s;">
+                <path class="b-rod" d="M20 254H172V264H20Z"></path>
+                <rect class="b-tip" x="172" y="251.5" width="14" height="15" rx="1.5"></rect>
+              </g>
+            </g>
+            <rect class="b-cast cs-a-fade" x="186" y="251.5" width="15" height="15" style="--d: 1.25s; --t: .3s;"></rect>
+            <!-- polowka ruchoma z plyta: jedzie w prawo, odlew zostaje na niej -->
+            <g class="b-open" style="--d: 1.5s; --t: .6s;">
+              <g class="cs-a-fade" style="--d: .4s; --t: .5s;">
+                <rect class="b-hatch" x="252" y="92" width="50" height="180"></rect>
+                <path class="b-cav" d="M252 142H276V208H252Z"></path>
+              </g>
+              <path class="cs-ln cs-a-draw" pathLength="1" d="M252 92H302V272H252Z" style="--d: .25s; --t: .7s;"></path>
+              <path class="cs-ln cs-a-draw" pathLength="1" d="M302 60H326V298H302Z" style="--d: .1s; --t: .7s;"></path>
+              <path class="cs-ln-2" d="M302 150H276M302 200H276"></path>
+              <path class="b-cast cs-a-fade" fill-rule="evenodd" d="M234 124H252V142H276V208H252V226H234V222H222V208H234V142H222V128H234Z M234 156H276V194H234Z" style="--d: 1.2s; --t: .3s;"></path>
+              <path class="b-hot" fill-rule="evenodd" d="M234 124H252V142H276V208H252V226H234V222H222V208H234V142H222V128H234Z M234 156H276V194H234Z" style="--d: 1.1s; --t: 1.1s;"></path>
+            </g>
+            <text class="cs-t cs-small" x="62" y="332" text-anchor="middle">tłok</text>
+            <text class="cs-t cs-small" x="176" y="332" text-anchor="middle">forma stała</text>
+            <text class="cs-t cs-small" x="296" y="332" text-anchor="middle">ruchoma</text>
+            <!-- odlew idzie do zdjecia -->
+            <g class="cs-a-wipe" style="--d: 1.95s; --t: .4s;">
+              <path class="b-arrow" d="M240 116V46Q240 38 248 38H466Q474 38 474 46V58"></path>
+              <path class="b-head" d="M469 53L474 59L479 53"></path>
+            </g>
+            <!-- zdjecie odlewu: kolnierz, kly, otwor; pekniecie przy kolnierzu -->
+            <g class="cs-a-fade" style="--d: 2s; --t: .3s;">
+              <rect class="b-photo" x="360" y="68" width="228" height="206" rx="4"></rect>
+              <path class="cs-acc" d="M356 88V64H380M568 64H592V88M592 254V278H568M380 278H356V254"></path>
+            </g>
+            <text class="cs-t cs-small cs-a-fade" x="372" y="94" style="--d: 2.05s;">IMG_4410.jpg</text>
+            <text class="b-n cs-narrow cs-a-fade" x="370" y="98" style="--d: 2.05s;">IMG_4410</text>
+            <g class="cs-a-fade" style="--d: 2.05s; --t: .35s;">
+              <circle class="b-cast" cx="474" cy="176" r="62"></circle>
+              <circle class="b-ring" cx="474" cy="176" r="47"></circle>
+              <path class="b-claw" d="M442 157.5A37 37 0 0 0 442 194.5M506 157.5A37 37 0 0 1 506 194.5"></path>
+              <circle class="b-bore" cx="474" cy="176" r="27"></circle>
+            </g>
+            <rect class="b-flash" x="356" y="64" width="236" height="214" style="--d: 2.1s; --t: .45s;"></rect>
+            <path class="b-crack cs-a-draw" pathLength="1" d="M504 140L509 136L506 132L511 128" style="--d: 2.3s; --t: .3s;"></path>
+            <circle class="b-mark cs-a-pop" cx="507.5" cy="134" r="14" style="--d: 2.4s; --t: .4s;"></circle>
+            <text class="cs-t cs-small cs-a-fade" x="474" y="264" text-anchor="middle" style="--d: 2.3s;">przykładowy odlew</text>
+            <text class="b-n cs-narrow cs-a-fade" x="474" y="266" text-anchor="middle" style="--d: 2.3s;">odlew</text>
+            <!-- to samo slowo w trzech jezykach -->
+            <g class="cs-a-pop" style="--d: 2.45s; --t: .35s;">
+              <path class="b-bub" d="M299 356H326L336 345L340 356H347A12 12 0 0 1 359 368V382A12 12 0 0 1 347 394H299A12 12 0 0 1 287 382V368A12 12 0 0 1 299 356Z"></path>
+              <text class="b-word" x="323" y="382" text-anchor="middle" lang="de">Riss</text>
+            </g>
+            <g class="cs-a-pop" style="--d: 2.55s; --t: .35s;">
+              <path class="b-bub" d="M381 356H421L431 345L435 356H442A12 12 0 0 1 454 368V382A12 12 0 0 1 442 394H381A12 12 0 0 1 369 382V368A12 12 0 0 1 381 356Z"></path>
+              <text class="b-word" x="411.5" y="382" text-anchor="middle" lang="en">crack</text>
+            </g>
+            <g class="cs-a-pop" style="--d: 2.65s; --t: .35s;">
+              <path class="b-bub" d="M476 356H559L569 345L573 356H580A12 12 0 0 1 592 368V382A12 12 0 0 1 580 394H476A12 12 0 0 1 464 382V368A12 12 0 0 1 476 356Z"></path>
+              <text class="b-word" x="528" y="382" text-anchor="middle" lang="pl">pęknięcie</text>
+            </g>
+          </svg>
+        </figure>
+        <p class="cs-cap">Odlew wychodzi z&nbsp;formy w&nbsp;kilka sekund. Reklamacja w&nbsp;każdym języku jest kompletna, zanim zobaczy ją rzeczoznawca.</p>
+        <a class="link-more" href="#przyklad">
+          Przykład niżej
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"></path></svg>
+        </a>
       </div>
     </div>
 
-    <div class="wrap" style="margin-top: 44px;">
-      <ul class="chips">
-        <li class="chip"><span class="label">Start</span> &middot; 3 miesiące temu</li>
-        <li class="chip"><span class="label">Wolumen</span> &middot; ok. 20 zgłoszeń miesięcznie</li>
-        <li class="chip"><span class="label">Systemy</span> &middot; Gmail, Gemini (tekst i zdjęcia), Google Drive, Google Sheets</li>
-        <li class="chip"><span class="label">Do człowieka</span> &middot; prośba o kontakt z człowiekiem, zgłoszenie bez numeru reklamacji</li>
+    <div class="wrap">
+      <ul class="chips" style="margin-top: clamp(28px, 3.5vw, 44px);">
+        <li class="chip chip-mono" style="text-transform: none;">START &middot; 3 miesiące temu</li>
+        <li class="chip chip-mono" style="text-transform: none;">WOLUMEN &middot; ok. 20 zgłoszeń miesięcznie</li>
+        <li class="chip chip-mono" style="text-transform: none;">SYSTEMY &middot; Gmail, Gemini (tekst i zdjęcia), Google Drive, Google Sheets</li>
+        <li class="chip chip-mono" style="text-transform: none;">DO CZŁOWIEKA &middot; prośba o kontakt z człowiekiem, zgłoszenie bez numeru reklamacji</li>
       </ul>
     </div>
   </section>
 
   <section class="sec sec-white" aria-labelledby="wyzwanie">
-    <div class="wrap grid grid-2">
+    <div class="wrap grid grid-2" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
       <div class="stack sr">
         <p class="eyebrow">Wyzwanie</p>
         <h2 id="wyzwanie">Każda reklamacja zaczynała się od śledztwa.</h2>
         <div class="accent-bar"></div>
         <p class="lead">Zgłoszenia przychodziły mailem, w języku klienta, często bez kompletu informacji. Zanim sprawa trafiła do rzeczoznawcy, ktoś musiał ją przeczytać, obejrzeć zdjęcia i dopytać o braki. Około godziny pracy na każde zgłoszenie.</p>
       </div>
-
-      <ul class="stack-s sr-grid">
-        <li class="card sr">
+      <ul class="stack-s sr">
+        <li class="card" style="flex-direction: row; align-items: flex-start; gap: 14px; background: var(--gray);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B3D70" stroke-width="1.6" aria-hidden="true" style="flex: none; margin-top: 2px;">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3.5 2"></path>
+          </svg>
           <p class="body-2"><strong>Około godziny na zgłoszenie.</strong> Czytanie, oglądanie zdjęć i dopytywanie, zanim sprawa w ogóle ruszyła.</p>
         </li>
-        <li class="card sr">
+        <li class="card" style="flex-direction: row; align-items: flex-start; gap: 14px; background: var(--gray);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B3D70" stroke-width="1.6" aria-hidden="true" style="flex: none; margin-top: 2px;">
+            <path d="M12 3 2.5 20h19L12 3Z"></path>
+            <path d="M12 10v4M12 17.5v.5"></path>
+          </svg>
           <p class="body-2"><strong>Różne języki.</strong> Klienci piszą po niemiecku, angielsku i w innych językach, każda odpowiedź wymagała tłumaczenia.</p>
         </li>
-        <li class="card sr">
+        <li class="card" style="flex-direction: row; align-items: flex-start; gap: 14px; background: var(--gray);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B3D70" stroke-width="1.6" aria-hidden="true" style="flex: none; margin-top: 2px;">
+            <path d="M3 20v-6M9 20V9M15 20v-8M21 20V4"></path>
+          </svg>
           <p class="body-2"><strong>Niekompletne zgłoszenia.</strong> Brak numeru partii albo zdjęcia oznaczał kolejną rundę maili.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="rozwiazanie">
+  <section class="sec sec-gray" id="przyklad" aria-labelledby="przyklad-h" data-case="bodtech">
     <div class="wrap">
+      <div class="cs-demo-top">
+        <div class="sec-head sr">
+          <p class="eyebrow">Przykład na zmyślonym zgłoszeniu</p>
+          <h2 id="przyklad-h">Tak to wygląda na przykładzie.</h2>
+          <div class="accent-bar"></div>
+          <p class="lead">Zgłoszenie po niemiecku z&nbsp;trzema zdjęciami, bez numeru reklamacji, i&nbsp;mail z&nbsp;prośbą o&nbsp;telefon. Brak wraca do klienta w&nbsp;jego języku, telefon do człowieka, a&nbsp;komplet do rzeczoznawcy.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm cs-replay" data-cs-replay hidden>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2v3h3"></path></svg>
+          Pokaż jeszcze raz
+        </button>
+      </div>
+
+      <div class="cs-demo" data-cs-demo data-split="2">
+        <div class="cs-col cs-in">
+          <p class="cs-colh">Skrzynka reklamacji &middot; przykład</p>
+          <article class="cs-doc">
+            <header><span class="cs-fmt">skrzynka</span><b>Odebrane</b><em>3 nowe</em></header>
+            <ul class="cs-inbox">
+              <li class="cs-mail is-skip" data-at="1" data-late="1 700 is-skip">
+                <span class="cs-from">noreply@przyklad-spedition.example</span>
+                <span class="cs-subj" lang="de">Automatische Antwort: Abwesenheit</span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="760">pominięty</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">qs@przyklad-feuerwehrtechnik<wbr>.example</span>
+                <span class="cs-subj" lang="de">Reklamation Kupplung, Lieferung KW&nbsp;36</span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok cs-hl" data-at="1" data-t="900" data-f="lang">DE &middot; mail A</span><span class="cs-tag cs-tag-done" data-at="6" data-t="1900">komplet</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">service@przyklad-fire.example</span>
+                <span class="cs-subj" lang="en"><span class="cs-hl" data-f="b">Please call me back</span></span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="1020">EN &middot; mail B</span><span class="cs-tag bt-tag-h" data-at="4" data-t="450">do człowieka</span></span>
+              </li>
+            </ul>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 0 cs-scan">
+            <header><span class="cs-fmt">mail A</span><b lang="de">Reklamation Kupplung, Lieferung KW&nbsp;36</b><em>11:02</em></header>
+            <ol class="cs-lines">
+              <li><span><span class="cs-hl" data-f="a" lang="de">Bei der Lieferung KW&nbsp;36 sind drei Kupplungen beschädigt.</span><small class="bt-tr">W&nbsp;dostawie z&nbsp;36. tygodnia trzy złączki są uszkodzone.</small></span></li>
+              <li><span><span lang="de">Fotos anbei.</span><small class="bt-tr">Zdjęcia w&nbsp;załączniku.</small></span></li>
+              <li><span><span class="cs-hl" data-f="kl">Przykład Feuerwehrtechnik GmbH</span>, <span lang="de">Qualitätssicherung</span></span></li>
+            </ol>
+            <div class="bt-photos">
+              <figure class="bt-ph cs-hl bt-marked" data-f="p1" data-late="3 100 bt-marked">
+                <svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">
+                  <rect width="120" height="84" fill="#2A3A4F"></rect><rect y="64" width="120" height="20" fill="#34465C"></rect>
+                  <ellipse cx="62" cy="73" rx="27" ry="5" fill="rgba(0,0,0,.28)"></ellipse>
+                  <circle cx="60" cy="42" r="28" fill="#8C9BAD" stroke="#C9D2DC" stroke-width="1.2"></circle>
+                  <circle cx="60" cy="42" r="21" fill="none" stroke="#6B7A8D" stroke-width="1.2"></circle>
+                  <path d="M45.7 33.75A16.5 16.5 0 0 0 45.7 50.25M74.3 33.75A16.5 16.5 0 0 1 74.3 50.25" fill="none" stroke="#B4C0CE" stroke-width="4"></path>
+                  <circle cx="60" cy="42" r="12" fill="#2A3A4F" stroke="#C9D2DC" stroke-width="1"></circle>
+                  <path d="M73 26L76 23.5L75 21L79 18" fill="none" stroke="#1B2533" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <circle class="bt-ring" cx="76" cy="22" r="8.5" fill="none" stroke="#F5A524" stroke-width="1.6" stroke-dasharray="3 2.4"></circle>
+                </svg>
+                <figcaption>IMG_4410<wbr>.jpg</figcaption>
+              </figure>
+              <figure class="bt-ph cs-hl bt-marked" data-f="p2" data-late="3 400 bt-marked">
+                <svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">
+                  <rect width="120" height="84" fill="#2A3A4F"></rect><rect y="64" width="120" height="20" fill="#34465C"></rect>
+                  <ellipse cx="62" cy="73" rx="27" ry="5" fill="rgba(0,0,0,.28)"></ellipse>
+                  <circle cx="60" cy="42" r="28" fill="#8C9BAD" stroke="#C9D2DC" stroke-width="1.2"></circle>
+                  <circle cx="60" cy="42" r="21" fill="none" stroke="#6B7A8D" stroke-width="1.2"></circle>
+                  <path d="M45.7 33.75A16.5 16.5 0 0 0 45.7 50.25M74.3 33.75A16.5 16.5 0 0 1 74.3 50.25" fill="none" stroke="#B4C0CE" stroke-width="4"></path>
+                  <circle cx="60" cy="42" r="12" fill="#2A3A4F" stroke="#C9D2DC" stroke-width="1"></circle>
+                  <path d="M37 58L46 51M39.5 61.5L48.5 54.5M43 64L51 57.5" fill="none" stroke="#EEF2F6" stroke-width="1.1" stroke-linecap="round"></path>
+                  <circle class="bt-ring" cx="44" cy="57" r="10.5" fill="none" stroke="#F5A524" stroke-width="1.6" stroke-dasharray="3 2.4"></circle>
+                </svg>
+                <figcaption>IMG_4411<wbr>.jpg</figcaption>
+              </figure>
+              <figure class="bt-ph cs-hl bt-marked" data-f="p3" data-late="3 700 bt-marked">
+                <svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">
+                  <rect width="120" height="84" fill="#2A3A4F"></rect><rect y="64" width="120" height="20" fill="#34465C"></rect>
+                  <ellipse cx="62" cy="73" rx="27" ry="5" fill="rgba(0,0,0,.28)"></ellipse>
+                  <circle cx="60" cy="42" r="28" fill="#8C9BAD" stroke="#C9D2DC" stroke-width="1.2"></circle>
+                  <circle cx="60" cy="42" r="21" fill="none" stroke="#6B7A8D" stroke-width="1.2"></circle>
+                  <path d="M45.7 33.75A16.5 16.5 0 0 0 45.7 50.25M74.3 33.75L79.5 41L85 45" fill="none" stroke="#B4C0CE" stroke-width="4" stroke-linejoin="round"></path>
+                  <circle cx="60" cy="42" r="12" fill="#2A3A4F" stroke="#C9D2DC" stroke-width="1"></circle>
+                  <circle class="bt-ring" cx="80" cy="41" r="10" fill="none" stroke="#F5A524" stroke-width="1.6" stroke-dasharray="3 2.4"></circle>
+                </svg>
+                <figcaption>IMG_4412<wbr>.jpg</figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="cs-doc" data-at="5">
+            <header><span class="cs-fmt">odpowiedź</span><b lang="de">AW: Reklamation Kupplung, Lieferung KW&nbsp;36</b><em>12:46</em></header>
+            <ol class="cs-lines">
+              <li><span lang="de">Guten Tag,</span></li>
+              <li><span><span lang="de">unsere <span class="cs-hl" data-f="nr">Reklamationsnummer: 2026/47</span>.</span><small class="bt-tr">Nasz numer reklamacji: 2026/47.</small></span></li>
+            </ol>
+          </article>
+        </div>
+
+        <div class="cs-col cs-mid">
+          <ol class="cs-steps">
+            <li class="cs-step" data-step="1" data-dur="1200"><span class="cs-n">01</span><p>Odbiera zgłoszenie, rozpoznaje język</p></li>
+            <li class="cs-step" data-step="2" data-dur="1500"><span class="cs-n">02</span><p>Szuka numeru reklamacji: brak</p></li>
+            <li class="cs-step" data-step="3" data-dur="1900"><span class="cs-n">03</span><p>Opisuje zdjęcia, pliki do folderu</p></li>
+            <li class="cs-step" data-step="4" data-dur="1500"><span class="cs-n">04</span><p>Dopytuje po niemiecku, telefon do człowieka</p></li>
+            <li class="cs-step" data-step="5" data-dur="1500"><span class="cs-n">05</span><p>Sprawa w&nbsp;rejestrze po numerze</p></li>
+            <li class="cs-step" data-step="6" data-dur="2300"><span class="cs-n">06</span><p>Komplet do rzeczoznawcy, potwierdzenie do klienta</p></li>
+          </ol>
+          <div class="cs-tally">
+            <div data-at="6" data-t="1700"><b>1</b><span>sprawa kompletna u&nbsp;rzeczoznawcy</span></div>
+            <div class="cs-w" data-at="4" data-t="1400"><b>1</b><span>prośba o&nbsp;telefon, u&nbsp;człowieka</span></div>
+            <div class="cs-z" data-at="6" data-t="1950"><b>0</b><span>ocen reklamacji wystawionych przez automat</span></div>
+          </div>
+        </div>
+
+        <div class="cs-col cs-out">
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Karta sprawy</b><em>przykład</em></div>
+            <div class="cs-fr" data-at="2" data-t="100" data-r="kl" data-f="s-kl" data-fly="Przykład Feuerwehrtechnik GmbH"><span class="cs-k">Klient</span><span class="cs-v">Przykład Feuerwehrtechnik GmbH</span><span class="cs-s">mail A, l.&nbsp;3</span></div>
+            <div class="cs-fr" data-at="2" data-t="250" data-r="lang"><span class="cs-k">Język</span><span class="cs-v">niemiecki, odpowiedzi po niemiecku</span><span class="cs-s">rozpoznany</span></div>
+            <div class="cs-fr cs-gap" data-at="2" data-t="550" data-r="a" data-fly="brak numeru"><span class="cs-k">Numer</span><span class="cs-v">brak w&nbsp;zgłoszeniu, idzie prośba do klienta</span><span class="cs-s">mail A</span></div>
+            <div class="cs-fr" data-at="3" data-t="1750" data-f="s-ph"><span class="cs-k">Zdjęcia</span><span class="cs-v">3 opisane, link do folderu</span><span class="cs-s">Dysk</span></div>
+            <div class="cs-fr" data-at="5" data-t="500" data-r="nr" data-f="s-nr" data-fly="2026/47"><span class="cs-k">Numer</span><span class="cs-v">2026/47, nowa sprawa w&nbsp;rejestrze</span><span class="cs-s">odpowiedź, l.&nbsp;2</span></div>
+            <div class="cs-fr bt-hatch" data-at="6" data-t="200"><span class="cs-k">Ocena</span><span class="cs-v">pusta, decyduje rzeczoznawca</span><span class="cs-s">człowiek</span></div>
+          </article>
+          <div class="cs-card" data-at="3">
+            <p class="cs-card-h"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1.5 4.5a1 1 0 0 1 1-1h3.6l1.5 1.7h5.9a1 1 0 0 1 1 1v6.3a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1z"></path></svg>Dysk &middot; Reklamacje / 2026-09</p>
+            <ul class="bt-files">
+              <li data-at="3" data-t="200" data-r="p1" data-fly="IMG_4410.jpg"><span class="cs-file">IMG_4410.jpg</span><span>pęknięcie przy kołnierzu</span></li>
+              <li data-at="3" data-t="500" data-r="p2" data-fly="IMG_4411.jpg"><span class="cs-file">IMG_4411.jpg</span><span>zadrapanie powłoki</span></li>
+              <li data-at="3" data-t="800" data-r="p3" data-fly="IMG_4412.jpg"><span class="cs-file">IMG_4412.jpg</span><span>wygięty kieł</span></li>
+            </ul>
+          </div>
+          <div class="cs-card" data-at="4">
+            <p class="cs-card-h"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M14.5 1.5 7 9M14.5 1.5 10 14.5 7 9 1.5 6z"></path></svg>Wysłane do klienta A &middot; po niemiecku</p>
+            <p class="bt-msg" lang="de">Bitte nennen Sie uns Ihre Reklamationsnummer.</p>
+            <p class="bt-tr">Prosimy o&nbsp;numer reklamacji.</p>
+          </div>
+          <div class="cs-human" data-at="4" data-t="450" data-r="b" data-fly="Please call me back">
+            <b>Do człowieka</b>
+            <p>Mail B prosi o&nbsp;telefon. Automat go nie obsługuje, tylko od razu przekazuje człowiekowi.</p>
+          </div>
+          <article class="cs-sys" data-at="6">
+            <div class="cs-sys-h"><i></i><i></i><i></i><span>Gmail &middot; do rzeczoznawcy</span><em>wysyła automat</em></div>
+            <div class="cs-sys-b">
+              <div class="cs-sys-f"><span>Temat</span><span class="cs-field"><span data-at="6" data-t="250" data-r="s-nr" data-fly="Reklamacja 2026/47">Reklamacja 2026/47, Kupplung</span></span></div>
+              <div class="cs-sys-f"><span>Klient</span><span class="cs-field"><span data-at="6" data-t="1200" data-r="s-kl">Przykład Feuerwehrtechnik GmbH &middot; DE</span></span></div>
+              <div class="cs-sys-f"><span>Załączniki</span><span class="cs-field"><span data-at="6" data-t="1400" data-r="s-ph">karta sprawy, 3&nbsp;zdjęcia z&nbsp;opisem</span></span></div>
+            </div>
+            <div class="cs-sys-foot">
+              <span class="cs-saved" data-at="6" data-t="1650"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>wysłane</span>
+              <span class="cs-saved" data-at="6" data-t="1900"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>potwierdzenie do klienta po niemiecku</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-log">
+          <div class="cs-log-h">
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2"></rect><path d="M2 4.5 8 9l6-4.5"></path></svg>dziennik agenta &middot; reklamacje</span>
+            <span style="color: var(--teal-2);"><span class="status-square"></span> PRZYKŁAD</span>
+          </div>
+          <ol class="cs-log-b">
+            <li data-at="1" data-t="1100"><span class="ts">11:02:11</span><span>nowe zgłoszenie: DE, 3 zdjęcia; prośba o&nbsp;telefon: EN; 1 pominięty</span></li>
+            <li data-at="2" data-t="1450"><span class="ts">11:02:12</span><span>mail A: brak numeru reklamacji</span></li>
+            <li data-at="3" data-t="1800"><span class="ts">11:02:14</span><span>zdjęcia opisane, folder reklamacji założony</span></li>
+            <li data-at="4" data-t="300"><span class="ts">11:02:16</span><span>brak numeru, dopytuję po niemiecku</span></li>
+            <li data-at="4" data-t="1400"><span class="ts">11:02:16</span><span>mail B: prośba o&nbsp;telefon, przekazany człowiekowi</span></li>
+            <li data-at="5" data-t="1450"><span class="ts">12:47:03</span><span>odpowiedź: nr reklamacji 2026/47, sprawa w&nbsp;rejestrze</span></li>
+            <li class="cs-ok" data-at="6" data-t="1700"><span class="ts">12:47:04</span><span>gotowe &middot; komplet dla rzeczoznawcy</span></li>
+            <li data-at="6" data-t="1950"><span class="ts">12:47:05</span><span>potwierdzenie do klienta po niemiecku</span></li>
+            <li data-at="6" data-t="2150"><span class="ts">12:47:05</span><span>czekam na kolejne zgłoszenie</span><span class="caret"></span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="cs-note"><b>Automat nie ocenia reklamacji.</b> Brak numeru wraca do klienta w&nbsp;jego języku, prośba o&nbsp;telefon od razu trafia do człowieka, a&nbsp;o&nbsp;reklamacji decyduje rzeczoznawca. Firmy, maile, zdjęcia, numery i&nbsp;opisy są zmyślone.</p>
+    </div>
+  </section>
+
+  <section class="sec sec-white" aria-labelledby="rozwiazanie">
+    <div class="wrap stack" style="gap: clamp(32px, 4vw, 52px);">
       <div class="flow sr" data-animated>
         <div class="flow-head">
           <p class="label" style="color: var(--teal-2);">Schemat przepływu</p>
@@ -134,54 +464,81 @@
             <circle cx="686.3" cy="258" r="4" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></circle><path d="M 678.3,272 c 0,-5 16,-5 16,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linecap="round"></path>
             <text x="686.3" y="293" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">eskalacja do człowieka</text>
             <text x="50.5" y="96" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">JEDEN TOR, DWIE ODNOGI AWARYJNE</text>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 119.9,140 H 274.5"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 309.2,140 H 462.3"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 515.9,140 H 669"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.4s" begin="3.5s" repeatCount="indefinite" path="M 703.7,140 H 858.3"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="4.6s" repeatCount="indefinite" path="M 893,140 H 1016.1"></animateMotion></circle>
-            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.6s" begin="5.7s" repeatCount="indefinite" path="M 291.9,162 C 291.9,162 291.9,238 291.9,238"></animateMotion></circle>
-            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0.95"><animateMotion dur="6s" begin="6.8s" repeatCount="indefinite" path="M 686.3,162 C 686.3,162 686.3,238 686.3,238"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.2s"></set><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 119.9,140 H 274.5"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.3s"></set><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 309.2,140 H 462.3"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.4s"></set><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 515.9,140 H 669"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="3.5s"></set><animateMotion dur="5.4s" begin="3.5s" repeatCount="indefinite" path="M 703.7,140 H 858.3"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="4.6s"></set><animateMotion dur="4.6s" begin="4.6s" repeatCount="indefinite" path="M 893,140 H 1016.1"></animateMotion></circle>
+            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="5.7s"></set><animateMotion dur="5.6s" begin="5.7s" repeatCount="indefinite" path="M 291.9,162 C 291.9,162 291.9,238 291.9,238"></animateMotion></circle>
+            <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="6.8s"></set><animateMotion dur="6s" begin="6.8s" repeatCount="indefinite" path="M 686.3,162 C 686.3,162 686.3,238 686.3,238"></animateMotion></circle>
           </svg>
         </div>
         <p class="flow-cap">Zgłoszenie idzie jednym torem od skrzynki przez opis zdjęć i dopytanie do rejestru i rzeczoznawcy, a dwie odnogi obsługują wyjątki: brak numeru reklamacji i prośbę o kontakt z człowiekiem.</p>
       </div>
 
-      <div class="sec-head sr" style="margin-top: 52px;">
+      <div class="stack sr">
         <p class="eyebrow">Rozwiązanie</p>
         <h2 id="rozwiazanie">Agent przejął skrzynkę reklamacyjną.</h2>
         <div class="accent-bar"></div>
       </div>
 
-      <ol class="grid grid-2 sr-grid">
-        <li class="card sr">
-          <p class="label">01</p>
-          <h3>Odbiór zgłoszenia</h3>
-          <p class="body-2">Agent wyłapuje zgłoszenie w skrzynce i rozpoznaje język klienta.</p>
+      <ol class="sr" style="display: flex; flex-direction: column; max-width: 860px;">
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">01</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Odbiór zgłoszenia</h3>
+            <p class="body-2">Agent wyłapuje zgłoszenie w skrzynce i rozpoznaje język klienta.</p>
+          </div>
         </li>
-        <li class="card sr">
-          <p class="label">02</p>
-          <h3>Numer reklamacji</h3>
-          <p class="body-2">Zgłoszenie bez numeru dostaje automatyczną prośbę o uzupełnienie. Z numerem system odnajduje istniejącą sprawę.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">02</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Numer reklamacji</h3>
+            <p class="body-2">Zgłoszenie bez numeru dostaje automatyczną prośbę o uzupełnienie. Z numerem system odnajduje istniejącą sprawę.</p>
+          </div>
         </li>
-        <li class="card sr">
-          <p class="label">03</p>
-          <h3>Analiza zdjęć</h3>
-          <p class="body-2">AI opisuje uszkodzenia ze zdjęć, a pliki lądują w folderze reklamacji z linkiem w rejestrze.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">03</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Analiza zdjęć</h3>
+            <p class="body-2">AI opisuje uszkodzenia ze zdjęć, a pliki lądują w folderze reklamacji z linkiem w rejestrze.</p>
+          </div>
         </li>
-        <li class="card sr">
-          <p class="label">04</p>
-          <h3>Dopytanie o braki</h3>
-          <p class="body-2">Prosi o brakujące dane w języku klienta. Prośbę o kontakt z człowiekiem wykrywa i przekazuje od razu.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">04</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Dopytanie o braki</h3>
+            <p class="body-2">Prosi o brakujące dane w języku klienta. Prośbę o kontakt z człowiekiem wykrywa i przekazuje od razu.</p>
+          </div>
         </li>
-        <li class="card sr">
-          <p class="label">05</p>
-          <h3>Rejestr reklamacji</h3>
-          <p class="body-2">Nowa sprawa albo aktualizacja istniejącej po numerze. Wszystko w jednym rejestrze.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">05</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Rejestr reklamacji</h3>
+            <p class="body-2">Nowa sprawa albo aktualizacja istniejącej po numerze. Wszystko w jednym rejestrze.</p>
+          </div>
         </li>
-        <li class="card sr">
-          <p class="label">06</p>
-          <h3>Komplet dla rzeczoznawcy</h3>
-          <p class="body-2">Ekspert dostaje uporządkowaną sprawę mailem, a klient potwierdzenie w swoim języku.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; flex: none; align-self: flex-start; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">06</span>
+          <div>
+            <h3 style="margin-bottom: 4px;">Komplet dla rzeczoznawcy</h3>
+            <p class="body-2">Ekspert dostaje uporządkowaną sprawę mailem, a klient potwierdzenie w swoim języku.</p>
+          </div>
         </li>
       </ol>
     </div>
@@ -195,7 +552,7 @@
         <div class="accent-bar"></div>
       </div>
 
-      <dl class="grid grid-3 sr-grid">
+      <dl class="grid grid-3 sr-grid" style="margin-bottom: clamp(24px, 3vw, 36px);">
         <div class="card metric sr" style="flex-direction: column-reverse; gap: 8px;">
           <dt class="metric-lab">zgłoszeń miesięcznie</dt>
           <dd class="metric-num">ok. 20</dd>
@@ -210,10 +567,10 @@
         </div>
       </dl>
 
-      <div class="card sr" style="margin-top: 24px;">
-        <p class="label" style="color: var(--teal-text);">Referencja</p>
-        <p class="small">Kontakt referencyjny po stronie klienta udostępniamy na życzenie, przy rozmowie.</p>
-      </div>
+      <p class="card sr" style="flex-direction: row; align-items: center; flex-wrap: wrap; gap: 16px; max-width: 860px;">
+        <span class="label" style="color: var(--teal-text);">Referencja</span>
+        <span class="body-2">Kontakt referencyjny po stronie klienta udostępniamy na życzenie, przy rozmowie.</span>
+      </p>
     </div>
   </section>
 
@@ -234,7 +591,7 @@
     </div>
   </section>
 
-  <section class="sec sec-navy" aria-labelledby="cta">
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta" data-animated data-bt-cta>
     <div class="wrap stack sr" style="align-items: center; text-align: center;">
       <h2 id="cta">Opowiedzcie nam o podobnym procesie.</h2>
       <p class="lead">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem korzyści. Rozmowa jest bezpłatna.</p>

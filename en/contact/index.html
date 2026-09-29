@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="../../css/site.css">
 </head>
 
-<body>
+<body class="page-contact">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="wrap nav-inner">
@@ -107,7 +107,49 @@
 
   <main id="main" tabindex="-1">
 
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="kontakt-h" data-animated>
+  <style>
+    /* Kontakt (EN): uklad z makiety (Kontakt.dc.html): kalendarz 7/12 i formularz 5/12 obok siebie, na telefonie jedno pod drugim */
+    [data-kontakt-hero] .stack { max-width: 760px; }
+    [data-kontakt-hero] h1 { font-size: clamp(32px, 4vw, 52px); line-height: 1.08; }
+    [data-kontakt-hero] h1 .mark { display: block; }
+    [data-kontakt] .k-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 48px); align-items: start; }
+    [data-kontakt] .k-cal { grid-column: span 7; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+    [data-kontakt] .k-side { grid-column: span 5; display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+    [data-kontakt] .k-note { font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
+    [data-kontakt] .k-cal-card { padding: 0; gap: 0; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 16px 40px -20px rgba(15,23,42,.15); }
+    [data-kontakt] .k-cal-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; padding: 14px 26px; border-bottom: 1px solid var(--line); background: var(--gray); }
+    [data-kontakt] .k-cal-head h3 { font-size: 15px; font-weight: 600; letter-spacing: 0; }
+    [data-kontakt] .k-cal-head .small { font-size: 12.5px; }
+    [data-kontakt] .k-cal-head .link-more { padding-block: 10px; }
+    [data-kontakt] .calendly-inline-widget { background: var(--white); }
+    [data-kontakt] .k-form-card { background: var(--gray); padding: clamp(22px, 2.2vw, 30px) clamp(20px, 2.3vw, 32px); gap: 6px; }
+    [data-kontakt] .k-form-card .k-form-h { font-size: 19px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+    [data-kontakt] .k-form-card form { gap: 14px; margin-top: 14px; }
+    [data-kontakt] .k-form-card .btn { width: 100%; }
+    [data-kontakt] .k-form-card .small { font-size: 12.5px; line-height: 1.5; }
+    [data-kontakt] .k-form-card .small a { padding-block: 12px; } /* wiekszy cel dotyku linku w zdaniu, bez zmiany wygladu */
+    [data-kontakt] .k-direct { gap: 4px; padding: clamp(18px, 2vw, 26px) clamp(20px, 2.3vw, 32px); }
+    [data-kontakt] .k-direct li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: #334155; }
+    [data-kontakt] .k-direct .k-lab { font-family: var(--mono); color: var(--teal-text); min-width: 2.5em; }
+    [data-kontakt] .k-direct a { display: inline-block; padding: 9px 0; color: #334155; text-decoration: underline; text-decoration-color: rgba(0,122,112,.45); text-underline-offset: 3px; }
+    [data-kontakt] .k-direct a:hover { color: var(--teal-text); text-decoration-color: currentColor; }
+    [data-kontakt-kroki] { border-top: 1px solid #E2F1EF; }
+    [data-kontakt-kroki] .grid-3 { grid-template-columns: 1fr; }
+    @media (min-width: 901px) { [data-kontakt-kroki] .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 900px) {
+      [data-kontakt] .k-cal, [data-kontakt] .k-side { grid-column: 1 / -1; }
+    }
+    @media (min-width: 641px) and (max-width: 900px) {
+      [data-kontakt] .k-side { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; }
+    }
+    @media (max-width: 640px) {
+      [data-kontakt] .k-cal-head { padding: 12px 18px; }
+      [data-kontakt] .calendly-inline-widget { height: 1000px !important; }
+    }
+  </style>
+
+
+  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="kontakt-h" data-animated data-kontakt-hero>
     <div class="wrap">
       <div class="stack">
         <p class="eyebrow">Free consultation &middot; 30 minutes</p>
@@ -117,85 +159,86 @@
     </div>
   </section>
 
-  <section class="sec sec-white" aria-labelledby="termin">
-    <div class="wrap stack">
-      <h2 class="vh" id="termin">Pick a slot</h2>
-      <!-- Adam's Calendly (30 min). The new-tab link is a fallback in case Cookiebot blocks the frame. -->
-      <div class="card sr" id="kalendarz-panel" style="max-width: 900px; padding: 0; gap: 0; overflow: hidden;">
-        <div class="row" style="justify-content: space-between; padding: 18px 26px; border-bottom: 1px solid var(--line); background: var(--gray);">
-          <div class="row" style="gap: 12px;">
-            <img src="../../assets/logo.png" alt="" width="22" height="22" style="height: 22px; width: auto;">
-            <div class="stack-s" style="gap: 2px;">
-              <h3>Free consultation</h3>
-              <p class="small">30 min &middot; Google Meet &middot; Adam Nelip</p>
-            </div>
-          </div>
-          <a class="link-more" href="https://calendly.com/adam-fluinty/30min" target="_blank" rel="noopener">Open in a new tab<span class="vh"> (opens in a new tab)</span>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
-          </a>
-        </div>
-        <iframe class="calendly" src="https://calendly.com/adam-fluinty/30min?embed_type=Inline&amp;hide_gdpr_banner=1&amp;primary_color=00c4b4" title="Booking calendar: free consultation, 30 minutes" loading="lazy" data-cookieconsent="ignore"></iframe>
-      </div>
-      <p class="small">We book FluintyDebt and FluintyFleet demos in the same calendar. Mention in the notes which product you would like to see.</p>
-    </div>
-  </section>
-
-  <section class="sec sec-gray" aria-labelledby="napisac">
+  <section class="sec sec-white" aria-labelledby="termin" data-kontakt>
     <div class="wrap">
-      <div class="sec-head sr">
-        <h2 id="napisac">Prefer to write?</h2>
-        <div class="accent-bar"></div>
-        <p class="lead">We reply within 24 hours.</p>
-      </div>
+      <h2 class="vh" id="termin">Pick a slot</h2>
+      <div class="k-grid">
 
-      <div class="grid grid-2 sr-grid">
-        <div class="card">
-          <!-- Netlify Forms: zgloszenia laduja w panelu Netlify (Forms), powiadomienia mailowe wlacza sie tam jednym kliknieciem. -->
-          <form class="stack" name="contact-en" method="post" action="../../en/thank-you/" data-netlify="true" netlify-honeypot="firma">
-            <input type="hidden" name="form-name" value="contact-en">
-            <p class="vh" aria-hidden="true"><label>Do not fill in this field: <input name="firma" tabindex="-1" autocomplete="off"></label></p>
-            <div class="field">
-              <label for="imie">Name</label>
-              <input id="imie" name="imie" type="text" autocomplete="given-name" required>
+        <!-- calendar: official Calendly inline widget (30 min). The new-tab link is a fallback in case the frame does not load. -->
+        <div class="k-cal sr">
+          <p class="k-note">We book FluintyDebt and FluintyFleet demos in the same calendar. Mention in the notes which product you would like to see.</p>
+          <div class="card k-cal-card" id="kalendarz-panel">
+            <div class="k-cal-head">
+              <div class="row" style="gap: 12px; flex-wrap: nowrap;">
+                <img src="../../assets/logo.png" alt="" width="22" height="22" style="height: 22px; width: auto;">
+                <div>
+                  <h3>Free consultation</h3>
+                  <p class="small">30 min &middot; Google Meet &middot; Adam Nelip</p>
+                </div>
+              </div>
+              <a class="link-more" href="https://calendly.com/adam-fluinty/30min" target="_blank" rel="noopener">Open in a new tab<span class="vh"> (opens in a new tab)</span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
+              </a>
             </div>
-            <div class="field">
-              <label for="mail">Email</label>
-              <input id="mail" name="mail" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="telefon">Phone (optional)</label>
-              <input id="telefon" name="telefon" type="tel" autocomplete="tel">
-            </div>
-            <div class="field">
-              <label for="wiadomosc">Message</label>
-              <textarea id="wiadomosc" name="wiadomosc" rows="4"></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">Send</button>
-            <p class="small">By sending this form you agree to be contacted about your enquiry. The data controller is Fluinty sp. z o.o., Katowice, Poland. Details in the <a href="../../en/privacy-policy/" style="color: var(--teal-text); text-decoration: underline;">privacy policy</a>.</p>
-          </form>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/adam-fluinty/30min?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;primary_color=00c4b4" style="min-width:320px;height:700px;"></div>
+            <script src="https://assets.calendly.com/assets/external/widget.js" async data-cookieconsent="ignore"></script>
+          </div>
         </div>
 
-        <div class="card">
-          <ul class="stack-s">
-            <li class="row" style="gap: 12px;">
-              <span class="label" style="color: var(--teal-text);" aria-hidden="true">@</span>
-              <a href="mailto:kontakt@fluinty.pl" style="display: inline-block; padding: 9px 0; color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px;">kontakt@fluinty.pl</a>
-            </li>
-            <li class="row" style="gap: 12px;">
-              <span class="label" style="color: var(--teal-text);" aria-hidden="true">tel</span>
-              <a href="tel:+48509843514" style="display: inline-block; padding: 9px 0; color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px;">+48 509 843 514</a>
-            </li>
-            <li class="row" style="gap: 12px;">
-              <span class="label" style="color: var(--teal-text);" aria-hidden="true">addr</span>
-              <span>Góreckiego 15/60, 40-204 Katowice, Poland</span>
-            </li>
-          </ul>
+        <!-- form (web3forms, same as the current production site) and direct contact -->
+        <div class="k-side sr">
+          <div class="card k-form-card">
+            <h2 class="k-form-h" id="napisac">Prefer to write?</h2>
+            <p class="small" style="font-size: 14px;">We reply within 24 hours.</p>
+            <form class="stack" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="napisac">
+              <input type="hidden" name="access_key" value="fe91fdb3-2491-4463-8b53-77ab7adef895">
+              <input type="hidden" name="subject" value="New enquiry from fluinty.pl (EN)">
+              <input type="hidden" name="redirect" value="https://fluinty.pl/en/thank-you/">
+              <input type="checkbox" name="botcheck" class="vh" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="field">
+                <label for="imie">Name</label>
+                <input id="imie" name="name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="mail">Email</label>
+                <input id="mail" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="telefon">Phone (optional)</label>
+                <input id="telefon" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="wiadomosc">Message</label>
+                <textarea id="wiadomosc" name="message" rows="4"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Send</button>
+              <p class="small">By sending this form you agree to be contacted about your enquiry. The data controller is Fluinty sp. z o.o., Katowice, Poland. Details in the <a href="../../en/privacy-policy/" style="color: var(--teal-text); text-decoration: underline;">privacy policy</a>.</p>
+            </form>
+          </div>
+
+          <div class="card k-direct">
+            <ul>
+              <li>
+                <span class="k-lab" aria-hidden="true">@</span>
+                <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+              </li>
+              <li>
+                <span class="k-lab" aria-hidden="true">tel</span>
+                <a href="tel:+48509843514">+48 509 843 514</a>
+              </li>
+              <li>
+                <span class="k-lab" aria-hidden="true">addr</span>
+                <span style="padding: 9px 0;">Góreckiego 15/60, 40-204 Katowice, Poland</span>
+              </li>
+            </ul>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="sec sec-mint" aria-labelledby="rozmowa">
+  <section class="sec sec-mint" aria-labelledby="rozmowa" data-kontakt-kroki>
     <div class="wrap">
       <div class="sec-head sr">
         <h2 id="rozmowa">How the call works</h2>

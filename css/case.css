@@ -1,0 +1,291 @@
+/* =========================================================================
+   Fluinty — komponenty podstron realizacji (case study)
+   1. cs-art  : okladka, rysunek ze swiata klienta w prawej kolumnie hero
+   2. cs-demo : demo procesu na zmyslonym przykladzie (wejscie | kroki | wynik)
+   Podpina je build.mjs tylko na stronach case. Instrukcja dla autorow stron:
+   src/KLASY.md, sekcja "Okladka i demo na case studies".
+   Uwaga: --ink na stronie to TLO hero (#091626), nie kolor tekstu. Tekst: --text.
+   ========================================================================= */
+
+/* --- tokeny komponentow: bursztyn tylko na braki i rzeczy do wyjasnienia --- */
+.cs-art, .cs-demo, .cs-demo-top, .cs-note {
+  --cs-amber: #C26A05;        /* duze cyfry (3.9:1 na bialym, wystarczy dla 28 px bold) */
+  --cs-amber-bg: #FDF1DF;
+  --cs-amber-text: #8A4B00;   /* tekst bursztynowy, 7:1 na bialym */
+  --cs-hl: #CCF3EF;           /* podswietlenie zrodla w dokumencie */
+}
+
+/* =========================================================================
+   1. OKLADKA
+   <div class="cs-hero-art">
+     <figure class="cs-art" data-case="x" role="img" aria-label="opis"><svg aria-hidden="true">…</svg></figure>
+     <p class="cs-cap">podpis</p> <a class="link-more" href="#przyklad">…</a>
+   </div>
+   Animacja gra tylko pod .play (dodaje js/case.js). Bez JS i przy
+   prefers-reduced-motion .play sie nie pojawia, wiec widac stan koncowy.
+   ========================================================================= */
+.cs-hero-art { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+/* rury z kulkami w tle hero (svg.bg-deco z makiety, preserveAspectRatio="none"): na telefonie
+   rozciagaja sie w pionie, a makieta mobilna ich nie ma, wiec ponizej 640 px znikaja */
+@media (max-width: 640px) { .cs-hero > .bg-deco { display: none; } }
+.cs-art { margin: 0; container-type: inline-size; -webkit-tap-highlight-color: transparent; }
+.cs-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cs-cap { font-size: 14.5px; line-height: 1.55; color: var(--on-dark-3); max-width: 52ch; }
+.cs-hero-art .link-more { align-self: flex-start; }
+@media (max-width: 900px) { .cs-hero-art { width: 100%; max-width: 520px; margin-inline: auto; } }
+
+/* klocki rysunku na ciemnym tle (kreski w bieli, zeby wygladaly tak samo na --ink i --navy) */
+.cs-art .cs-ln   { fill: none; stroke: rgba(255,255,255,.8);  stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.cs-art .cs-ln-2 { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; }
+.cs-art .cs-ln-3 { fill: none; stroke: rgba(255,255,255,.18); stroke-width: 1; }
+.cs-art .cs-acc  { fill: none; stroke: var(--teal-2); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.cs-art .cs-t    { font-family: var(--mono); font-size: 16.5px; font-weight: 500; letter-spacing: .06em; fill: var(--on-dark-3); }
+.cs-art .cs-t-l  { font-family: var(--display); font-size: 24px; font-weight: 700; fill: var(--on-dark); }
+/* napisy nie schodza ponizej 11 px: drobne (.cs-small, min. 16,5 jednostki przy szerokosci viewBox 600)
+   znikaja, gdy rysunek ma mniej niz 400 px; .cs-narrow pokazuje sie tylko wtedy (zamiennik wiekszym pismem).
+   Tekst widoczny zawsze: min. 21 jednostek (telefon 360 px daje rysunek ok. 320 px, czyli skala 0,53). */
+@container (max-width: 399px) { .cs-art .cs-small { display: none; } }
+@container (min-width: 400px) { .cs-art .cs-narrow { display: none; } }
+
+/* JS chowa rysunek do chwili startu, zeby stan koncowy nie mignal przed animacja */
+.cs-art.cs-armed:not(.play) svg { visibility: hidden; }
+/* elementy, ktore w stanie koncowym znikaja (np. azur odklejany od etykiet) */
+.cs-art .cs-a-peel { opacity: 0; }
+
+@keyframes cs-draw   { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes cs-fade   { from { opacity: 0; } }
+@keyframes cs-rise   { from { opacity: 0; transform: translateY(12px); } }
+@keyframes cs-pop    { 0% { opacity: 0; transform: scale(.3); } 70% { opacity: 1; transform: scale(1.12); } 100% { opacity: 1; transform: none; } }
+@keyframes cs-spin   { from { transform: rotate(-160deg); } }
+@keyframes cs-grow   { from { transform: scale(.35); } }
+@keyframes cs-wipe   { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes cs-wipe-l { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes cs-peel   { 0% { opacity: 1; transform: none; } 22% { opacity: 1; transform: translate(0, -4px) rotate(-.5deg); } 100% { opacity: 0; transform: translate(-8px, -70px) rotate(-4deg); } }
+
+/* klocki ruchu: klasa + opoznienie --d i czas --t w style="" elementu.
+   cs-a-draw wymaga pathLength="1" na <path>. Animowany element nie moze miec wlasnego transform="",
+   wtedy owin go w <g>. Kazdy rysunek konczy ruch przed 3 s. */
+.cs-art.play .cs-a-draw   { stroke-dasharray: 1; animation: cs-draw var(--t, .8s) var(--d, 0s) cubic-bezier(.45,0,.4,1) both; }
+.cs-art.play .cs-a-fade   { animation: cs-fade var(--t, .5s) var(--d, 0s) ease-out both; }
+.cs-art.play .cs-a-rise   { animation: cs-rise var(--t, .6s) var(--d, 0s) cubic-bezier(.3,.6,.2,1) both; }
+.cs-art.play .cs-a-pop    { transform-box: fill-box; transform-origin: 50% 50%; animation: cs-pop var(--t, .45s) var(--d, 0s) cubic-bezier(.3,1.6,.5,1) both; }
+.cs-art.play .cs-a-spin   { transform-box: fill-box; transform-origin: 50% 50%; animation: cs-spin var(--t, 1.2s) var(--d, 0s) cubic-bezier(.3,.6,.2,1) both; }
+.cs-art.play .cs-a-grow   { transform-box: fill-box; transform-origin: 50% 50%; animation: cs-grow var(--t, .9s) var(--d, 0s) cubic-bezier(.3,.6,.2,1) both; }
+.cs-art.play .cs-a-wipe   { animation: cs-wipe var(--t, 1s) var(--d, 0s) cubic-bezier(.3,.6,.2,1) both; }
+.cs-art.play .cs-a-wipe-l { animation: cs-wipe-l var(--t, 1s) var(--d, 0s) cubic-bezier(.3,.6,.2,1) both; }
+.cs-art.play .cs-a-peel   { transform-box: fill-box; transform-origin: 100% 50%; animation: cs-peel var(--t, 1s) var(--d, 0s) cubic-bezier(.4,0,.3,1) both; }
+
+/* =========================================================================
+   2. DEMO
+   <section class="sec sec-gray" id="przyklad"> … <div class="cs-demo-top"> naglowek + przycisk
+   [data-cs-replay] … <div class="cs-demo" data-cs-demo data-split="2"> kolumny .cs-in .cs-mid
+   .cs-out (i opcjonalnie .cs-log) … <p class="cs-note">.
+   Silnik w js/case.js: data-step, data-dur, data-at, data-t, data-r, data-f, data-fly, data-late,
+   data-count, data-tick. Bez JS i przy reduced motion widac stan koncowy.
+   ========================================================================= */
+.cs-demo-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; margin-bottom: clamp(24px, 3vw, 36px); }
+.cs-demo-top .sec-head { margin-bottom: 0; }
+.cs-replay { flex: none; }
+.cs-replay svg { flex: none; }
+
+.cs-demo {
+  position: relative; display: grid; gap: clamp(14px, 1.8vw, 22px); align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(176px, 212px) minmax(0, 1.22fr);
+  grid-template-areas: "in mid out";
+}
+.cs-demo:has(> .cs-log) { grid-template-areas: "in mid out" "log log out"; }
+.cs-in  { grid-area: in; }
+.cs-mid { grid-area: mid; }
+.cs-out { grid-area: out; }
+.cs-log { grid-area: log; }
+.cs-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.cs-colh { font-family: var(--mono); font-size: 11.5px; line-height: 1.3; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
+
+/* odslanianie: w trakcie gry (.cs-running) element z data-at czeka ukryty, az dostanie .on */
+.cs-demo [data-at] { transition: opacity .45s ease, transform .45s ease, background-color .45s ease, color .45s ease; }
+.cs-demo.cs-running [data-at]:not(.on) { opacity: 0; transform: translateY(8px); }
+.cs-demo.cs-prep, .cs-demo.cs-prep * { transition: none !important; }
+@media print { .cs-demo.cs-running [data-at] { opacity: 1 !important; transform: none !important; } }
+
+/* dokumenty wejsciowe */
+.cs-doc, .cs-card { position: relative; overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 16px 36px -30px rgba(11,61,112,.55); }
+.cs-doc > header { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding: 9px 14px; border-bottom: 1px solid var(--line-soft); background: #F5F8FB; font-family: var(--mono); font-size: 11.5px; line-height: 1.2; letter-spacing: .06em; color: var(--text-3); }
+.cs-doc > header b { font: 600 14px/1.3 var(--body); letter-spacing: 0; color: var(--text); overflow-wrap: anywhere; }
+.cs-doc > header em { margin-left: auto; font-style: normal; }
+.cs-fmt { background: var(--line-soft); color: var(--text); padding: 3px 7px; border-radius: 4px; text-transform: uppercase; }
+
+.cs-inbox { display: flex; flex-direction: column; }
+.cs-mail { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1px 10px; padding: 9px 14px; border-top: 1px solid var(--line-soft); }
+.cs-mail:first-child { border-top: 0; }
+.cs-from { grid-column: 1; font-family: var(--mono); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow-wrap: anywhere; }
+.cs-subj { grid-column: 1; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--text); overflow-wrap: anywhere; }
+.cs-snip { grid-column: 1 / -1; font-size: 13.5px; line-height: 1.5; color: var(--text-2); margin-top: 2px; }
+.cs-tags { grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.cs-tag { font-family: var(--mono); font-size: 11px; line-height: 1; letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--text-3); background: var(--white); white-space: nowrap; }
+.cs-tag-ok { border-color: rgba(0,196,180,.55); background: var(--mint); color: var(--teal-text); }
+.cs-tag-done { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.cs-mail.is-skip { background: #F8FAFC; }
+.cs-mail.is-skip .cs-subj { color: var(--text-2); font-weight: 500; text-decoration: line-through; text-decoration-color: rgba(71,85,105,.6); }
+
+.cs-lines { counter-reset: ln; padding: 8px 14px 6px 0; font-size: 14px; line-height: 1.55; color: var(--text-2); }
+.cs-lines li { counter-increment: ln; display: grid; grid-template-columns: 32px minmax(0, 1fr); }
+.cs-lines li::before { content: counter(ln); font: 500 11px/2 var(--mono); color: var(--text-3); text-align: right; padding-right: 10px; }
+.cs-att { display: inline-flex; align-items: center; gap: 7px; margin: 2px 14px 12px 32px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: 12px; line-height: 1.2; color: var(--text); background: #F5F8FB; overflow-wrap: anywhere; max-width: calc(100% - 46px); }
+.cs-att svg { flex: none; color: var(--text-3); }
+
+.cs-scroll { overflow-x: auto; }
+.cs-spec { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
+.cs-spec th { text-align: left; font: 400 11px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); padding: 9px 8px 6px; white-space: nowrap; }
+.cs-spec td { padding: 7px 8px; border-top: 1px solid var(--line-soft); vertical-align: top; color: var(--text); }
+.cs-spec th:first-child, .cs-spec td:first-child { padding-left: 14px; }
+.cs-spec th:last-child, .cs-spec td:last-child { padding-right: 14px; }
+.cs-nowrap { white-space: nowrap; }
+.cs-b { font-weight: 600; }
+
+/* podswietlenie zrodla i skaner */
+.cs-hl { border-radius: 3px; transition: background-color .45s ease, box-shadow .45s ease; }
+.cs-hl.cs-lit { background: var(--cs-hl); box-shadow: 0 0 0 2px var(--cs-hl); }
+tr.cs-hl.cs-lit { box-shadow: none; }
+tr.cs-hl.cs-lit > * { background: var(--cs-hl); }
+.cs-scan::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--teal); box-shadow: 0 0 12px 3px rgba(0,196,180,.45); animation: cs-scan .8s ease-in-out both; pointer-events: none; }
+@keyframes cs-scan { from { top: 0; opacity: 1; } 90% { opacity: 1; } to { top: calc(100% - 2px); opacity: 0; } }
+
+/* srodek: kroki i liczniki */
+.cs-steps { position: relative; display: flex; flex-direction: column; }
+.cs-steps::before { content: ""; position: absolute; left: 16px; top: 24px; bottom: 24px; border-left: 1.5px dashed #CBD5E1; }
+.cs-step { position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 6px 0; align-items: start; }
+.cs-n { width: 34px; height: 34px; border-radius: 50%; background: var(--white); border: 1.5px solid #CBD5E1; font: 600 12px/31px var(--mono); text-align: center; color: var(--text-3); transition: background-color .4s, border-color .4s, color .4s, box-shadow .4s; }
+.cs-step p { font-size: 14px; line-height: 1.4; color: var(--text-3); padding-top: 6px; transition: color .4s; }
+.cs-demo:not(.cs-running) .cs-n, .cs-step.cs-done .cs-n { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.cs-demo:not(.cs-running) .cs-step p, .cs-step.cs-done p, .cs-step.cs-cur p { color: var(--text); }
+.cs-step.cs-cur .cs-n { background: var(--teal); border-color: var(--teal); color: var(--navy); box-shadow: 0 0 0 6px rgba(0,196,180,.18); }
+
+.cs-tally { display: grid; gap: 8px; margin-top: 6px; }
+.cs-tally > div { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 11px; }
+.cs-tally b { display: block; font: 700 28px/1 var(--display); letter-spacing: -.02em; color: var(--text); font-variant-numeric: tabular-nums; }
+.cs-tally span { display: block; margin-top: 5px; font-size: 13px; line-height: 1.35; color: var(--text-2); }
+.cs-tally .cs-w b { color: var(--cs-amber); }
+.cs-tally .cs-z b { color: var(--teal-text); }
+.cs-demo.cs-running .cs-tally > .on b { animation: cs-tick .4s cubic-bezier(.3,1.6,.5,1); }
+
+/* wynik: karta, rekord (arkusz), brak, pole czlowieka, okno systemu */
+.cs-card { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.cs-card-h { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; line-height: 1.3; letter-spacing: .06em; color: var(--text-3); }
+.cs-card-h svg { flex: none; color: var(--teal-text); }
+.cs-file { align-self: flex-start; display: inline-block; font-family: var(--mono); font-size: 12px; line-height: 1.2; padding: 6px 10px; border-radius: 6px; border: 1px solid rgba(0,196,180,.55); background: var(--mint); color: var(--teal-text); overflow-wrap: anywhere; }
+
+.cs-rec { overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 18px 40px -30px rgba(11,61,112,.55); }
+.cs-rec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; padding: 11px 16px; background: var(--navy); color: var(--white); }
+.cs-rec-h b { font: 700 17px/1.2 var(--display); letter-spacing: -.01em; }
+.cs-rec-h em { margin-left: auto; font-family: var(--mono); font-size: 11px; line-height: 1; letter-spacing: .1em; text-transform: uppercase; font-style: normal; color: rgba(255,255,255,.78); }
+.cs-fr { display: grid; grid-template-columns: 82px minmax(0, 1fr) auto; gap: 3px 12px; padding: 8px 16px; border-top: 1px solid var(--line-soft); align-items: baseline; }
+.cs-rec-h + .cs-fr { border-top: 0; }
+.cs-k { font-size: 12.5px; line-height: 1.35; color: var(--text-3); }
+.cs-v { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--text); overflow-wrap: anywhere; }
+.cs-v small { display: block; font-size: 12.5px; font-weight: 400; color: var(--text-2); margin-top: 1px; }
+.cs-s { font-family: var(--mono); font-size: 11.5px; line-height: 1.4; color: var(--teal-text); text-align: right; white-space: nowrap; }
+.cs-fr.cs-lit { background: #E6F9F7; }
+.cs-fr.cs-gap { background: linear-gradient(90deg, var(--cs-amber-bg), rgba(253,241,223,.35) 92%); }
+.cs-fr.cs-gap .cs-k, .cs-fr.cs-gap .cs-v, .cs-fr.cs-gap .cs-s { color: var(--cs-amber-text); }
+
+.cs-cal { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; font-weight: 400; }
+.cs-day { position: relative; font: 500 11px/1 var(--mono); font-style: normal; padding: 4px 6px; border-radius: 4px; border: 1px solid var(--line); background: var(--white); color: var(--text-2); white-space: nowrap; }
+.cs-day.is-off { background: #F1F5F9; }
+.cs-day.is-off::after { content: ""; position: absolute; left: 3px; right: 3px; top: 50%; border-top: 1.5px solid var(--text-2); transform-origin: left; }
+.cs-day.is-go { border-color: var(--teal); background: var(--cs-hl); color: var(--teal-text); font-weight: 600; }
+.cs-day.is-in { border-color: var(--navy); color: var(--navy); }
+.cs-demo.cs-running .on .cs-day.is-off::after { animation: cs-strike .35s .35s ease-out both; }
+@keyframes cs-strike { from { transform: scaleX(0); } }
+
+.cs-human { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 12px; border: 1.5px dashed #B6C2D1; border-radius: 10px; background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(100,116,139,.12) 7px 8.5px); }
+.cs-human b { font-family: var(--mono); font-size: 11px; line-height: 1.2; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--cs-amber-text); background: var(--white); padding: 2px 6px; border-radius: 3px; }
+.cs-human p { font-size: 13.5px; line-height: 1.45; color: var(--text); background: rgba(255,255,255,.92); padding: 3px 7px; border-radius: 3px; }
+
+.cs-sys { overflow: hidden; background: #EEF2F6; border: 1px solid #CBD5E1; border-radius: 10px; box-shadow: 0 16px 36px -30px rgba(11,61,112,.55); }
+.cs-sys-h { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; padding: 8px 12px; background: #DCE3EB; border-bottom: 1px solid #CBD5E1; font-family: var(--mono); font-size: 12px; line-height: 1.3; color: var(--text-2); }
+.cs-sys-h i { width: 8px; height: 8px; border-radius: 50%; background: #A3B0C2; flex: none; }
+.cs-sys-h span { margin-left: 4px; color: var(--text); }
+.cs-sys-h em { margin-left: auto; font-style: normal; color: var(--teal-text); }
+.cs-sys-b { display: grid; gap: 8px; padding: 12px; }
+.cs-sys-f { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; align-items: center; }
+.cs-sys-f > span:first-child { font-size: 12.5px; line-height: 1.3; color: var(--text-2); }
+.cs-field { display: block; min-height: 31px; background: var(--white); border: 1px solid #B6C2D1; border-radius: 4px; padding: 5px 9px; font-size: 13.5px; font-weight: 600; line-height: 1.45; color: var(--text); box-shadow: inset 0 1px 2px rgba(15,23,42,.06); overflow-wrap: anywhere; }
+.cs-field > span { display: inline-block; }
+.cs-demo.cs-running .cs-field > .on { animation: cs-type .55s steps(14, end) both; }
+.cs-demo.cs-running .cs-field:has(> .on) { animation: cs-focus 1.1s ease both; }
+@keyframes cs-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes cs-focus { 0% { border-color: var(--teal-text); box-shadow: 0 0 0 3px rgba(0,196,180,.25); } 100% { border-color: #B6C2D1; box-shadow: inset 0 1px 2px rgba(15,23,42,.06); } }
+.cs-sys-foot { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 14px; padding: 0 12px 12px; }
+.cs-sys-btn { position: relative; display: inline-block; font-size: 13px; font-weight: 700; line-height: 1; padding: 9px 18px; border-radius: 4px; background: var(--navy); color: var(--white); }
+.cs-cursor { position: absolute; right: -10px; bottom: -13px; width: 18px; height: 18px; pointer-events: none; }
+.cs-saved { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11.5px; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase; color: var(--teal-text); }
+.cs-saved svg { flex: none; }
+
+/* dziennik agenta (ten sam jezyk co konsola w hero: szare linie, nowa blyska turkusem) */
+.cs-log { overflow: hidden; background: #0B1A2C; border: 1px solid rgba(148,190,233,.14); border-radius: 14px; box-shadow: 0 24px 50px -30px rgba(2,8,18,.7); }
+.cs-log-h { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; padding: 11px 16px; border-bottom: 1px solid rgba(148,190,233,.09); background: rgba(148,190,233,.03); font-family: var(--mono); font-size: 12px; line-height: 1.3; color: var(--on-dark-3); }
+.cs-log-h > span { display: inline-flex; align-items: center; gap: 8px; }
+.cs-log-b { display: flex; flex-direction: column; gap: 7px; padding: 13px 16px 15px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: #9AAEC4; }
+.cs-log-b li { display: flex; align-items: baseline; gap: 12px; }
+.cs-log-b .ts { flex: none; color: var(--on-dark-3); }
+.cs-log-b .cs-ok, .cs-log-b .cs-ok .ts { color: var(--teal-2); }
+.cs-log-b .caret { align-self: center; }
+.cs-demo.cs-running .cs-log-b li.on { animation: cs-logflash 1.4s linear both; }
+.cs-demo.cs-running .cs-log-b li.cs-ok.on { animation-name: cs-logflash-ok; }
+@keyframes cs-logflash { 0%, 28% { color: #5FE9D7; } 100% { color: #9AAEC4; } }
+@keyframes cs-logflash-ok { 0%, 28% { color: #5FE9D7; } 100% { color: #2DD4BF; } }
+
+.cs-note { margin-top: 18px; font-size: 14.5px; line-height: 1.55; color: var(--text-2); max-width: 92ch; }
+.cs-note b { color: var(--text); font-weight: 600; }
+
+/* zeton lecacy ze zrodla do pola wyniku (tylko uklad trzykolumnowy) */
+.cs-flyer { position: absolute; z-index: 5; left: 0; top: 0; margin: 0; padding: 3px 8px; background: var(--cs-hl); border: 1px solid var(--teal); border-radius: 5px; font: 600 13px/1.3 var(--body); color: var(--text); white-space: nowrap; box-shadow: 0 14px 30px -14px rgba(11,61,112,.55); transition: transform .9s cubic-bezier(.55,0,.2,1), opacity .25s ease; pointer-events: none; }
+.cs-flyer.cs-amb { background: var(--cs-amber-bg); border-color: var(--cs-amber); color: var(--cs-amber-text); }
+
+/* impulsy: .cs-pop bursztyn (brak), .cs-tpulse turkus (czlowiek, wynik), .cs-tick przeskok licznika */
+.cs-pop { animation: cs-popa .8s ease; }
+.cs-tpulse { animation: cs-tpulse .9s ease; }
+.cs-tick { animation: cs-tick .4s cubic-bezier(.3,1.6,.5,1); }
+[data-count] { display: inline-block; }
+@keyframes cs-popa { 0% { box-shadow: 0 0 0 0 rgba(194,106,5,.5); } 100% { box-shadow: 0 0 0 14px rgba(194,106,5,0); } }
+@keyframes cs-tpulse { 0% { box-shadow: 0 0 0 0 rgba(0,196,180,.5); } 100% { box-shadow: 0 0 0 14px rgba(0,196,180,0); } }
+@keyframes cs-tick { from { opacity: 0; transform: translateY(35%); } }
+
+/* --- tablet: kroki nad wejsciem i wynikiem, bez zetonow --- */
+@media (max-width: 999px) {
+  .cs-demo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "mid mid" "in out"; }
+  .cs-demo:has(> .cs-log) { grid-template-areas: "mid mid" "in out" "log log"; }
+  .cs-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 16px; }
+  .cs-steps::before { display: none; }
+  .cs-tally { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 4px; }
+}
+/* --- telefon: jedna kolumna; druga polowa demo rusza, gdy wynik wjedzie na ekran --- */
+@media (max-width: 699px) {
+  .cs-demo, .cs-demo:has(> .cs-log) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "in" "mid" "out" "log"; }
+  .cs-steps { display: flex; }
+  .cs-steps::before { display: block; }
+  .cs-tally { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .cs-tally > div { padding: 9px 10px 10px; }
+  .cs-tally b { font-size: 24px; }
+  .cs-tally span { font-size: 12px; }
+  .cs-fr { grid-template-columns: 74px minmax(0, 1fr); padding: 8px 12px; }
+  .cs-s { grid-column: 2; text-align: left; white-space: normal; }
+  .cs-rec-h { padding: 10px 12px; }
+  .cs-sys-f { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .cs-log-b { font-size: 11.5px; padding: 12px 12px 14px; }
+  .cs-log-b li { gap: 9px; }
+}
+@media (max-width: 640px) {
+  .cs-demo-top .cs-replay { width: auto; padding: 10px 18px; font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .cs-tally { grid-template-columns: minmax(0, 1fr); }
+  .cs-tally > div { display: flex; align-items: baseline; gap: 12px; }
+  .cs-tally > div > span { margin-top: 0; }
+  .cs-mail { grid-template-columns: minmax(0, 1fr); }
+  .cs-tags { grid-column: 1; grid-row: auto; flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-art *, .cs-demo *, .cs-flyer { animation: none !important; transition: none !important; }
+}

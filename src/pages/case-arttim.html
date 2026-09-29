@@ -1,60 +1,243 @@
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="arttim-h" data-animated>
-    <div class="wrap stack" style="gap: clamp(28px, 3.5vw, 44px);">
-      <div class="grid-hero">
-        <div class="stack">
-          <nav aria-label="Okruszki">
-            <ol class="label row" style="gap: 8px;">
-              <li><a href="{{ROOT}}#realizacje">Realizacje</a></li>
-              <li aria-hidden="true">/</li>
-              <li><span aria-current="page" style="color: var(--teal-2);">Art-Tim</span></li>
-            </ol>
-          </nav>
+  <style>
+    /* Okladka Art-Tim: furgon (bez marki, felgi z piecioma srubami, nie gwiazda) z numerem floty P-03 wjezdza na trase z pieciema punktami (bez nazw miast,
+       bez liczby aut). Nad nim karta pojazdu z zakladkami OC, przeglad, koszty; na osi czasu od "dzis"
+       do "koniec OC" rysuje sie strzalka 31 dni, na koncu zapala sie koperta z przypomnieniem.
+       Ruch z klockow cs-a-* (css/case.css) plus wlasny wjazd auta i toczenie kol ponizej. */
+    .cs-art[data-case="arttim"] .a-card    { fill: rgba(148,190,233,.05); stroke: rgba(255,255,255,.42); stroke-width: 1.3; stroke-linejoin: round; }
+    .cs-art[data-case="arttim"] .a-tab     { fill: none; stroke: rgba(255,255,255,.2); stroke-width: 1.2; }
+    .cs-art[data-case="arttim"] .a-tab-on  { fill: rgba(45,212,191,.14); stroke: var(--teal-2); stroke-width: 1.4; }
+    .cs-art[data-case="arttim"] .a-tt      { font-family: var(--mono); font-size: 21px; font-weight: 500; letter-spacing: .06em; fill: var(--on-dark-3); }
+    .cs-art[data-case="arttim"] .a-tt-on   { fill: var(--teal-2); }
+    .cs-art[data-case="arttim"] .a-id      { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -.01em; fill: var(--on-dark); }
+    .cs-art[data-case="arttim"] .a-mk      { font-family: var(--mono); font-size: 21px; font-weight: 500; letter-spacing: .04em; }
+    .cs-art[data-case="arttim"] .a-teal    { fill: var(--teal-2); }
+    .cs-art[data-case="arttim"] .a-warm    { fill: #F2B45A; }
+    .cs-art[data-case="arttim"] .a-dead    { fill: none; stroke: #F2B45A; stroke-width: 1.6; stroke-linecap: round; }
+    .cs-art[data-case="arttim"] .a-days    { font-family: var(--display); font-size: 26px; font-weight: 700; fill: var(--on-dark); }
+    .cs-art[data-case="arttim"] .a-env     { fill: rgba(45,212,191,.16); stroke: var(--teal-2); stroke-width: 1.6; stroke-linejoin: round; }
+    .cs-art[data-case="arttim"] .a-body    { fill: #0E2036; stroke: rgba(255,255,255,.82); stroke-width: 1.6; stroke-linejoin: round; }
+    .cs-art[data-case="arttim"] .a-glass   { fill: rgba(148,190,233,.16); stroke: rgba(255,255,255,.5); stroke-width: 1.2; stroke-linejoin: round; }
+    .cs-art[data-case="arttim"] .a-plate   { fill: #F4F8FC; }
+    .cs-art[data-case="arttim"] .a-plate-t { font-family: var(--display); font-size: 21px; font-weight: 700; fill: #0B3D70; }
+    .cs-art[data-case="arttim"] .a-lamp    { fill: #F4F8FC; opacity: .85; }
+    .cs-art[data-case="arttim"] .a-tail    { fill: #F2545B; opacity: .85; }
+    .cs-art[data-case="arttim"] .a-tyre    { fill: #0B1A2C; stroke: rgba(255,255,255,.82); stroke-width: 1.6; }
+    .cs-art[data-case="arttim"] .a-rim     { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1.2; }
+    .cs-art[data-case="arttim"] .a-lug     { fill: rgba(255,255,255,.6); }
+    .cs-art[data-case="arttim"] .a-spoke-t { fill: none; stroke: var(--teal-2); stroke-width: 1.8; stroke-linecap: round; }
+    .cs-art[data-case="arttim"] .a-hub     { fill: var(--teal-2); }
+    .cs-art[data-case="arttim"] .a-stop    { fill: var(--ink); stroke: rgba(45,212,191,.55); stroke-width: 1.4; }
+    .cs-art[data-case="arttim"] .a-stop-on { fill: var(--teal-2); }
+    .cs-art[data-case="arttim"] .a-speed   { fill: none; stroke: rgba(255,255,255,.4); stroke-width: 1.4; stroke-linecap: round; opacity: 0; }
+    /* wjazd auta: grupa .a-drive (bez wlasnego transform), kola tocza sie w tym samym czasie */
+    .cs-art[data-case="arttim"].play .a-drive { animation: at-drive 1.3s .15s cubic-bezier(.2,.7,.25,1) both; }
+    .cs-art[data-case="arttim"].play .a-wheel { transform-box: fill-box; transform-origin: 50% 50%; animation: at-roll 1.3s .15s cubic-bezier(.2,.7,.25,1) both; }
+    .cs-art[data-case="arttim"].play .a-speed { animation: at-speed 1.3s .15s ease-out both; }
+    @keyframes at-drive { from { transform: translateX(-430px); } }
+    @keyframes at-roll  { from { transform: rotate(-1400deg); } }
+    @keyframes at-speed { 0% { opacity: 0; } 20%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
-          <div class="row" style="gap: 14px;">
-            <span style="background: var(--on-dark); color: var(--navy); font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 7px 12px; border-radius: 8px;">ART-TIM</span>
-            <p class="label" style="color: var(--teal-2);">Logistyka kurierska &middot; Jelenia Góra</p>
-          </div>
+    /* hero: trzy liczby w rzedzie (bez sieroty 2+1), na telefonie liczba i opis w jednej linii jak w makiecie mobilnej */
+    .at-hero .at-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .at-hero .at-metrics .metric-num { font-size: clamp(26px, 2.7vw, 38px); white-space: nowrap; }
+    @media (max-width: 640px) {
+      .at-hero .at-metrics { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+      .at-hero .at-metrics .metric { flex-direction: row; align-items: baseline; gap: 12px; }
+      .at-hero .at-metrics .metric-num { font-size: 23px; flex: none; min-width: 4.1em; }
+      .at-hero .chips .chip { border-radius: 10px; }
+    }
+    /* Wyniki: trzy karty w rzedzie od 700 px (auto-fit dawal 2+1 na tablecie) */
+    @media (min-width: 700px) { .at-res { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-          <h1 id="arttim-h">Flota, przeglądy i zakupy <span class="mark">pod kontrolą.</span></h1>
-          <p class="lead">Art-Tim wozi paczki jako podwykonawca kurierski, z flotą pracującą w pięciu miastach. Prowadzimy dwa wdrożenia: zarządzanie flotą i kontrolę kosztów zakupów.</p>
+    /* Zakupy: demo jako druga czesc sekcji, pod osia krokow */
+    .at-zakupy .at-ex { margin-top: clamp(44px, 6vw, 80px); padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+    .at-zakupy .at-ex-h { font-size: clamp(25px, 2.7vw, 36px); font-weight: 700; line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
+    .at-zakupy .cs-tally span span { display: inline; margin: 0; font-size: inherit; }
+    /* okno aplikacji: pozycje do przypisania */
+    .at-zakupy .at-app { container: at-app / inline-size; }
+    .at-zakupy .at-status { padding: 8px 16px; background: #F5F8FB; border-bottom: 1px solid var(--line-soft); font-family: var(--mono); font-size: 11.5px; line-height: 1.3; letter-spacing: .06em; text-transform: uppercase; }
+    .at-zakupy .at-status .at-todo { color: var(--cs-amber-text); }
+    .at-zakupy .at-status .at-done { color: var(--teal-text); }
+    .at-zakupy .at-status.is-done .at-todo, .at-zakupy .at-status:not(.is-done) .at-done { display: none; }
+    .at-zakupy .at-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "item amt" "veh veh"; gap: 6px 12px; align-items: center; padding: 10px 16px; border-top: 1px solid var(--line-soft); transition: background-color .45s ease; }
+    .at-zakupy .at-status + .at-list .at-row:first-child { border-top: 0; }
+    .at-zakupy .at-row.cs-lit { background: #E6F9F7; }
+    .at-zakupy .at-item { grid-area: item; font-size: 14px; font-weight: 600; line-height: 1.35; color: var(--text); }
+    .at-zakupy .at-amt { grid-area: amt; font-family: var(--mono); font-size: 13px; line-height: 1.3; color: var(--text-2); white-space: nowrap; text-align: right; }
+    .at-zakupy .at-veh { grid-area: veh; justify-self: start; position: relative; display: inline-flex; align-items: center; min-height: 30px; padding: 4px 10px; border-radius: 6px; font-size: 13px; line-height: 1.3; white-space: nowrap; transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
+    .at-zakupy .at-veh:not(.is-set) { border: 1.5px dashed #B6C2D1; background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(100,116,139,.12) 7px 8.5px); color: var(--text-2); }
+    .at-zakupy .at-veh.is-set { border: 1px solid rgba(0,196,180,.55); background: var(--mint); color: var(--teal-text); font-weight: 600; }
+    .at-zakupy .at-veh.is-set .at-wait, .at-zakupy .at-veh:not(.is-set) .at-val { display: none; }
+    @container at-app (min-width: 440px) {
+      .at-zakupy .at-row { grid-template-columns: minmax(0, 1fr) auto 148px; grid-template-areas: "item amt veh"; }
+      .at-zakupy .at-veh { justify-self: stretch; }
+    }
+    /* kursor kierownika: widac go tylko w trakcie gry */
+    .at-zakupy .at-cur { position: absolute; right: 4px; top: 42%; z-index: 3; display: flex; flex-direction: row-reverse; align-items: flex-start; opacity: 0; pointer-events: none; }
+    .at-zakupy .at-cur svg { width: 18px; height: 18px; flex: none; }
+    .at-zakupy .at-cur b { margin: 13px -2px 0 0; padding: 3px 6px; border-radius: 4px; background: var(--navy); color: var(--white); font: 500 11px/1.2 var(--mono); letter-spacing: .05em; }
+    .cs-demo.cs-running .at-cur.on { animation: at-cur 1.1s ease both; }
+    @keyframes at-cur { 0% { opacity: 0; transform: translate(16px, 12px); } 22% { opacity: 1; transform: none; } 28% { transform: scale(.86); } 36% { transform: none; } 78% { opacity: 1; } 100% { opacity: 0; } }
+    /* koszt per pojazd: slupki z przykladowym budzetem (skala 0-1400 zl) */
+    .at-zakupy .at-plot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding: 14px 18px 4px; }
+    .at-zakupy .at-bar { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+    .at-zakupy .at-v { font: 700 15px/22px var(--display); color: var(--text); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .at-zakupy .at-v:not(.is-up) .at-now, .at-zakupy .at-v.is-up .at-was { display: none; }
+    .at-zakupy .at-now.is-over { color: var(--cs-amber-text); }
+    .at-zakupy .at-col { position: relative; width: 100%; height: 140px; margin-top: 6px; display: flex; flex-direction: column-reverse; align-items: center; border-bottom: 1px solid #CBD5E1; }
+    .at-zakupy .at-col::after { content: ""; position: absolute; left: -9px; right: -9px; bottom: calc(1200 / 1400 * 100%); border-top: 1.5px dashed rgba(194,106,5,.75); pointer-events: none; }
+    .at-zakupy .at-col i { display: block; flex: none; width: min(52px, 62%); }
+    .at-zakupy .at-base { height: calc(var(--base) / 1400 * 100%); background: rgba(11,61,112,.2); }
+    .at-zakupy .at-add { height: calc(var(--add) / 1400 * 100%); background: var(--teal); border-radius: 4px 4px 0 0; transform-origin: 50% 100%; transition: background-color .35s ease; }
+    .at-zakupy .at-col.is-over .at-add { background: var(--cs-amber); }
+    .at-zakupy .at-lab { margin-top: 8px; font-family: var(--mono); font-size: 11.5px; line-height: 1.35; color: var(--text-2); text-align: center; }
+    .at-zakupy .at-lab b { display: block; font: 700 14px/1.3 var(--display); color: var(--text); }
+    .at-zakupy .at-leg { display: flex; align-items: center; gap: 8px; padding: 6px 18px 12px; font-family: var(--mono); font-size: 11.5px; line-height: 1.3; color: var(--text-2); }
+    .at-zakupy .at-leg i { width: 22px; flex: none; border-top: 1.5px dashed rgba(194,106,5,.75); }
+    .cs-demo.cs-running .at-add.on { animation: at-rise .7s cubic-bezier(.3,.7,.2,1) both; }
+    .cs-demo.cs-running .at-col.is-over .at-add { animation: cs-popa .8s ease; }
+    @keyframes at-rise { from { transform: scaleY(0); } }
+    /* alert pod slupkami: w waskiej kolumnie zrodlo pod wartoscia (jak na telefonie) */
+    .at-zakupy .at-cost { container: at-cost / inline-size; }
+    @container at-cost (max-width: 439px) {
+      .at-zakupy .at-cost .cs-fr { grid-template-columns: 58px minmax(0, 1fr); }
+      .at-zakupy .at-cost .cs-s { grid-column: 2; text-align: left; white-space: normal; }
+    }
+    /* tablet: cztery kroki w dwoch rzedach zamiast 3+1 */
+    @media (min-width: 700px) and (max-width: 999px) { .at-zakupy .cs-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 699px) {
+      .at-zakupy .at-plot { gap: 10px; padding: 12px 12px 4px; }
+      .at-zakupy .at-leg { padding: 6px 12px 12px; }
+      .at-zakupy .at-row { padding: 10px 12px; }
+      .at-zakupy .at-status { padding: 8px 12px; }
+    }
+    /* cele dotyku >= 40 px: wieksze pole klikniecia bez zmiany ukladu (padding + ujemny margines) */
+    .at-hero nav a { display: inline-flex; align-items: center; padding-block: 13px; margin-block: -13px; }
+    .at-hero .cs-hero-art .link-more, .at-cta .link-more { padding-block: 9px; margin-block: -9px; }
+    /* "Zakres wdrozen": maly napis mono jak w makiecie (globalna regula .page-case h2 go powiekszala) */
+    .at-zakres h2.label { font-size: var(--fs-label); font-weight: 400; line-height: 1.4; }
+  </style>
 
-          <dl class="metrics" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
-            <div class="metric">
-              <dt class="metric-lab">miesięcznych kosztów zakupów</dt>
-              <dd class="metric-num" style="order: -1;">&minus;30%</dd>
-            </div>
-            <div class="metric">
-              <dt class="metric-lab">między pomiarami: marzec i lipiec 2026</dt>
-              <dd class="metric-num" style="order: -1;">4 mies.</dd>
-            </div>
-            <div class="metric">
-              <dt class="metric-lab">miast, jeden system</dt>
-              <dd class="metric-num" style="order: -1;">5</dd>
-            </div>
-          </dl>
+  <section class="sec sec-dark bg-grid bg-glow cs-hero at-hero" aria-labelledby="arttim-h" data-animated>
+    <div class="wrap grid-hero">
+      <div class="stack">
+        <nav aria-label="Okruszki">
+          <ol class="label row" style="gap: 8px;">
+            <li><a href="{{ROOT}}#realizacje">Realizacje</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page" style="color: var(--teal-2);">Art-Tim</span></li>
+          </ol>
+        </nav>
+        <div class="row" style="gap: 14px;">
+          <span style="background: var(--on-dark); color: var(--navy); font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 7px 12px; border-radius: 8px;">ART-TIM</span>
+          <p class="label" style="color: var(--teal-2);">Logistyka kurierska &middot; Jelenia Góra</p>
         </div>
-
-        <div class="console" aria-hidden="true">
-          <div class="console-bar">
-            <span class="row" style="gap: 10px;">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5"><path d="M1.5 5h9v7h-9zM10.5 7h2.5l1.5 2v3h-4"></path><circle cx="4.5" cy="12.5" r="1.3"></circle><circle cx="12" cy="12.5" r="1.3"></circle></svg>
-              agent &middot; Art-Tim
-            </span>
-            <span class="row" style="gap: 7px; color: var(--teal-2);"><span class="status-dot"></span> ONLINE</span>
+        <h1 id="arttim-h">Flota, przeglądy i zakupy <span class="mark">pod kontrolą.</span></h1>
+        <p class="lead">Art-Tim wozi paczki jako podwykonawca kurierski, z flotą pracującą w pięciu miastach. Prowadzimy dwa wdrożenia: zarządzanie flotą i kontrolę kosztów zakupów.</p>
+        <dl class="metrics at-metrics">
+          <div class="metric">
+            <dt class="metric-lab">miesięcznych kosztów zakupów</dt>
+            <dd class="metric-num" style="order: -1;">&minus;30%</dd>
           </div>
-          <div class="console-body">
-            <div class="log-line" style="animation-delay: .6s;"><span class="ts">07:00:02</span><span>sprawdzam terminy: polisy i przeglądy</span></div>
-            <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">07:00:04</span><span>polisa OC P-03: koniec za 31 dni</span></div>
-            <div class="log-line" style="animation-delay: 2.4s;"><span class="ts">07:00:06</span><span>przypomnienie mailowe wysłane</span></div>
-            <div class="log-line" style="animation-delay: 3.3s;"><span class="ts">07:00:07</span><span>Inter Cars: 3 pozycje czekają na przypisanie</span></div>
-            <div class="log-line" style="animation-delay: 4.2s;"><span class="ts">07:00:09</span><span>P-08: relokacja Wałbrzych &rarr; Katowice</span></div>
-            <div class="log-line log-line-ok" style="animation-delay: 5.1s;"><span class="ts">07:00:09</span><span>gotowe &middot; terminy i koszty pod kontrolą</span></div>
-            <div class="log-line" style="animation-delay: 6s;"><span class="ts">07:00:10</span><span>czekam na kolejne zdarzenie</span><span class="caret"></span></div>
+          <div class="metric">
+            <dt class="metric-lab">między pomiarami: marzec i lipiec 2026</dt>
+            <dd class="metric-num" style="order: -1;">4 mies.</dd>
           </div>
-        </div>
+          <div class="metric">
+            <dt class="metric-lab">miast, jeden system</dt>
+            <dd class="metric-num" style="order: -1;">5</dd>
+          </div>
+        </dl>
       </div>
 
-      <ul class="chips">
+      <div class="cs-hero-art">
+        <figure class="cs-art" data-case="arttim" role="img" aria-label="Rysunek: furgon dostawczy z numerem floty P-03 wjeżdża na trasę z pięcioma punktami. Nad nim karta pojazdu z zakładkami OC, przegląd i koszty. Na osi czasu od dziś do końca polisy OC zostało 31 dni, więc system wysyła przypomnienie.">
+          <svg viewBox="0 0 600 420" aria-hidden="true" focusable="false">
+            <defs><clipPath id="at-clip"><rect x="0" y="0" width="600" height="420"></rect></clipPath></defs>
+            <!-- droga i trasa z pieciema punktami (srodkowe znikaja na waskim rysunku) -->
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M14 384H586" style="--t: .7s;"></path>
+            <path class="cs-ln-3 cs-a-fade" d="M14 402H586" stroke-dasharray="16 14" style="--d: .3s;"></path>
+            <g class="cs-a-fade" style="--d: .2s;">
+              <rect class="a-stop" x="40" y="378" width="12" height="12" rx="3"></rect>
+              <rect class="a-stop cs-small" x="167" y="378" width="12" height="12" rx="3"></rect>
+              <rect class="a-stop cs-small" x="294" y="378" width="12" height="12" rx="3"></rect>
+              <rect class="a-stop cs-small" x="421" y="378" width="12" height="12" rx="3"></rect>
+              <rect class="a-stop" x="548" y="378" width="12" height="12" rx="3"></rect>
+            </g>
+            <rect class="a-stop-on cs-a-pop" x="40" y="378" width="12" height="12" rx="3" style="--d: .5s;"></rect>
+            <rect class="a-stop-on cs-small cs-a-pop" x="167" y="378" width="12" height="12" rx="3" style="--d: .9s;"></rect>
+            <rect class="a-stop-on cs-small cs-a-pop" x="294" y="378" width="12" height="12" rx="3" style="--d: 1.35s;"></rect>
+
+            <!-- furgon z boku: bez marki, tylko numer floty P-03 jak w dzienniku agenta -->
+            <g clip-path="url(#at-clip)">
+              <g transform="translate(152 239) scale(1.2)">
+                <g class="a-drive">
+                  <path class="a-speed" d="M-16 40H-58M-10 62H-44M-20 84H-66"></path>
+                  <path class="a-body" d="M6 104H32A20 20 0 0 1 72 104H178A20 20 0 0 1 218 104H240Q248 104 248 96V80Q248 70 238 67L214 60L194 20Q190 12 180 12H14Q6 12 6 20Z"></path>
+                  <path class="a-glass" d="M182 22H192L208 56H182Z"></path>
+                  <path class="cs-ln-3" d="M11 84H174"></path>
+                  <path class="cs-ln-2" d="M112 16V104M176 16V104M118 58H130M183 70H193"></path>
+                  <path class="cs-ln-2" d="M204 42H210V52H204"></path>
+                  <rect class="a-lamp" x="240" y="72" width="8" height="7" rx="2"></rect>
+                  <rect class="a-tail" x="6" y="36" width="5" height="16" rx="1.5"></rect>
+                  <rect class="a-plate" x="32" y="40" width="64" height="32" rx="5"></rect>
+                  <text class="a-plate-t" x="64" y="63" text-anchor="middle">P-03</text>
+                  <g class="a-wheel">
+                    <circle class="a-tyre" cx="52" cy="104" r="17"></circle>
+                    <circle class="a-rim" cx="52" cy="104" r="10"></circle>
+                    <path class="a-spoke-t" d="M52 91V88"></path>
+                    <circle class="a-lug" cx="52" cy="97.8" r="1.4"></circle><circle class="a-lug" cx="57.9" cy="102.08" r="1.4"></circle><circle class="a-lug" cx="55.64" cy="109.02" r="1.4"></circle><circle class="a-lug" cx="48.36" cy="109.02" r="1.4"></circle><circle class="a-lug" cx="46.1" cy="102.08" r="1.4"></circle>
+                    <circle class="a-hub" cx="52" cy="104" r="2.6"></circle>
+                  </g>
+                  <g class="a-wheel">
+                    <circle class="a-tyre" cx="198" cy="104" r="17"></circle>
+                    <circle class="a-rim" cx="198" cy="104" r="10"></circle>
+                    <path class="a-spoke-t" d="M198 91V88"></path>
+                    <circle class="a-lug" cx="198" cy="97.8" r="1.4"></circle><circle class="a-lug" cx="203.9" cy="102.08" r="1.4"></circle><circle class="a-lug" cx="201.64" cy="109.02" r="1.4"></circle><circle class="a-lug" cx="194.36" cy="109.02" r="1.4"></circle><circle class="a-lug" cx="192.1" cy="102.08" r="1.4"></circle>
+                    <circle class="a-hub" cx="198" cy="104" r="2.6"></circle>
+                  </g>
+                </g>
+              </g>
+            </g>
+
+            <!-- karta pojazdu nad autem (dymek wskazuje auto) -->
+            <path class="a-card cs-a-draw" pathLength="1" d="M38 14H562Q576 14 576 28V196Q576 210 562 210H316L300 228L284 210H38Q24 210 24 196V28Q24 14 38 14Z" style="--t: .9s;"></path>
+            <g class="cs-a-fade" style="--d: .3s;"><rect class="a-tab-on" x="40" y="28" width="70" height="32" rx="8"></rect><text class="a-tt a-tt-on" x="75" y="51" text-anchor="middle">OC</text></g>
+            <g class="cs-a-fade" style="--d: .4s;"><rect class="a-tab" x="118" y="28" width="146" height="32" rx="8"></rect><text class="a-tt" x="191" y="51" text-anchor="middle">PRZEGLĄD</text></g>
+            <g class="cs-a-fade" style="--d: .5s;"><rect class="a-tab" x="272" y="28" width="118" height="32" rx="8"></rect><text class="a-tt" x="331" y="51" text-anchor="middle">KOSZTY</text></g>
+            <text class="a-id cs-a-fade" x="556" y="53" text-anchor="end" style="--d: .55s;">P-03</text>
+            <path class="cs-ln-3 cs-a-draw" pathLength="1" d="M24 74H576" style="--d: .5s; --t: .5s;"></path>
+            <!-- os czasu: dzis i koniec OC -->
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M56 160H544" style="--d: .7s; --t: .6s;"></path>
+            <path class="cs-ln-3 cs-a-fade" d="M80 156V164M104 156V164M152 156V164M176 156V164M200 156V164M224 156V164M248 156V164M272 156V164M296 156V164M320 156V164M344 156V164M368 156V164M392 156V164M416 156V164M440 156V164M464 156V164M516 156V164" style="--d: 1s;"></path>
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M112 160V114" style="--d: 1.05s; --t: .3s;"></path>
+            <circle class="a-hub cs-a-pop" cx="112" cy="160" r="6" style="--d: 1.1s;"></circle>
+            <text class="a-mk a-teal cs-a-fade" x="112" y="104" text-anchor="middle" style="--d: 1.15s;">dziś</text>
+            <path class="a-dead cs-a-draw" pathLength="1" d="M492 160V114" style="--d: 1.2s; --t: .3s;"></path>
+            <circle class="a-warm cs-a-pop" cx="492" cy="160" r="6" style="--d: 1.25s;"></circle>
+            <text class="a-mk a-warm cs-a-fade" x="492" y="104" text-anchor="middle" style="--d: 1.3s;">koniec OC</text>
+            <!-- strzalka 31 dni rysuje sie od konca OC wstecz do dzis -->
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M484 134H124" style="--d: 1.5s; --t: .6s;"></path>
+            <path class="cs-acc cs-a-pop" d="M136 126L124 134L136 142" style="--d: 2.05s;"></path>
+            <text class="a-days cs-a-fade" x="304" y="124" text-anchor="middle" style="--d: 1.75s;">31 dni</text>
+            <!-- koperta z przypomnieniem pod "dzis" -->
+            <g class="cs-a-pop" style="--d: 2.25s;">
+              <rect class="a-env" x="92" y="172" width="40" height="28" rx="4"></rect>
+              <path class="cs-acc" d="M94 175L112 188L130 175"></path>
+            </g>
+            <text class="a-mk a-teal cs-a-fade" x="144" y="194" style="--d: 2.4s; --t: .4s;">przypomnienie wysłane</text>
+          </svg>
+        </figure>
+        <p class="cs-cap">Każde auto ma swoje OC, przegląd i&nbsp;koszty. Terminy pilnuje system miesiąc wcześniej, koszt zakupu przypisuje kierownik.</p>
+        <a class="link-more" href="#przyklad">
+          Przykład niżej
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ul class="chips" style="margin-top: clamp(28px, 3.5vw, 44px);">
         <li class="chip chip-mono" style="text-transform: none;"><span style="color: var(--teal-2);">WDROŻENIA</span> &middot; flota i zakupy</li>
         <li class="chip chip-mono" style="text-transform: none;"><span style="color: var(--teal-2);">POMIAR</span> &middot; marzec vs lipiec 2026</li>
         <li class="chip chip-mono" style="text-transform: none;"><span style="color: var(--teal-2);">SYSTEMY</span> &middot; Supabase, Gmail, Google Sheets, portal Inter Cars, aplikacja Fluinty</li>
@@ -106,12 +289,12 @@
             <text x="828.3" y="271" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">alerty budżetowe</text>
             <text x="50.5" y="46" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">WDROŻENIE 01 &middot; FLOTA</text>
             <text x="50.5" y="196" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#9AAEC4" letter-spacing="2">WDROŻENIE 02 &middot; ZAKUPY</text>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 135.7,90 H 337.6"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 372.4,90 H 574.3"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 609,90 H 811"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.6s" begin="3.5s" repeatCount="indefinite" path="M 135.7,240 H 337.6"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5s" begin="4.6s" repeatCount="indefinite" path="M 372.4,240 H 574.3"></animateMotion></circle>
-            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.4s" begin="5.7s" repeatCount="indefinite" path="M 609,240 H 811"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.2s"></set><animateMotion dur="4.6s" begin="0.2s" repeatCount="indefinite" path="M 135.7,90 H 337.6"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.3s"></set><animateMotion dur="5.2s" begin="1.3s" repeatCount="indefinite" path="M 372.4,90 H 574.3"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.4s"></set><animateMotion dur="4.8s" begin="2.4s" repeatCount="indefinite" path="M 609,90 H 811"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="3.5s"></set><animateMotion dur="5.6s" begin="3.5s" repeatCount="indefinite" path="M 135.7,240 H 337.6"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="4.6s"></set><animateMotion dur="5s" begin="4.6s" repeatCount="indefinite" path="M 372.4,240 H 574.3"></animateMotion></circle>
+            <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="5.7s"></set><animateMotion dur="5.4s" begin="5.7s" repeatCount="indefinite" path="M 609,240 H 811"></animateMotion></circle>
           </svg>
         </div>
         <p class="flow-cap">Linia floty pilnuje terminów w rejestrze i wysyła przypomnienia zespołowi, linia zakupów zbiera zamówienia z Inter Cars, kierownik przypisuje koszt do pojazdu w aplikacji, a system liczy koszt per pojazd i alarmuje o budżecie.</p>
@@ -143,7 +326,7 @@
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="zakupy-h" data-animated>
+  <section class="sec sec-gray at-zakupy" aria-labelledby="zakupy-h" data-animated>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Wdrożenie 02 &middot; Zakupy</p>
@@ -152,36 +335,175 @@
         <p class="lead">Zamówienia od dostawców, m.in. z Inter Cars, wpadają do systemu automatycznie. Kierownik przypisuje w aplikacji każdy koszt do konkretnego pojazdu, w 30 sekund. Dzięki temu koszt każdego auta widać na bieżąco i nic nie jest anonimowe. W tym samym okresie miesięczne koszty zakupów spadły o 30%. Liczby z systemu klienta.</p>
       </div>
 
-      <ol class="grid grid-2 sr-grid">
-        <li class="card sr" style="flex-direction: row; align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono" aria-hidden="true">01</span>
-          <div class="stack-s">
-            <h3>Import zamówień od dostawców</h3>
-            <p class="small">Zamówienia z Inter Cars i innych źródeł trafiają do systemu bez przepisywania.</p>
+      <ol class="sr" style="display: flex; flex-direction: column; max-width: 860px;">
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">01</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Import zamówień od dostawców</h3>
+            <p class="body-2">Zamówienia z Inter Cars i innych źródeł trafiają do systemu bez przepisywania.</p>
           </div>
         </li>
-        <li class="card sr" style="flex-direction: row; align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono" aria-hidden="true">02</span>
-          <div class="stack-s">
-            <h3>Przypisanie do pojazdu i oddziału</h3>
-            <p class="small">Człowiek przypisuje w aplikacji każdy koszt do pojazdu. Świadoma decyzja kierownika, nie zgadywanka automatu.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">02</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Przypisanie do pojazdu i oddziału</h3>
+            <p class="body-2">Człowiek przypisuje w aplikacji każdy koszt do pojazdu. Świadoma decyzja kierownika, nie zgadywanka automatu.</p>
           </div>
         </li>
-        <li class="card sr" style="flex-direction: row; align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono" aria-hidden="true">03</span>
-          <div class="stack-s">
-            <h3>Koszt per pojazd, na bieżąco</h3>
-            <p class="small">Widać, ile kosztuje każde auto i każdy oddział. Bez czekania na koniec miesiąca.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; flex-direction: column; align-items: center; flex: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">03</span>
+            <span style="width: 1px; flex: 1 0 auto; min-height: 34px; background: linear-gradient(180deg, rgba(0,196,180,.5), rgba(0,196,180,.15));"></span>
+          </span>
+          <div style="padding-bottom: 26px;">
+            <h3 style="margin-bottom: 4px;">Koszt per pojazd, na bieżąco</h3>
+            <p class="body-2">Widać, ile kosztuje każde auto i każdy oddział. Bez czekania na koniec miesiąca.</p>
           </div>
         </li>
-        <li class="card sr" style="flex-direction: row; align-items: flex-start; gap: 20px;">
-          <span class="chip chip-hi chip-mono" aria-hidden="true">04</span>
-          <div class="stack-s">
-            <h3>Alerty budżetowe</h3>
-            <p class="small">Przekroczenia widać, zanim się wydarzą, nie w raporcie miesiąc później.</p>
+        <li style="display: flex; gap: 24px;">
+          <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; flex: none; align-self: flex-start; width: 40px; height: 40px; background: var(--white); border: 1px solid rgba(0,196,180,.55); border-radius: 11px; font-family: var(--mono); font-size: 13px; color: var(--teal-text);">04</span>
+          <div>
+            <h3 style="margin-bottom: 4px;">Alerty budżetowe</h3>
+            <p class="body-2">Przekroczenia widać, zanim się wydarzą, nie w raporcie miesiąc później.</p>
           </div>
         </li>
       </ol>
+
+      <div class="at-ex" id="przyklad">
+        <div class="cs-demo-top">
+          <div class="sec-head sr">
+            <p class="eyebrow">Przykład na zmyślonym zamówieniu</p>
+            <h3 class="at-ex-h" id="przyklad-h">Tak to wygląda na przykładzie.</h3>
+            <div class="accent-bar"></div>
+            <p class="lead">Trzy pozycje z&nbsp;Inter Cars wpadają same. Pojazd wybiera kierownik, a&nbsp;system od razu liczy koszt auta i&nbsp;pilnuje budżetu.</p>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm cs-replay" data-cs-replay hidden>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2v3h3"></path></svg>
+            Pokaż jeszcze raz
+          </button>
+        </div>
+
+        <div class="cs-demo" data-cs-demo data-split="2">
+          <div class="cs-col cs-in">
+            <p class="cs-colh">Zamówienie i&nbsp;rejestr floty &middot; przykład</p>
+            <article class="cs-doc" data-late="1 0 cs-scan">
+              <header><span class="cs-fmt">Inter Cars</span><b>IC-PRZYKŁAD-5531</b><em>3 pozycje</em></header>
+              <div class="cs-scroll">
+                <table class="cs-spec">
+                  <thead><tr><th scope="col">Poz.</th><th scope="col">Towar</th><th scope="col">Ilość</th><th scope="col">Kwota</th></tr></thead>
+                  <tbody>
+                    <tr class="cs-hl" data-f="p1"><td>1</td><td>Klocki hamulcowe, przód</td><td class="cs-nowrap">1&nbsp;kpl</td><td class="cs-nowrap cs-b">289,00&nbsp;zł</td></tr>
+                    <tr class="cs-hl" data-f="p2"><td>2</td><td>Olej silnikowy <span class="cs-nowrap">5W-30</span></td><td class="cs-nowrap">5&nbsp;l</td><td class="cs-nowrap cs-b">214,00&nbsp;zł</td></tr>
+                    <tr class="cs-hl" data-f="p3"><td>3</td><td>Pióra wycieraczek</td><td class="cs-nowrap">2&nbsp;szt.</td><td class="cs-nowrap cs-b">96,00&nbsp;zł</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <article class="cs-doc">
+              <header><span class="cs-fmt">rejestr</span><b>Flota &middot; pojazdy</b><em>fragment</em></header>
+              <div class="cs-scroll">
+                <table class="cs-spec">
+                  <thead><tr><th scope="col">Pojazd</th><th scope="col">Oddział</th><th scope="col">Budżet / mies.</th></tr></thead>
+                  <tbody>
+                    <tr class="cs-hl" data-f="v03"><td class="cs-b">P-03</td><td>oddz. A</td><td class="cs-nowrap">1&nbsp;200&nbsp;zł</td></tr>
+                    <tr class="cs-hl" data-f="v08"><td class="cs-b">P-08</td><td>oddz. B</td><td class="cs-nowrap"><span class="cs-hl" data-f="bud">1&nbsp;200&nbsp;zł</span></td></tr>
+                    <tr><td class="cs-b">P-11</td><td>oddz. A</td><td class="cs-nowrap">1&nbsp;200&nbsp;zł</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <div class="cs-col cs-mid">
+            <ol class="cs-steps">
+              <li class="cs-step" data-step="1" data-dur="2100"><span class="cs-n">01</span><p>Import z&nbsp;Inter Cars, bez przepisywania</p></li>
+              <li class="cs-step" data-step="2" data-dur="2500"><span class="cs-n">02</span><p>Kierownik przypisuje pojazd i&nbsp;oddział</p></li>
+              <li class="cs-step" data-step="3" data-dur="2300"><span class="cs-n">03</span><p>Koszt per pojazd rośnie na bieżąco</p></li>
+              <li class="cs-step" data-step="4" data-dur="2100"><span class="cs-n">04</span><p>Budżet przekroczony: alert do kierownika</p></li>
+            </ol>
+            <div class="cs-tally">
+              <div data-at="2" data-t="1900"><b>3</b><span>pozycje przypisane do pojazdu</span></div>
+              <div class="cs-z" data-at="3" data-t="1750"><b>0</b><span>zakupów bez pojazdu</span></div>
+              <div class="cs-w" data-at="4" data-t="800"><b>1</b><span>alert budżetowy: <span class="cs-nowrap">P-08</span></span></div>
+            </div>
+          </div>
+
+          <div class="cs-col cs-out">
+            <article class="cs-rec at-app">
+              <div class="cs-rec-h"><b>Aplikacja &middot; zakupy</b><em>przykład</em></div>
+              <p class="at-status is-done" data-at="1" data-t="1850" data-late="2 1900 is-done"><span class="at-todo">3 pozycje czekają na przypisanie</span><span class="at-done">wszystkie pozycje przypisane</span></p>
+              <ul class="at-list">
+                <li class="at-row" data-at="1" data-t="250" data-r="p1" data-f="k08" data-fly="Klocki · 289,00 zł">
+                  <span class="at-item">Klocki hamulcowe, przód</span>
+                  <span class="at-amt">289,00&nbsp;zł</span>
+                  <span class="at-veh is-set" data-late="2 500 is-set"><span class="at-wait">czeka na kierownika</span><span class="at-val" data-at="2" data-t="500" data-r="v08">P-08 &middot; oddz. B</span><span class="at-cur" data-at="2" data-t="250" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M3 2l11 6.2-4.6 1.1 2.6 5-2.1 1-2.5-5L4 13.6z" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"></path></svg><b>kierownik</b></span></span>
+                </li>
+                <li class="at-row" data-at="1" data-t="550" data-r="p2" data-f="k03" data-fly="Olej · 214,00 zł">
+                  <span class="at-item">Olej silnikowy <span class="cs-nowrap">5W-30</span></span>
+                  <span class="at-amt">214,00&nbsp;zł</span>
+                  <span class="at-veh is-set" data-late="2 1100 is-set"><span class="at-wait">czeka na kierownika</span><span class="at-val" data-at="2" data-t="1100" data-r="v03">P-03 &middot; oddz. A</span><span class="at-cur" data-at="2" data-t="850" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M3 2l11 6.2-4.6 1.1 2.6 5-2.1 1-2.5-5L4 13.6z" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"></path></svg><b>kierownik</b></span></span>
+                </li>
+                <li class="at-row" data-at="1" data-t="850" data-r="p3" data-f="k08" data-fly="Pióra · 96,00 zł">
+                  <span class="at-item">Pióra wycieraczek</span>
+                  <span class="at-amt">96,00&nbsp;zł</span>
+                  <span class="at-veh is-set" data-late="2 1700 is-set"><span class="at-wait">czeka na kierownika</span><span class="at-val" data-at="2" data-t="1700" data-r="v08">P-08 &middot; oddz. B</span><span class="at-cur" data-at="2" data-t="1450" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M3 2l11 6.2-4.6 1.1 2.6 5-2.1 1-2.5-5L4 13.6z" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"></path></svg><b>kierownik</b></span></span>
+                </li>
+              </ul>
+            </article>
+            <div class="cs-human" data-at="2" data-t="100">
+              <b>Do człowieka</b>
+              <p>Pojazd i&nbsp;oddział wybiera kierownik. Automat nie zgaduje, do którego auta poszedł zakup.</p>
+            </div>
+            <article class="cs-rec at-cost">
+              <div class="cs-rec-h"><b>Koszt per pojazd</b><em>ten miesiąc &middot; przykład</em></div>
+              <div class="at-plot">
+                <div class="at-bar" style="--base: 640; --add: 214;">
+                  <span class="at-v is-up" data-late="3 1150 is-up"><span class="at-was">640&nbsp;zł</span><span class="at-now">854&nbsp;zł</span></span>
+                  <span class="at-col"><i class="at-base"></i><i class="at-add" data-at="3" data-t="200" data-r="k03" data-fly="+214 zł"></i></span>
+                  <span class="at-lab"><b>P-03</b>oddz. A</span>
+                </div>
+                <div class="at-bar" style="--base: 851; --add: 385;">
+                  <span class="at-v is-up" data-late="3 1600 is-up"><span class="at-was">851&nbsp;zł</span><span class="at-now is-over" data-late="4 150 is-over">1&nbsp;236&nbsp;zł</span></span>
+                  <span class="at-col is-over" data-late="4 150 is-over"><i class="at-base"></i><i class="at-add" data-at="3" data-t="650" data-r="k08" data-fly="+385 zł"></i></span>
+                  <span class="at-lab"><b>P-08</b>oddz. B</span>
+                </div>
+                <div class="at-bar" style="--base: 930;">
+                  <span class="at-v">930&nbsp;zł</span>
+                  <span class="at-col"><i class="at-base" style="border-radius: 4px 4px 0 0;"></i></span>
+                  <span class="at-lab"><b>P-11</b>oddz. A</span>
+                </div>
+              </div>
+              <p class="at-leg"><i></i>budżet na auto: 1&nbsp;200&nbsp;zł / mies.</p>
+              <div class="cs-fr cs-gap" data-at="4" data-t="500" data-r="bud"><span class="cs-k">Alert</span><span class="cs-v"><span class="cs-nowrap">P-08</span> ponad budżet: 1&nbsp;236&nbsp;zł z&nbsp;1&nbsp;200&nbsp;zł</span><span class="cs-s">mail do kierownika</span></div>
+            </article>
+          </div>
+
+          <div class="cs-log">
+            <div class="cs-log-h">
+              <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><path d="M1.5 5h9v7h-9zM10.5 7h2.5l1.5 2v3h-4"></path><circle cx="4.5" cy="12.5" r="1.3"></circle><circle cx="12" cy="12.5" r="1.3"></circle></svg>dziennik agenta &middot; flota i&nbsp;zakupy</span>
+              <span style="color: var(--teal-2);"><span class="status-square"></span> PRZYKŁAD</span>
+            </div>
+            <ol class="cs-log-b">
+              <li data-at="1" data-t="150"><span class="ts">07:00:02</span><span>sprawdzam terminy: polisy i&nbsp;przeglądy</span></li>
+              <li data-at="1" data-t="400"><span class="ts">07:00:04</span><span>polisa OC <span class="cs-nowrap">P-03</span>: koniec za 31 dni</span></li>
+              <li data-at="1" data-t="650"><span class="ts">07:00:06</span><span>przypomnienie mailowe wysłane</span></li>
+              <li data-at="1" data-t="1950"><span class="ts">07:00:07</span><span>Inter Cars: 3 pozycje czekają na przypisanie</span></li>
+              <li data-at="2" data-t="2100"><span class="ts">08:14:52</span><span>kierownik przypisał 3 pozycje: <span class="cs-nowrap">P-03</span>, <span class="cs-nowrap">P-08</span></span></li>
+              <li data-at="3" data-t="1950"><span class="ts">08:14:53</span><span>koszt per pojazd przeliczony</span></li>
+              <li data-at="4" data-t="900"><span class="ts">08:14:53</span><span><span class="cs-nowrap">P-08</span> ponad budżet, alert do kierownika</span></li>
+              <li class="cs-ok" data-at="4" data-t="1400"><span class="ts">08:14:54</span><span>gotowe &middot; terminy i&nbsp;koszty pod kontrolą</span></li>
+              <li data-at="4" data-t="1800"><span class="ts">08:14:54</span><span>czekam na kolejne zdarzenie</span><span class="caret"></span></li>
+            </ol>
+          </div>
+        </div>
+        <p class="cs-note"><b>Automat nie zgaduje, do którego auta poszedł zakup.</b> Pojazd i&nbsp;oddział wybiera kierownik, a&nbsp;system liczy koszt i&nbsp;pilnuje budżetu. Numery, kwoty i&nbsp;budżety są zmyślone. Spadek kosztów o&nbsp;30% to wynik z&nbsp;systemu klienta, nie z&nbsp;tego przykładu.</p>
+      </div>
     </div>
   </section>
 
@@ -194,7 +516,7 @@
       </div>
 
       <div class="stack">
-        <dl class="grid grid-3 sr-grid">
+        <dl class="grid grid-3 sr-grid at-res">
           <div class="card sr">
             <dt class="metric-lab">miesięcznych kosztów zakupów: marzec vs lipiec 2026, liczby z systemu klienta</dt>
             <dd class="metric-num" style="order: -1;">&minus;30%</dd>
@@ -217,7 +539,7 @@
     </div>
   </section>
 
-  <section class="sec sec-white" aria-labelledby="zakres-h">
+  <section class="sec sec-white at-zakres" aria-labelledby="zakres-h">
     <div class="wrap row sr" style="gap: 28px;">
       <h2 class="label" id="zakres-h">Zakres wdrożeń</h2>
       <ul class="chips">
@@ -232,7 +554,7 @@
     </div>
   </section>
 
-  <section class="sec sec-navy" aria-labelledby="cta-h" data-animated>
+  <section class="sec sec-navy glow-bottom at-cta" aria-labelledby="cta-h" data-animated>
     <div class="wrap">
       <div class="stack sr" style="align-items: center; text-align: center; max-width: 62ch; margin-inline: auto; gap: 22px;">
         <h2 id="cta-h">Opowiedzcie nam o podobnym procesie.</h2>

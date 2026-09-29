@@ -1,18 +1,204 @@
+  <style>
+    /* Strona glowna: dekoracje i poprawki z makiety (Main.dc.html, MobileHome.dc.html). Tylko ta strona. */
+    @keyframes homeRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .home-hero .rise-1 { animation: homeRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    .home-hero .rise-2 { animation: homeRise .7s cubic-bezier(.2,.7,.2,1) .18s both; }
+    .home-hero .rise-3 { animation: homeRise .7s cubic-bezier(.2,.7,.2,1) .31s both; }
+    .home-hero .rise-4 { animation: homeRise .7s cubic-bezier(.2,.7,.2,1) .44s both; }
+    .home-hero .lead { font-size: clamp(15.5px, 1.35vw, 19px); max-width: 560px; }
+    .home-hero h1 { font-size: clamp(36px, 5.4vw, 64px); text-wrap: wrap; }
+    .home-hero h1 .mark { white-space: nowrap; }
+    .home-hero .btn-ghost { border-color: rgba(148,190,233,.22); color: var(--on-dark-2); font-weight: 500; }
+    .home-hero .console-body > .log-line > span:not(.ts):not(.caret) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    .home-hero .hero-flow-m svg { opacity: .85; }
+    @media (min-width: 1200px) { .home-hero .grid-hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; } }
+    @media (min-width: 901px) {
+      .home-hero { padding-bottom: max(150px, 14.6vw); }
+      .home-hero .hero-flow { height: 18.75vw; }
+    }
+    @media (min-width: 901px) and (max-width: 1199px) { .home-hero .console-body { font-size: 12px; } .home-hero h1 { font-size: clamp(40px, 4.6vw, 56px); } }
+    @media (max-width: 1439px) { .home-hero .hero-flow text { font-size: 13px; } }
+    @media (max-width: 1280px) { .home-hero .hero-flow text { font-size: 15px; } }
+    @media (max-width: 1100px) { .home-hero .hero-flow text { font-size: 16.5px; } }
+    @media (max-width: 1000px) { .home-hero .hero-flow text { font-size: 18.5px; letter-spacing: .5px; } }
+    @media (max-width: 900px) { .home-hero .hero-flow-m svg { max-width: 460px; margin-inline: auto; } }
+    @media (max-width: 640px) {
+      .home-hero > .bg-deco { display: none; }
+      .home-hero .eyebrow { font-size: 11px; letter-spacing: .1em; }
+      .home-hero .console-bar { padding: 11px 14px; font-size: 11px; }
+      .home-hero .console-body { padding: 14px 14px 16px; font-size: 11px; line-height: 1.45; gap: 9px; }
+    }
+    @media (max-width: 1199px) { .home-hero .console-body > .log-line > span:not(.ts):not(.caret) { white-space: normal; } }
+    @media (max-width: 380px) { .home-hero .console-body { padding-inline: 12px; } .home-hero .log-line { gap: 8px; } }
+    /* podpisy maleho schematu: przy 11 j. na 360 px wychodzilo 10,3 px */
+    @media (max-width: 400px) { .home-hero .hero-flow-m text { font-size: 11.8px; } }
+
+    .home-cases .card { box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 32px -18px rgba(15,23,42,.12); }
+    .home-cases .card.home-eticod { box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 16px 40px -20px rgba(15,23,42,.15); }
+    .home-cases .home-eticod-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px; }
+    .home-cases .home-eticod-metrics .metric-num { font-size: clamp(24px, 2.6vw, 36px); white-space: nowrap; }
+    @media (max-width: 640px) {
+      .home-cases .home-eticod-metrics { gap: 16px 14px; border-top: 1px solid var(--line-soft); padding-top: 16px; }
+      .home-cases .home-eticod-metrics .metric-lab { font-size: 12px; }
+    }
+    /* Pozostale wdrozenia: dwie linie na firme (nazwa + liczba, opis w jednej linii + link), jak MobileHome l. 208-216; do 1023 px, bo przy 901-1000 opis Tax-Netu mial ok. 90 px */
+    @media (max-width: 1023px) {
+      .home-cases .home-others li.row, .home-cases .home-others a.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: baseline; padding: 12px 2px !important; }
+      .home-cases .home-others .h3 { min-width: 0 !important; grid-column: 1; grid-row: 1; justify-self: start; }
+      .home-cases .home-others .label { display: none; }
+      .home-cases .home-others .small { grid-column: 1 / -1; grid-row: 2; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+      .home-cases .home-others a.row .small { grid-column: 1; }
+      .home-cases .home-others .chip-mono { grid-column: 1 / -1; grid-row: 1; justify-self: end; max-width: calc(100% - 84px); text-align: right; font-size: 11px; }
+      .home-cases .home-others .link-more { grid-column: 2; grid-row: 2; font-size: 13px; }
+    }
+
+    @media (min-width: 1024px) {
+      .home-cases .home-others .row { flex-wrap: nowrap; }
+      .home-cases .home-others .small { flex: 1 1 0 !important; min-width: 0; }
+    }
+    /* sieroty w siatkach na tablecie: Bodtech sam w drugim rzedzie, "04" sama pod trzema */
+    @media (min-width: 600px) and (max-width: 929px) {
+      .home-cases .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .home-cases .grid-3 > :last-child { grid-column: 1 / -1; }
+    }
+    @media (min-width: 641px) and (max-width: 1023px) { .home-rules .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    /* demo: kwota i termin w jednej linii ("4 305,00 / zł") */
+    /* 901-1023: trzy kolumny demo, tabela za waska na kwote w jednej linii (EN wystawalo 1 px) */
+    @media (min-width: 641px) and (max-width: 900px), (min-width: 1024px) { #demo .demo-table td:nth-child(2), #demo .demo-table td:nth-child(3) { white-space: nowrap; } }
+    /* telefon: kwadracik rury w cenniku siadal na ostatniej literze eyebrow; rura wyzej, nad naglowkiem */
+    @media (max-width: 640px) { .home-pricing > svg.bg-deco { top: -48px !important; } }
+    /* cele dotyku na telefonie min. 40 px */
+    @media (max-width: 640px) {
+      .home-auto .card .link-more, .home-calc .link-more { min-height: 40px; }
+      .home-cta .home-cta-contact a { display: inline-flex; align-items: center; min-height: 40px; }
+    }
+
+    .home-calc .card { box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 16px 40px -20px rgba(15,23,42,.15); }
+    .home-pricing .card-hi { box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 32px -18px rgba(0,122,112,.2); }
+    @media (min-width: 1101px) {
+      .home-pricing .grid-5 > .card { padding: 28px 22px 24px; }
+      /* EN: "from 2,000 PLN" nie miesci sie w piatej czesci rzedu przy 28 px i lamalo kwote */
+      .home-pricing:lang(en) .grid-5 .row > .h3 { font-size: clamp(19px, 1.65vw, 24px) !important; white-space: nowrap; }
+    }
+    .home-auto .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+    .home-team .card { box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 32px -18px rgba(15,23,42,.12); }
+    .home-team .home-person .chips { margin-top: 6px; }
+    .home-team .home-person-role { color: var(--teal-text); }
+    @media (min-width: 641px) {
+      .home-team .home-person { --photo: clamp(300px, 29vw, 420px); padding: 0; gap: 0; overflow: hidden; }
+      /* +3 px: zdjecie Patryka ma fioletowa kolumne pikseli na prawej krawedzi; karta ja przycina */
+      .home-team .home-person-img { display: block; width: calc(100% + 3px); max-width: none; height: var(--photo); object-fit: cover; object-position: top; }
+      .home-team .home-person::after { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--photo) - 90px); height: 90px; background: linear-gradient(180deg, transparent, rgba(11,61,112,.55)); pointer-events: none; }
+      .home-team .home-person-body { padding: 26px 30px 30px; gap: 12px; }
+      .home-team .home-person-body h3 { font-size: clamp(20px, 1.7vw, 24px); font-weight: 700; }
+      .home-team .home-person-role { position: absolute; z-index: 1; left: 22px; top: calc(var(--photo) - 34px); display: flex; align-items: center; gap: 9px; font-size: 11px; color: var(--white) !important; }
+      .home-team .home-person-role::before { content: ""; width: 6px; height: 6px; border-radius: 2px; background: var(--teal-2); }
+      .home-team .home-person .small { font-size: 15px; color: var(--text-2); line-height: 1.65; }
+    }
+    @media (max-width: 640px) {
+      .home-team .home-person { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 4px 16px; align-items: start; }
+      .home-team .home-person-body { display: contents; }
+      .home-team .home-person-img { grid-row: 1 / span 3; width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: top; }
+      .home-team .home-person-body > :not(.chips) { grid-column: 2; }
+      .home-team .home-person .chips { grid-column: 1 / -1; margin-top: 10px; }
+    }
+    .home-faq .home-faq-grid { grid-template-columns: minmax(0, 1fr); }
+    @media (min-width: 901px) {
+      .home-faq .home-faq-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+      .home-faq h2 { font-size: clamp(30px, 2.8vw, 40px); }
+    }
+
+    .home-cta { background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    .home-cta .home-cta-ambient { position: absolute; left: 50%; bottom: -160px; transform: translateX(-50%); width: min(900px, 140%); height: 420px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0,196,180,.14), transparent 65%); animation: ambient 8s ease-in-out infinite; pointer-events: none; z-index: 0; }
+    .home-cta h2 { font-size: clamp(28px, 4.2vw, 52px); color: var(--white); }
+    .home-cta .lead { color: #B8CCE0; font-size: clamp(14.5px, 1.3vw, 18px); max-width: 580px; }
+    .home-cta .home-cta-contact, .home-cta .home-cta-contact a { color: #8FB0CC; }
+    .home-cta .home-cta-contact a:hover { color: var(--white); }
+    .home-cta .home-cta-contact .dot { background: #4E7099 !important; }
+    @media (min-width: 641px) { .home-cta .btn-primary { font-size: 17px; padding: 18px 40px; } }
+    @media (max-width: 640px) { .home-cta > .bg-deco { display: none; } .home-cta .home-cta-contact { flex-direction: column; gap: 4px !important; font-size: 12px !important; } .home-cta .home-cta-contact .dot { display: none !important; } }
+  </style>
+
   <!-- ===================== HERO ===================== -->
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="hero-h" data-animated>
+  <section class="sec sec-dark bg-grid bg-glow home-hero" aria-labelledby="hero-h" data-animated>
+    <svg class="bg-deco" viewBox="0 0 1440 700" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,64 H 880 Q 912,64 912,96 V 132" stroke="rgba(45,212,191,0.13)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,44 H 1150 Q 1118,44 1118,76 V 118" stroke="rgba(45,212,191,0.1)" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M -20,320 H 52 Q 84,320 84,352 V 548 Q 84,580 116,580 H 250" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,430 H 1404 Q 1372,430 1372,462 V 598" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 700,-20 V 26 Q 700,58 732,58 H 1010" stroke="rgba(45,212,191,0.09)" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="912" cy="96" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <circle cx="84" cy="352" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <circle cx="1372" cy="462" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <circle cx="700" cy="26" r="3.5" fill="#2DD4BF" opacity="0.3"></circle>
+      <rect x="908" y="128" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1114" y="114" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.35"></rect>
+      <rect x="246" y="576" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1368" y="594" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1006" y="54" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.3"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="1s"></set><animateMotion dur="11s" begin="1s" repeatCount="indefinite" path="M -20,64 H 880 Q 912,64 912,96 V 132"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="5s"></set><animateMotion dur="13s" begin="5s" repeatCount="indefinite" path="M -20,320 H 52 Q 84,320 84,352 V 548 Q 84,580 116,580 H 250"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.65" begin="3s"></set><animateMotion dur="9s" begin="3s" repeatCount="indefinite" path="M 1460,430 H 1404 Q 1372,430 1372,462 V 598"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.6" begin="7.5s"></set><animateMotion dur="12s" begin="7.5s" repeatCount="indefinite" path="M 700,-20 V 26 Q 700,58 732,58 H 1010"></animateMotion></circle>
+    </svg>
+    <div class="hero-flow" aria-hidden="true">
+      <svg viewBox="0 0 1440 270" preserveAspectRatio="xMidYMax meet" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <defs>
+          <linearGradient id="flowgrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#00C4B4" stop-opacity="0.08"></stop>
+            <stop offset="0.5" stop-color="#2DD4BF" stop-opacity="0.4"></stop>
+            <stop offset="1" stop-color="#00C4B4" stop-opacity="0.08"></stop>
+          </linearGradient>
+        </defs>
+        <path d="M 112,200 C 230,200 350,150 448,150" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="5s" repeatCount="indefinite"></animate></path>
+        <path d="M 492,150 C 590,150 665,200 736,200" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="6.2s" repeatCount="indefinite"></animate></path>
+        <path d="M 784,200 C 890,200 995,120 1098,120" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="5.4s" repeatCount="indefinite"></animate></path>
+        <path d="M 1142,120 C 1205,120 1258,215 1318,215" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="7s" repeatCount="indefinite"></animate></path>
+        <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0.16"><animateMotion dur="4.6s" begin="0s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
+        <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
+        <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.16" begin="1.3s"></set><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
+        <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.3s"></set><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
+        <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.16" begin="2.4s"></set><animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
+        <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="2.4s"></set><animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
+        <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.16" begin="0.9s"></set><animateMotion dur="6.4s" begin="0.9s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
+        <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.9s"></set><animateMotion dur="6.4s" begin="0.9s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
+        <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.75" begin="2.6s"></set><animateMotion dur="4.6s" begin="2.6s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
+        <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.75" begin="4.2s"></set><animateMotion dur="5.6s" begin="4.2s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
+        <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.75" begin="5s"></set><animateMotion dur="5s" begin="5s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
+        <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0"><set attributeName="opacity" to="0.75" begin="4.1s"></set><animateMotion dur="6.4s" begin="4.1s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
+        <circle cx="760" cy="200" r="26" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="26" to="46" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.45" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
+        <rect x="73" y="183" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+        <rect x="81" y="193" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
+        <path d="M 82,195 L 90,202 L 98,195" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+        <rect x="453" y="133" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+        <path d="M 473,141 h -7 a 2,2 0 0 0 -2,2 v 14 a 2,2 0 0 0 2,2 h 10 a 2,2 0 0 0 2,-2 v -11 z M 473,141 v 5 h 5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linejoin="round"></path>
+        <rect x="738" y="178" width="44" height="44" rx="12" fill="#0E2036" fill-opacity="0.95" stroke="#2DD4BF" stroke-opacity="0.55" stroke-width="1.2"></rect>
+        <path d="M 760,186 L 763.2,196.8 774,200 763.2,203.2 760,214 756.8,203.2 746,200 756.8,196.8 Z" fill="#2DD4BF" opacity="0.9"></path>
+        <rect x="1103" y="103" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+        <ellipse cx="1120" cy="113.5" rx="8" ry="3.2" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></ellipse>
+        <path d="M 1112,113.5 v 12 c 0,4.2 16,4.2 16,0 v -12 M 1112,119.5 c 0,4.2 16,4.2 16,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
+        <rect x="1323" y="198" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+        <path d="M 1333,224 v -7 M 1340,224 v -12 M 1347,224 v -16" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.8" stroke-linecap="round"></path>
+        <text x="90" y="248" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">customer email</text>
+        <text x="470" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">data read</text>
+        <text x="760" y="252" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">AI agent</text>
+        <text x="1120" y="168" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">your system</text>
+        <text x="1340" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">report</text>
+      </svg>
+    </div>
     <div class="wrap">
       <div class="grid-hero">
         <div class="stack">
-          <p class="eyebrow">AI automation agency for Polish SMEs</p>
-          <h1 id="hero-h">Repetitive processes running <span class="mark">on autopilot.</span></h1>
-          <p class="lead">We deploy AI agents that take over repetitive tasks and run in the background 24 hours a day, 7 days a week. Get your time back and focus on strategy.</p>
-          <div class="btn-row">
+          <p class="eyebrow rise-1">AI automation agency for Polish SMEs</p>
+          <h1 id="hero-h" class="rise-2">Repetitive processes running <span class="mark">on autopilot.</span></h1>
+          <p class="lead rise-3">We deploy AI agents that take over repetitive tasks and run in the background 24 hours a day, 7 days a week. Get your time back and focus on strategy.</p>
+          <div class="btn-row rise-4">
             <a class="btn btn-primary glow" href="{{ROOT}}en/contact/">Book a free consultation</a>
             <a class="btn btn-ghost" href="{{ROOT}}en/#case-studies">See the case studies</a>
           </div>
         </div>
 
-        <div class="console" aria-hidden="true">
+        <div class="console rise-3" aria-hidden="true">
           <div class="console-bar">
             <span class="row" style="gap: 10px;">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3" width="13" height="10" rx="2"></rect><path d="M2 4.5 8 9l6-4.5"></path></svg>
@@ -22,7 +208,7 @@
           </div>
           <div class="console-body">
             <div class="log-line" style="animation-delay: .6s;"><span class="ts">09:41:22</span><span>new event: email from a customer</span></div>
-            <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">09:41:24</span><span>reading data: line items, deadlines, amounts</span></div>
+            <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">09:41:24</span><span>reading data: items, deadlines, amounts</span></div>
             <div class="log-line" style="animation-delay: 2.4s;"><span class="ts">09:41:26</span><span>filling in the gaps and validating</span></div>
             <div class="log-line" style="animation-delay: 3.3s;"><span class="ts">09:41:29</span><span>entry into your system: ready</span></div>
             <div class="log-line log-line-ok" style="animation-delay: 4.2s;"><span class="ts">09:41:29</span><span>done &middot; report sent to the team channel</span></div>
@@ -30,50 +216,25 @@
           </div>
         </div>
       </div>
-
-      <div class="flow-scroll" aria-hidden="true" style="margin-top: clamp(28px, 4vw, 56px);">
-        <svg viewBox="0 0 1440 270" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; min-width: 720px; height: auto; opacity: .85;">
-          <defs>
-            <linearGradient id="flowgrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#00C4B4" stop-opacity="0.08"></stop>
-              <stop offset="0.5" stop-color="#2DD4BF" stop-opacity="0.4"></stop>
-              <stop offset="1" stop-color="#00C4B4" stop-opacity="0.08"></stop>
-            </linearGradient>
-          </defs>
-          <path d="M 112,200 C 230,200 350,150 448,150" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="5s" repeatCount="indefinite"></animate></path>
-          <path d="M 492,150 C 590,150 665,200 736,200" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="6.2s" repeatCount="indefinite"></animate></path>
-          <path d="M 784,200 C 890,200 995,120 1098,120" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="5.4s" repeatCount="indefinite"></animate></path>
-          <path d="M 1142,120 C 1205,120 1258,215 1318,215" stroke="url(#flowgrad)" stroke-width="1.5" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="7s" repeatCount="indefinite"></animate></path>
-          <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0.16"><animateMotion dur="4.6s" begin="0s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="4.6s" begin="0s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
-          <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0.16"><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
-          <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0.16"><animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
-          <circle class="flow-orb" r="9" fill="#2DD4BF" opacity="0.16"><animateMotion dur="6.4s" begin="0.9s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
-          <circle class="flow-orb" r="3.5" fill="#5FE9D7" opacity="0.95"><animateMotion dur="6.4s" begin="0.9s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
-          <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0.75"><animateMotion dur="4.6s" begin="2.6s" repeatCount="indefinite" path="M 112,200 C 230,200 350,150 448,150"></animateMotion></circle>
-          <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0.75"><animateMotion dur="5.6s" begin="4.2s" repeatCount="indefinite" path="M 492,150 C 590,150 665,200 736,200"></animateMotion></circle>
-          <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0.75"><animateMotion dur="5s" begin="5s" repeatCount="indefinite" path="M 784,200 C 890,200 995,120 1098,120"></animateMotion></circle>
-          <circle class="flow-orb" r="2.5" fill="#2DD4BF" opacity="0.75"><animateMotion dur="6.4s" begin="4.1s" repeatCount="indefinite" path="M 1142,120 C 1205,120 1258,215 1318,215"></animateMotion></circle>
-          <circle cx="760" cy="200" r="26" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="26" to="46" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.45" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
-          <rect x="73" y="183" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
-          <rect x="81" y="193" width="18" height="14" rx="2.5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></rect>
-          <path d="M 82,195 L 90,202 L 98,195" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
-          <rect x="453" y="133" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
-          <path d="M 473,141 h -7 a 2,2 0 0 0 -2,2 v 14 a 2,2 0 0 0 2,2 h 10 a 2,2 0 0 0 2,-2 v -11 z M 473,141 v 5 h 5" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4" stroke-linejoin="round"></path>
-          <rect x="738" y="178" width="44" height="44" rx="12" fill="#0E2036" fill-opacity="0.95" stroke="#2DD4BF" stroke-opacity="0.55" stroke-width="1.2"></rect>
-          <path d="M 760,186 L 763.2,196.8 774,200 763.2,203.2 760,214 756.8,203.2 746,200 756.8,196.8 Z" fill="#2DD4BF" opacity="0.9"></path>
-          <rect x="1103" y="103" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
-          <ellipse cx="1120" cy="113.5" rx="8" ry="3.2" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></ellipse>
-          <path d="M 1112,113.5 v 12 c 0,4.2 16,4.2 16,0 v -12 M 1112,119.5 c 0,4.2 16,4.2 16,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.4"></path>
-          <rect x="1323" y="198" width="34" height="34" rx="10" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
-          <path d="M 1333,224 v -7 M 1340,224 v -12 M 1347,224 v -16" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.8" stroke-linecap="round"></path>
-          <text x="90" y="248" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">customer email</text>
-          <text x="470" y="188" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">data read</text>
-          <text x="760" y="252" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1">AI agent</text>
-          <text x="1120" y="168" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">your system</text>
-          <text x="1340" y="262" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#C9D8E8" letter-spacing="1">report</text>
+      <div class="hero-flow-m" aria-hidden="true">
+        <svg viewBox="0 0 342 110" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs><linearGradient id="mwf" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00C4B4" stop-opacity="0.1"></stop><stop offset="0.5" stop-color="#2DD4BF" stop-opacity="0.45"></stop><stop offset="1" stop-color="#00C4B4" stop-opacity="0.1"></stop></linearGradient></defs>
+          <path d="M 52,44 H 136" stroke="url(#mwf)" stroke-width="1.5" stroke-dasharray="4 7"><animate attributeName="stroke-dashoffset" from="0" to="-110" dur="4.5s" repeatCount="indefinite"></animate></path>
+          <path d="M 206,44 H 290" stroke="url(#mwf)" stroke-width="1.5" stroke-dasharray="4 7"><animate attributeName="stroke-dashoffset" from="0" to="-110" dur="5.2s" repeatCount="indefinite"></animate></path>
+          <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="0.4s"></set><animateMotion dur="4.2s" begin="0.4s" repeatCount="indefinite" path="M 52,44 H 136"></animateMotion></circle>
+          <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.95" begin="1.6s"></set><animateMotion dur="4.8s" begin="1.6s" repeatCount="indefinite" path="M 206,44 H 290"></animateMotion></circle>
+          <rect x="19" y="29" width="30" height="30" rx="9" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+          <rect x="26" y="38" width="16" height="12" rx="2" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.3"></rect>
+          <path d="M 27,40 L 34,46 L 41,40" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.3"></path>
+          <rect x="152" y="25" width="38" height="38" rx="11" fill="#0E2036" fill-opacity="0.95" stroke="#2DD4BF" stroke-opacity="0.55" stroke-width="1.2"></rect>
+          <path d="M 171,32 L 173.6,41 182,44 173.6,47 171,56 168.4,47 160,44 168.4,41 Z" fill="#2DD4BF" opacity="0.9"></path>
+          <circle cx="171" cy="44" r="22" stroke="#2DD4BF" stroke-width="1" fill="none"><animate attributeName="r" from="22" to="36" dur="2.8s" repeatCount="indefinite"></animate><animate attributeName="opacity" from="0.45" to="0" dur="2.8s" repeatCount="indefinite"></animate></circle>
+          <rect x="293" y="29" width="30" height="30" rx="9" fill="#0E2036" fill-opacity="0.92" stroke="#2DD4BF" stroke-opacity="0.4"></rect>
+          <ellipse cx="308" cy="38.5" rx="7" ry="2.8" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.3"></ellipse>
+          <path d="M 301,38.5 v 10 c 0,3.6 14,3.6 14,0 v -10 M 301,43.5 c 0,3.6 14,3.6 14,0" stroke="#2DD4BF" stroke-opacity="0.85" stroke-width="1.3"></path>
+          <text x="19" y="80" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C9D8E8" letter-spacing="0.5">customer email</text>
+          <text x="171" y="86" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#2DD4BF" fill-opacity="0.8" letter-spacing="0.5">AI agent</text>
+          <text x="323" y="80" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C9D8E8" letter-spacing="0.5">your system</text>
         </svg>
       </div>
     </div>
@@ -111,7 +272,14 @@
   </section>
 
   <!-- ===================== CASE STUDIES ===================== -->
-  <section class="sec sec-white" aria-labelledby="case-studies-h" id="case-studies">
+  <section class="sec sec-white home-cases" data-animated aria-labelledby="case-studies-h" id="case-studies">
+    <svg class="bg-deco" viewBox="0 0 460 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="inset: 0 0 auto auto; width: min(460px, 72vw); height: auto;">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Case studies</p>
@@ -120,12 +288,12 @@
         <p class="lead">Specific processes in specific companies.</p>
       </div>
 
-      <a class="card sr" href="{{ROOT}}en/case-studies/eticod/" style="margin-bottom: 24px;">
+      <a class="card sr home-eticod" href="{{ROOT}}en/case-studies/eticod/" style="margin-bottom: 24px;">
         <div class="grid grid-2" style="align-items: center; gap: clamp(24px, 4vw, 56px);">
           <div class="stack">
             <div class="row" style="justify-content: space-between;">
               <span class="label" style="color: var(--teal-text);">Label printing</span>
-              <span class="logo-tile" style="height: 44px; min-width: 0;"><img src="{{ROOT}}assets/klienci/eticod.svg" alt="Eticod" style="max-height: 16px;"></span>
+              <span class="logo-tile" style="height: 44px; min-width: 0;"><img src="{{ROOT}}assets/klienci/eticod.svg" alt="Eticod" width="44" height="16" style="height: 16px; width: auto;"></span>
             </div>
             <h3 style="font-size: clamp(22px, 2.6vw, 30px);">Email orders go straight into the ERP</h3>
             <p class="body-2">The agent watches the inbox, reads emails and attachments, extracts the order data, validates it and enters it into the ERP. Nobody on the team retypes anything by hand any more.</p>
@@ -133,7 +301,7 @@
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
             </span>
           </div>
-          <div class="metrics" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+          <div class="metrics home-eticod-metrics">
             <div class="metric metric-bordered">
               <p class="metric-num"><span class="metric-num" data-count-to="160" data-count-from="0">160</span> h/month</p>
               <p class="metric-lab">calculated from 20–25 minutes per order</p>
@@ -158,7 +326,7 @@
         <a class="card sr" href="{{ROOT}}en/case-studies/holbox/">
           <div class="row" style="justify-content: space-between;">
             <span class="label">Displays and POS</span>
-            <span class="logo-tile" style="height: 40px; min-width: 0;"><img src="{{ROOT}}assets/klienci/holbox.svg" alt="Holbox" style="max-height: 18px;"></span>
+            <span class="logo-tile" style="height: 40px; min-width: 0;"><img src="{{ROOT}}assets/klienci/holbox.svg" alt="Holbox" width="44" height="18" style="height: 18px; width: auto;"></span>
           </div>
           <h3>Invoices land in the reports on their own</h3>
           <p class="body-2" style="flex-grow: 1;">The agent spots invoices in the inbox, reads the attached document and fills in the invoice sheet.</p>
@@ -191,7 +359,7 @@
         <a class="card sr" href="{{ROOT}}en/case-studies/bodtech/">
           <div class="row" style="justify-content: space-between;">
             <span class="label">Die-casting foundry</span>
-            <span class="logo-tile logo-tile-navy" style="height: 40px; min-width: 0;"><img src="{{ROOT}}assets/klienci/bodtech.png" alt="Bodtech" style="max-height: 18px;"></span>
+            <span class="logo-tile logo-tile-navy" style="height: 40px; min-width: 0;"><img src="{{ROOT}}assets/klienci/bodtech.png" alt="Bodtech" width="64" height="18" style="height: 18px; width: auto;"></span>
           </div>
           <h3>The complaint is complete before the assessor sees it</h3>
           <p class="body-2" style="flex-grow: 1;">The agent reads complaints in several languages, recognises photos of the damage, asks for anything missing and puts together a complete file for the assessor. A request to speak to a human is passed on straight away.</p>
@@ -207,7 +375,7 @@
 
       </div>
 
-      <div class="sr" style="margin-top: clamp(32px, 4vw, 48px);">
+      <div class="sr home-others" style="margin-top: clamp(32px, 4vw, 48px);">
         <p class="row" style="gap: 16px;">
           <span style="font-weight: 600; color: var(--teal-text);">More implementations</span>
           <span aria-hidden="true" style="flex-grow: 1; height: 1px; background: var(--line);"></span>
@@ -263,7 +431,13 @@
   </section>
 
   <!-- ===================== WHAT WE AUTOMATE ===================== -->
-  <section class="sec sec-gray" aria-labelledby="what-we-automate-h" id="what-we-automate">
+  <section class="sec sec-gray home-auto" data-animated aria-labelledby="what-we-automate-h" id="what-we-automate">
+    <div class="bg-deco" aria-hidden="true" style="inset: 40px 60px auto auto; width: 300px; height: 220px; background-image: radial-gradient(rgba(11,61,112,0.1) 1.2px, transparent 1.2px); background-size: 18px 18px; -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 72%); mask-image: radial-gradient(ellipse at center, black, transparent 72%);"></div>
+    <svg class="bg-deco" viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="inset: auto auto 0 0; width: min(380px, 70vw); height: auto;">
+      <path d="M -20,168 H 180 Q 208,168 208,140 V 60" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <rect x="204" y="52" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.4"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.5" begin="4s"></set><animateMotion dur="12s" begin="4s" repeatCount="indefinite" path="M -20,168 H 180 Q 208,168 208,140 V 60"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">What we automate</p>
@@ -387,7 +561,7 @@
   </section>
 
   <!-- ===================== CALCULATOR ===================== -->
-  <section class="sec sec-mint" aria-labelledby="calculator-h" id="calculator">
+  <section class="sec sec-mint home-calc" aria-labelledby="calculator-h" id="calculator">
     <div class="wrap grid-hero">
       <div class="stack sr">
         <p class="eyebrow">Calculator</p>
@@ -430,7 +604,8 @@
   </section>
 
   <!-- ===================== JAK PRACUJEMY ===================== -->
-  <section class="sec sec-white" aria-labelledby="zasady-h">
+  <section class="sec sec-white home-rules" aria-labelledby="zasady-h">
+    <div class="bg-deco" aria-hidden="true" style="inset: 40px 60px auto auto; width: 300px; height: 220px; background-image: radial-gradient(rgba(11,61,112,0.1) 1.2px, transparent 1.2px); background-size: 18px 18px; -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 72%); mask-image: radial-gradient(ellipse at center, black, transparent 72%);"></div>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">How we work</p>
@@ -463,7 +638,13 @@
   </section>
 
   <!-- ===================== HOW WE START AND WHAT IT COSTS ===================== -->
-  <section class="sec sec-gray" aria-labelledby="pricing-h" id="pricing">
+  <section class="sec sec-gray home-pricing" data-animated aria-labelledby="pricing-h" id="pricing">
+    <svg class="bg-deco" viewBox="0 0 380 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="inset: 0 0 auto auto; width: min(380px, 70vw); height: auto;">
+      <path d="M 400,54 H 190 Q 162,54 162,82 V 200" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M 400,100 H 270" stroke="#E2EAF2" stroke-width="2"></path>
+      <rect x="262" y="96" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.4"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.5" begin="6s"></set><animateMotion dur="11s" begin="6s" repeatCount="indefinite" path="M 400,54 H 190 Q 162,54 162,82 V 200"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">How we start and what it costs</p>
@@ -472,7 +653,7 @@
         <p class="lead">Then one process to start with, and you decide on the rollout only once you can see the numbers.</p>
       </div>
 
-      <ol class="grid sr-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      <ol class="grid grid-5 sr-grid">
         <li class="card card-hi sr" style="margin-top: 12px;">
           <span class="badge">Free</span>
           <h3 class="label" style="color: var(--teal-text);">00 &middot; Call</h3>
@@ -551,7 +732,8 @@
   </section>
 
   <!-- ===================== PRODUCTS ===================== -->
-  <section class="sec sec-white" aria-labelledby="products-h" id="products" style="padding-block: clamp(44px, 5vw, 72px);">
+  <section class="sec sec-white home-products" aria-labelledby="products-h" id="products" style="padding-block: clamp(44px, 5vw, 72px);">
+    <div class="bg-deco" aria-hidden="true" style="inset: 24px 80px auto auto; width: 320px; height: 200px; background-image: radial-gradient(rgba(11,61,112,0.09) 1.2px, transparent 1.2px); background-size: 18px 18px; -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 72%); mask-image: radial-gradient(ellipse at center, black, transparent 72%);"></div>
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Products</p>
@@ -577,7 +759,7 @@
   </section>
 
   <!-- ===================== TEAM ===================== -->
-  <section class="sec sec-gray" aria-labelledby="team-h" id="team">
+  <section class="sec sec-gray home-team" aria-labelledby="team-h" id="team">
     <div class="wrap">
       <div class="sec-head sr">
         <p class="eyebrow">Team</p>
@@ -587,49 +769,43 @@
       </div>
 
       <div class="grid grid-2 sr-grid">
-        <div class="card sr">
-          <div class="row" style="gap: 18px; flex-wrap: nowrap; align-items: flex-start;">
-            <img src="{{ROOT}}assets/zespol/adam-nelip.jpg" alt="Adam Nelip" width="120" height="120"
-              style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
-            <div class="stack-s" style="min-width: 0;">
-              <h3>Adam Nelip</h3>
-              <p class="label" style="color: var(--teal-text);">Co-founder</p>
-              <p class="small">Previously almost three years on IT products at McKinsey &amp; Company, then at Vazco and Aidar Solutions: from requirements and UX to budget and team. He started out programming industrial robots.</p>
-            </div>
+        <div class="card sr home-person">
+          <img class="home-person-img" src="{{ROOT}}assets/zespol/adam-nelip.jpg" alt="Adam Nelip" width="120" height="120">
+          <div class="stack-s home-person-body">
+            <h3>Adam Nelip</h3>
+            <p class="label home-person-role">Co-founder</p>
+            <p class="small">Previously almost three years on IT products at McKinsey &amp; Company, then at Vazco and Aidar Solutions: from requirements and UX to budget and team. He started out programming industrial robots.</p>
+            <ul class="chips">
+              <li class="chip">McKinsey &amp; Company</li>
+              <li class="chip">Vazco</li>
+              <li class="chip">Aidar Solutions</li>
+              <li class="chip">PSPO I</li>
+              <li class="chip">SAFe 5</li>
+            </ul>
           </div>
-          <ul class="chips">
-            <li class="chip">McKinsey &amp; Company</li>
-            <li class="chip">Vazco</li>
-            <li class="chip">Aidar Solutions</li>
-            <li class="chip">PSPO I</li>
-            <li class="chip">SAFe 5</li>
-          </ul>
         </div>
 
-        <div class="card sr">
-          <div class="row" style="gap: 18px; flex-wrap: nowrap; align-items: flex-start;">
-            <img src="{{ROOT}}assets/zespol/patryk-bielecki.jpg" alt="Patryk Bielecki" width="120" height="120"
-              style="width: clamp(84px, 10vw, 120px); height: clamp(84px, 10vw, 120px); border-radius: 50%; object-fit: cover; object-position: top; flex: none;">
-            <div class="stack-s" style="min-width: 0;">
-              <h3>Patryk Bielecki</h3>
-              <p class="label" style="color: var(--teal-text);">Co-founder</p>
-              <p class="small">By day a Senior Product Manager at Semrush, where he builds a product that measures brand visibility in ChatGPT, Gemini and Perplexity. Before that, five years in product roles in Stockholm, and earlier Brainhub and SAP Hybris.</p>
-            </div>
+        <div class="card sr home-person">
+          <img class="home-person-img" src="{{ROOT}}assets/zespol/patryk-bielecki.jpg" alt="Patryk Bielecki" width="120" height="120">
+          <div class="stack-s home-person-body">
+            <h3>Patryk Bielecki</h3>
+            <p class="label home-person-role">Co-founder</p>
+            <p class="small">By day a Senior Product Manager at Semrush, where he builds a product that measures brand visibility in ChatGPT, Gemini and Perplexity. Before that, five years in product roles in Stockholm, and earlier Brainhub and SAP Hybris.</p>
+            <ul class="chips">
+              <li class="chip">Semrush</li>
+              <li class="chip">AI Search</li>
+              <li class="chip">Collegial</li>
+              <li class="chip">SAP Hybris</li>
+            </ul>
           </div>
-          <ul class="chips">
-            <li class="chip">Semrush</li>
-            <li class="chip">AI Search</li>
-            <li class="chip">Collegial</li>
-            <li class="chip">SAP Hybris</li>
-          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===================== FAQ ===================== -->
-  <section class="sec sec-white" aria-labelledby="faq-h" id="faq">
-    <div class="wrap grid grid-2" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
+  <section class="sec sec-white home-faq" aria-labelledby="faq-h" id="faq">
+    <div class="wrap grid home-faq-grid" style="align-items: start; gap: clamp(24px, 4vw, 56px);">
       <div class="sec-head sr" style="margin-bottom: 0;">
         <p class="eyebrow">FAQ</p>
         <h2 id="faq-h">The questions we hear most often.</h2>
@@ -698,7 +874,18 @@
   </section>
 
   <!-- ===================== CTA ===================== -->
-  <section class="sec sec-navy bg-grid" aria-labelledby="cta-h" data-animated>
+  <section class="sec sec-navy glow-bottom home-cta" aria-labelledby="cta-h" data-animated>
+    <div class="home-cta-ambient" aria-hidden="true"></div>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="opacity: .8;">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
     <div class="wrap">
       <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
         <svg width="380" height="66" viewBox="0 0 380 66" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity: .9;">
@@ -718,9 +905,9 @@
         <h2 id="cta-h">Tell us about one process.</h2>
         <p class="lead">Within 24 hours we come back with an automation proposal and the benefits worked out. The call is free and commits you to nothing.</p>
         <a class="btn btn-primary glow" href="{{ROOT}}en/contact/">Book a free consultation</a>
-        <p class="row" style="justify-content: center; gap: 18px; font-family: var(--mono); font-size: 13.5px;">
+        <p class="row home-cta-contact" style="justify-content: center; gap: 24px; font-family: var(--mono); font-size: 13.5px;">
           <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
-          <span aria-hidden="true" style="width: 4px; height: 4px; border-radius: 50%; background: var(--on-dark-3); display: inline-block;"></span>
+          <span class="dot" aria-hidden="true" style="width: 4px; height: 4px; border-radius: 50%; background: var(--on-dark-3); display: inline-block;"></span>
           <a href="tel:+48509843514">+48 509 843 514</a>
         </p>
       </div>

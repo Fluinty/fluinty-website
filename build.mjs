@@ -88,7 +88,13 @@ function build() {
     const altHref = PREFIX + (page.alt || (page.lang === 'pl' ? '/en/' : '/'))
     if (BASE) hreflang = '  <meta name="robots" content="noindex, nofollow">'
 
-    let html = HEAD + parts.nav + '\n' + body.trimEnd() + '\n' + parts.footer
+    const src = page.src.replace(/^en-/, '')
+    const pageKind = src === 'index' ? 'home' : src.startsWith('case-') ? 'case' : src.startsWith('produkt-') ? 'product' : src.startsWith('blog') ? 'blog' : src === 'kontakt' ? 'contact' : 'other'
+    let head = HEAD.replace('<body>', `<body class="page-${pageKind}">`)
+    let foot = parts.footer
+    if (pageKind === 'case' && existsSync('css/case.css')) head = head.replace('</head>', '  <link rel="stylesheet" href="{{ROOT}}css/case.css">\n</head>')
+    if (pageKind === 'case' && existsSync('js/case.js')) foot = foot.replace('</body>', '  <script src="{{ROOT}}js/case.js" defer></script>\n</body>')
+    let html = head + parts.nav + '\n' + body.trimEnd() + '\n' + foot
     html = html
       .replace(/\{\{LANG\}\}/g, page.lang)
       .replace(/\{\{LOCALE\}\}/g, parts.locale)
@@ -99,6 +105,7 @@ function build() {
       .replace(/\{\{ALT\}\}/g, altHref)
       .replace(/\{\{NAV_CTA\}\}/g, navCta)
       .replace(/\{\{ROOT\}\}/g, root)
+      .replace(/\{\{ABS\}\}/g, SITE + PREFIX + '/')
 
     for (const key of ACTIVE_KEYS) {
       html = html.replace(new RegExp(`\\{\\{ACTIVE_${key}\\}\\}`, 'g'),

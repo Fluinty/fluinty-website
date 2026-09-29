@@ -1,4 +1,44 @@
-  <section class="sec sec-dark bg-grid bg-glow" aria-labelledby="eticod-h" data-animated>
+  <style>
+    /* Okladka Eticod: maszyna fleksograficzna w przekroju, jak schemat technologa. Wstega z odwijaka
+       idzie przez cztery zespoly drukujace C M Y K (zapalaja sie po kolei i kazdy doklada kolor),
+       sztanca wycina etykiety, azur odchodzi w gore, gotowa rolka rosnie na nawijaku, a detal A
+       pokazuje etykiety z polami zamowienia. Ruch z klockow cs-a-* (css/case.css), czasy w style. */
+    .cs-art[data-case="eticod"] .e-roll   { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.8); stroke-width: 1.5; }
+    .cs-art[data-case="eticod"] .e-roll-l { fill: rgba(227,212,168,.22); stroke: #E3D4A8; stroke-width: 1.5; }
+    .cs-art[data-case="eticod"] .e-ring   { fill: none; stroke: rgba(255,255,255,.22); stroke-width: 1; }
+    .cs-art[data-case="eticod"] .e-core   { fill: var(--ink); stroke: var(--teal-2); stroke-width: 1.5; }
+    .cs-art[data-case="eticod"] .e-cyl    { fill: rgba(255,255,255,.05); stroke: rgba(255,255,255,.8); stroke-width: 1.4; }
+    .cs-art[data-case="eticod"] .e-imp    { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1.2; }
+    .cs-art[data-case="eticod"] .e-anx    { fill: none; stroke: rgba(255,255,255,.6); stroke-width: 1.2; }
+    .cs-art[data-case="eticod"] .e-cells  { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1.2; stroke-dasharray: 1.4 2.2; }
+    .cs-art[data-case="eticod"] .e-tray   { fill: none; stroke: rgba(255,255,255,.6); stroke-width: 1.2; stroke-linejoin: round; }
+    .cs-art[data-case="eticod"] .e-plate  { fill: none; stroke-width: 3; stroke-dasharray: 66 41; }
+    .cs-art[data-case="eticod"] .e-stripe { fill: none; stroke-width: 2.5; }
+    .cs-art[data-case="eticod"] .e-letter { font-family: var(--display); font-size: 26px; font-weight: 700; }
+    .cs-art[data-case="eticod"] .e-web    { fill: #F4F8FC; }
+    .cs-art[data-case="eticod"] .e-liner  { fill: #E3D4A8; }
+    .cs-art[data-case="eticod"] .e-face   { fill: #FFFDF8; stroke: #B3A78F; stroke-width: 1; }
+    .cs-art[data-case="eticod"] .e-face-s { fill: #FFFDF8; }
+    .cs-art[data-case="eticod"] .e-blade  { fill: none; stroke: var(--teal-2); stroke-width: 2.4; stroke-dasharray: 5 4; }
+    .cs-art[data-case="eticod"] .e-matrix { fill: none; stroke: rgba(244,248,252,.5); stroke-width: 6; stroke-linecap: round; }
+    .cs-art[data-case="eticod"] .e-mx     { fill: #FFFDF8; }
+    .cs-art[data-case="eticod"] .e-det    { fill: none; stroke: var(--teal-2); stroke-width: 1.4; stroke-dasharray: 3 3; }
+    .cs-art[data-case="eticod"] .e-k      { font-family: var(--mono); font-size: 16.5px; font-weight: 500; letter-spacing: .08em; fill: #6F6552; }
+    .cs-art[data-case="eticod"] .e-v      { font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: -.01em; fill: #0C1B2E; }
+    .cs-art[data-case="eticod"] .e-n      { font-family: var(--mono); font-size: 22px; font-weight: 500; letter-spacing: .06em; fill: var(--on-dark-3); }
+  </style>
+
+  <section class="sec sec-dark bg-grid bg-glow cs-hero" aria-labelledby="eticod-h" data-animated>
+    <svg class="bg-deco" viewBox="0 0 1440 640" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,54 H 840 Q 872,54 872,86 V 120" stroke="rgba(45,212,191,0.12)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,40 H 1170 Q 1138,40 1138,72 V 108" stroke="rgba(45,212,191,0.09)" stroke-width="3" stroke-linejoin="round"></path>
+      <path d="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230" stroke="rgba(45,212,191,0.11)" stroke-width="2" stroke-linejoin="round"></path>
+      <circle cx="872" cy="86" r="3.5" fill="#2DD4BF" opacity="0.35"></circle>
+      <rect x="868" y="116" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="226" y="528" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="1s"></set><animateMotion dur="11s" begin="1s" repeatCount="indefinite" path="M -20,54 H 840 Q 872,54 872,86 V 120"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="5s"></set><animateMotion dur="13s" begin="5s" repeatCount="indefinite" path="M -20,300 H 48 Q 80,300 80,332 V 500 Q 80,532 112,532 H 230"></animateMotion></circle>
+    </svg>
     <div class="wrap grid-hero">
       <div class="stack">
         <nav aria-label="Okruszki">
@@ -36,26 +76,124 @@
         </dl>
       </div>
 
-      <div class="console" aria-hidden="true">
-        <div class="console-bar">
-          <span class="row" style="gap: 10px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5">
-              <rect x="1.5" y="3" width="13" height="10" rx="2"></rect>
-              <path d="M2 4.5 8 9l6-4.5"></path>
-            </svg>
-            agent &middot; zamówienia z maili
-          </span>
-          <span class="row" style="gap: 7px; color: var(--teal-2);"><span class="status-dot"></span> ONLINE</span>
-        </div>
-        <div class="console-body">
-          <div class="log-line" style="animation-delay: .6s;"><span class="ts">09:41:22</span><span>nowy mail: zamówienie + załącznik PDF</span></div>
-          <div class="log-line" style="animation-delay: 1.5s;"><span class="ts">09:41:23</span><span>załącznik zapisany na Dysku</span></div>
-          <div class="log-line" style="animation-delay: 2.4s;"><span class="ts">09:41:24</span><span>odczyt danych: 14 pozycji, ilości, terminy</span></div>
-          <div class="log-line" style="animation-delay: 3.3s;"><span class="ts">09:41:26</span><span>data wysyłki: 12.09, omijam weekend</span></div>
-          <div class="log-line" style="animation-delay: 4.2s;"><span class="ts">09:41:29</span><span>arkusz i log uzupełnione, wpis do ERP</span></div>
-          <div class="log-line log-line-ok" style="animation-delay: 5.1s;"><span class="ts">09:41:29</span><span>gotowe &middot; 0 błędów &middot; 7 sekund</span></div>
-          <div class="log-line" style="animation-delay: 6s; align-items: center;"><span class="ts">09:41:30</span><span>czekam na kolejny mail</span><span class="caret"></span></div>
-        </div>
+      <div class="cs-hero-art">
+        <figure class="cs-art" data-case="eticod" role="img" aria-label="Schemat maszyny fleksograficznej: wstęga z odwijaka przechodzi przez cztery zespoły drukujące C, M, Y i K, sztancę, która wycina etykiety, i nawija się jako rolka gotowych etykiet. Ażur odchodzi na osobny wałek. Na etykietach w powiększeniu przykładowe pola zamówienia: indeks ETK-1042, ilość 12 000 szt., termin do 14.09.">
+          <svg viewBox="0 52 600 382" aria-hidden="true" focusable="false">
+            <!-- wymiar nad zespolami -->
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M120 88H396M120 82V94M396 82V94" style="--d: .5s; --t: .5s;"></path>
+            <text class="cs-t cs-small cs-a-fade" x="258" y="76" text-anchor="middle" style="--d: .8s;">4 ZESPOŁY DRUKUJĄCE</text>
+            <text class="e-n cs-narrow cs-a-fade" x="258" y="80" text-anchor="middle" style="--d: .8s;">4 ZESPOŁY</text>
+            <!-- podloga, loze, ramy zespolow i sztancy -->
+            <path class="cs-ln-3" d="M12 300H588"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M104 288H488V300H104Z" style="--t: .6s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M120 138H180V288H120Z" style="--t: .7s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M192 138H252V288H192Z" style="--d: .08s; --t: .7s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M264 138H324V288H264Z" style="--d: .16s; --t: .7s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M336 138H396V288H336Z" style="--d: .24s; --t: .7s;"></path>
+            <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M416 138H476V288H416Z" style="--d: .32s; --t: .7s;"></path>
+            <!-- wstega (surowiec) wjezdza od odwijaka -->
+            <rect class="e-web cs-a-wipe" x="58" y="229" width="490" height="10" style="--d: .25s; --t: 1s;"></rect>
+            <!-- odwijak z rolka surowca -->
+            <path class="cs-ln-2" d="M58 196L40 300M58 196L76 300"></path>
+            <g class="cs-a-spin" style="--d: .05s; --t: 1.3s;">
+              <circle class="e-roll" cx="58" cy="196" r="38"></circle>
+              <circle class="e-ring" cx="58" cy="196" r="30"></circle>
+              <circle class="e-ring" cx="58" cy="196" r="22"></circle>
+              <path class="cs-ln-2" d="M58 158V186"></path>
+              <circle class="e-core" cx="58" cy="196" r="10"></circle>
+            </g>
+            <text class="cs-t cs-small" x="58" y="326" text-anchor="middle">odwijak</text>
+            <!-- zespol C: kalamarz, aniloks, cylinder z plyta, cylinder dociskowy; kolor laduje na wstedze -->
+            <path class="e-tray" d="M152 148H178L174 162H156Z"></path>
+            <path class="cs-a-fade" d="M155 151H175L172.5 159H157.5Z" fill="#22B8F0" style="--d: .45s;"></path>
+            <circle class="e-anx" cx="160" cy="184" r="11"></circle>
+            <circle class="e-cells" cx="160" cy="184" r="7"></circle>
+            <g class="cs-a-spin" style="--d: .45s; --t: .9s;"><circle class="e-cyl" cx="150" cy="213" r="17"></circle><circle class="e-plate" cx="150" cy="213" r="17" stroke="#22B8F0"></circle></g>
+            <circle class="e-imp" cx="150" cy="256" r="18"></circle>
+            <path class="e-stripe cs-a-draw" pathLength="1" d="M150 230.25H446" stroke="#22B8F0" style="--d: .55s; --t: .5s;"></path>
+            <text class="e-letter cs-a-pop" x="150" y="126" text-anchor="middle" fill="#38C6F4" style="--d: .45s;">C</text>
+            <!-- zespol M -->
+            <path class="e-tray" d="M224 148H250L246 162H228Z"></path>
+            <path class="cs-a-fade" d="M227 151H247L244.5 159H229.5Z" fill="#E5007D" style="--d: .6s;"></path>
+            <circle class="e-anx" cx="232" cy="184" r="11"></circle>
+            <circle class="e-cells" cx="232" cy="184" r="7"></circle>
+            <g class="cs-a-spin" style="--d: .6s; --t: .9s;"><circle class="e-cyl" cx="222" cy="213" r="17"></circle><circle class="e-plate" cx="222" cy="213" r="17" stroke="#E5007D"></circle></g>
+            <circle class="e-imp" cx="222" cy="256" r="18"></circle>
+            <path class="e-stripe cs-a-draw" pathLength="1" d="M222 232.75H446" stroke="#E5007D" style="--d: .7s; --t: .45s;"></path>
+            <text class="e-letter cs-a-pop" x="222" y="126" text-anchor="middle" fill="#FF5BAE" style="--d: .6s;">M</text>
+            <!-- zespol Y -->
+            <path class="e-tray" d="M296 148H322L318 162H300Z"></path>
+            <path class="cs-a-fade" d="M299 151H319L316.5 159H301.5Z" fill="#FFD60A" style="--d: .75s;"></path>
+            <circle class="e-anx" cx="304" cy="184" r="11"></circle>
+            <circle class="e-cells" cx="304" cy="184" r="7"></circle>
+            <g class="cs-a-spin" style="--d: .75s; --t: .9s;"><circle class="e-cyl" cx="294" cy="213" r="17"></circle><circle class="e-plate" cx="294" cy="213" r="17" stroke="#FFD60A"></circle></g>
+            <circle class="e-imp" cx="294" cy="256" r="18"></circle>
+            <path class="e-stripe cs-a-draw" pathLength="1" d="M294 235.25H446" stroke="#F5C400" style="--d: .85s; --t: .4s;"></path>
+            <text class="e-letter cs-a-pop" x="294" y="126" text-anchor="middle" fill="#FFD60A" style="--d: .75s;">Y</text>
+            <!-- zespol K -->
+            <path class="e-tray" d="M368 148H394L390 162H372Z"></path>
+            <path class="cs-a-fade" d="M371 151H391L388.5 159H373.5Z" fill="#475569" style="--d: .9s;"></path>
+            <circle class="e-anx" cx="376" cy="184" r="11"></circle>
+            <circle class="e-cells" cx="376" cy="184" r="7"></circle>
+            <g class="cs-a-spin" style="--d: .9s; --t: .9s;"><circle class="e-cyl" cx="366" cy="213" r="17"></circle><circle class="e-plate" cx="366" cy="213" r="17" stroke="#94A3B8"></circle></g>
+            <circle class="e-imp" cx="366" cy="256" r="18"></circle>
+            <path class="e-stripe cs-a-draw" pathLength="1" d="M366 237.75H446" stroke="#111827" style="--d: 1s; --t: .3s;"></path>
+            <text class="e-letter cs-a-pop" x="366" y="126" text-anchor="middle" fill="#C9D8E8" style="--d: .9s;">K</text>
+            <!-- sztanca rotacyjna: cylinder magnetyczny z wykrojnikiem nad wstega, przeciwcylinder pod -->
+            <g class="cs-a-spin" style="--d: 1.15s; --t: .8s;"><circle class="e-cyl" cx="446" cy="212" r="18"></circle><circle class="e-blade" cx="446" cy="212" r="18"></circle></g>
+            <circle class="e-imp" cx="446" cy="256" r="18"></circle>
+            <text class="cs-t cs-small" x="446" y="126" text-anchor="middle">sztanca</text>
+            <!-- za sztanca: podklad z wycietymi etykietami -->
+            <g class="cs-a-fade" style="--d: 1.35s; --t: .3s;">
+              <rect class="e-liner" x="458" y="229" width="90" height="10"></rect>
+              <rect class="e-face-s" x="462" y="230.5" width="16" height="7" rx="1.5"></rect>
+              <rect class="e-face-s" x="482" y="230.5" width="16" height="7" rx="1.5"></rect>
+              <rect class="e-face-s" x="502" y="230.5" width="16" height="7" rx="1.5"></rect>
+              <rect class="e-face-s" x="522" y="230.5" width="16" height="7" rx="1.5"></rect>
+            </g>
+            <!-- azur odchodzi w gore na osobny walek -->
+            <path class="e-matrix cs-a-draw" pathLength="1" d="M452 231C466 206 480 150 492 112" style="--d: 1.4s; --t: .5s;"></path>
+            <g class="cs-a-grow" style="--d: 1.4s; --t: .7s;"><circle class="e-roll" cx="500" cy="96" r="15"></circle><circle class="e-core" cx="500" cy="96" r="5"></circle></g>
+            <text class="cs-t cs-small" x="522" y="92">ażur</text>
+            <!-- nawijak: rolka gotowych etykiet rosnie -->
+            <path class="cs-ln-2" d="M548 198L530 300M548 198L566 300"></path>
+            <g class="cs-a-grow" style="--d: 1.3s; --t: 1.3s;">
+              <circle class="e-roll-l" cx="548" cy="198" r="36"></circle>
+              <circle class="e-ring" cx="548" cy="198" r="28"></circle>
+              <circle class="e-ring" cx="548" cy="198" r="20"></circle>
+              <circle class="e-core" cx="548" cy="198" r="10"></circle>
+            </g>
+            <text class="cs-t cs-small" x="548" y="326" text-anchor="middle">nawijak</text>
+            <!-- detal A: etykiety w powiekszeniu, z polami zamowienia -->
+            <circle class="e-det cs-a-pop" cx="500" cy="234" r="15" style="--d: 1.7s;"></circle>
+            <path class="cs-acc cs-a-draw" pathLength="1" d="M500 249V336" style="--d: 1.8s; --t: .3s;"></path>
+            <text class="cs-t cs-small cs-a-fade" x="490" y="326" text-anchor="end" style="--d: 1.9s;">detal A</text>
+            <g class="cs-a-wipe-l" style="--d: 1.95s; --t: .8s;">
+              <rect class="e-liner" x="16" y="338" width="568" height="92" rx="3"></rect>
+              <rect class="e-face" x="26" y="348" width="173" height="72" rx="8"></rect>
+              <rect class="e-face" x="213" y="348" width="173" height="72" rx="8"></rect>
+              <rect class="e-face" x="400" y="348" width="173" height="72" rx="8"></rect>
+              <g>
+                <rect x="149" y="358" width="8" height="8" fill="#22B8F0"></rect><rect x="159" y="358" width="8" height="8" fill="#E5007D"></rect><rect x="169" y="358" width="8" height="8" fill="#FFD60A"></rect><rect x="179" y="358" width="8" height="8" fill="#111827"></rect>
+                <rect x="336" y="358" width="8" height="8" fill="#22B8F0"></rect><rect x="346" y="358" width="8" height="8" fill="#E5007D"></rect><rect x="356" y="358" width="8" height="8" fill="#FFD60A"></rect><rect x="366" y="358" width="8" height="8" fill="#111827"></rect>
+                <rect x="523" y="358" width="8" height="8" fill="#22B8F0"></rect><rect x="533" y="358" width="8" height="8" fill="#E5007D"></rect><rect x="543" y="358" width="8" height="8" fill="#FFD60A"></rect><rect x="553" y="358" width="8" height="8" fill="#111827"></rect>
+              </g>
+              <text class="e-k cs-small" x="40" y="377">INDEKS</text>
+              <text class="e-v" x="40" y="405">ETK-1042</text>
+              <text class="e-k cs-small" x="227" y="377">ILOŚĆ</text>
+              <text class="e-v" x="227" y="405">12 000 szt.</text>
+              <text class="e-k cs-small" x="414" y="377">TERMIN</text>
+              <text class="e-v" x="414" y="405">do 14.09</text>
+              <!-- azur wokol etykiet, odkleja sie do gory -->
+              <path class="e-mx cs-a-peel" fill-rule="evenodd" d="M16 338H584V430H16Z M34 348H191A8 8 0 0 1 199 356V412A8 8 0 0 1 191 420H34A8 8 0 0 1 26 412V356A8 8 0 0 1 34 348Z M221 348H378A8 8 0 0 1 386 356V412A8 8 0 0 1 378 420H221A8 8 0 0 1 213 412V356A8 8 0 0 1 221 348Z M408 348H565A8 8 0 0 1 573 356V412A8 8 0 0 1 565 420H408A8 8 0 0 1 400 412V356A8 8 0 0 1 408 348Z" style="--d: 2.2s; --t: .8s;"></path>
+            </g>
+          </svg>
+        </figure>
+        <p class="cs-cap">Wstęga idzie przez cztery zespoły drukujące. Zamówienia z&nbsp;maili idą prosto do ERP.</p>
+        <a class="link-more" href="#przyklad">
+          Przykład niżej
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"></path></svg>
+        </a>
       </div>
     </div>
 
@@ -101,7 +239,143 @@
     </div>
   </section>
 
-  <section class="sec sec-gray" aria-labelledby="rozwiazanie">
+  <section class="sec sec-gray" id="przyklad" aria-labelledby="przyklad-h">
+    <div class="wrap">
+      <div class="cs-demo-top">
+        <div class="sec-head sr">
+          <p class="eyebrow">Przykład na zmyślonym zamówieniu</p>
+          <h2 id="przyklad-h">Tak to wygląda na przykładzie.</h2>
+          <div class="accent-bar"></div>
+          <p class="lead">Cztery maile w&nbsp;skrzynce, dwa z&nbsp;zamówieniem. Kompletne trafia do ERP, a&nbsp;to z&nbsp;brakiem czeka na człowieka.</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm cs-replay" data-cs-replay hidden>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2v3h3"></path></svg>
+          Pokaż jeszcze raz
+        </button>
+      </div>
+
+      <div class="cs-demo" data-cs-demo data-split="2">
+        <div class="cs-col cs-in">
+          <p class="cs-colh">Skrzynka zamówień &middot; przykład</p>
+          <article class="cs-doc">
+            <header><span class="cs-fmt">skrzynka</span><b>Odebrane</b><em>4 nowe</em></header>
+            <ul class="cs-inbox">
+              <li class="cs-mail is-skip" data-at="1" data-late="1 700 is-skip">
+                <span class="cs-from">newsletter@przyklad-folie.example</span>
+                <span class="cs-subj">Nowe folie na sezon</span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="760">pominięty</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">zamowienia@przyklad-kosmetyki.example</span>
+                <span class="cs-subj">Zamówienie 2026/0917</span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="900">zamówienie A</span><span class="cs-tag cs-tag-done" data-at="6" data-t="2300">przetworzone</span></span>
+              </li>
+              <li class="cs-mail is-skip" data-at="1" data-late="1 820 is-skip">
+                <span class="cs-from">faktura@przyklad-transport.example</span>
+                <span class="cs-subj">Faktura za transport, sierpień</span>
+                <span class="cs-tags"><span class="cs-tag" data-at="1" data-t="880">pominięty</span></span>
+              </li>
+              <li class="cs-mail" data-at="1">
+                <span class="cs-from">zakupy@przyklad-napoje.example</span>
+                <span class="cs-subj">Etykiety na butelkę 0,5&nbsp;l</span>
+                <span class="cs-snip">Poproszę 5&nbsp;000&nbsp;szt. etykiet <span class="cs-hl" data-f="b">jak ostatnio</span>, termin 18.09.</span>
+                <span class="cs-tags"><span class="cs-tag cs-tag-ok" data-at="1" data-t="1020">zamówienie B</span></span>
+              </li>
+            </ul>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 0 cs-scan">
+            <header><span class="cs-fmt">mail A</span><b>Zamówienie 2026/0917</b><em>09:11</em></header>
+            <ol class="cs-lines">
+              <li><span>Dzień dobry, w&nbsp;załączniku zamówienie 2026/0917.</span></li>
+              <li><span><span class="cs-hl" data-f="dost">Dostawa: poniedziałek 14.09.</span></span></li>
+              <li><span><span class="cs-hl" data-f="kl">Przykład Kosmetyki sp. z&nbsp;o.o.</span>, dział zakupów</span></li>
+            </ol>
+            <p class="cs-att cs-hl" data-f="pdf"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.5 4.5L5.2 9.8a1.6 1.6 0 0 0 2.3 2.3l5.6-5.6a3 3 0 0 0-4.3-4.3L3.2 7.8a4.3 4.3 0 0 0 6.1 6.1l4-4"></path></svg>zamowienie_0917.pdf</p>
+          </article>
+          <article class="cs-doc" data-at="1" data-late="3 450 cs-scan">
+            <header><span class="cs-fmt">PDF</span><b>zamowienie_0917.pdf</b><em>s.&nbsp;1</em></header>
+            <div class="cs-scroll">
+              <table class="cs-spec">
+                <thead><tr><th scope="col">Poz.</th><th scope="col">Indeks</th><th scope="col">Etykieta</th><th scope="col">Ilość</th></tr></thead>
+                <tbody>
+                  <tr class="cs-hl" data-f="p1"><td>1</td><td class="cs-nowrap">ETK-1042</td><td>100 × 50&nbsp;mm, folia PP biała</td><td class="cs-nowrap cs-b">12&nbsp;000 szt.</td></tr>
+                  <tr class="cs-hl" data-f="p2"><td>2</td><td class="cs-nowrap">ETK-1043</td><td>80 × 40&nbsp;mm, folia PP biała</td><td class="cs-nowrap cs-b">8&nbsp;000 szt.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-col cs-mid">
+          <ol class="cs-steps">
+            <li class="cs-step" data-step="1" data-dur="1300"><span class="cs-n">01</span><p>Wyłapuje maile z&nbsp;zamówieniem</p></li>
+            <li class="cs-step" data-step="2" data-dur="1400"><span class="cs-n">02</span><p>Załącznik ląduje na Dysku</p></li>
+            <li class="cs-step" data-step="3" data-dur="2000"><span class="cs-n">03</span><p>Czyta mail i&nbsp;PDF: pozycje, ilości, termin</p></li>
+            <li class="cs-step" data-step="4" data-dur="1200"><span class="cs-n">04</span><p>Wylicza datę wysyłki bez weekendów</p></li>
+            <li class="cs-step" data-step="5" data-dur="1300"><span class="cs-n">05</span><p>Sprawdza komplet, brak wraca do człowieka</p></li>
+            <li class="cs-step" data-step="6" data-dur="2900"><span class="cs-n">06</span><p>Wpis do ERP klik po kliku, log i&nbsp;etykieta maila</p></li>
+          </ol>
+          <div class="cs-tally">
+            <div data-at="6" data-t="1950"><b>1</b><span>zamówienie wpisane do ERP</span></div>
+            <div class="cs-w" data-at="5" data-t="500"><b>1</b><span>do wyjaśnienia, czeka na człowieka</span></div>
+            <div class="cs-z" data-at="6" data-t="2250"><b>0</b><span>błędnych wpisów, niepełne nie idzie do ERP</span></div>
+          </div>
+        </div>
+
+        <div class="cs-col cs-out">
+          <div class="cs-card" data-at="2">
+            <p class="cs-card-h"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1.5 4.5a1 1 0 0 1 1-1h3.6l1.5 1.7h5.9a1 1 0 0 1 1 1v6.3a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1z"></path></svg>Dysk &middot; Zamówienia / 2026-09</p>
+            <span class="cs-file" data-at="2" data-t="350" data-r="pdf" data-fly="">zamowienie_0917.pdf</span>
+          </div>
+          <article class="cs-rec">
+            <div class="cs-rec-h"><b>Arkusz zamówień</b><em>przykład</em></div>
+            <div class="cs-fr" data-at="3" data-t="300" data-r="p1" data-f="e-ind" data-fly="ETK-1042 · 12 000 szt."><span class="cs-k">Poz. 1</span><span class="cs-v">ETK-1042 &middot; 12&nbsp;000 szt.</span><span class="cs-s">PDF, s.&nbsp;1</span></div>
+            <div class="cs-fr" data-at="3" data-t="750" data-r="p2" data-f="e-ind" data-fly="ETK-1043 · 8 000 szt."><span class="cs-k">Poz. 2</span><span class="cs-v">ETK-1043 &middot; 8&nbsp;000 szt.</span><span class="cs-s">PDF, s.&nbsp;1</span></div>
+            <div class="cs-fr" data-at="3" data-t="1300" data-r="kl" data-f="e-kl"><span class="cs-k">Klient</span><span class="cs-v">Przykład Kosmetyki sp. z&nbsp;o.o.</span><span class="cs-s">mail A, l.&nbsp;3</span></div>
+            <div class="cs-fr" data-at="3" data-t="1500" data-r="dost"><span class="cs-k">Dostawa</span><span class="cs-v">14.09, poniedziałek</span><span class="cs-s">mail A, l.&nbsp;2</span></div>
+            <div class="cs-fr" data-at="4" data-r="wys" data-f="e-wys"><span class="cs-k">Wysyłka</span><span class="cs-v">11.09, piątek<small>ostatni dzień roboczy przed dostawą</small><span class="cs-cal" aria-hidden="true"><i class="cs-day is-go">pt 11</i><i class="cs-day is-off">sob 12</i><i class="cs-day is-off">nd 13</i><i class="cs-day is-in">pon 14</i></span></span><span class="cs-s">wyliczone</span></div>
+            <div class="cs-fr cs-gap" data-at="5" data-r="b" data-fly="brak indeksu"><span class="cs-k">Zam. B</span><span class="cs-v">brak indeksu, w&nbsp;mailu tylko „jak ostatnio”</span><span class="cs-s">mail B</span></div>
+          </article>
+          <div class="cs-human" data-at="5" data-t="700">
+            <b>Do człowieka</b>
+            <p>Zamówienie B wraca do wyjaśnienia. Indeks uzupełnia człowiek, dopiero potem idzie dalej.</p>
+          </div>
+          <article class="cs-sys" data-at="6">
+            <div class="cs-sys-h"><i></i><i></i><i></i><span>ERP &middot; Zamówienie sprzedaży</span><em>wpis klik po kliku</em></div>
+            <div class="cs-sys-b">
+              <div class="cs-sys-f"><span>Klient</span><span class="cs-field"><span data-at="6" data-t="400" data-r="e-kl" data-fly="Przykład Kosmetyki sp. z o.o.">Przykład Kosmetyki sp. z&nbsp;o.o.</span></span></div>
+              <div class="cs-sys-f"><span>Indeks, ilość</span><span class="cs-field"><span data-at="6" data-t="850" data-r="e-ind">ETK-1042 &middot; 12&nbsp;000<br>ETK-1043 &middot; 8&nbsp;000</span></span></div>
+              <div class="cs-sys-f"><span>Data wysyłki</span><span class="cs-field"><span data-at="6" data-t="1250" data-r="e-wys" data-fly="11.09.2026">11.09.2026</span></span></div>
+            </div>
+            <div class="cs-sys-foot">
+              <span class="cs-saved" data-at="6" data-t="1950"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>zapisane</span>
+              <span class="cs-sys-btn">Zapisz<svg class="cs-cursor" data-at="6" data-t="1700" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 2l11 6.2-4.6 1.1 2.6 5-2.1 1-2.5-5L4 13.6z" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" stroke-linejoin="round"></path></svg></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="cs-log">
+          <div class="cs-log-h">
+            <span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#2DD4BF" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2"></rect><path d="M2 4.5 8 9l6-4.5"></path></svg>dziennik agenta &middot; zamówienia z&nbsp;maili</span>
+            <span style="color: var(--teal-2);"><span class="status-square"></span> PRZYKŁAD</span>
+          </div>
+          <ol class="cs-log-b">
+            <li data-at="1" data-t="1100"><span class="ts">09:11:58</span><span>4 nowe maile: 2 z&nbsp;zamówieniem, 2 pominięte</span></li>
+            <li data-at="2" data-t="1250"><span class="ts">09:11:59</span><span>zamowienie_0917.pdf zapisany na Dysku</span></li>
+            <li data-at="3" data-t="1700"><span class="ts">09:12:01</span><span>odczyt A: 2 pozycje, klient, dostawa 14.09</span></li>
+            <li data-at="4" data-t="700"><span class="ts">09:12:02</span><span>wysyłka 11.09 (pt.), weekend pominięty</span></li>
+            <li data-at="5" data-t="900"><span class="ts">09:12:02</span><span>zamówienie B: brak indeksu, do wyjaśnienia</span></li>
+            <li data-at="6" data-t="2000"><span class="ts">09:12:05</span><span>A wpisane do ERP, 2 pozycje, arkusz i&nbsp;log uzupełnione</span></li>
+            <li class="cs-ok" data-at="6" data-t="2300"><span class="ts">09:12:05</span><span>mail A z&nbsp;etykietą „przetworzone”</span></li>
+            <li data-at="6" data-t="2600"><span class="ts">09:12:06</span><span>czekam na kolejny mail</span><span class="caret"></span></li>
+          </ol>
+        </div>
+      </div>
+      <p class="cs-note"><b>Automat nie zgaduje brakujących danych.</b> Do ERP trafia tylko kompletne zamówienie, a&nbsp;brak wraca do człowieka. Firmy, maile, indeksy, ilości i&nbsp;daty są zmyślone.</p>
+    </div>
+  </section>
+
+  <section class="sec sec-white" aria-labelledby="rozwiazanie">
     <div class="wrap stack" style="gap: clamp(32px, 4vw, 52px);">
       <div class="flow sr" data-animated>
         <div class="flow-head">
