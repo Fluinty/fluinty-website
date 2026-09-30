@@ -77,7 +77,7 @@
       </div>
 
       <div class="cs-hero-art">
-        <figure class="cs-art" data-case="eticod" role="img" aria-label="Diagram of a flexo press: the web runs from the unwind through four print units, C, M, Y and K, and a rotary die that cuts the labels, then winds up as a roll of finished labels. The matrix goes to a separate spindle. The magnified labels carry sample order fields: product code ETK-1042, quantity 12,000 pcs, due by 14 Sep.">
+        <figure class="cs-art" data-case="eticod" role="img" aria-label="Diagram of a flexo press: the web runs from the unwind through four print units, C, M, Y and K, and a rotary die that cuts the labels, then winds up as a roll of finished labels. The matrix goes to a separate spindle. The magnified labels carry sample order fields: product code ETK-1042, quantity 12,000 pcs, due by 21 Sep.">
           <svg viewBox="0 52 600 382" aria-hidden="true" focusable="false">
             <!-- wymiar nad zespolami -->
             <path class="cs-ln-2 cs-a-draw" pathLength="1" d="M120 88H396M120 82V94M396 82V94" style="--d: .5s; --t: .5s;"></path>
@@ -183,7 +183,7 @@
               <text class="e-k cs-small" x="227" y="377">QUANTITY</text>
               <text class="e-v" x="227" y="405">12,000 pcs</text>
               <text class="e-k cs-small" x="414" y="377">DUE</text>
-              <text class="e-v" x="414" y="405">by 14 Sep</text>
+              <text class="e-v" x="414" y="405">by 21 Sep</text>
               <!-- azur wokol etykiet, odkleja sie do gory -->
               <path class="e-mx cs-a-peel" fill-rule="evenodd" d="M16 338H584V430H16Z M34 348H191A8 8 0 0 1 199 356V412A8 8 0 0 1 191 420H34A8 8 0 0 1 26 412V356A8 8 0 0 1 34 348Z M221 348H378A8 8 0 0 1 386 356V412A8 8 0 0 1 378 420H221A8 8 0 0 1 213 412V356A8 8 0 0 1 221 348Z M408 348H565A8 8 0 0 1 573 356V412A8 8 0 0 1 565 420H408A8 8 0 0 1 400 412V356A8 8 0 0 1 408 348Z" style="--d: 2.2s; --t: .8s;"></path>
             </g>
@@ -287,7 +287,7 @@
             <header><span class="cs-fmt">email A</span><b>Order 2026/0917</b><em>09:11</em></header>
             <ol class="cs-lines">
               <li><span>Hello, order 2026/0917 is attached.</span></li>
-              <li><span><span class="cs-hl" data-f="dost">Delivery: Monday 14 Sep.</span></span></li>
+              <li><span><span class="cs-hl" data-f="dost">Delivery: Monday 21 Sep.</span></span></li>
               <li><span><span class="cs-hl" data-f="kl">Sample Cosmetics Ltd</span>, purchasing</span></li>
             </ol>
             <p class="cs-att cs-hl" data-f="pdf"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10.5 4.5L5.2 9.8a1.6 1.6 0 0 0 2.3 2.3l5.6-5.6a3 3 0 0 0-4.3-4.3L3.2 7.8a4.3 4.3 0 0 0 6.1 6.1l4-4"></path></svg>order_0917.pdf</p>
@@ -311,7 +311,7 @@
             <li class="cs-step" data-step="1" data-dur="1300"><span class="cs-n">01</span><p>Picks out the order emails</p></li>
             <li class="cs-step" data-step="2" data-dur="1400"><span class="cs-n">02</span><p>Saves the attachment to Drive</p></li>
             <li class="cs-step" data-step="3" data-dur="2000"><span class="cs-n">03</span><p>Reads the email and PDF: items, quantities, date</p></li>
-            <li class="cs-step" data-step="4" data-dur="1200"><span class="cs-n">04</span><p>Works out a dispatch date with no weekends</p></li>
+            <li class="cs-step" data-step="4" data-dur="1800"><span class="cs-n">04</span><p>Works out dispatch and production dates, no weekends</p></li>
             <li class="cs-step" data-step="5" data-dur="1300"><span class="cs-n">05</span><p>Checks completeness, a gap goes to a person</p></li>
             <li class="cs-step" data-step="6" data-dur="2900"><span class="cs-n">06</span><p>ERP entry click by click, log and email label</p></li>
           </ol>
@@ -332,8 +332,9 @@
             <div class="cs-fr" data-at="3" data-t="300" data-r="p1" data-f="e-ind" data-fly="ETK-1042 · 12,000 pcs"><span class="cs-k">Line 1</span><span class="cs-v">ETK-1042 &middot; 12,000 pcs</span><span class="cs-s">PDF, p.&nbsp;1</span></div>
             <div class="cs-fr" data-at="3" data-t="750" data-r="p2" data-f="e-ind" data-fly="ETK-1043 · 8,000 pcs"><span class="cs-k">Line 2</span><span class="cs-v">ETK-1043 &middot; 8,000 pcs</span><span class="cs-s">PDF, p.&nbsp;1</span></div>
             <div class="cs-fr" data-at="3" data-t="1300" data-r="kl" data-f="e-kl"><span class="cs-k">Customer</span><span class="cs-v">Sample Cosmetics Ltd</span><span class="cs-s">email A, l.&nbsp;3</span></div>
-            <div class="cs-fr" data-at="3" data-t="1500" data-r="dost"><span class="cs-k">Delivery</span><span class="cs-v">14 Sep, Monday</span><span class="cs-s">email A, l.&nbsp;2</span></div>
-            <div class="cs-fr" data-at="4" data-r="wys" data-f="e-wys"><span class="cs-k">Dispatch</span><span class="cs-v">11 Sep, Friday<small>last working day before delivery</small><span class="cs-cal" aria-hidden="true"><i class="cs-day is-go">Fri 11</i><i class="cs-day is-off">Sat 12</i><i class="cs-day is-off">Sun 13</i><i class="cs-day is-in">Mon 14</i></span></span><span class="cs-s">calculated</span></div>
+            <div class="cs-fr" data-at="3" data-t="1500" data-r="dost"><span class="cs-k">Delivery</span><span class="cs-v">21 Sep, Monday</span><span class="cs-s">email A, l.&nbsp;2</span></div>
+            <div class="cs-fr" data-at="4" data-r="dost" data-f="e-wys"><span class="cs-k">Dispatch</span><span class="cs-v">14 Sep, Monday<small>7 days before delivery</small></span><span class="cs-s">calculated</span></div>
+            <div class="cs-fr" data-at="4" data-t="700"><span class="cs-k">Production</span><span class="cs-v">11 Sep, Friday<small>2 days before dispatch, Saturday is out, so Friday</small><span class="cs-cal" aria-hidden="true"><i class="cs-day is-go">Fri 11</i><i class="cs-day is-off">Sat 12</i><i class="cs-day is-off">Sun 13</i><i class="cs-day is-in">Mon 14</i></span></span><span class="cs-s">calculated</span></div>
             <div class="cs-fr cs-gap" data-at="5" data-r="b" data-fly="no product code"><span class="cs-k">Order B</span><span class="cs-v">no product code, the email only says “same as last time”</span><span class="cs-s">email B</span></div>
           </article>
           <div class="cs-human" data-at="5" data-t="700">
@@ -345,7 +346,7 @@
             <div class="cs-sys-b">
               <div class="cs-sys-f"><span>Customer</span><span class="cs-field"><span data-at="6" data-t="400" data-r="e-kl" data-fly="Sample Cosmetics Ltd">Sample Cosmetics Ltd</span></span></div>
               <div class="cs-sys-f"><span>Code, qty</span><span class="cs-field"><span data-at="6" data-t="850" data-r="e-ind">ETK-1042 &middot; 12,000<br>ETK-1043 &middot; 8,000</span></span></div>
-              <div class="cs-sys-f"><span>Dispatch date</span><span class="cs-field"><span data-at="6" data-t="1250" data-r="e-wys" data-fly="11/09/2026">11/09/2026</span></span></div>
+              <div class="cs-sys-f"><span>Dispatch date</span><span class="cs-field"><span data-at="6" data-t="1250" data-r="e-wys" data-fly="14/09/2026">14/09/2026</span></span></div>
             </div>
             <div class="cs-sys-foot">
               <span class="cs-saved" data-at="6" data-t="1950"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"></path></svg>saved</span>
@@ -362,8 +363,9 @@
           <ol class="cs-log-b">
             <li data-at="1" data-t="1100"><span class="ts">09:11:58</span><span>4 new emails: 2 orders, 2 skipped</span></li>
             <li data-at="2" data-t="1250"><span class="ts">09:11:59</span><span>order_0917.pdf saved to Drive</span></li>
-            <li data-at="3" data-t="1700"><span class="ts">09:12:01</span><span>read A: 2 items, customer, delivery 14 Sep</span></li>
-            <li data-at="4" data-t="700"><span class="ts">09:12:02</span><span>dispatch 11 Sep (Fri), weekend skipped</span></li>
+            <li data-at="3" data-t="1700"><span class="ts">09:12:01</span><span>read A: 2 items, customer, delivery 21 Sep</span></li>
+            <li data-at="4" data-t="500"><span class="ts">09:12:02</span><span>dispatch 14 Sep: 7 days before delivery</span></li>
+            <li data-at="4" data-t="1200"><span class="ts">09:12:02</span><span>production 11 Sep (Fri), weekend skipped</span></li>
             <li data-at="5" data-t="900"><span class="ts">09:12:02</span><span>order B: no product code, to clarify</span></li>
             <li data-at="6" data-t="2000"><span class="ts">09:12:05</span><span>A entered into the ERP, 2 items, sheet and log updated</span></li>
             <li class="cs-ok" data-at="6" data-t="2300"><span class="ts">09:12:05</span><span>email A labelled “processed”</span></li>
@@ -477,7 +479,7 @@
           </span>
           <div style="padding-bottom: 26px;">
             <h3 style="margin-bottom: 4px;">Dispatch date with no weekends</h3>
-            <p class="body-2">The system works out the dispatch date on its own: always the last working day, with weekends skipped automatically.</p>
+            <p class="body-2">The system works out the dispatch date (7 days before delivery) and the production date (2 days before dispatch) on its own. When a date lands on a weekend, it moves back to Friday.</p>
           </div>
         </li>
         <li style="display: flex; gap: 24px;">

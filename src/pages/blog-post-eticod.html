@@ -67,7 +67,7 @@
             logiem: każdy wiersz ma źródło, z którego dane zostały odczytane. Dopiero stamtąd zamówienie idzie do
             ERP.</p>
           <p class="body-2">Osobna reguła dotyczy daty wysyłki. Termin z maila nie zawsze wypada w dzień roboczy.
-            System sam wylicza datę wysyłki: zawsze ostatni dzień roboczy, weekendy omija automatycznie. To drobiazg,
+            System sam wylicza datę wysyłki (7 dni przed dostawą) i produkcji (2 dni przed wysyłką), a gdy wypada weekend, cofa ją na piątek. To drobiazg,
             ale bez niego zamówienie „na sobotę” ląduje w ERP z datą, w którą nikt nie pracuje.</p>
 
           <h2 id="kontrola-pol" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">Kontrola pól, zanim
