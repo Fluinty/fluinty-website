@@ -176,8 +176,8 @@
             the same time: every row records the source the data was read from. Only from there does the order go
             to the ERP.</p>
           <p class="body-2">A separate rule covers the dispatch date. The deadline in the email does not always fall
-            on a working day. The system works out the dispatch date itself: always the last working day, skipping
-            weekends automatically. It is a small thing, but without it an order “for Saturday” lands in the ERP with
+            on a working day. The system works out the dispatch date (7 days before delivery) and the production date (2 days
+            before dispatch) itself, and when one lands on a weekend it moves back to Friday. It is a small thing, but without it an order “for Saturday” lands in the ERP with
             a date on which nobody is working.</p>
 
           <h2 id="kontrola-pol" style="font-size: clamp(23px, 2.4vw, 30px); margin-top: 14px;">Field checks before
