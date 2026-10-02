@@ -1,5 +1,6 @@
-# Tracker otwarc deckow: proxy do Apps Script (pierwsza strona, nie blokowany)
+# Deck open tracker: proxy to Apps Script (first-party, not blocked)
 /dla/_z  https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec  200!
+# Tracker otwarc deckow: proxy do Apps Script (pierwsza strona, nie blokowany)
 
 # Pliki robocze i dokumentacja nie maja byc publiczne. 404! wymusza regule, bo pliki istnieja.
 # Netlify nie obsluguje wzorca /*.rozszerzenie ani placeholderow z sufiksem,
