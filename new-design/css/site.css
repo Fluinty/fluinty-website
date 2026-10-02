@@ -266,6 +266,11 @@ input[type="range"] { width: 100%; accent-color: var(--teal-text); }
 .logo-tile img { max-height: 26px; width: auto; max-width: none; flex: none; }
 .logo-tile span { font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--text-2); letter-spacing: -.02em; }
 .logo-tile-navy span { color: var(--on-dark); }
+/* pasek "Pracujemy dla": jednakowe biale kafle, znaki w jednym kolorze (--text-2) z assets/klienci/pasek */
+.marquee .logo-tile { flex: none; width: 176px; min-width: 0; height: 64px; padding: 10px 18px; }
+.marquee .logo-tile img { max-height: none; }
+.logo-lockup { display: inline-flex; align-items: center; gap: 8px; }
+.marquee .logo-tile .logo-lockup span { font-size: 15px; }
 
 /* --- tla --- */
 .bg-grid { background-image: repeating-linear-gradient(90deg, rgba(148,190,233,.028) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(148,190,233,.02) 0 1px, transparent 1px 90px); }
