@@ -1,22 +1,22 @@
 # Tracker otwarc deckow: proxy do Apps Script (pierwsza strona, nie blokowany)
 /dla/_z  https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec  200!
 
-# Pliki robocze i dokumentacja nie maja byc publiczne.
+# Pliki robocze i dokumentacja nie maja byc publiczne. 404! wymusza regule, bo pliki istnieja.
 # Netlify nie obsluguje wzorca /*.rozszerzenie ani placeholderow z sufiksem,
 # dlatego kazda sciezka jest wypisana jawnie.
-/add_favicon.py            /404.html  404
-/add_favicon_to_pages.py   /404.html  404
-/fix_cookiebot.py          /404.html  404
-/remove_social.py          /404.html  404
-/reorder.py                /404.html  404
-/repair_index.py           /404.html  404
-/update_linkedin.py        /404.html  404
-/CLAUDE.md                 /404.html  404
-/DEPLOYMENT_GUIDE.md       /404.html  404
-/GIT_WORKFLOW.md           /404.html  404
-/README.md                 /404.html  404
-/pages/nav-snippet.html    /404.html  404
-/en/pages/nav-snippet.html /404.html  404
+/add_favicon.py            /404.html  404!
+/add_favicon_to_pages.py   /404.html  404!
+/fix_cookiebot.py          /404.html  404!
+/remove_social.py          /404.html  404!
+/reorder.py                /404.html  404!
+/repair_index.py           /404.html  404!
+/update_linkedin.py        /404.html  404!
+/CLAUDE.md                 /404.html  404!
+/DEPLOYMENT_GUIDE.md       /404.html  404!
+/GIT_WORKFLOW.md           /404.html  404!
+/README.md                 /404.html  404!
+/pages/nav-snippet.html    /404.html  404!
+/en/pages/nav-snippet.html /404.html  404!
 # Nowa strona (wrzesien 2026): stare adresy prowadza na nowe.
 /pages/case-study-eticod.html        /realizacje/eticod/            301!
 /pages/case-study-art-tim.html       /realizacje/art-tim/           301!
