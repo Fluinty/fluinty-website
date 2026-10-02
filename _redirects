@@ -1,3 +1,6 @@
+# Tracker otwarc deckow: proxy do Apps Script (pierwsza strona, nie blokowany)
+/dla/_z  https://script.google.com/macros/s/AKfycbw4ONbIMv1lLJr3AfvpQOhAGtjzjeBc-W6xwyLvohHs4GidGm3X4iyXuT1k_3t0qzTa/exec  200!
+
 # Pliki robocze i dokumentacja nie maja byc publiczne.
 # Netlify nie obsluguje wzorca /*.rozszerzenie ani placeholderow z sufiksem,
 # dlatego kazda sciezka jest wypisana jawnie.
@@ -36,3 +39,28 @@
 /en/pages/fluinty-debt.html             /en/products/fluintydebt/       301!
 /en/pages/privacypolicy.html            /en/privacy-policy/             301!
 /en/thank-you.html                      /en/thank-you/                  301!
+
+# Te same stare adresy bez .html (Netlify podaje plik takze pod adresem bez rozszerzenia).
+/pages/case-study-eticod                 /realizacje/eticod/              301!
+/pages/case-study-art-tim                /realizacje/art-tim/             301!
+/pages/case-study-bodtech                /realizacje/bodtech/             301!
+/pages/case-study-holbox                 /realizacje/holbox/              301!
+/pages/case-study-pups-choice            /                                301!
+/pages/case-study-viivaa                 /                                301!
+/pages/fluinty-debt                      /produkty/fluintydebt/           301!
+/pages/fluinty-fleet                     /produkty/fluintyfleet/          301!
+/pages/privacypolicy                     /polityka-prywatnosci/           301!
+/pages/blog/co-to-jest-automatyzacja-procesow-biznesowych /blog/                           301!
+/pages/blog                              /blog/                           301!
+/en/pages/case-study-eticod              /en/case-studies/eticod/         301!
+/en/pages/case-study-art-tim             /en/case-studies/art-tim/        301!
+/en/pages/case-study-bodtech             /en/case-studies/bodtech/        301!
+/en/pages/case-study-holbox              /en/case-studies/holbox/         301!
+/en/pages/case-study-pups-choice         /en/                             301!
+/en/pages/case-study-viivaa              /en/                             301!
+/en/pages/fluinty-debt                   /en/products/fluintydebt/        301!
+/en/pages/privacypolicy                  /en/privacy-policy/              301!
+
+# Podglad nowej strony przed startem: linki wyslane zespolowi prowadza na wlasciwe adresy.
+/new-design      /       301!
+/new-design/*    /:splat 301!

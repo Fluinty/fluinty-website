@@ -5,75 +5,57 @@
 
 ## What this repo is
 
-The production codebase for **fluinty.pl** — static HTML/CSS/JS, no
-framework, no build step, no backend. Already migrated off WordPress (see
-`DEPLOYMENT_GUIDE.md`). Deployed on **Netlify**, auto-deploy on every push to
-`main` (live in ~30 sec). Git workflow is documented in `GIT_WORKFLOW.md` —
-follow it exactly (`git pull` → edit → `git add .` → `git commit -m "..."` →
-`git push`). This is a shared repo (see references to "kolega" in
-`GIT_WORKFLOW.md`) — always pull before starting work.
+The production codebase for **fluinty.pl**: a static site with no framework and
+no backend, deployed on **Netlify**. Every push to `main` deploys (live in
+~30 sec). This is a shared repo, so always `git pull` before starting work.
+
+Since October 2026 the site is the redesign built from `src/` (the old
+hand-written pages under `pages/` and `en/pages/` are gone; their URLs
+301-redirect to the new ones in `_redirects`).
 
 This repo does **not** contain business context (pricing, leads, contracts,
 other clients). That lives in the separate AgentAI workspace. See "Bridge to
 AgentAI" below.
 
-## Stack
+## How the site is built
 
-- Plain HTML/CSS/JS, no React/Next/build tooling.
-- Tailwind CSS via CDN (`cdn.tailwindcss.com`) + a small custom config block
-  per page (colors: `primary #00C4B4`, `accent #2DD4BF`, `secondary #0B3D70`,
-  `background #F8FAFC`, fonts: Inter + Space Grotesk).
-- GSAP + ScrollTrigger for scroll animations, Lucide for icons
-  (`lucide.createIcons()` called at the end of `<body>`).
-- Cookiebot for consent management, GA4 via `gtag.js` with Consent Mode v2
-  defaults set to denied.
-- `index.html` — homepage
-- `pages/` — standalone PL pages (case studies, product pages like
-  `fluinty-debt.html` / `fluinty-fleet.html`); each is a full standalone
-  HTML file copying the same `<head>` boilerplate and nav/footer markup
-- `pages/blog/` — blog section (see below)
-- `en/` — English mirror, same folder structure as PL (`en/pages/...`)
-- `css/`, `js/`, `assets/` — shared styles, scripts, images
-- Several one-off Python scripts at root (`reorder.py`, `repair_index.py`,
-  `add_favicon.py`, `update_linkedin.py`, etc.) — maintenance/migration
-  helpers, not a build pipeline. Don't assume any of them run automatically;
-  check what a script does before running it.
-- Contact form endpoint: confirm which of Formspree/EmailJS (per
-  `DEPLOYMENT_GUIDE.md`) is actually wired up before reusing the pattern.
+- `src/pages/*.html` — page bodies. PL is `name.html`, EN is `en-name.html`.
+- `src/partials/` — `head.html`, `nav.html` / `nav-en.html`,
+  `footer.html` / `footer-en.html`.
+- `build.mjs` — the page list (source, output path, PL/EN pair, title,
+  description) and the assembly. `node build.mjs` writes the finished pages
+  into the repo (`index.html`, `realizacje/…/index.html`, `en/…`). The built
+  files are committed; Netlify does not run a build.
+- `check-site.mjs` — run after every build: dead links, missing images, alt
+  text, one h1, banned phrases. Fix everything it reports before pushing.
+- `src/KLASY.md` — the CSS classes and components (case covers, process demos,
+  client logo strip) and how to use them.
+- `css/site.css`, `js/site.js` (every page), `css/case.css`, `js/case.js`
+  (case studies only), `assets/klienci/`, `assets/zespol/`.
+- `node build.mjs --base new-design` builds a noindex preview into
+  `preview/new-design/` (not committed).
+- `_redirects` — old URLs, the `/dla/_z` deck-open tracker proxy, 404 rules
+  for working files. Netlify treats `/x` and `/x/` as the same path, so never
+  redirect a path to itself plus a slash (infinite loop).
+- `_headers` — security headers, caching, `noindex` for `/dla/*`.
+- `dla/` — unlisted client decks. They are generated from the AgentAI
+  workspace, not by `build.mjs`; do not edit them by hand here.
+- Contact form: web3forms (redirects to `/dziekujemy/`), meeting booking:
+  Calendly inline widget. Cookiebot + GA4 (Consent Mode v2, default denied)
+  live in `src/partials/head.html`.
 
 ## Blog
 
-- `pages/blog/index.html` — listing page, already created. Has a
-  `<!-- POST CARD TEMPLATE -->` comment block inside `#post-grid`: copy it
-  for every new post (newest first) and replace the placeholder
-  "Pierwsze artykuły już wkrótce." message once the first post exists.
-- Individual posts live at `pages/blog/SLUG.html`, same nesting depth as
-  `index.html` (so relative paths use `../../` back to root, e.g.
-  `../../css/styles.css`, `../../index.html`).
-- Build each post by copying the `<head>` boilerplate + nav + footer from
-  `pages/blog/index.html` (or any `pages/case-study-*.html`) to stay visually
-  consistent. Use the case-study "Hero / content sections / results" layout
-  patterns as a base for post body structure.
+A new post is a page like any other:
+1. Body in `src/pages/blog-post-SLUG.html` (and `en-blog-post-SLUG.html`, or
+   mark it PL-only with `alt: null`).
+2. An entry in the page list in `build.mjs` (unique title and description).
+3. A card in `src/pages/blog.html` (newest first).
+4. A `<url>` entry in `sitemap.xml`.
+5. `node build.mjs && node check-site.mjs`, then commit and push.
 
-Per post, non-negotiable before pushing:
-- [ ] Unique `<title>` and `<meta name="description">`
-- [ ] One `<h1>`, logical h2/h3 hierarchy
-- [ ] Internal links to relevant service/product pages (`fluinty-debt.html`,
-      `fluinty-fleet.html`, homepage pricing section)
-- [ ] `Article` JSON-LD schema in `<head>` (see `Blog` JSON-LD in
-      `pages/blog/index.html` for the pattern)
-- [ ] Added as a `<url>` entry in `sitemap.xml`
-- [ ] Canonical `<link>` tag
-- [ ] Added to the post grid in `pages/blog/index.html`
-- [ ] PL page has a matching file under `en/pages/blog/` or is explicitly
-      PL-only (no orphaned hreflang / dead EN switcher link)
-
-Site-wide (check once, not per post):
-- [x] `robots.txt` exists, allows crawling, points to sitemap
-- [x] `sitemap.xml` exists at repo root
-- [ ] `Organization` JSON-LD on the homepage (verify — add if missing)
-- [ ] New pages don't regress page speed — no unoptimized images (there's no
-      build step, so images must be pre-optimized before committing)
+Per post: one `<h1>`, logical h2/h3 hierarchy, internal links to the relevant
+case study or product page.
 
 ## Bridge to AgentAI (the business-ops repo)
 
@@ -84,16 +66,10 @@ context live (`clients/Fluinty/brand-guide.md`, `context/fluinty.md`).
 Workflow:
 1. Draft + keyword research happens in AgentAI (`/seo-articles` or manual
    request).
-2. Finished draft gets built into a standalone HTML file here, in
-   `pages/blog/`, following the checklist above.
-3. `git pull`, add the file(s), `git commit`, `git push` — Netlify deploys
-   automatically.
+2. The finished draft becomes a page here, following the Blog steps above.
+3. `git pull`, commit, `git push` — Netlify deploys automatically.
 4. Back in AgentAI, mark the source draft as published so it isn't
    regenerated later.
-
-When both repos are connected in the same Cowork session, step 2 is done
-directly — Claude reads the AgentAI draft and writes the finished HTML file
-straight into this repo.
 
 ## Language
 
