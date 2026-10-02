@@ -144,6 +144,20 @@
   </url>
 
   <url>
+    <loc>https://fluinty.pl/zespol/adam-nelip/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/zespol/patryk-bielecki/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
     <loc>https://fluinty.pl/polityka-prywatnosci/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/polityka-prywatnosci/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/privacy-policy/" />
