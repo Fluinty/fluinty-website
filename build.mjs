@@ -37,6 +37,8 @@ const PL = [
   { src: 'blog',             out: 'blog/index.html',                     path: '/blog/',                    alt: '/en/blog/',                             active: null,        title: 'Blog: jak automatyzujemy procesy w MŚP | Fluinty', desc: 'Piszemy o tym, co wdrażamy: zamówienia z maili, dokumenty, reklamacje, floty. Bez porad ogólnych.' },
   { src: 'blog-post-eticod', out: 'blog/zamowienia-z-maili-do-erp/index.html', path: '/blog/zamowienia-z-maili-do-erp/', alt: '/en/blog/email-orders-into-erp/', active: null, title: 'Zamówienia z maili do ERP bez API. Jak to działa u Eticodu | Fluinty', desc: 'Dwa tory, kontrola kompletu danych i wpis do systemu, który nie wystawia API. Opis wdrożenia, w którym od startu nie było ani jednego błędnego wpisu.' },
   { src: 'dziekujemy',       out: 'dziekujemy/index.html',               path: '/dziekujemy/',              alt: '/en/thank-you/',                        active: null,        title: 'Dziękujemy za wiadomość | Fluinty', desc: 'Wiadomość dotarła. Odpisujemy w 24 godziny.' },
+  // 404 wyswietla sie pod dowolnym adresem, wiec linki musza byc liczone od katalogu glownego (absRoot)
+  { src: '404',              out: '404.html',                            path: '/404.html',                 alt: null,                                    active: null,        absRoot: true, title: 'Nie ma takiej strony | Fluinty', desc: 'Ta strona nie istnieje albo zmieniła adres przy przebudowie fluinty.pl.' },
   { src: 'polityka',         out: 'polityka-prywatnosci/index.html',     path: '/polityka-prywatnosci/',    alt: '/en/privacy-policy/',                   active: null,        title: 'Polityka prywatności | Fluinty', desc: 'Kto przetwarza dane z formularza kontaktowego, w jakim celu, jak długo i jakie macie prawa.' },
 ]
 
@@ -73,7 +75,7 @@ function build() {
 
     // ile poziomow w gore do katalogu glownego
     const depth = page.out.split('/').length - 1
-    const root = depth === 0 ? '' : '../'.repeat(depth)
+    const root = page.absRoot ? PREFIX + '/' : depth === 0 ? '' : '../'.repeat(depth)
 
     let navCta = `<a class="nav-cta" href="${root}${parts.contact}">${parts.cta}</a>`
     if (page.active === 'KONTAKT') navCta = ''
@@ -87,6 +89,7 @@ function build() {
       : ''
     const altHref = PREFIX + (page.alt || (page.lang === 'pl' ? '/en/' : '/'))
     if (BASE) hreflang = '  <meta name="robots" content="noindex, nofollow">'
+    if (page.absRoot) hreflang = '  <meta name="robots" content="noindex">'
 
     const src = page.src.replace(/^en-/, '')
     const pageKind = src === 'index' ? 'home' : src.startsWith('case-') ? 'case' : src.startsWith('produkt-') ? 'product' : src.startsWith('blog') ? 'blog' : src === 'kontakt' ? 'contact' : 'other'
@@ -132,6 +135,8 @@ function build() {
     if (!CHECK) {
       const target = join(OUT_DIR, page.out)
       mkdirSync(dirname(target), { recursive: true })
+      // 404 nie ma kanonicznego adresu
+      if (page.absRoot) html = html.replace(/ {2}<link rel="canonical"[^\n]*\n/, '')
       writeFileSync(target, html, 'utf8')
     }
     written.push(page.out)

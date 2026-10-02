@@ -10,7 +10,7 @@ const PAGES = [
   'produkty/fluintydebt/index.html', 'produkty/fluintyfleet/index.html',
   'ksiegowosc-i-ksef/index.html', 'kontakt/index.html',
   'blog/index.html', 'blog/zamowienia-z-maili-do-erp/index.html',
-  'polityka-prywatnosci/index.html', 'dziekujemy/index.html',
+  'polityka-prywatnosci/index.html', 'dziekujemy/index.html', '404.html',
   'en/index.html', 'en/case-studies/eticod/index.html', 'en/case-studies/iim-marbella/index.html', 'en/case-studies/art-tim/index.html',
   'en/case-studies/holbox/index.html', 'en/case-studies/bodtech/index.html', 'en/case-studies/tax-net/index.html',
   'en/products/fluintydebt/index.html', 'en/products/fluintyfleet/index.html', 'en/contact/index.html',
