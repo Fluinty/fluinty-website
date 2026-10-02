@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cookiebot Consent Management -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+    data-blockingmode="auto" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L" data-cookieconsent="ignore"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-SZ9P7Y055L');
+  </script>
+
+  <title>Odbieranie faktur w KSeF: ręcznie, automatycznie i co potem | Fluinty</title>
+  <meta name="description" content="Jak odbierać faktury w KSeF przez aplikację, program i biuro rachunkowe, kiedy faktura jest otrzymana i co da się zautomatyzować po odbiorze: opis, dopasowanie, dekret.">
+  <link rel="canonical" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fluinty">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://fluinty.pl/blog/odbieranie-faktur-ksef/">
+  <meta property="og:title" content="Odbieranie faktur w KSeF: ręcznie, automatycznie i co potem | Fluinty">
+  <meta property="og:description" content="Jak odbierać faktury w KSeF przez aplikację, program i biuro rachunkowe, kiedy faktura jest otrzymana i co da się zautomatyzować po odbiorze: opis, dopasowanie, dekret.">
+  <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../css/site.css">
+</head>
+
+<body class="page-blog">
+  <a class="skip" href="#main">Przejdź do treści</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../" aria-label="Fluinty, strona główna">
+        <img src="../../assets/logo.png" alt="" width="28" height="28">
+        <span class="brand-word">fluinty.</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Główna">
+        <a href="../../#realizacje">Realizacje</a>
+        <a href="../../#co-automatyzujemy">Co automatyzujemy</a>
+        <a href="../../#produkty">Produkty</a>
+        <a href="../../#zespol">Zespół</a>
+        <a href="../../#cennik">Cennik</a>
+        <a href="../../kontakt/">Kontakt</a>
+      </nav>
+
+      <div class="nav-side">
+        <a class="nav-lang" href="/en/" hreflang="en" lang="en">EN</a>
+        <a class="nav-cta" href="../../kontakt/">Bezpłatna konsultacja</a>
+        <a class="nav-pill" href="../../kontakt/">Umów</a>
+        <button class="nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"
+          aria-label="Menu">
+          <svg data-icon-open width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg data-icon-close hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="../../#realizacje">Realizacje</a>
+      <a href="../../#co-automatyzujemy">Co automatyzujemy</a>
+      <a href="../../#produkty">Produkty</a>
+      <a href="../../#zespol">Zespół</a>
+      <a href="../../#cennik">Cennik</a>
+      <a href="../../kontakt/">Kontakt</a>
+      <div class="drawer-foot">
+        <a class="btn btn-primary" href="../../kontakt/">Umów bezpłatną konsultację</a>
+        <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+        <a href="tel:+48509843514">+48 509 843 514</a>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (jak we wpisie o Eticodzie) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+
+    /* tresc artykulu */
+    [data-post] .art h2 { font-size: clamp(23px, 2.4vw, 30px); margin-top: 22px; scroll-margin-top: 96px; }
+    [data-post] .art h2:first-child { margin-top: 0; }
+    [data-post] .art h3 { font-size: clamp(19px, 1.9vw, 22px); margin-top: 8px; scroll-margin-top: 96px; }
+    [data-post] .art a:not(.link-more) { color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px; }
+    [data-post] .art-list { display: flex; flex-direction: column; gap: 10px; }
+    [data-post] .art-list li { position: relative; padding-left: 22px; color: var(--text-2); }
+    [data-post] .art-list li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 2px; background: var(--teal); }
+    [data-post] .art-list b { color: var(--text); }
+    [data-post] .art-quote { border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text); }
+    [data-post] .art-short { background: var(--mint); border: 1px solid rgba(0,196,180,.35); border-radius: 12px; padding: 18px 22px; }
+    [data-post] .art-short p { color: var(--text); }
+    [data-post] .art-calc { background: var(--gray); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; font-family: var(--mono); font-size: 15px; line-height: 1.6; color: var(--text); }
+    /* spis tresci: na komputerze z prawej i przyklejony, na telefonie nad tekstem */
+    [data-post] .art-toc ol { display: flex; flex-direction: column; gap: 10px; counter-reset: toc; }
+    [data-post] .art-toc li { counter-increment: toc; display: flex; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+    [data-post] .art-toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--text-3); padding-top: 2px; }
+    [data-post] .art-toc a { color: var(--text-2); }
+    [data-post] .art-toc a:hover { color: var(--teal-text); }
+    /* overflow: hidden z .sec wylacza sticky, clip przycina tak samo, a sticky dziala */
+    section.sec[data-post] { overflow: clip; }
+    @media (min-width: 900px) {
+      [data-post] .art-aside { order: 2; position: sticky; top: 96px; }
+    }
+  </style>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Odbieranie faktur w KSeF. Jak pobierać faktury kosztowe automatycznie i co z nimi zrobić potem",
+    "description": "Jak odbierać faktury w KSeF ręcznie, przez program i przez biuro rachunkowe, kiedy faktura jest otrzymana i co da się zautomatyzować po odbiorze: opis, dopasowanie do zlecenia, dekret.",
+    "inLanguage": "pl-PL",
+    "datePublished": "2026-10-02",
+    "dateModified": "2026-10-02",
+    "mainEntityOfPage": "https://fluinty.pl/blog/odbieranie-faktur-ksef/",
+    "author": { "@type": "Person", "name": "Adam Nelip", "url": "https://fluinty.pl/#zespol" },
+    "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Blog", "item": "https://fluinty.pl/blog/" },
+      { "@type": "ListItem", "position": 2, "name": "Odbieranie faktur w KSeF", "item": "https://fluinty.pl/blog/odbieranie-faktur-ksef/" }
+    ]
+  }
+  </script>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Okruszki">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="../../blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Księgowość i KSeF</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Odbieranie faktur w KSeF. Jak pobierać faktury kosztowe automatycznie i co z nimi zrobić potem</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="../../assets/zespol/adam-nelip.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);">Adam Nelip &middot; 10 min &middot; <time datetime="2026-10-02">02.10.2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">Od 1 lutego 2026 każda firma odbiera faktury w KSeF. Sam odbiór
+          działa całkiem dobrze. Kłopot zaczyna się chwilę później, kiedy ktoś musi ustalić, kto zamówił towar,
+          do którego zlecenia należy faktura i na jakie konto ją zaksięgować. Piszemy, jak odbierać faktury
+          ręcznie i automatycznie, kiedy faktura liczy się jako otrzymana i co z całej tej pracy da się oddać
+          automatowi.</p>
+        <div class="art-short stack-s" style="max-width: 800px;">
+          <p class="eyebrow">W skrócie</p>
+          <p>Faktury w KSeF odbieracie ręcznie w Aplikacji Podatnika KSeF, automatycznie przez program
+            księgowy albo ERP połączony z KSeF, albo przez biuro rachunkowe, któremu nadacie uprawnienie. Faktura
+            jest otrzymana w dniu nadania numeru KSeF, nawet jeśli nikt jej jeszcze nie pobrał. Najwięcej pracy
+            zostaje po odbiorze: opis, dopasowanie do zlecenia i dekret.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <aside class="card sr art-aside art-toc" aria-label="Spis treści"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 16px;">
+          <p class="eyebrow">W tym tekście</p>
+          <ol>
+            <li><a href="#przepisy">Odbiór faktur w KSeF: co mówią przepisy</a></li>
+            <li><a href="#jak-odebrac">Jak odebrać fakturę w KSeF</a></li>
+            <li><a href="#po-odbiorze">Co dzieje się z fakturą po odbiorze</a></li>
+            <li><a href="#automatyzacja">Co da się zautomatyzować</a></li>
+            <li><a href="#problemy">Problemy z odbiorem i jak je ominąć</a></li>
+            <li><a href="#biura">Odbiór faktur w biurze rachunkowym</a></li>
+            <li><a href="#pytania">Częste pytania</a></li>
+          </ol>
+          <p class="small" style="border-top: 1px solid var(--line); padding-top: 16px; color: var(--text-3);">Stan
+            przepisów na 2 października 2026.</p>
+        </aside>
+
+        <div class="stack art" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+
+          <h2 id="przepisy">Odbiór faktur w KSeF: co mówią przepisy</h2>
+          <p class="body-2">Od 1 lutego 2026 wszyscy podatnicy odbierają faktury ustrukturyzowane w KSeF, także ci,
+            którzy sami jeszcze nie musieli w nim wystawiać. Nabywca nie musi już wyrażać zgody na taką formę
+            faktury, a sprzedawca nie musi jej nigdzie wysyłać. Faktura po prostu czeka w systemie.</p>
+          <p class="body-2">Najważniejsza zmiana dotyczy daty. Faktura wystawiona w KSeF jest otrzymana w dniu,
+            w którym system nada jej numer KSeF (art. 106na ust. 3 ustawy o VAT). Od tej daty liczy się prawo do
+            odliczenia VAT. Nie ma znaczenia, kiedy ktoś w firmie ją pobrał, otworzył albo wpisał do programu.
+            Wyjątkiem jest nabywca, który nie posługuje się NIP-em, na przykład konsument albo firma zagraniczna:
+            dla niego liczy się dzień, w którym faktycznie dostał fakturę.</p>
+          <blockquote class="art-quote">Faktura jest otrzymana, zanim ktokolwiek w firmie ją zobaczy.</blockquote>
+          <p class="body-2">Ma to skutek, o którym rzadko się mówi. Faktura, której nikt nie pobrał, nie przyjdzie
+            mailem i nie wyląduje na biurku. Jeśli nikt jej regularnie nie ściąga, termin płatności mija po cichu.</p>
+          <p class="body-2">Kary za błędy w stosowaniu KSeF miały ruszyć 1 stycznia 2027. Ministerstwo Finansów
+            zapowiedziało 16 września 2026, że <a href="https://www.gov.pl/web/finanse/przedluzenie-odroczenia-kar-za-bledy-w-stosowaniu-ksef-do-konca-2027-r"
+            rel="noopener">odroczy je do końca 2027</a>. To na razie zapowiedź, bo potrzebna jest zmiana ustawy.
+            Obowiązek korzystania z KSeF zostaje bez zmian: od 1 stycznia 2027 dotyczy wszystkich przedsiębiorców.</p>
+
+          <h2 id="jak-odebrac">Jak odebrać fakturę w KSeF</h2>
+          <p class="body-2">Do wyboru są trzy drogi. Która ma sens, zależy głównie od tego, ile faktur kosztowych
+            przychodzi do Was w miesiącu.</p>
+
+          <h3 id="recznie">Ręcznie w narzędziach Ministerstwa Finansów</h3>
+          <p class="body-2">Ministerstwo udostępnia za darmo Aplikację Podatnika KSeF, aplikację mobilną i e-mikrofirmę
+            w e-Urzędzie Skarbowym. Logujecie się profilem zaufanym albo podpisem kwalifikowanym, wyszukujecie
+            faktury i pobieracie je, także jako PDF z kodem QR i numerem KSeF. Krok po kroku opisuje to
+            <a href="https://ksef.podatki.gov.pl/krok-po-kroku-jak-odebrac-fakture-w-ksef/" rel="noopener">poradnik
+            na stronie KSeF</a>.</p>
+          <p class="body-2">Przy kilku fakturach w miesiącu to wystarcza. Przy kilkudziesięciu ktoś zaczyna codziennie
+            logować się, szukać nowych dokumentów, ściągać je i przeklejać do programu księgowego. To dokładnie ta
+            robota, której KSeF miał oszczędzić.</p>
+
+          <h3 id="program">Automatycznie przez program do fakturowania albo ERP</h3>
+          <p class="body-2">Większość programów księgowych i systemów ERP ma już integrację z KSeF przez API. Program
+            loguje się do systemu sam i pobiera nowe faktury zakupowe. Do takiego połączenia potrzebny jest token
+            albo certyfikat KSeF. Tokeny działają tylko do końca 2026 roku, więc jeśli Wasza integracja dziś
+            korzysta z tokenu, przed końcem grudnia trzeba ją przestawić na certyfikat.</p>
+          <p class="body-2">Sprawdźcie też, czy program pobiera faktury sam, według harmonogramu, czy dopiero wtedy,
+            gdy ktoś kliknie przycisk. W rozmowach z firmami trafiamy na oba warianty. W jednym systemie
+            spedycyjnym, który analizowaliśmy, pobieranie z KSeF trzeba było wywołać ręcznie, bo program nie miał
+            harmonogramu. Integracja formalnie była, a faktury dalej ściągał człowiek.</p>
+
+          <h3 id="biuro">Przez biuro rachunkowe</h3>
+          <p class="body-2">Jeśli księgowość prowadzi biuro, możecie nadać mu w KSeF uprawnienie do odbioru faktur.
+            Biuro pobiera je wtedy samo, bez przesyłania dokumentów mailem. Firmy, które nie są jednoosobową
+            działalnością i nie mają pieczęci kwalifikowanej, muszą najpierw złożyć w urzędzie skarbowym formularz
+            ZAW-FA, w którym wskazują osobę zarządzającą uprawnieniami w KSeF.</p>
+
+          <h2 id="po-odbiorze">Co dzieje się z fakturą po odbiorze</h2>
+          <p class="body-2">Symfonia razem ze Stowarzyszeniem Księgowych w Polsce zapytała w maju i czerwcu 2026
+            452 osoby z finansów i księgowości, jak działa KSeF. Sam odbiór faktur 54% z nich oceniło bardzo
+            dobrze. Gorzej wypadło to, co dzieje się dalej. Ustalenie, czyj to koszt, 36% oceniło bardzo źle,
+            a bardzo dobrze tylko 9% (<a href="https://ksiegowosc.infor.pl/wiadomosci/7620358,najwieksze-problemy-z-ksef-jak-je-rozwiazac.html"
+            rel="noopener">wyniki badania w Infor.pl</a>).</p>
+          <p class="body-2">Widzimy to samo w rozmowach z firmami. KSeF zna NIP sprzedawcy, kwoty i pozycje. Nie wie,
+            kto zamówił towar, do którego projektu, auta albo zlecenia należy koszt i czy towar w ogóle dotarł.
+            Każda branża ma tu własną wersję tego samego problemu:</p>
+          <ul class="art-list body-2">
+            <li><b>Spedycja.</b> Faktura od przewoźnika musi trafić do konkretnego zlecenia po jego numerze, a koszt
+              można zaksięgować dopiero wtedy, gdy przy zleceniu jest podpisany CMR.</li>
+            <li><b>Deweloper.</b> Fakturę podwykonawcy trzeba porównać z umową, protokołem odbioru i kaucją
+              gwarancyjną. Szacujemy, że zajmuje to od 15 do 30 minut na jedną fakturę.</li>
+            <li><b>Instytucja badawcza albo firma z dotacjami.</b> Każdą fakturę trzeba opisać pod projekt, z którego
+              jest finansowana. Takie firmy zatrudniają do tego ludzi. W ogłoszeniach o pracę stoją obok siebie
+              „weryfikacja i opisywanie faktur zakupowych” i „obsługa KSeF”.</li>
+            <li><b>Flota.</b> Jedna faktura z hurtowni części obejmuje kilkanaście aut. Bez przypisania do pojazdu nikt
+              nie wie, ile kosztuje które auto. Opisaliśmy to w <a href="../../realizacje/art-tim/">case study
+              Art-Timu</a>.</li>
+          </ul>
+          <p class="body-2">Dochodzą do tego duplikaty. Część kontrahentów, na wszelki wypadek, dalej wysyła fakturę
+            również mailem albo pocztą. W badaniu 36% firm zgłosiło trudności we współpracy z kontrahentami. Jeśli
+            ten sam dokument przychodzi dwiema drogami, ktoś musi pilnować, żeby nie zaksięgować go dwa razy.</p>
+
+          <h2 id="automatyzacja">Co w odbiorze faktur da się zautomatyzować</h2>
+          <p class="body-2">KSeF zdjął z firm najtrudniejszą technicznie część, czyli odczyt. Kiedy faktury
+            przychodziły jako PDF albo zdjęcie, automat musiał je najpierw przeczytać. W Holboksie, gdzie faktury
+            przychodzą mailem jako PDF-y i skany, odczytaliśmy tak około 2 400 dokumentów bez jednej ręcznej poprawki
+            (<a href="../../realizacje/holbox/">case study Holbox</a>). Faktura z KSeF ma dane od razu w polach,
+            więc tego kroku nie ma wcale. Zostaje to, co zawsze zabierało najwięcej czasu: decyzja, co z fakturą
+            zrobić.</p>
+          <p class="body-2">Automat przejmuje z tej pracy wszystko, co da się opisać regułą:</p>
+          <ul class="art-list body-2">
+            <li>pobiera nowe faktury z KSeF co godzinę, a nie wtedy, gdy ktoś sobie przypomni,</li>
+            <li>porównuje je z tym, co przyszło mailem, i odrzuca duplikaty po numerze faktury i NIP-ie sprzedawcy,</li>
+            <li>rozpoznaje kontrahenta i sprawdza, jak jego faktury były opisywane i księgowane wcześniej,</li>
+            <li>dopasowuje fakturę do zamówienia, zlecenia, umowy albo pojazdu, jeśli w treści jest numer, po którym
+              da się to zrobić,</li>
+            <li>proponuje opis i dekret na podstawie historii kontrahenta,</li>
+            <li>odkłada do człowieka wszystko, czego nie jest pewien: nowego kontrahenta, nietypową pozycję, brak
+              numeru zlecenia.</li>
+          </ul>
+          <blockquote class="art-quote">Automat proponuje, księgowa zatwierdza. Nic nie trafia do ksiąg bez jej
+            zgody.</blockquote>
+          <p class="body-2">Taki automat zbudowaliśmy dla biur rachunkowych. Czyta faktury z KSeF, rozpoznaje
+            kontrahenta, proponuje dekret według historii i przygotowuje wpis w systemie księgowym, na przykład
+            w programach InsERT. Działa dziś na danych testowych i szukamy pierwszego biura, które uruchomi go
+            u siebie. Szczegóły są na stronie <a href="../../ksiegowosc-i-ksef/">Księgowość i KSeF</a>.</p>
+          <p class="body-2">Czy to się opłaca, łatwo policzyć samemu:</p>
+          <p class="art-calc">faktury kosztowe w miesiącu × minuty na opis, dopasowanie i dekret × koszt godziny</p>
+          <p class="body-2">300 faktur po 10 minut to 50 godzin miesięcznie. Przy 60 zł za godzinę wychodzi
+            3&nbsp;000&nbsp;zł miesięcznie, 36&nbsp;000&nbsp;zł rocznie, i to bez kosztu pomyłek. Własne liczby
+            podstawicie w <a href="../../#kalkulator">kalkulatorze na stronie głównej</a>. Przy 30 fakturach
+            w miesiącu automat raczej się nie zwróci i wtedy powiemy to wprost.</p>
+
+          <h2 id="problemy">Problemy z odbiorem faktur w KSeF i jak je ominąć</h2>
+          <p class="body-2">Kilka rzeczy psuje się regularnie, niezależnie od tego, czy faktury pobiera człowiek, czy
+            program.</p>
+
+          <h3 id="token">Token, który przestanie działać</h3>
+          <p class="body-2">Tokeny KSeF działają do końca 2026 roku. Integracja, która dziś na nim stoi, w styczniu po
+            prostu przestanie pobierać faktury. Najlepiej sprawdzić to teraz i przejść na certyfikat KSeF, zanim
+            zrobi się z tego awaria pierwszego dnia roboczego.</p>
+
+          <h3 id="uprawnienia">Uprawnienia przypisane do jednej osoby</h3>
+          <p class="body-2">Jeśli integracja korzysta z uprawnień konkretnego pracownika, jego odejście albo urlop
+            potrafi zatrzymać pobieranie. Do automatycznego odbioru lepiej przygotować osobny dostęp, który nie
+            zależy od niczyjego konta, i zapisać, kto w firmie nim zarządza.</p>
+
+          <h3 id="awarie">Awarie i faktury, które przychodzą z opóźnieniem</h3>
+          <p class="body-2">Zdarzały się już przerwy w działaniu KSeF, a faktury wystawione w trybie awaryjnym
+            dostają numer później. Program, który pobiera tylko faktury „od ostatniego razu”, może je przeoczyć.
+            My pobieramy zawsze z zapasem, na przykład z ostatnich 7 dni, i odrzucamy to, co już jest, po numerze
+            KSeF. Kosztuje to kilka sekund więcej, a żadna faktura nie przepada.</p>
+
+          <h3 id="poza-ksef">Faktury, które nie przejdą przez KSeF</h3>
+          <p class="body-2">Faktury od dostawców zagranicznych nie trafiają do KSeF. Do końca 2026 roku także
+            najmniejsi sprzedawcy, z fakturami B2B do 10&nbsp;000&nbsp;zł miesięcznie, mogą wystawiać poza
+            systemem. Faktury przychodzą więc dalej co najmniej dwiema drogami, KSeF-em i mailem. Obieg dokumentów
+            musi obsłużyć obie i sprowadzić je do jednej listy.</p>
+
+          <h2 id="biura">Odbiór faktur w biurze rachunkowym</h2>
+          <p class="body-2">Biuro rachunkowe ma ten sam problem razy liczba klientów. Odbiera faktury dla kilkudziesięciu
+            firm, każda ma innych kontrahentów i inne zwyczaje, a część klientów dalej przynosi dokumenty
+            w segregatorze. Automat, który zna historię każdego kontrahenta, robi tu najwięcej, bo większość
+            faktur kosztowych to ci sami dostawcy co miesiąc: prąd, telefon, leasing, paliwo, stałe zakupy.</p>
+          <p class="body-2">Dla biur KSeF jest też okazją na nową usługę. Pilnowanie płatności klientów da się oprzeć na
+            tych samych danych. <a href="../../produkty/fluintydebt/">FluintyDebt</a> czyta faktury sprzedażowe
+            z KSeF, wykrywa opóźnienia i sam wysyła przypomnienia. Więcej o tym, jak automatyzujemy powtarzalną pracę
+            w firmach, piszemy w tekście <a href="../../blog/automatyzacja-biznesu/">Automatyzacja biznesu
+            w MŚP</a>.</p>
+
+          <h2 id="pytania">Częste pytania o odbieranie faktur w KSeF</h2>
+          <div class="faq">
+            <details open>
+              <summary>
+                <h3>Od kiedy trzeba odbierać faktury w KSeF?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Od 1 lutego 2026. Obowiązek dotyczy wszystkich podatników, także tych, którzy
+                sami jeszcze nie wystawiają faktur w KSeF.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy trzeba wyrazić zgodę na odbieranie faktur w KSeF?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Nie. Od 1 lutego 2026 wymóg zgody nabywcy zniknął. Faktura wystawiona w KSeF jest
+                dla Was dostępna w systemie bez żadnej zgody.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Kiedy faktura z KSeF jest otrzymana?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">W dniu nadania numeru KSeF, niezależnie od tego, kiedy ją pobierzecie. Wyjątek
+                dotyczy nabywców bez NIP, na przykład konsumentów: dla nich liczy się dzień faktycznego
+                otrzymania.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy biuro rachunkowe może odbierać faktury za firmę?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Tak, jeśli nadacie mu w KSeF uprawnienie do odbioru faktur. Firmy, które nie są
+                jednoosobową działalnością i nie mają pieczęci kwalifikowanej, najpierw składają w urzędzie
+                skarbowym formularz ZAW-FA, w którym wskazują osobę zarządzającą uprawnieniami.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy faktury z KSeF same trafiają do programu księgowego?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Tylko wtedy, gdy program ma integrację z KSeF i pobiera faktury według
+                harmonogramu. Część programów pobiera je dopiero po kliknięciu. Opis, dopasowanie do zlecenia
+                i dekret zostają wtedy dalej po stronie człowieka, chyba że przejmie je automat.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy za błędy w KSeF grożą kary?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Kary miały obowiązywać od 1 stycznia 2027. Ministerstwo Finansów zapowiedziało
+                16 września 2026 odroczenie ich do końca 2027, ale wymaga to zmiany ustawy. Obowiązek stosowania
+                KSeF zostaje.</div>
+            </details>
+          </div>
+
+          <p class="small" style="color: var(--text-3);">Tekst opisuje stan przepisów na 2 października 2026
+            i nie zastępuje porady podatkowej. W sprawach rozliczeń VAT pytajcie swojego księgowego albo doradcę
+            podatkowego.</p>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="../../blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              Wszystkie wpisy
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <h2 id="cta-h">Opowiedzcie nam o swoim KSeF.</h2>
+        <p class="lead" style="max-width: 580px;">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem
+          korzyści. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <a class="btn btn-primary glow" href="../../kontakt/">Umów bezpłatną konsultację</a>
+        <p class="row small cta-contacts">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span class="cta-dot" aria-hidden="true"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="stack-s">
+          <a class="brand" href="../../">
+            <img src="../../assets/logo.png" alt="" width="24" height="24">
+            <span class="brand-word" style="font-size: 22px;">fluinty.</span>
+          </a>
+          <p style="font-size: 14px; color: #8FB0CC; line-height: 1.6;">Agencja automatyzacji AI dla polskich MŚP.
+            Katowice.</p>
+        </div>
+
+        <div>
+          <h2>Strona</h2>
+          <ul>
+            <li><a href="../../#realizacje">Realizacje</a></li>
+            <li><a href="../../#co-automatyzujemy">Co automatyzujemy</a></li>
+            <li><a href="../../#produkty">Produkty</a></li>
+            <li><a href="../../#cennik">Cennik</a></li>
+            <li><a href="../../#zespol">Zespół</a></li>
+            <li><a href="../../kontakt/">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Firma</h2>
+          <ul>
+            <li><a href="../../blog/">Blog</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (otwiera się w nowej karcie)</span></a></li>
+            <li><a href="../../polityka-prywatnosci/">Polityka prywatności</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Kontakt</h2>
+          <ul>
+            <li><a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a></li>
+            <li><a href="tel:+48509843514">+48 509 843 514</a></li>
+            <li>Góreckiego 15/60,<br>40-204 Katowice</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Fluinty sp. z o.o. &middot; NIP 9542896747 &middot; KRS 0001201664</span>
+        <span style="font-family: var(--mono); font-size: 12px;">automatyzacja &middot; agenci AI &middot; MŚP</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/site.js" defer></script>
+</body>
+
+</html>
