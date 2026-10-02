@@ -65,7 +65,7 @@ Tła idą zebrą: sąsiednie sekcje nie mogą mieć tego samego. Kolejność na 
 
 ## Obrazy w repo
 
-`{{ROOT}}assets/klienci/eticod.svg`, `holbox.svg`, `iimarbella.svg`, `bodtech.png`, `taxnet.png`, `pupchoice.png`; `{{ROOT}}assets/zespol/adam-nelip.jpg`, `patryk-bielecki.jpg`; logo Fluinty `{{ROOT}}assets/logo.png`. Art-Tim i TerraGroup nie mają logotypu, stoją tekstem w `logo-tile`. Pasek „Pracujemy dla” i kafelki w kartach realizacji biorą jednokolorowe znaki z `assets/klienci/pasek/` (kolor `--text-2`, przycięte, bez tła; generator w scratchpadzie `logos-mono.py`). Wysokość podawaj w `style` (globalne `img { height: auto }` przebija atrybut). Na case Bodtechu idzie `bodtech-znak.png`: kolorowy znak bez „Luxecasting Poland” i białych prostokątów. Pup Choice piszemy bez apostrofu.
+`{{ROOT}}assets/klienci/eticod.svg`, `holbox.svg`, `iimarbella.svg`, `bodtech.png`, `taxnet.png`, `pupchoice.png`; `{{ROOT}}assets/zespol/adam-nelip.jpg`, `patryk-bielecki.jpg`; logo Fluinty `{{ROOT}}assets/logo.png`. Art-Tim i TerraGroup nie mają logotypu, stoją tekstem w `logo-tile`. Pasek „Pracujemy dla” i kafelki w kartach realizacji biorą jednokolorowe znaki z `assets/klienci/pasek/` (kolor `--text-2`, przycięte, bez tła). Wysokość podawaj w `style` (globalne `img { height: auto }` przebija atrybut). Na case Bodtechu idzie `bodtech-znak.png`: kolorowy znak bez „Luxecasting Poland” i białych prostokątów. Pup Choice piszemy bez apostrofu.
 
 ## Adresy
 
