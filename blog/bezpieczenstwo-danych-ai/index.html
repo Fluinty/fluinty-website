@@ -223,7 +223,7 @@
     "datePublished": "2026-10-03",
     "dateModified": "2026-10-03",
     "mainEntityOfPage": "https://fluinty.pl/blog/bezpieczenstwo-danych-ai/",
-    "author": { "@type": "Person", "name": "Adam Nelip", "url": "https://fluinty.pl/zespol/adam-nelip/" },
+    "author": { "@type": "Person", "name": "Patryk Bielecki", "url": "https://fluinty.pl/zespol/patryk-bielecki/" },
     "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
   }
   </script>
@@ -261,13 +261,13 @@
         <h1 id="post-h">Czy AI jest bezpieczne dla danych firmy? Pięć wariantów, od API po model u Was</h1>
 
         <p class="row small" style="gap: 12px;">
-          <img src="../../assets/zespol/adam-nelip.jpg" alt="" width="38" height="38"
+          <img src="../../assets/zespol/patryk-bielecki.jpg" alt="" width="38" height="38"
             style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
-          <span style="font-family: var(--mono);"><a href="../../zespol/adam-nelip/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Adam Nelip</a> &middot; 9 min &middot; <time datetime="2026-10-03">03.10.2026</time></span>
+          <span style="font-family: var(--mono);"><a href="../../zespol/patryk-bielecki/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Patryk Bielecki</a> &middot; 9 min &middot; <time datetime="2026-10-03">03.10.2026</time></span>
         </p>
 
         <p class="lead" style="max-width: 800px;">To pytanie pada prawie na każdym naszym spotkaniu: co się dzieje
-          z naszymi danymi, kiedy automat korzysta z AI? Zwykle zadaje je firma, która od lat trzyma całą pocztę
+          z naszymi danymi, kiedy nasze rozwiązanie korzysta z AI? Zwykle zadaje je firma, która od lat trzyma całą pocztę
           w Google albo w Microsoft 365. Opisujemy pięć wariantów, od najprostszego do najbardziej odizolowanego,
           ile każdy kosztuje i w którym momencie dokładanie kolejnych zabezpieczeń przestaje mieć sens.</p>
         <div class="art-short stack-s" style="max-width: 800px;">
@@ -304,7 +304,7 @@
             w przeglądarce to usługi dla konsumentów. W darmowych i prywatnych kontach rozmowy mogą służyć do
             ulepszania modeli, chyba że ktoś to wyłączy w ustawieniach. Jeśli pracownik wkleja tam umowę z klientem,
             obawa jest uzasadniona.</p>
-          <p class="body-2">Automaty, które budujemy, łączą się z modelami inaczej: przez firmowe API, na podstawie
+          <p class="body-2">Rozwiązania, które wdrażamy, łączą się z modelami inaczej: przez firmowe API, na podstawie
             umowy z dostawcą. Tu zasady są odwrotne. OpenAI nie używa danych przesłanych przez API do trenowania
             modeli, chyba że klient sam się na to zgodzi
             (<a href="https://developers.openai.com/api/docs/guides/your-data" rel="noopener">zasady danych OpenAI
@@ -314,14 +314,14 @@
             domyślnie nie uczą się na danych firmy.</p>
 
           <h2 id="co-trafia">Co naprawdę trafia do modelu</h2>
-          <p class="body-2">Drugie nieporozumienie dotyczy ilości. Automat nie wysyła do modelu całej skrzynki ani
+          <p class="body-2">Drugie nieporozumienie dotyczy ilości. Wdrożone rozwiązanie nie wysyła do modelu całej skrzynki ani
             całego dysku. Wysyła fragment, z którego trzeba coś odczytać: treść jednego maila z zamówieniem, jedną
             fakturę, jedno zgłoszenie reklamacyjne. Resztę robią zwykłe reguły, które działają na naszym serwerze
             i z AI nie mają nic wspólnego.</p>
 
           <figure class="viz" data-viz>
             <div class="viz-scroll">
-            <svg viewBox="0 0 680 300" role="img" aria-label="Mail z zamówieniem ma kilkanaście linii. Automat zaznacza cztery pola: klienta, indeks, ilość i termin. Tylko te cztery pola trafiają do modelu AI, a wynik wraca do arkusza. Reszta maila zostaje u Was.">
+            <svg viewBox="0 0 680 300" role="img" aria-label="Mail z zamówieniem ma kilkanaście linii. Rozwiązanie zaznacza cztery pola: klienta, indeks, ilość i termin. Tylko te cztery pola trafiają do modelu AI, a wynik wraca do arkusza. Reszta maila zostaje u Was.">
               <rect x="10" y="10" width="300" height="280" rx="12" fill="#fff" stroke="#E2E8F0"></rect>
               <text class="t-h" x="28" y="38">Mail z zamówieniem</text>
               <text class="t" x="28" y="58">od: zakupy@przyklad.example</text>
@@ -468,9 +468,9 @@
             w Google Workspace albo w Microsoft 365. Cała korespondencja z klientami, wszystkie załączniki, umowy
             i faktury od lat leżą na serwerach tych firm, na podstawie ich umowy powierzenia. Nikt się tym nie
             martwi, bo to sprawdzona usługa z rozsądną umową.</p>
-          <blockquote class="art-quote">Skrzynka z całą korespondencją leży w chmurze. Do modelu automat wysyła
+          <blockquote class="art-quote">Skrzynka z całą korespondencją leży w chmurze. Do modelu nasze rozwiązanie wysyła
             jeden mail.</blockquote>
-          <p class="body-2">Automat, który czyta faktury przez Gemini, wysyła jeden dokument do tej samej firmy, która
+          <p class="body-2">Rozwiązanie, które czyta faktury przez Gemini, wysyła jeden dokument do tej samej firmy, która
             już przechowuje Waszą skrzynkę, na podobnych zasadach. Ryzyko wzrasta niewiele, a często prawie wcale.
             Warto o tym pomyśleć, zanim wydacie kilkadziesiąt tysięcy złotych na serwer, który ma chronić jeden
             fragment z tej skrzynki.</p>
@@ -490,7 +490,7 @@
 
           <h2 id="u-nas">Jak to wygląda u nas</h2>
           <ul class="art-list body-2">
-            <li>Automaty działają na naszym serwerze n8n w Niemczech, w centrum danych Hetznera. Na życzenie stawiamy
+            <li>Wdrożenia działają na naszym serwerze n8n w Niemczech, w centrum danych Hetznera. Na życzenie stawiamy
               instancję u Was.</li>
             <li>Korzystamy wyłącznie z płatnych modeli przez API. Dobieramy model do zadania, a nie jeden do
               wszystkiego.</li>
@@ -530,7 +530,7 @@
                 <h3>Gdzie fizycznie trafiają dane?</h3>
                 <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
               </summary>
-              <div class="answer">Nasze automaty działają w Niemczech. Fragment wysyłany do modelu trafia do
+              <div class="answer">Nasze wdrożenia działają w Niemczech. Fragment wysyłany do modelu trafia do
                 dostawcy modelu, domyślnie także do USA. Jeśli chcecie, żeby całe przetwarzanie zostało w Europie,
                 wybieramy region europejski albo chmurę w UE.</div>
             </details>
