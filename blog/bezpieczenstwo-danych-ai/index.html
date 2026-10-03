@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cookiebot Consent Management -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+    data-blockingmode="auto" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L" data-cookieconsent="ignore"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-SZ9P7Y055L');
+  </script>
+
+  <title>Bezpieczeństwo danych przy AI: 5 wariantów i ich koszt | Fluinty</title>
+  <meta name="description" content="Gdzie trafiają dane, kiedy firma używa AI: API, chmura w UE, hybryda, własny serwer, model u Was. Ile kosztuje każdy poziom ochrony i kiedy przestaje się opłacać.">
+  <link rel="canonical" href="https://fluinty.pl/blog/bezpieczenstwo-danych-ai/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fluinty">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:url" content="https://fluinty.pl/blog/bezpieczenstwo-danych-ai/">
+  <meta property="og:title" content="Bezpieczeństwo danych przy AI: 5 wariantów i ich koszt | Fluinty">
+  <meta property="og:description" content="Gdzie trafiają dane, kiedy firma używa AI: API, chmura w UE, hybryda, własny serwer, model u Was. Ile kosztuje każdy poziom ochrony i kiedy przestaje się opłacać.">
+  <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../css/site.css">
+</head>
+
+<body class="page-blog">
+  <a class="skip" href="#main">Przejdź do treści</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../" aria-label="Fluinty, strona główna">
+        <img src="../../assets/logo.png" alt="" width="28" height="28">
+        <span class="brand-word">fluinty.</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Główna">
+        <a href="../../#realizacje">Realizacje</a>
+        <a href="../../#co-automatyzujemy">Co automatyzujemy</a>
+        <a href="../../#produkty">Produkty</a>
+        <a href="../../#zespol">Zespół</a>
+        <a href="../../#cennik">Cennik</a>
+        <a href="../../blog/" aria-current="page">Blog</a>
+      <a href="../../kontakt/">Kontakt</a>
+      </nav>
+
+      <div class="nav-side">
+        <a class="nav-lang" href="/en/" hreflang="en" lang="en">EN</a>
+        <a class="nav-cta" href="../../kontakt/">Bezpłatna konsultacja</a>
+        <a class="nav-pill" href="../../kontakt/">Umów</a>
+        <button class="nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"
+          aria-label="Menu">
+          <svg data-icon-open width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg data-icon-close hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="../../#realizacje">Realizacje</a>
+      <a href="../../#co-automatyzujemy">Co automatyzujemy</a>
+      <a href="../../#produkty">Produkty</a>
+      <a href="../../#zespol">Zespół</a>
+      <a href="../../#cennik">Cennik</a>
+      <a href="../../blog/" aria-current="page">Blog</a>
+      <a href="../../kontakt/">Kontakt</a>
+      <div class="drawer-foot">
+        <a class="btn btn-primary" href="../../kontakt/">Umów bezpłatną konsultację</a>
+        <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+        <a href="tel:+48509843514">+48 509 843 514</a>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (jak we wpisie o Eticodzie) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+
+    /* tresc artykulu */
+    [data-post] .art h2 { font-size: clamp(23px, 2.4vw, 30px); margin-top: 22px; scroll-margin-top: 96px; }
+    [data-post] .art h2:first-child { margin-top: 0; }
+    [data-post] .art h3 { font-size: clamp(19px, 1.9vw, 22px); margin-top: 8px; scroll-margin-top: 96px; }
+    [data-post] .art a:not(.link-more) { color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px; }
+    [data-post] .art-list { display: flex; flex-direction: column; gap: 10px; }
+    [data-post] .art-list li { position: relative; padding-left: 22px; color: var(--text-2); }
+    [data-post] .art-list li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 2px; background: var(--teal); }
+    [data-post] .art-list b { color: var(--text); }
+    [data-post] .art-quote { border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text); }
+    [data-post] .art-short { background: var(--mint); border: 1px solid rgba(0,196,180,.35); border-radius: 12px; padding: 18px 22px; }
+    [data-post] .art-short p { color: var(--text); }
+    [data-post] .art-calc { background: var(--gray); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; font-family: var(--mono); font-size: 15px; line-height: 1.6; color: var(--text); }
+    /* spis tresci: na komputerze z prawej i przyklejony, na telefonie nad tekstem */
+    [data-post] .art-toc ol { display: flex; flex-direction: column; gap: 10px; counter-reset: toc; }
+    [data-post] .art-toc li { counter-increment: toc; display: flex; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+    [data-post] .art-toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--text-3); padding-top: 2px; }
+    [data-post] .art-toc a { color: var(--text-2); }
+    [data-post] .art-toc a:hover { color: var(--teal-text); }
+    /* overflow: hidden z .sec wylacza sticky, clip przycina tak samo, a sticky dziala */
+    section.sec[data-post] { overflow: clip; }
+    @media (min-width: 900px) {
+      [data-post] .art-aside { order: 2; position: sticky; top: 96px; }
+    }
+  </style>
+
+  <style>
+    /* grafika 1: co z maila trafia do modelu */
+    .viz { background: var(--gray); border: 1px solid var(--line); border-radius: 14px; padding: clamp(16px, 2.4vw, 26px); }
+    .viz figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--text-3); }
+    .viz svg { width: 100%; height: auto; display: block; }
+    /* na telefonie rysunek nie zmniejsza sie ponizej 600 px, zeby napisy mialy min. 11 px; przewija sie w poziomie */
+    /* bez min-width: 0 kolumna flex rozpycha sie do szerokosci rysunku */
+    [data-post] .art { min-width: 0; }
+    .viz-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .viz-scroll svg { min-width: 600px; }
+    .viz .t { font-family: var(--mono); font-size: 13px; fill: #64748B; }
+    .viz .t-b { font-family: var(--mono); font-size: 13px; fill: #0F172A; font-weight: 600; }
+    .viz .t-h { font-family: var(--display); font-size: 15px; fill: #0F172A; font-weight: 700; }
+    .viz .t-teal { font-family: var(--mono); font-size: 13px; fill: #007A70; font-weight: 600; }
+    .viz .line { fill: #E2E8F0; }
+    .viz .hl { fill: rgba(0,196,180,.18); stroke: #00C4B4; stroke-width: 1.2; }
+    .viz .chip { fill: #00C4B4; }
+    @keyframes vzFly { 0%, 18% { transform: translate(0, 0); opacity: 0; } 24% { opacity: 1; } 62% { transform: translate(var(--dx), var(--dy)); opacity: 1; } 70%, 100% { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
+    @keyframes vzPulse { 0%, 55% { opacity: 0; } 65%, 90% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes vzHl { 0%, 10% { opacity: 0; } 18%, 92% { opacity: 1; } 100% { opacity: 0; } }
+    .viz.play .fly { animation: vzFly 6s cubic-bezier(.5,.1,.3,1) infinite both; }
+    .viz.play .fly:nth-of-type(2) { animation-delay: .25s; }
+    .viz.play .fly:nth-of-type(3) { animation-delay: .5s; }
+    .viz.play .fly:nth-of-type(4) { animation-delay: .75s; }
+    .viz.play .hl { animation: vzHl 6s ease infinite both; }
+    .viz.play .ok { animation: vzPulse 6s ease infinite both; }
+    .viz .fly, .viz .ok { opacity: 0; }
+    .viz:not(.play) .fly { opacity: 0; }
+    .viz:not(.play) .ok { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) { .viz.play .fly, .viz.play .hl, .viz.play .ok { animation: none; } .viz .ok, .viz .hl { opacity: 1; } }
+
+    /* grafika 2: koszt a ochrona */
+    .ladder { display: grid; gap: 10px; }
+    .ladder-row { display: grid; grid-template-columns: minmax(150px, 1.2fr) 2fr; gap: 14px; align-items: center; }
+    .ladder-name { font-size: 14.5px; line-height: 1.35; color: var(--text); font-weight: 600; }
+    .ladder-name small { display: block; font-weight: 400; color: var(--text-3); font-size: 12.5px; }
+    .ladder-bars { display: grid; gap: 5px; }
+    .bar { position: relative; height: 10px; border-radius: 6px; background: #E2E8F0; overflow: hidden; }
+    .bar > i { position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 6px; transform-origin: left; }
+    .bar-iso > i { background: #00C4B4; }
+    .bar-cost > i { background: #0B3D70; }
+    .bar-q > i { background: #94A3B8; }
+    .ladder.play .bar > i { animation: barGrow .9s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--r) * 120ms); }
+    @keyframes barGrow { from { transform: scaleX(0); } to { transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .ladder.play .bar > i { animation: none; } }
+    .ladder-row.is-you { background: var(--mint); border-radius: 10px; padding: 10px 12px; margin-inline: -12px; outline: 1px dashed rgba(0,196,180,.6); }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--text-2); margin-bottom: 14px; }
+    .legend span::before { content: ""; display: inline-block; width: 14px; height: 8px; border-radius: 4px; margin-right: 7px; vertical-align: middle; background: var(--c); }
+    @media (max-width: 560px) { .ladder-row { grid-template-columns: 1fr; gap: 6px; } }
+
+    /* tabela wariantow */
+    .art-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    .art-table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.45; min-width: 620px; }
+    .art-table th, .art-table td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+    .art-table thead th { background: var(--gray); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); font-weight: 600; }
+    .art-table tbody tr:last-child td { border-bottom: 0; }
+    .art-table td:first-child { font-weight: 600; color: var(--text); }
+    .art-table td { color: var(--text-2); }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Czy AI jest bezpieczne dla danych firmy? Pięć wariantów, od API po model u Was",
+    "description": "Gdzie trafiają dane, kiedy firma używa AI: API, chmura w UE, wariant hybrydowy, własny serwer, model u Was. Ile kosztuje każdy poziom ochrony i kiedy dodatkowa izolacja przestaje się opłacać.",
+    "inLanguage": "pl-PL",
+    "datePublished": "2026-10-03",
+    "dateModified": "2026-10-03",
+    "mainEntityOfPage": "https://fluinty.pl/blog/bezpieczenstwo-danych-ai/",
+    "author": { "@type": "Person", "name": "Adam Nelip", "url": "https://fluinty.pl/zespol/adam-nelip/" },
+    "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Blog", "item": "https://fluinty.pl/blog/" },
+      { "@type": "ListItem", "position": 2, "name": "Bezpieczeństwo danych przy AI", "item": "https://fluinty.pl/blog/bezpieczenstwo-danych-ai/" }
+    ]
+  }
+  </script>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Okruszki">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="../../blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Bezpieczeństwo</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Czy AI jest bezpieczne dla danych firmy? Pięć wariantów, od API po model u Was</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="../../assets/zespol/adam-nelip.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);"><a href="../../zespol/adam-nelip/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Adam Nelip</a> &middot; 9 min &middot; <time datetime="2026-10-03">03.10.2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">To pytanie pada prawie na każdym naszym spotkaniu: co się dzieje
+          z naszymi danymi, kiedy automat korzysta z AI? Zwykle zadaje je firma, która od lat trzyma całą pocztę
+          w Google albo w Microsoft 365. Opisujemy pięć wariantów, od najprostszego do najbardziej odizolowanego,
+          ile każdy kosztuje i w którym momencie dokładanie kolejnych zabezpieczeń przestaje mieć sens.</p>
+        <div class="art-short stack-s" style="max-width: 800px;">
+          <p class="eyebrow">W skrócie</p>
+          <p>Płatne API dużych dostawców nie uczy modeli na danych firm, a umowa powierzenia obejmuje je tak samo jak
+            Waszą skrzynkę w chmurze. Model u siebie daje pełną izolację, ale kosztuje wielokrotnie więcej i zwykle
+            gorzej czyta dokumenty. Dla większości procesów w MŚP wystarcza API plus wysyłanie do modelu tylko tego
+            fragmentu, który jest potrzebny.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <aside class="card sr art-aside art-toc" aria-label="Spis treści"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 16px;">
+          <p class="eyebrow">W tym tekście</p>
+          <ol>
+            <li><a href="#czat-a-api">Czat w przeglądarce to nie API</a></li>
+            <li><a href="#co-trafia">Co naprawdę trafia do modelu</a></li>
+            <li><a href="#warianty">Pięć wariantów ochrony danych</a></li>
+            <li><a href="#koszt">Ile kosztuje każdy poziom</a></li>
+            <li><a href="#poczta">Wasza poczta już jest w chmurze</a></li>
+            <li><a href="#anonimizacja">Anonimizacja a pseudonimizacja</a></li>
+            <li><a href="#u-nas">Jak to wygląda u nas</a></li>
+            <li><a href="#pytania">Częste pytania</a></li>
+          </ol>
+          <p class="small" style="border-top: 1px solid var(--line); padding-top: 16px; color: var(--text-3);">Warunki
+            dostawców na 3 października 2026.</p>
+        </aside>
+
+        <div class="stack art" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+
+          <h2 id="czat-a-api">ChatGPT w przeglądarce i model przez API to dwie różne usługi</h2>
+          <p class="body-2">Większość obaw bierze się z jednego nieporozumienia. ChatGPT czy Gemini otwierane
+            w przeglądarce to usługi dla konsumentów. W darmowych i prywatnych kontach rozmowy mogą służyć do
+            ulepszania modeli, chyba że ktoś to wyłączy w ustawieniach. Jeśli pracownik wkleja tam umowę z klientem,
+            obawa jest uzasadniona.</p>
+          <p class="body-2">Automaty, które budujemy, łączą się z modelami inaczej: przez firmowe API, na podstawie
+            umowy z dostawcą. Tu zasady są odwrotne. OpenAI nie używa danych przesłanych przez API do trenowania
+            modeli, chyba że klient sam się na to zgodzi
+            (<a href="https://developers.openai.com/api/docs/guides/your-data" rel="noopener">zasady danych OpenAI
+            API</a>). Google nie używa do tego danych z płatnego Gemini API, a w Europie stosuje te zasady do
+            każdego użycia API (<a href="https://ai.google.dev/gemini-api/docs/logs-policy" rel="noopener">polityka
+            logów Gemini API</a>). Firmowe wersje czatów, takie jak ChatGPT Enterprise czy Copilot dla firm, też
+            domyślnie nie uczą się na danych firmy.</p>
+
+          <h2 id="co-trafia">Co naprawdę trafia do modelu</h2>
+          <p class="body-2">Drugie nieporozumienie dotyczy ilości. Automat nie wysyła do modelu całej skrzynki ani
+            całego dysku. Wysyła fragment, z którego trzeba coś odczytać: treść jednego maila z zamówieniem, jedną
+            fakturę, jedno zgłoszenie reklamacyjne. Resztę robią zwykłe reguły, które działają na naszym serwerze
+            i z AI nie mają nic wspólnego.</p>
+
+          <figure class="viz" data-viz>
+            <div class="viz-scroll">
+            <svg viewBox="0 0 680 300" role="img" aria-label="Mail z zamówieniem ma kilkanaście linii. Automat zaznacza cztery pola: klienta, indeks, ilość i termin. Tylko te cztery pola trafiają do modelu AI, a wynik wraca do arkusza. Reszta maila zostaje u Was.">
+              <rect x="10" y="10" width="300" height="280" rx="12" fill="#fff" stroke="#E2E8F0"></rect>
+              <text class="t-h" x="28" y="38">Mail z zamówieniem</text>
+              <text class="t" x="28" y="58">od: zakupy@przyklad.example</text>
+              <rect class="line" x="28" y="74" width="250" height="8" rx="4"></rect>
+              <rect class="line" x="28" y="90" width="210" height="8" rx="4"></rect>
+              <rect class="hl" x="22" y="104" width="268" height="22" rx="6"></rect>
+              <text class="t-b" x="30" y="120">Klient: Przykład sp. z o.o.</text>
+              <rect class="line" x="28" y="136" width="230" height="8" rx="4"></rect>
+              <rect class="hl" x="22" y="150" width="268" height="22" rx="6"></rect>
+              <text class="t-b" x="30" y="166">Indeks: ETK-1042</text>
+              <rect class="hl" x="22" y="178" width="268" height="22" rx="6"></rect>
+              <text class="t-b" x="30" y="194">Ilość: 12 000 szt.</text>
+              <rect class="line" x="28" y="210" width="190" height="8" rx="4"></rect>
+              <rect class="hl" x="22" y="224" width="268" height="22" rx="6"></rect>
+              <text class="t-b" x="30" y="240">Termin: 21.09</text>
+              <rect class="line" x="28" y="258" width="240" height="8" rx="4"></rect>
+              <rect class="line" x="28" y="272" width="160" height="8" rx="4"></rect>
+
+              <path d="M 312,150 H 420" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 6"></path>
+              <rect x="420" y="96" width="120" height="108" rx="14" fill="#0B3D70"></rect>
+              <path d="M 480,122 L 484,136 498,140 484,144 480,158 476,144 462,140 476,136 Z" fill="#2DD4BF"></path>
+              <text x="480" y="182" text-anchor="middle" style="font-family: var(--mono); font-size: 13px; fill: #fff;">model AI</text>
+              <text x="480" y="196" text-anchor="middle" style="font-family: var(--mono); font-size: 11px; fill: #9FB6CC;">przez API</text>
+
+              <path d="M 540,150 H 570" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 6"></path>
+              <rect x="570" y="112" width="100" height="76" rx="10" fill="#fff" stroke="#E2E8F0"></rect>
+              <text class="t-h" x="620" y="138" text-anchor="middle" style="font-size: 13px;">arkusz</text>
+              <g class="ok"><text class="t-teal" x="620" y="162" text-anchor="middle">4 pola</text><text class="t-teal" x="620" y="178" text-anchor="middle">wpisane</text></g>
+
+              <g class="fly" style="--dx: 160px; --dy: 30px;"><rect x="270" y="108" width="14" height="14" rx="4" class="chip"></rect></g>
+              <g class="fly" style="--dx: 160px; --dy: -16px;"><rect x="270" y="154" width="14" height="14" rx="4" class="chip"></rect></g>
+              <g class="fly" style="--dx: 160px; --dy: -44px;"><rect x="270" y="182" width="14" height="14" rx="4" class="chip"></rect></g>
+              <g class="fly" style="--dx: 160px; --dy: -90px;"><rect x="270" y="228" width="14" height="14" rx="4" class="chip"></rect></g>
+            </svg>
+            </div>
+            <figcaption>Do modelu trafiają tylko zaznaczone pola. Szare linie, czyli reszta maila, nigdzie nie
+              wychodzą. Firma i dane są zmyślone.</figcaption>
+          </figure>
+
+          <p class="body-2">Zasada jest prosta: im mniej trafia do modelu, tym mniej jest do ochrony. Tam, gdzie
+            wystarczą reguły, na przykład przy wyliczeniu daty wysyłki albo dopasowaniu faktury po numerze zlecenia,
+            AI nie bierze udziału wcale.</p>
+
+          <h2 id="warianty">Pięć wariantów ochrony danych przy AI</h2>
+          <p class="body-2">Od najprostszego do najbardziej odizolowanego. Wszystkie są legalne i wszystkie da się
+            pogodzić z RODO. Różnią się tym, kto poza Wami widzi dane, ile to kosztuje i jak dobrze model czyta
+            dokumenty.</p>
+
+          <h3 id="w-api">1. Model przez płatne API dostawcy</h3>
+          <p class="body-2">Najczęściej stosowany wariant, także u nas. Fragment dokumentu idzie do modelu przez API,
+            wynik wraca. Dostawca nie uczy na tych danych modeli, ale przechowuje je przez ograniczony czas, żeby
+            wykrywać nadużycia: OpenAI zwykle do 30 dni, Google przy Gemini API do 55 dni. Wybrane firmy mogą
+            u OpenAI wnioskować o całkowity brak przechowywania. Dane mogą być przetwarzane w USA. Taki transfer
+            jest zgodny z RODO dzięki unijno-amerykańskim ramom ochrony danych, a kto chce, może u OpenAI wybrać
+            przetwarzanie w Europie, po akceptacji i za dopłatą 10%.</p>
+
+          <h3 id="w-chmura">2. Model w chmurze w UE, na umowie firmowej</h3>
+          <p class="body-2">Te same modele, uruchomione w regionie europejskim przez Microsoft Azure albo Amazon Web
+            Services, na przykład we Frankfurcie. Działa w ramach umowy firmowej z dostawcą chmury, z umową
+            powierzenia i bez trenowania modeli na Waszych danych. Wybierają go firmy, które i tak mają już podpisane
+            umowy z Microsoftem albo Amazonem i chcą mieć wszystko w jednym miejscu.</p>
+
+          <h3 id="w-hybryda">3. Wariant hybrydowy: maskowanie danych przed wysłaniem</h3>
+          <p class="body-2">Zanim tekst trafi do modelu, mały model działający na naszym serwerze wyszukuje w nim
+            dane osobowe i zamienia je na znaczniki: PESEL na <code>[PESEL_1]</code>, adres na
+            <code>[ADRES_2]</code>. Duży model w chmurze pracuje na tekście ze znacznikami, a w odpowiedzi znaczniki
+            wracają do prawdziwych wartości dopiero po naszej stronie.</p>
+          <p class="body-2">Tak zbudowaliśmy asystenta dla kancelarii prawnej, który odpowiada na pytania o akta sprawy
+            karnej liczące 878 stron. PESEL-e, adresy i telefony w bazie fragmentów oraz w pytaniach wysyłanych do
+            modelu są zastąpione znacznikami. Model widzi treść akt, ale nie widzi, kogo dotyczą.</p>
+
+          <h3 id="w-serwer">4. Model otwarty na wynajętym serwerze w UE</h3>
+          <p class="body-2">Model otwarty, na przykład Llama, Mistral albo polski Bielik, uruchomiony na serwerze
+            z kartą graficzną, wynajętym tylko dla Was. Dane nie przechodzą przez żadnego dostawcę AI. Przechodzą
+            za to przez dostawcę serwera, więc umowa powierzenia z nim też jest potrzebna. Nie kupujecie sprzętu,
+            ale płacicie co miesiąc za serwer, który pracuje także wtedy, gdy nie ma żadnych dokumentów do
+            odczytania.</p>
+
+          <h3 id="w-onprem">5. Model u Was (on-premise)</h3>
+          <p class="body-2">Model otwarty działa na Waszym sprzęcie, w Waszej serwerowni. Żadne dane nie opuszczają
+            firmy. To najwyższy poziom izolacji i jednocześnie najdroższy: karta graficzna, na której sensownie
+            działa duży model otwarty, kosztuje kilkadziesiąt tysięcy złotych, a do tego dochodzi prąd, chłodzenie
+            i ktoś, kto o to dba.</p>
+
+          <div class="art-table-wrap">
+            <table class="art-table">
+              <caption class="vh">Porównanie pięciu wariantów ochrony danych przy AI</caption>
+              <thead>
+                <tr><th scope="col">Wariant</th><th scope="col">Kto poza Wami widzi dane</th><th scope="col">Koszt</th><th scope="col">Jakość odczytu</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1. Płatne API</td><td>dostawca modelu, do 30 lub 55 dni, bez trenowania</td><td>grosze za dokument</td><td>najwyższa</td></tr>
+                <tr><td>2. Chmura w UE</td><td>dostawca chmury w UE, bez trenowania</td><td>podobny jak API, więcej konfiguracji</td><td>najwyższa</td></tr>
+                <tr><td>3. Hybryda</td><td>dostawca modelu, ale bez danych osobowych</td><td>API plus zbudowanie maskowania</td><td>wysoka</td></tr>
+                <tr><td>4. Wynajęty serwer</td><td>tylko dostawca serwera</td><td>stały abonament za serwer z GPU</td><td>niższa przy trudnych dokumentach</td></tr>
+                <tr><td>5. Model u Was</td><td>nikt</td><td>zakup sprzętu i utrzymanie</td><td>niższa przy trudnych dokumentach</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="koszt">Ile kosztuje każdy poziom ochrony</h2>
+          <p class="body-2">Na wykresie zestawiliśmy warianty w tej samej skali. Liczby są orientacyjne, chodzi
+            o proporcje. Ochrona rośnie powoli, a koszt rośnie skokami. Do tego modele otwarte, które da się
+            uruchomić u siebie, gorzej radzą sobie z nieczytelnym skanem czy zamówieniem w nietypowym układzie.</p>
+
+          <figure class="viz">
+            <div class="legend" aria-hidden="true">
+              <span style="--c: #00C4B4;">izolacja danych</span>
+              <span style="--c: #0B3D70;">koszt wdrożenia i utrzymania</span>
+              <span style="--c: #94A3B8;">jakość odczytu dokumentów</span>
+            </div>
+            <div class="ladder" data-ladder role="img" aria-label="Porównanie wariantów w skali od 1 do 10. Płatne API: izolacja 6, koszt 1, jakość 10. Chmura w UE: izolacja 7, koszt 2, jakość 10. Hybryda: izolacja 8, koszt 3, jakość 9. Wynajęty serwer: izolacja 9, koszt 6, jakość 6. Model u Was: izolacja 10, koszt 10, jakość 6. Poczta w Google lub Microsoft 365 ma poziom ochrony zbliżony do płatnego API.">
+              <div class="ladder-row is-you" style="--r: 0;">
+                <p class="ladder-name">1. Płatne API<small>tu jest też Wasza poczta w chmurze</small></p>
+                <div class="ladder-bars"><div class="bar bar-iso"><i style="--w: 60%;"></i></div><div class="bar bar-cost"><i style="--w: 10%;"></i></div><div class="bar bar-q"><i style="--w: 100%;"></i></div></div>
+              </div>
+              <div class="ladder-row" style="--r: 1;">
+                <p class="ladder-name">2. Chmura w UE</p>
+                <div class="ladder-bars"><div class="bar bar-iso"><i style="--w: 70%;"></i></div><div class="bar bar-cost"><i style="--w: 20%;"></i></div><div class="bar bar-q"><i style="--w: 100%;"></i></div></div>
+              </div>
+              <div class="ladder-row" style="--r: 2;">
+                <p class="ladder-name">3. Hybryda<small>maskowanie danych osobowych</small></p>
+                <div class="ladder-bars"><div class="bar bar-iso"><i style="--w: 80%;"></i></div><div class="bar bar-cost"><i style="--w: 30%;"></i></div><div class="bar bar-q"><i style="--w: 90%;"></i></div></div>
+              </div>
+              <div class="ladder-row" style="--r: 3;">
+                <p class="ladder-name">4. Wynajęty serwer</p>
+                <div class="ladder-bars"><div class="bar bar-iso"><i style="--w: 90%;"></i></div><div class="bar bar-cost"><i style="--w: 60%;"></i></div><div class="bar bar-q"><i style="--w: 60%;"></i></div></div>
+              </div>
+              <div class="ladder-row" style="--r: 4;">
+                <p class="ladder-name">5. Model u Was</p>
+                <div class="ladder-bars"><div class="bar bar-iso"><i style="--w: 100%;"></i></div><div class="bar bar-cost"><i style="--w: 100%;"></i></div><div class="bar bar-q"><i style="--w: 60%;"></i></div></div>
+              </div>
+            </div>
+            <figcaption>Skala od 1 do 10, nasza ocena. Między wariantem 3 a 5 izolacja rośnie o dwa punkty, a koszt
+              ponad trzykrotnie.</figcaption>
+          </figure>
+
+          <p class="body-2">Przejście z API na model u siebie kosztuje więc najwięcej i daje najmniej, jeśli
+            porównać to z wariantem hybrydowym. Model u Was ma sens, gdy przepisy albo umowa z Waszym klientem wprost
+            zabraniają wysyłania danych na zewnątrz. Sama obawa to za mało, żeby tyle za niego płacić.</p>
+
+          <h2 id="poczta">Wasza poczta od dawna jest w chmurze</h2>
+          <p class="body-2">Kiedy rozmawiamy o bezpieczeństwie, często pytamy, gdzie firma trzyma pocztę. Najczęściej
+            w Google Workspace albo w Microsoft 365. Cała korespondencja z klientami, wszystkie załączniki, umowy
+            i faktury od lat leżą na serwerach tych firm, na podstawie ich umowy powierzenia. Nikt się tym nie
+            martwi, bo to sprawdzona usługa z rozsądną umową.</p>
+          <blockquote class="art-quote">Skrzynka z całą korespondencją leży w chmurze. Do modelu automat wysyła
+            jeden mail.</blockquote>
+          <p class="body-2">Automat, który czyta faktury przez Gemini, wysyła jeden dokument do tej samej firmy, która
+            już przechowuje Waszą skrzynkę, na podobnych zasadach. Ryzyko wzrasta niewiele, a często prawie wcale.
+            Warto o tym pomyśleć, zanim wydacie kilkadziesiąt tysięcy złotych na serwer, który ma chronić jeden
+            fragment z tej skrzynki.</p>
+          <p class="body-2">Większe ryzyko zwykle siedzi gdzie indziej. Pracownik wkleja umowę do prywatnego czatu,
+            hasło do systemu leży w arkuszu, były pracownik dalej ma dostęp do skrzynki. Tym warto zająć się
+            w pierwszej kolejności.</p>
+
+          <h2 id="anonimizacja">Anonimizacja a pseudonimizacja danych</h2>
+          <p class="body-2">Te dwa słowa często mieszają się w rozmowach o AI, a RODO traktuje je zupełnie inaczej.
+            Dane zanonimizowane to takie, z których nie da się już ustalić, kogo dotyczą, nawet przy użyciu innych
+            informacji. RODO ich nie obejmuje. Dane pseudonimizowane to takie, w których nazwiska czy PESEL-e zamieniono
+            na znaczniki, ale ktoś ma klucz, żeby je odwrócić. To dalej są dane osobowe i RODO dalej obowiązuje.</p>
+          <p class="body-2">Wariant hybrydowy opisany wyżej to pseudonimizacja: klucz do znaczników zostaje u nas
+            albo u Was. Prawdziwa anonimizacja dokumentów firmowych jest trudna, bo osobę często da się rozpoznać
+            po kontekście, na przykład po stanowisku i nazwie firmy. Jeśli ktoś obiecuje Wam „anonimizację” danych
+            przed wysłaniem do AI, dopytajcie, czy chodzi o pseudonimizację.</p>
+
+          <h2 id="u-nas">Jak to wygląda u nas</h2>
+          <ul class="art-list body-2">
+            <li>Automaty działają na naszym serwerze n8n w Niemczech, w centrum danych Hetznera. Na życzenie stawiamy
+              instancję u Was.</li>
+            <li>Korzystamy wyłącznie z płatnych modeli przez API. Dobieramy model do zadania, a nie jeden do
+              wszystkiego.</li>
+            <li>Do modelu trafia tylko fragment potrzebny do odczytu. Resztę robią reguły na naszym serwerze.</li>
+            <li>Dostęp dostajemy przez konto techniczne tylko do skrzynki i systemu, który obsługuje proces. Odbieracie
+              go jednym kliknięciem.</li>
+            <li>Każdy odczyt i każdy wpis ma ślad w logu.</li>
+            <li>Przed startem podpisujemy umowę powierzenia przetwarzania danych.</li>
+          </ul>
+          <p class="body-2">Który wariant wybrać, ustalamy po <a href="../../#cennik">audycie</a>, kiedy znamy
+            dokumenty, systemy i Wasze umowy z klientami. Czasem okazuje się, że dany proces w ogóle nie potrzebuje
+            AI. Przykłady procesów, które przejęliśmy, są w tekście
+            <a href="../../blog/automatyzacja-biznesu/">Automatyzacja biznesu w MŚP</a>.</p>
+
+          <h2 id="pytania">Częste pytania o bezpieczeństwo danych przy AI</h2>
+          <div class="faq">
+            <details open>
+              <summary>
+                <h3>Czy ChatGPT uczy się na danych mojej firmy?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Przez API i w firmowych wersjach, takich jak ChatGPT Enterprise, domyślnie nie.
+                W prywatnych i darmowych kontach rozmowy mogą służyć do ulepszania modeli, chyba że wyłączycie to
+                w ustawieniach.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy korzystanie z AI jest zgodne z RODO?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Tak, jeśli dostawca działa jako podmiot przetwarzający na podstawie umowy
+                powierzenia, a transfer poza Europę ma podstawę prawną. Przy płatnym API OpenAI, Google, Microsoftu
+                czy Amazona te umowy są standardem.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Gdzie fizycznie trafiają dane?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Nasze automaty działają w Niemczech. Fragment wysyłany do modelu trafia do
+                dostawcy modelu, domyślnie także do USA. Jeśli chcecie, żeby całe przetwarzanie zostało w Europie,
+                wybieramy region europejski albo chmurę w UE.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Kiedy warto postawić model u siebie?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Gdy przepisy branżowe albo umowy z Waszymi klientami zabraniają wysyłania danych
+                na zewnątrz. W pozostałych przypadkach wariant hybrydowy daje prawie tę samą ochronę za ułamek
+                kosztu.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy da się w ogóle obejść bez AI?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Często tak. Jeśli dane przychodzą w stałym formacie, na przykład faktury z KSeF,
+                wystarczą reguły. AI potrzebne jest tam, gdzie trzeba przeczytać coś nieuporządkowanego: maila,
+                skan albo zdjęcie.</div>
+            </details>
+          </div>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="../../blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              Wszystkie wpisy
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // grafiki graja, kiedy wjada na ekran; bez IntersectionObserver zostaje stan koncowy
+    (function () {
+      var els = document.querySelectorAll('[data-viz], [data-ladder]');
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle('play', e.isIntersecting); });
+      }, { threshold: 0.35 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+    </svg>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <h2 id="cta-h">Porozmawiajmy o Waszych danych.</h2>
+        <p class="lead" style="max-width: 580px;">Pokażemy, co dokładnie trafiłoby do modelu w Waszym procesie
+          i który wariant ma sens. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <a class="btn btn-primary glow" href="../../kontakt/">Umów bezpłatną konsultację</a>
+        <p class="row small cta-contacts">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span class="cta-dot" aria-hidden="true"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="stack-s">
+          <a class="brand" href="../../">
+            <img src="../../assets/logo.png" alt="" width="24" height="24">
+            <span class="brand-word" style="font-size: 22px;">fluinty.</span>
+          </a>
+          <p style="font-size: 14px; color: #8FB0CC; line-height: 1.6;">Agencja automatyzacji AI dla polskich MŚP.
+            Katowice.</p>
+        </div>
+
+        <div>
+          <h2>Strona</h2>
+          <ul>
+            <li><a href="../../#realizacje">Realizacje</a></li>
+            <li><a href="../../#co-automatyzujemy">Co automatyzujemy</a></li>
+            <li><a href="../../#produkty">Produkty</a></li>
+            <li><a href="../../#cennik">Cennik</a></li>
+            <li><a href="../../#zespol">Zespół</a></li>
+            <li><a href="../../kontakt/">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Firma</h2>
+          <ul>
+            <li><a href="../../blog/">Blog</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (otwiera się w nowej karcie)</span></a></li>
+            <li><a href="../../polityka-prywatnosci/">Polityka prywatności</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Kontakt</h2>
+          <ul>
+            <li><a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a></li>
+            <li><a href="tel:+48509843514">+48 509 843 514</a></li>
+            <li>Góreckiego 15/60,<br>40-204 Katowice</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Fluinty sp. z o.o. &middot; NIP 9542896747 &middot; KRS 0001201664</span>
+        <span style="font-family: var(--mono); font-size: 12px;">automatyzacja &middot; agenci AI &middot; MŚP</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/site.js" defer></script>
+</body>
+
+</html>
