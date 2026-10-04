@@ -15,7 +15,7 @@ const PAGES = [
   'en/index.html', 'en/case-studies/eticod/index.html', 'en/case-studies/iim-marbella/index.html', 'en/case-studies/art-tim/index.html',
   'en/case-studies/holbox/index.html', 'en/case-studies/bodtech/index.html', 'en/case-studies/tax-net/index.html',
   'en/products/fluintydebt/index.html', 'en/products/fluintyfleet/index.html', 'en/contact/index.html',
-  'en/blog/index.html', 'en/blog/email-orders-into-erp/index.html', 'en/thank-you/index.html', 'en/privacy-policy/index.html',
+  'en/blog/index.html', 'en/blog/email-orders-into-erp/index.html', 'en/blog/receiving-invoices-in-ksef/index.html', 'en/thank-you/index.html', 'en/privacy-policy/index.html',
 ]
 
 const BANNED = [/Sistrade/i, /LUXE/, /Tax-Libris/i, /440 tys/i, /7\s*900/, /24\s*900/, /39 zł\s*\/\s*pojazd/i, /potwierdził klient/i, /potwierdzone przez klienta/i, /Kontakt referencyjny/i, /reference contact at the client/i]

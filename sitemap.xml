@@ -135,7 +135,10 @@
 
   <url>
     <loc>https://fluinty.pl/blog/odbieranie-faktur-ksef/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/blog/receiving-invoices-in-ksef/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/" />
+    <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -289,6 +292,16 @@
     <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fluinty.pl/en/blog/receiving-invoices-in-ksef/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluinty.pl/en/blog/receiving-invoices-in-ksef/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/" />
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>

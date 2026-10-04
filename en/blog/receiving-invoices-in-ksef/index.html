@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cookiebot Consent Management -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="93a7f614-5248-4783-ab51-4cea7fc7d76e"
+    data-blockingmode="auto" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ9P7Y055L" data-cookieconsent="ignore"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-SZ9P7Y055L');
+  </script>
+
+  <title>Receiving invoices in KSeF: a guide for foreign companies | Fluinty</title>
+  <meta name="description" content="What Poland's KSeF e-invoicing means for a foreign group with a Polish entity: who must use it, how to receive invoices, when they count as received and what to automate.">
+  <link rel="canonical" href="https://fluinty.pl/en/blog/receiving-invoices-in-ksef/">
+  <link rel="alternate" hreflang="pl" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/">
+  <link rel="alternate" hreflang="en" href="https://fluinty.pl/en/blog/receiving-invoices-in-ksef/">
+  <link rel="alternate" hreflang="x-default" href="https://fluinty.pl/blog/odbieranie-faktur-ksef/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fluinty">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://fluinty.pl/en/blog/receiving-invoices-in-ksef/">
+  <meta property="og:title" content="Receiving invoices in KSeF: a guide for foreign companies | Fluinty">
+  <meta property="og:description" content="What Poland's KSeF e-invoicing means for a foreign group with a Polish entity: who must use it, how to receive invoices, when they count as received and what to automate.">
+  <meta property="og:image" content="https://fluinty.pl/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- favicon.ico ma 5 KB (16/32/48 px); assets/favicon.png to ten sam znak, ale 512x581 px i 200 KB -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Space Grotesk tylko 600 i 700: site.css nie uzywa 500 w kroju naglowkowym -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../../css/site.css">
+</head>
+
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../../en/" aria-label="Fluinty, home page">
+        <img src="../../../assets/logo.png" alt="" width="28" height="28">
+        <span class="brand-word">fluinty.</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main">
+        <a href="../../../en/#case-studies">Case studies</a>
+        <a href="../../../en/#what-we-automate">What we automate</a>
+        <a href="../../../en/#products">Products</a>
+        <a href="../../../en/#team">Team</a>
+        <a href="../../../en/#pricing">Pricing</a>
+        <a href="../../../en/blog/" aria-current="page">Blog</a>
+      <a href="../../../en/contact/">Contact</a>
+      </nav>
+
+      <div class="nav-side">
+        <a class="nav-lang" href="/blog/odbieranie-faktur-ksef/" hreflang="pl" lang="pl">PL</a>
+        <a class="nav-cta" href="../../../en/contact/">Free consultation</a>
+        <a class="nav-pill" href="../../../en/contact/">Book</a>
+        <button class="nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-controls="menu-mobile"
+          aria-label="Menu">
+          <svg data-icon-open width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+          <svg data-icon-close hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-drawer" id="menu-mobile" aria-label="Menu" data-open="false">
+      <a href="../../../en/#case-studies">Case studies</a>
+      <a href="../../../en/#what-we-automate">What we automate</a>
+      <a href="../../../en/#products">Products</a>
+      <a href="../../../en/#team">Team</a>
+      <a href="../../../en/#pricing">Pricing</a>
+      <a href="../../../en/blog/" aria-current="page">Blog</a>
+      <a href="../../../en/contact/">Contact</a>
+      <div class="drawer-foot">
+        <a class="btn btn-primary" href="../../../en/contact/">Book a free consultation</a>
+        <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+        <a href="tel:+48509843514">+48 509 843 514</a>
+        <a href="/blog/odbieranie-faktur-ksef/" hreflang="pl" lang="pl">PL</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (jak we wpisie o Eticodzie) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+
+    /* tresc artykulu */
+    [data-post] .art h2 { font-size: clamp(23px, 2.4vw, 30px); margin-top: 22px; scroll-margin-top: 96px; }
+    [data-post] .art h2:first-child { margin-top: 0; }
+    [data-post] .art h3 { font-size: clamp(19px, 1.9vw, 22px); margin-top: 8px; scroll-margin-top: 96px; }
+    [data-post] .art a:not(.link-more) { color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px; }
+    [data-post] .art-list { display: flex; flex-direction: column; gap: 10px; }
+    [data-post] .art-list li { position: relative; padding-left: 22px; color: var(--text-2); }
+    [data-post] .art-list li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 2px; background: var(--teal); }
+    [data-post] .art-list b { color: var(--text); }
+    [data-post] .art-quote { border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text); }
+    [data-post] .art-short { background: var(--mint); border: 1px solid rgba(0,196,180,.35); border-radius: 12px; padding: 18px 22px; }
+    [data-post] .art-short p { color: var(--text); }
+    [data-post] .art-calc { background: var(--gray); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; font-family: var(--mono); font-size: 15px; line-height: 1.6; color: var(--text); }
+    /* spis tresci: na komputerze z prawej i przyklejony, na telefonie nad tekstem */
+    [data-post] .art-toc ol { display: flex; flex-direction: column; gap: 10px; counter-reset: toc; }
+    [data-post] .art-toc li { counter-increment: toc; display: flex; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+    [data-post] .art-toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--text-3); padding-top: 2px; }
+    [data-post] .art-toc a { color: var(--text-2); }
+    [data-post] .art-toc a:hover { color: var(--teal-text); }
+    /* overflow: hidden z .sec wylacza sticky, clip przycina tak samo, a sticky dziala */
+    section.sec[data-post] { overflow: clip; }
+    @media (min-width: 900px) {
+      [data-post] .art-aside { order: 2; position: sticky; top: 96px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Receiving invoices in KSeF: a guide for foreign companies with a Polish entity",
+    "description": "What Poland's KSeF e-invoicing system means for a foreign group with a Polish subsidiary or branch: who must use it, how to receive invoices, when an invoice counts as received and what can be automated after receipt.",
+    "inLanguage": "en",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "mainEntityOfPage": "https://fluinty.pl/en/blog/receiving-invoices-in-ksef/",
+    "author": { "@type": "Person", "name": "Adam Nelip", "url": "https://fluinty.pl/zespol/adam-nelip/" },
+    "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/en/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Blog", "item": "https://fluinty.pl/en/blog/" },
+      { "@type": "ListItem", "position": 2, "name": "Receiving invoices in KSeF", "item": "https://fluinty.pl/en/blog/receiving-invoices-in-ksef/" }
+    ]
+  }
+  </script>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Breadcrumbs">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="../../../en/blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Accounting and KSeF</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Receiving invoices in KSeF: a guide for foreign companies with a Polish entity</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="../../../assets/zespol/adam-nelip.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);"><a href="../../../zespol/adam-nelip/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Adam Nelip</a> &middot; 9 min read &middot; <time datetime="2026-10-04">4 October 2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">Since 1 February 2026 every company registered for VAT in Poland
+          receives its purchase invoices through KSeF, the government e-invoicing platform. For a group with
+          headquarters in Germany, Korea or the Netherlands this usually lands on the Polish team first and on the
+          shared service centre a few weeks later, when invoices stop arriving the way the global process expects.
+          This guide covers who has to use KSeF, how invoices are received, when they legally count as received and
+          what work is left after that.</p>
+        <div class="art-short stack-s" style="max-width: 800px;">
+          <p class="eyebrow">Short answer</p>
+          <p>Your Polish entity receives invoices in KSeF either manually in the Ministry of Finance app, automatically
+            through an ERP connected to the KSeF API, or through an accounting firm you grant access to. An invoice
+            counts as received on the day KSeF assigns it a number, even if nobody has downloaded it yet. The hard
+            part comes after receipt: matching the invoice to a purchase order or cost centre, often in a language
+            your finance team does not read.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <aside class="card sr art-aside art-toc" aria-label="Contents"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 16px;">
+          <p class="eyebrow">In this guide</p>
+          <ol>
+            <li><a href="#what">What KSeF is</a></li>
+            <li><a href="#who">Who has to use it</a></li>
+            <li><a href="#how">How to receive invoices</a></li>
+            <li><a href="#received">When an invoice counts as received</a></li>
+            <li><a href="#after">The work after receipt</a></li>
+            <li><a href="#automate">What can be automated</a></li>
+            <li><a href="#pitfalls">Common pitfalls</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ol>
+          <p class="small" style="border-top: 1px solid var(--line); padding-top: 16px; color: var(--text-3);">Law as of
+            4 October 2026.</p>
+        </aside>
+
+        <div class="stack art" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+
+          <h2 id="what">What KSeF is</h2>
+          <p class="body-2">KSeF (Krajowy System e-Faktur, the National e-Invoicing System) is a platform run by the
+            Polish Ministry of Finance. Sellers issue invoices as structured XML files directly in KSeF, and the
+            system assigns each one a unique KSeF number. Buyers do not receive a PDF by email by default. They fetch
+            the invoice from KSeF, either by hand or through software connected to its API.</p>
+          <p class="body-2">For a finance team used to PDFs arriving in an accounts payable mailbox, the change is
+            bigger than it looks. The invoice is no longer pushed to you. It waits in the system until someone, or
+            something, pulls it.</p>
+
+          <h2 id="who">Who has to use KSeF</h2>
+          <p class="body-2">The obligation came in stages:</p>
+          <ul class="art-list body-2">
+            <li><b>Receiving:</b> all VAT taxpayers in Poland since 1 February 2026. The buyer's consent is no longer
+              required.</li>
+            <li><b>Issuing:</b> the largest companies (sales above PLN 200 million) since 1 February 2026, almost
+              everyone else since 1 April 2026. Sellers with B2B invoices of up to PLN 10,000 a month may issue
+              outside KSeF until the end of 2026.</li>
+            <li><b>Penalties:</b> originally planned from 1 January 2027. On 16 September 2026 the Ministry of
+              Finance announced it would <a href="https://www.gov.pl/web/finanse/przedluzenie-odroczenia-kar-za-bledy-w-stosowaniu-ksef-do-konca-2027-r"
+              rel="noopener">postpone them to the end of 2027</a>. This still needs a change in the law, and the
+              obligation to use KSeF stays in place.</li>
+          </ul>
+          <p class="body-2">For foreign companies the key question is whether they have a fixed establishment in
+            Poland. A foreign company whose Polish fixed establishment takes part in the sale has to issue invoices
+            in KSeF. A company that is only registered for VAT in Poland, without a fixed establishment, generally
+            does not. Tax authorities and advisors still disagree on where exactly the line runs, so this is worth
+            confirming with a tax advisor (<a href="https://www.vatupdate.com/2026/07/05/foreign-companies-and-ksef-tax-authorities-interpretation-of-fixed-establishment-rules/"
+            rel="noopener">overview on VATupdate</a>). A Polish subsidiary is a Polish company and is covered in
+            full.</p>
+
+          <h2 id="how">How to receive invoices in KSeF</h2>
+          <h3 id="manual">Manually, in the Ministry of Finance tools</h3>
+          <p class="body-2">The Ministry offers a free web app (Aplikacja Podatnika KSeF), a mobile app and the
+            e-mikrofirma service. You log in with a Polish trusted profile or a qualified electronic signature, search
+            for new invoices and download them, including as a PDF with a QR code and the KSeF number. The interface is
+            in Polish. This works for a handful of invoices a month and stops working at a few dozen.</p>
+
+          <h3 id="erp">Automatically, through your ERP</h3>
+          <p class="body-2">Most ERP and accounting systems used in Poland, including the Polish localisations of the
+            big international ones, can connect to the KSeF API and fetch new purchase invoices on their own. The
+            connection needs either a KSeF token or a KSeF certificate. <b>Tokens only work until the end of
+            2026</b>, so an integration that runs on a token today has to be switched to a certificate before
+            January.</p>
+          <p class="body-2">Check whether the integration fetches on a schedule or only when someone presses a button.
+            We have seen both. In one system we analysed, KSeF downloads had to be triggered by hand, so formally
+            there was an integration and in practice a person was still pulling invoices every day.</p>
+
+          <h3 id="firm">Through an accounting firm</h3>
+          <p class="body-2">If a Polish accounting firm keeps the books, you can grant it permission in KSeF to receive
+            invoices on your behalf. Companies that are not sole traders and have no qualified electronic seal first
+            file a ZAW-FA form with the tax office, naming the person who will manage KSeF permissions.</p>
+
+          <h2 id="received">When an invoice counts as received</h2>
+          <p class="body-2">An invoice issued in KSeF is received on the day KSeF assigns it a number (art. 106na(3) of
+            the Polish VAT Act). That date determines when the right to deduct input VAT arises. It does not matter
+            when your team downloads, opens or books the invoice. The exception is a buyer that does not use a Polish
+            tax ID, for example a foreign company without Polish VAT registration: for them the invoice is received
+            when it is actually delivered.</p>
+          <blockquote class="art-quote">The invoice is received before anyone in the company has seen it.</blockquote>
+          <p class="body-2">The practical consequence is easy to miss. An invoice nobody pulled from KSeF does not
+            reach any inbox. Its payment term keeps running anyway.</p>
+
+          <h2 id="after">The work after receipt</h2>
+          <p class="body-2">In May and June 2026 the Polish software vendor Symfonia and the Accountants Association
+            in Poland surveyed 452 finance and accounting practitioners. Receiving invoices worked well: 54% rated it
+            very good. Working out who the cost belongs to went badly: 36% rated it very poor and only 9% very good
+            (<a href="https://ksiegowosc.infor.pl/wiadomosci/7620358,najwieksze-problemy-z-ksef-jak-je-rozwiazac.html"
+            rel="noopener">results, in Polish</a>).</p>
+          <p class="body-2">International groups have three extra layers on top of that:</p>
+          <ul class="art-list body-2">
+            <li><b>Language.</b> Line items are written in Polish by Polish suppliers. A shared service centre in
+              another country has to translate them before anyone can assign a cost centre or approve the
+              invoice.</li>
+            <li><b>Matching.</b> KSeF knows the seller's tax ID, amounts and items. It does not know the purchase
+              order, the project or the plant the invoice belongs to, unless the supplier happened to put that
+              number in the right field.</li>
+            <li><b>Two streams.</b> Invoices from foreign suppliers do not go through KSeF, and some Polish suppliers
+              still send a PDF by email just in case. The same invoice can arrive twice, and someone has to make
+              sure it is booked once.</li>
+          </ul>
+
+          <h2 id="automate">What can be automated after receipt</h2>
+          <p class="body-2">KSeF removed the technically hardest part, reading the document. When invoices arrived as
+            PDFs or scans, software first had to extract the data. At Holbox, a Polish manufacturer of cardboard
+            displays, we read about 2,400 emailed documents this way without a single manual correction
+            (<a href="../../../en/case-studies/holbox/">Holbox case study</a>). A KSeF invoice arrives with the data
+            already in fields. What remains is the decision about what to do with it, and most of that can be
+            written down as rules:</p>
+          <ul class="art-list body-2">
+            <li>fetch new invoices from KSeF every hour, with an overlap so nothing is missed,</li>
+            <li>compare them with what arrived by email and drop duplicates by invoice number and seller tax ID,</li>
+            <li>translate and summarise the Polish line items for the team that approves them,</li>
+            <li>match the invoice to a purchase order, contract or cost centre when the number is there,</li>
+            <li>propose the booking based on how the same supplier was booked before,</li>
+            <li>route everything uncertain to a person: new suppliers, unusual items, missing order numbers.</li>
+          </ul>
+          <blockquote class="art-quote">The software proposes, the accountant approves. Nothing is booked without a
+            person signing off.</blockquote>
+
+          <h2 id="pitfalls">Common pitfalls</h2>
+          <ul class="art-list body-2">
+            <li><b>Tokens expiring.</b> KSeF tokens stop working at the end of 2026. An integration still running on
+              one will quietly stop fetching invoices in January.</li>
+            <li><b>Permissions tied to one person.</b> If the integration runs on an employee's permissions, their
+              departure or leave can stop invoice downloads. Set up access that does not depend on any single
+              account, and write down who manages it.</li>
+            <li><b>Outages and late invoices.</b> KSeF has had outages, and invoices issued in emergency mode get their
+              number later. A process that only fetches invoices "since last time" can miss them. We always fetch
+              with a margin, for example the last 7 days, and drop what is already there by KSeF number.</li>
+            <li><b>Global ERP mapping.</b> The KSeF XML has to be mapped into the fields your global ERP and approval
+              workflow expect. It is the step that is easiest to underestimate and the hardest to fix after go-live.</li>
+          </ul>
+
+          <h2 id="help">How we can help</h2>
+          <p class="body-2">We are a Polish team that integrates KSeF and repairs integrations that went live but do
+            not work as intended. A typical project takes 2 to 5 weeks. We work in English, document everything for
+            your shared service centre and keep the Polish side of the process in Polish. The software runs on our
+            server in Germany or on infrastructure you provide, under a data processing agreement.</p>
+
+          <h2 id="faq">Frequently asked questions</h2>
+          <div class="faq">
+            <details open>
+              <summary>
+                <h3>Does a foreign company have to use KSeF?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">For issuing invoices, only if it has a fixed establishment in Poland that takes
+                part in the sale. A Polish subsidiary is a Polish company and has to use KSeF in full. Because the
+                fixed establishment test is disputed, confirm your case with a tax advisor.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Since when do companies have to receive invoices in KSeF?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Since 1 February 2026, for all VAT taxpayers in Poland, without the buyer's
+                consent.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>When is a KSeF invoice legally received?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">On the day KSeF assigns it a number, regardless of when you download it. For buyers
+                without a Polish tax ID, it is the day of actual delivery.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Can our ERP fetch KSeF invoices automatically?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Usually yes, through the KSeF API with a token or a KSeF certificate. Tokens stop
+                working at the end of 2026. Check that downloads run on a schedule and not only on request.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Are there penalties for KSeF errors?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">They were planned from 1 January 2027. The Ministry of Finance announced in
+                September 2026 that they will be postponed to the end of 2027, which still requires a change in the
+                law. The obligation to use KSeF is not affected.</div>
+            </details>
+          </div>
+
+          <p class="small" style="color: var(--text-3);">This guide reflects Polish law as of 4 October 2026 and is
+            not tax advice. For VAT questions about your specific setup, consult a Polish tax advisor.</p>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="../../../en/blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              All posts
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+    </svg>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <h2 id="cta-h">Tell us about your KSeF setup.</h2>
+        <p class="lead" style="max-width: 580px;">Within 24 hours we come back with an assessment of what to fix or
+          automate. The call is free and in English.</p>
+        <a class="btn btn-primary glow" href="../../../en/contact/">Book a free consultation</a>
+        <p class="row small cta-contacts">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span class="cta-dot" aria-hidden="true"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="stack-s">
+          <a class="brand" href="../../../en/">
+            <img src="../../../assets/logo.png" alt="" width="24" height="24">
+            <span class="brand-word" style="font-size: 22px;">fluinty.</span>
+          </a>
+          <p style="font-size: 14px; color: #8FB0CC; line-height: 1.6;">AI automation agency for Polish SMEs.
+            Katowice, Poland.</p>
+        </div>
+
+        <div>
+          <h2>Site</h2>
+          <ul>
+            <li><a href="../../../en/#case-studies">Case studies</a></li>
+            <li><a href="../../../en/#what-we-automate">What we automate</a></li>
+            <li><a href="../../../en/#products">Products</a></li>
+            <li><a href="../../../en/#pricing">Pricing</a></li>
+            <li><a href="../../../en/#team">Team</a></li>
+            <li><a href="../../../en/contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="../../../en/blog/">Blog</a></li>
+            <li><a href="https://www.linkedin.com/company/fluinty" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li>
+            <li><a href="../../../en/privacy-policy/">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a></li>
+            <li><a href="tel:+48509843514">+48 509 843 514</a></li>
+            <li>Góreckiego 15/60,<br>40-204 Katowice, Poland</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Fluinty sp. z o.o. &middot; VAT ID PL9542896747 &middot; KRS 0001201664</span>
+        <span style="font-family: var(--mono); font-size: 12px;">automation &middot; AI agents &middot; SMEs</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/site.js" defer></script>
+</body>
+
+</html>
