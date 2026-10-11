@@ -62,12 +62,12 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Ile kosztuje automatyzacja biznesu w małej firmie?", "acceptedAnswer": { "@type": "Answer", "text": "U nas pierwsza rozmowa jest bezpłatna, audyt kosztuje 1 500 zł netto i odliczamy go od wdrożenia, pilot jednego procesu zaczyna się od 2 000 zł, a pełne wdrożenie od 5 000 zł. Opieka po wdrożeniu kosztuje od 500 zł miesięcznie i jest opcjonalna. Dokładną kwotę podajemy po audycie." } },
-      { "@type": "Question", "name": "Ile trwa wdrożenie automatyzacji?", "acceptedAnswer": { "@type": "Answer", "text": "Audyt zajmuje około dwóch dni. Pilot działa na produkcji po 2 do 3 tygodni. Pełne wdrożenie trwa od trzech do siedmiu tygodni, zależnie od zakresu." } },
+      { "@type": "Question", "name": "Ile kosztuje automatyzacja biznesu w małej firmie?", "acceptedAnswer": { "@type": "Answer", "text": "U nas pierwsza rozmowa jest bezpłatna, audyt kosztuje 1 500 zł netto i odliczamy go od wdrożenia, a wdrożenie zaczyna się od 5 000 zł. Opieka po wdrożeniu kosztuje od 500 zł miesięcznie i jest opcjonalna. Dokładną kwotę podajemy po audycie." } },
+      { "@type": "Question", "name": "Ile trwa wdrożenie automatyzacji?", "acceptedAnswer": { "@type": "Answer", "text": "Audyt zajmuje około dwóch dni. Wdrożenie trwa od trzech do siedmiu tygodni, zależnie od zakresu." } },
       { "@type": "Question", "name": "Czy do automatyzacji trzeba wymienić ERP albo inne systemy?", "acceptedAnswer": { "@type": "Answer", "text": "Nie. Automat wpina się w skrzynkę, ERP, Excela czy CRM, z których już korzystacie. Jeśli system nie ma API, automat klika w nim to samo, co klikałby pracownik." } },
       { "@type": "Question", "name": "Od jakiej skali automatyzacja się opłaca?", "acceptedAnswer": { "@type": "Answer", "text": "Od momentu, w którym ktoś robi tę samą czynność dziesiątki razy w miesiącu. Liczymy to z Wami przed umową: liczba powtórzeń pomnożona przez czas jednego razu i przez koszt godziny pracy. Jeśli wynik nie pokrywa kosztu automatu, mówimy to wprost." } },
       { "@type": "Question", "name": "Czy modele AI uczą się na danych naszej firmy?", "acceptedAnswer": { "@type": "Answer", "text": "Nie. Do modelu trafia tylko fragment dokumentu potrzebny do odczytu, przez API OpenAI i Google, których warunki nie pozwalają uczyć modeli na danych klientów. Automaty działają na naszym serwerze n8n albo na instancji u Was, a umowę powierzenia podpisujemy przed startem." } },
-      { "@type": "Question", "name": "Co, jeśli automat się pomyli?", "acceptedAnswer": { "@type": "Answer", "text": "Wpis do systemu jest ostatnim krokiem. Wcześniej automat sprawdza komplet danych, a wszystko niepewne odsyła do człowieka. Każdy wpis ma log z linkiem do źródła, więc cofnięcie to jedna operacja. Wdrożenie ma 60 dni gwarancji wyniku." } }
+      { "@type": "Question", "name": "Co, jeśli automat się pomyli?", "acceptedAnswer": { "@type": "Answer", "text": "Wpis do systemu jest ostatnim krokiem. Wcześniej automat sprawdza komplet danych, a wszystko niepewne odsyła do człowieka. Każdy wpis ma log z linkiem do źródła, więc cofnięcie to jedna operacja. Przez 30 dni od odbioru poprawki są w cenie." } }
     ]
   }
   </script>
@@ -235,8 +235,8 @@
             godzinach i 60&nbsp;zł za godzinę wychodzi 7&nbsp;200&nbsp;zł miesięcznie, czyli 86&nbsp;400&nbsp;zł rocznie. Tak liczy
             <a href="{{ROOT}}#kalkulator">kalkulator na naszej stronie głównej</a>, można tam podstawić własne
             liczby.</p>
-          <p class="body-2">Po drugiej stronie rachunku stoi koszt automatu. U nas pilot jednego procesu kosztuje od
-            2&nbsp;000&nbsp;zł, pełne wdrożenie od 5&nbsp;000&nbsp;zł, a opieka po wdrożeniu od 500&nbsp;zł miesięcznie, jeśli ktoś jej chce.
+          <p class="body-2">Po drugiej stronie rachunku stoi koszt automatu. U nas wdrożenie kosztuje od
+            5&nbsp;000&nbsp;zł, a opieka po wdrożeniu od 500&nbsp;zł miesięcznie, jeśli ktoś jej chce.
             Wszystkie kwoty są netto, a dokładną wycenę podajemy po audycie. Jeśli czynność powtarza się 15&nbsp;razy
             w miesiącu, automat może się nie zwrócić nigdy. Wtedy mówimy to przed umową, bo wolimy stracić zlecenie,
             niż wystawić fakturę za coś, co się nie zwróci.</p>
@@ -299,10 +299,10 @@
             pytanie padnie. Po stronie IT wystarcza zwykle jedno spotkanie i godzina albo dwie pracy: dostęp do
             skrzynki, konto techniczne w systemie, czasem VPN.</p>
 
-          <h3 id="pilot">Najpierw jeden proces, potem kolejne</h3>
+          <h3 id="jeden-proces">Najpierw jeden proces, potem kolejne</h3>
           <p class="body-2">Zaczynamy od jednego procesu i jednej liczby, po której poznacie, czy działa. Może to być
-            liczba zamówień wpisanych bez poprawek albo godziny, które przestały schodzić na przepisywanie. Pilot
-            działa na produkcji po 2 do 3&nbsp;tygodni, a po miesiącu decydujecie: zostaje, poprawiamy albo wyłączamy.
+            liczba zamówień wpisanych bez poprawek albo godziny, które przestały schodzić na przepisywanie. Przez 30&nbsp;dni
+            od odbioru poprawki są w cenie.
             Za kolejny proces bierzemy się dopiero wtedy, kiedy pierwszy działa i wszyscy są zadowoleni.</p>
 
           <h2 id="ai">Sztuczna inteligencja w biznesie: co zmienia w automatyzacji</h2>
@@ -350,7 +350,7 @@
                 <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
               </summary>
               <div class="answer">U nas pierwsza rozmowa jest bezpłatna, audyt kosztuje 1&nbsp;500&nbsp;zł netto i odliczamy
-                go od wdrożenia, pilot jednego procesu zaczyna się od 2&nbsp;000&nbsp;zł, a pełne wdrożenie od 5&nbsp;000&nbsp;zł.
+                go od wdrożenia, a wdrożenie zaczyna się od 5&nbsp;000&nbsp;zł.
                 Opieka po wdrożeniu kosztuje od 500&nbsp;zł miesięcznie i jest opcjonalna. Dokładną kwotę podajemy po
                 audycie, <a href="{{ROOT}}#cennik">cały cennik jest na stronie głównej</a>.</div>
             </details>
@@ -359,8 +359,7 @@
                 <h3>Ile trwa wdrożenie automatyzacji?</h3>
                 <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
               </summary>
-              <div class="answer">Audyt zajmuje około dwóch dni. Pilot działa na produkcji po 2 do 3&nbsp;tygodni.
-                Pełne wdrożenie trwa od trzech do siedmiu tygodni, zależnie od zakresu.</div>
+              <div class="answer">Audyt zajmuje około dwóch dni. Wdrożenie trwa od trzech do siedmiu tygodni, zależnie od zakresu.</div>
             </details>
             <details>
               <summary>
@@ -395,7 +394,7 @@
               </summary>
               <div class="answer">Wpis do systemu jest ostatnim krokiem. Wcześniej automat sprawdza komplet danych,
                 a wszystko niepewne odsyła do człowieka. Każdy wpis ma log z linkiem do źródła, więc cofnięcie to
-                jedna operacja. Wdrożenie ma 60&nbsp;dni gwarancji wyniku.</div>
+                jedna operacja. Przez 30&nbsp;dni od odbioru poprawki są w cenie.</div>
             </details>
           </div>
 
