@@ -641,6 +641,20 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .d-out.busy:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--teal);transform-origin:0 50%;animation:dgrowx 1.3s linear both}
 .slide.play .d-tool{animation:dup .5s both;animation-delay:calc(.8s + var(--i,0) * .1s)}
 
+/* trzy filary (tryb mail) */
+.fil{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:30px 30px 26px;display:flex;flex-direction:column;min-height:440px}
+.fc .i{font:500 14px/1 var(--mono);color:var(--teal-ink);letter-spacing:.1em;text-transform:uppercase}
+.fc h3{font:700 34px/1.1 var(--display);letter-spacing:-.02em;margin-top:16px;text-wrap:balance}
+.fc p{font-size:19.5px;line-height:1.48;color:#34475A;margin-top:12px}
+.fc .ex{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-2);font-size:16.5px;line-height:1.45;color:var(--muted)}
+.fc .ex b{color:var(--ink);font-weight:600}
+.fil-foot{margin-top:40px;font:600 22px/1.3 var(--display);color:var(--navy)}
+.slide.play .fc{animation:dup .6s cubic-bezier(.3,.6,.2,1) both}
+.slide.play .fc:nth-child(2){animation-delay:.15s}
+.slide.play .fc:nth-child(3){animation-delay:.3s}
+.d-grp{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);padding:12px 10px 4px}
+
 /* tygodnie wdrożenia jak harmonogram */
 .wk{margin-top:26px;display:grid;grid-template-columns:420px repeat(4,1fr);align-items:center}
 .wh{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 0 12px 12px;border-left:1px dashed var(--line)}
@@ -762,6 +776,12 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .d-tools{grid-template-columns:1fr}
   .d-tool{min-height:0}
   .dash-foot{font-size:16px}
+  .fil{grid-template-columns:1fr;gap:12px;margin-top:24px}
+  .fc{min-height:0}
+  .fc h3{font-size:25px}
+  .fc p{font-size:16.5px}
+  .fil-foot{font-size:19px}
+  .d-grp{display:none}
   .wk{grid-template-columns:repeat(4,1fr);margin-top:24px}
   .wk>span:first-child{display:none}
   .wh{font-size:10px;padding:0 0 8px 6px;letter-spacing:.04em}
@@ -995,64 +1015,36 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 </section>
 
 <!-- 3 -->
-<section id="s3" class="slide s-sec" data-kind="security" aria-label="Bezpieczeństwo danych">
-  <div class="eyebrow">Bezpieczeństwo danych</div>
-  <h2 class="h2">Sami decydujecie, jak daleko wychodzą Wasze dane</h2>
-  <div class="sec-steps">
-    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane wychodzą z firmy do modelu i zostają u dostawcy"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><path class="st" d="M150 72H180M150 78H180"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 1</span><h3>Czat w&nbsp;przeglądarce</h3><p>Najprostszy start. Rozmowy zostają na koncie u&nbsp;dostawcy, a&nbsp;od ustawień zależy, czy posłużą do uczenia modelu.</p><div class="sec-tags"><span class="no">poza firmą</span><span class="no">zapisywane</span><span class="no">może uczyć model</span></div></div><div class="sec-riser"></div></div>
-    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane idą do modelu szyfrowanym łączem i nie są zapisywane"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="lkb" x="96" y="56" width="14" height="11" rx="2"/><path class="lk" d="M99 56V52Q103 46 107 52V56"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 2</span><h3>API z&nbsp;wyłączonym zapisem</h3><p>Łączymy się z&nbsp;modelem bezpośrednio. Dostawca nie uczy na tym modelu, a&nbsp;przy zero data retention nie przechowuje zapytań po odpowiedzi.</p><div class="sec-tags"><span class="no">poza firmą</span><span class="ok">bez zapisu</span><span class="ok">bez uczenia</span></div></div><div class="sec-riser"></div></div>
-    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane idą do modelu, który działa w Unii Europejskiej"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="eu" x="1" y="8" width="198" height="92" rx="14"/><text class="te" x="100" y="22" text-anchor="middle">UE</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="lkb" x="96" y="56" width="14" height="11" rx="2"/><path class="lk" d="M99 56V52Q103 46 107 52V56"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 3</span><h3>Amazon Bedrock w&nbsp;Unii</h3><p>Te same modele na serwerach Amazona w&nbsp;Unii Europejskiej. Dane nie wyjeżdżają z&nbsp;UE, nikt ich nie zapisuje ani na nich nie uczy.</p><div class="sec-tags"><span class="ok">dane w&nbsp;UE</span><span class="ok">bez zapisu</span><span class="ok">bez uczenia</span></div></div><div class="sec-riser"></div></div>
-    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane wrażliwe zostają u Was, na zewnątrz idą same znaczniki"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="loc" x="16" y="48" width="22" height="20" rx="3"/><circle class="dot" cx="27" cy="58" r="4"/><rect class="tok go" x="46" y="51" width="16" height="14" rx="2"/></svg><span class="sec-n">Poziom 4</span><h3>Pseudonimizacja u&nbsp;Was</h3><p>Mały model na Waszym serwerze podmienia nazwy firm, NIP-y i&nbsp;kwoty na znaczniki. Na zewnątrz idzie sam tekst, a&nbsp;w&nbsp;odpowiedzi znaczniki wracają na swoje miejsce.</p><div class="sec-tags"><span class="ok">wrażliwe zostają u&nbsp;Was</span><span class="ok">pełna moc modelu</span></div></div><div class="sec-riser"></div></div>
-    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Model działa w Waszej firmie, nic nie wychodzi na zewnątrz"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="loc" x="40" y="44" width="24" height="28" rx="4"/><text class="tx" x="38" y="100" text-anchor="middle">model u Was</text><circle class="dot t in" cx="16" cy="58" r="6"/><path class="ln" d="M70 58H136" style="opacity:.25"/><path class="mb" d="M150 44L180 72M180 44L150 72" style="opacity:.5"/></svg><span class="sec-n">Poziom 5</span><h3>Model w&nbsp;całości u&nbsp;Was</h3><p>Model działa na Waszym sprzęcie. Nic nie wychodzi poza firmę. Mniejszy model i&nbsp;koszt serwera, ale pełna kontrola.</p><div class="sec-tags"><span class="ok">nic nie wychodzi</span><span>własny serwer</span></div></div><div class="sec-riser"></div></div>
+<section id="s3" class="slide s-fil" data-kind="pillars" aria-label="Czym się zajmujemy">
+  <div class="eyebrow">Czym się zajmujemy</div>
+  <h2 class="h2">Trzy rodzaje wdrożeń, jeden panel</h2>
+  <div class="fil">
+    <div class="fc">
+      <span class="i">01 · Automatyzacje</span>
+      <h3>Robota, która dzieje się sama</h3>
+      <p>Zamówienia z&nbsp;maili trafiają do systemu, faktury do właściwych budżetów, przypomnienia wychodzą na czas. Gdzie wystarczą reguły, działają reguły. Gdzie trzeba przeczytać mail albo załącznik, czyta AI.</p>
+      <div class="ex"><b>Eticod</b>, drukarnia etykiet: zamówienia z&nbsp;maili same zakładają się w&nbsp;ERP, do zespołu wróciło około 160 godzin miesięcznie.</div>
+    </div>
+    <div class="fc">
+      <span class="i">02 · Narzędzia dla zespołu</span>
+      <h3>AI przygotowuje pierwszą wersję</h3>
+      <p>Oferta, prezentacja dla klienta, odpowiedź na reklamację, post na LinkedIn. Pracownik klika, AI przygotowuje szkic, a&nbsp;człowiek go poprawia i&nbsp;wysyła.</p>
+      <div class="ex"><b>Agencja nieruchomości</b> z&nbsp;Hiszpanii: AI co rano mówi handlowcowi, do kogo wrócić, i&nbsp;handlowiec prowadzi trzy razy więcej klientów.</div>
+    </div>
+    <div class="fc">
+      <span class="i">03 · Raportowanie</span>
+      <h3>Liczby z&nbsp;kilku miejsc w&nbsp;jednym widoku</h3>
+      <p>Zbieramy dane z&nbsp;poczty, Excela i&nbsp;Waszych programów, łączymy je i&nbsp;pokazujemy to, czego dziś nie widać w&nbsp;żadnym z&nbsp;nich osobno.</p>
+      <div class="ex"><b>Art-Tim</b>, podwykonawca kurierski: koszt części widać przy każdym aucie i&nbsp;od tego czasu zakupy spadły.</div>
+    </div>
   </div>
-  <div class="sec-axis"><span>mniej kontroli</span><i></i><span>więcej kontroli</span></div>
-  <p class="sec-foot"><b>Poziom dobieramy do rodzaju danych.</b> Dane klientów i&nbsp;dokumenty szkód mogą przechodzić przez pseudonimizację u&nbsp;Was albo zostać w&nbsp;Unii, a&nbsp;zestawienia rezerwacji bez nazwisk mogą iść przez API bez zapisu.</p>
+  <p class="fil-foot">Wszystkie trzy spotykają się w&nbsp;jednym panelu&nbsp;→</p>
 </section>
 
 <!-- 4 -->
-<section id="s4" class="slide s-gfacts" data-kind="gfacts" aria-label="Z tym wchodzicie w kolejny rok">
-  <div class="eyebrow">Z&nbsp;onerent.pl i&nbsp;Waszych aktualności</div>
-  <h2 class="h2">Z&nbsp;tym wchodzicie w&nbsp;kolejny rok</h2>
-  <div class="gf4">
-    <div class="gfc"><div class="n">43</div><h3>oddziały w&nbsp;całej Polsce</h3><p>Na stronie głównej wymieniacie 43 oddziały, od Szczecina po Zamość, a&nbsp;Tarnów czeka na otwarcie. Wszystkie mają jedną infolinię i&nbsp;jeden adres do rezerwacji.</p><div class="gsrc">onerent.pl, lista oddziałów na stronie głównej</div></div>
-    <div class="gfc"><div class="n">3000</div><h3>nowych aut we flocie</h3><p>Od Yarisa po Porsche i&nbsp;Sprintera, w&nbsp;sześciu klasach, na dni i&nbsp;na miesiące. Segment Premium rozbudowujecie razem z&nbsp;autoryzowanymi partnerami.</p><div class="gsrc">onerent.pl, strona główna i&nbsp;aktualność „Flota OneRent rośnie”</div></div>
-    <div class="gfc"><div class="n">100&nbsp;000</div><h3>zrealizowanych rezerwacji</h3><p>Ten próg ogłosiliście w&nbsp;czerwcu. Piszecie, że najwięcej wynajmów przypada od maja do końca wakacji.</p><div class="gsrc">onerent.pl/aktualnosci, „100 000 rezerwacji” i&nbsp;„Flota gotowa na sezon 2026”</div></div>
-    <div class="gfc"><div class="n">24/7</div><h3>infolinia i&nbsp;osobne numery</h3><p>Obok rezerwacji online macie całodobową infolinię, osobny numer do wynajmu średnioterminowego i&nbsp;formularz z&nbsp;zapytaniem o&nbsp;ofertę dla firm.</p><div class="gsrc">onerent.pl/kontakt i&nbsp;strona główna</div></div>
-  </div>
-  <p class="gbar"><b>Od czego teraz zależy wzrost:</b> ile zapytań firmowych zamienicie w&nbsp;umowy, ilu z&nbsp;100&nbsp;000 klientów wróci i&nbsp;ilu klientów biorących auto na kilka dni przejdzie na wynajem na miesiące.</p>
-</section>
-
-<!-- 5 -->
-<section id="s5" class="slide s-lev" data-kind="levers" aria-label="Trzy rzeczy, od których zależy wzrost">
-  <div class="eyebrow">Gdzie da się rosnąć</div>
-  <h2 class="h2">Trzy rzeczy, od których zależy wzrost wypożyczalni</h2>
-  <div class="lev">
-    <div class="lv">
-      <div class="lv-top"><span class="i">01</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 34L22 30L42 31L62 22L82 18L102 9L118 4"/></svg></div>
-      <h3>Zapytania firmowe zamienione w&nbsp;umowy</h3>
-      <p>Organizator konferencji pyta formularzem o&nbsp;12 aut na trzy dni w&nbsp;Warszawie. AI czyta zapytanie, nawet napisane byle jak, sprawdza wolne klasy w&nbsp;najbliższych oddziałach i&nbsp;pisze ofertę tego samego dnia. Cenę i&nbsp;rabat ustala handlowiec.</p>
-      <span class="chip">mierzymy: oferty w&nbsp;24&nbsp;h i&nbsp;umowy w&nbsp;kwartale</span>
-    </div>
-    <div class="lv">
-      <div class="lv-top"><span class="i">02</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 20L22 19L42 21L62 18L82 19L102 17L118 16"/><path class="lim" d="M2 14H118"/></svg></div>
-      <h3>Klienci, którzy wracają</h3>
-      <p>Ten sam klient bierze auto na wakacje, na wyjazd służbowy i&nbsp;na przeprowadzkę. Po zwrocie i&nbsp;przed sezonem AI pisze mu propozycję pod to, co wynajmował wcześniej, a&nbsp;firmy, które ucichły, daje opiekunowi do telefonu. Wiadomości idą tylko do osób ze zgodą.</p>
-      <span class="chip">mierzymy: rezerwacje od powracających</span>
-    </div>
-    <div class="lv">
-      <div class="lv-top"><span class="i">03</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 30L22 30L42 24L62 24L82 16L102 16L118 8"/></svg></div>
-      <h3>Z&nbsp;wynajmu na dni na wynajem na miesiące</h3>
-      <p>Firma bierze dostawczaka co tydzień na kilka dni, a&nbsp;o&nbsp;wynajmie średnioterminowym nikt jej nie powiedział. AI wyłapuje takich klientów w&nbsp;historii rezerwacji i&nbsp;przygotowuje dla opiekuna wyliczenie dni i&nbsp;propozycję wynajmu na miesiąc. Ofertę i&nbsp;rozmowę prowadzi opiekun.</p>
-      <span class="chip">mierzymy: przejścia na wynajem na miesiące</span>
-    </div>
-  </div>
-  <p class="lev-foot">Zaczynamy od pierwszej. To, że działa, zobaczycie w&nbsp;panelu&nbsp;→</p>
-</section>
-
-<!-- 6 -->
-<section id="s6" class="slide tint s-dash" data-kind="dash" aria-label="Przykład: panel firmy na zmyślonych danych">
+<section id="s4" class="slide tint s-dash" data-kind="dash" aria-label="Przykład: panel firmy na zmyślonych danych">
   <div class="eyebrow">Przykład na zmyślonych danych · kliknijcie</div>
-  <h2 class="h2">Tak widzicie, że to działa</h2>
+  <h2 class="h2">Wszystkie trzy w&nbsp;jednym miejscu</h2>
   <div class="dash" id="dash"></div>
   <p class="dash-foot"><b>Panel jest w&nbsp;cenie wdrożenia.</b> W&nbsp;Narzędziach AI pisze oferty i&nbsp;odpowiedzi na reklamacje, kliknijcie którekolwiek. Dane są zmyślone.</p>
   <!--
@@ -1074,7 +1066,47 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
     Bursztyn tylko na to, czego człowiek ma dopilnować (brak, przekroczenie, termin, automat ze statusem uwaga). Najwyżej 2 takie miejsca na zakładkę.
     Narzędzia to rzeczy, po które pracownik sięga sam, jak w Panelu Fluinty (prezentacja, szkic pisma, zestawienie, pytanie do dokumentów), nie kolejne automaty.
   -->
-  <script type="application/json" id="panel-dane">{"firma": "One Rent", "podpis": "panel firmy", "aktualizacja": "dziś, 7:00", "okresy": [{"id": "q", "nazwa": "Kwartał", "opis": "ostatni kwartał"}, {"id": "y", "nazwa": "12 miesięcy", "opis": "ostatnie 12 miesięcy"}], "kpi": {"q": [{"v": "2 z 3", "u": null, "l": "automatów działa bez błędów", "d": "1 do sprawdzenia", "uwaga": true}, {"v": "1 790", "u": null, "l": "zadań wykonanych przez automaty", "d": "kwartał wcześniej: 1 480"}, {"v": "168", "u": "h", "l": "pracy wróciło do zespołu", "d": "średnio 0,35 etatu miesięcznie"}, {"v": "3 840", "u": null, "l": "rezerwacji od powracających klientów", "d": "rok temu: 2 910"}], "y": [{"v": "2 z 3", "u": null, "l": "automatów działa bez błędów", "d": "1 do sprawdzenia", "uwaga": true}, {"v": "6 383", "u": null, "l": "zadań wykonanych przez automaty", "d": "średnio 532 miesięcznie"}, {"v": "640", "u": "h", "l": "pracy wróciło do zespołu", "d": "średnio 0,33 etatu miesięcznie"}, {"v": "13 920", "u": null, "l": "rezerwacji od powracających klientów", "d": "rok wcześniej: 10 380"}]}, "zakladki": [{"id": "automaty", "nazwa": "Automaty", "ikona": "automat", "odznaka": "1", "bloki": [{"typ": "automaty", "tytul": null, "wiersze": [{"nazwa": "Zapytania firmowe do oferty", "opis": "AI czyta zapytanie, sprawdza wolne auta w oddziałach i pisze szkic oferty dla handlowca", "status": "uwaga", "wykonania": {"q": 214, "y": 802}, "ostatnio": "dziś, 9:47", "problem": "2 zapytania na ponad 20 aut, czekają na handlowca"}, {"nazwa": "Klienci, którzy wracają", "opis": "po zwrocie auta i przed sezonem AI pisze propozycję pod historię wynajmów", "status": "dziala", "wykonania": {"q": 1480, "y": 5210}, "ostatnio": "dziś, 8:00", "problem": null}, {"nazwa": "Kandydaci na wynajem na miesiące", "opis": "wyłapuje klientów, którzy biorą auto co tydzień, i daje ich opiekunowi wynajmu średnioterminowego", "status": "dziala", "wykonania": {"q": 96, "y": 371}, "ostatnio": "wczoraj, 18:00", "problem": null}]}, {"typ": "lista", "tytul": "Ostatnie zadania automatów", "wiersze": [{"tytul": "Szkic oferty: 12 aut na 3 dni, konferencja w Warszawie", "kolumny": ["zapytania", "dziś, 9:47"], "pasek": null, "uwaga": null}, {"tytul": "Propozycja na sezon zimowy dla 340 klientów", "kolumny": ["powroty", "dziś, 8:00"], "pasek": null, "uwaga": null}, {"tytul": "Firma Przykładowa Budowy: 4 tygodnie z rzędu po 3 dni", "kolumny": ["na miesiące", "wczoraj, 18:00"], "pasek": null, "uwaga": null}]}]}, {"id": "narzedzia", "nazwa": "Narzędzia", "ikona": "narzedzie", "odznaka": null, "bloki": [{"typ": "narzedzia", "tytul": null, "wiersze": [{"nazwa": "Oferta na wydarzenie", "dla": "dział firmowy", "opis": "Podajesz miasto, termin i liczbę aut, dostajesz ofertę z klasami, które są wtedy wolne.", "uzycia": {"q": 38, "y": 131}, "przycisk": "Przygotuj", "wynik": "Gotowe: 14 aut na 3 dni w Warszawie, w tym 5 Premium. Plik oferta_konferencja.pdf, ceny wpisujesz Ty."}, {"nazwa": "Zdjęcia przy zwrocie auta", "dla": "pracownik oddziału", "opis": "Robisz zdjęcia telefonem, dostajesz porównanie z protokołem wydania i listę nowych uszkodzeń.", "uzycia": {"q": 2140, "y": 7980}, "przycisk": "Wgraj zdjęcia", "wynik": "Porównanie gotowe: 1 nowe zarysowanie, tylne prawe drzwi. Protokół czeka na podpis klienta."}, {"nazwa": "Odpowiedź na reklamację", "dla": "obsługa klienta", "opis": "Wklejasz reklamację, dostajesz szkic odpowiedzi z odwołaniem do protokołu zwrotu i warunków najmu.", "uzycia": {"q": 64, "y": 233}, "przycisk": "Napisz szkic", "wynik": "Szkic gotowy: 1 strona, 2 zdjęcia z protokołu zwrotu. Przeczytaj, zanim wyślesz."}, {"nazwa": "Pytanie do umów", "dla": "cały zespół", "opis": "Pytasz zwykłym językiem, dostajesz odpowiedź ze wskazaniem punktu w umowie albo warunkach najmu.", "uzycia": {"q": 410, "y": 1520}, "przycisk": "Zapytaj", "wynik": "Firma Przykładowa ma limit 4 000 km miesięcznie na auto. Umowa ramowa, §5 ust. 1, str. 3."}]}]}, {"id": "rezerwacje", "nazwa": "Rezerwacje", "ikona": "wykres", "odznaka": null, "bloki": [{"typ": "wykres", "tytul": "Rezerwacje miesiąc po miesiącu, w tysiącach", "serie": ["wszystkie", "od powracających klientów"], "etykiety": ["lis", "gru", "sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź"], "dane": [[2.9, 3.1, 2.7, 2.8, 3.2, 3.6, 4.4, 4.9, 5.6, 5.8, 4.1, 3.6], [0.8, 0.9, 0.8, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.7, 1.3, 1.2]], "ostatnie": {"q": 3}}, {"typ": "lejek", "tytul": "Zapytania firmowe i eventowe", "etapy": ["zapytania", "oferta w 24 h", "umowa", "kolejne zlecenie"], "dane": {"q": [214, 198, 61, 27], "y": [802, 731, 224, 98]}}, {"typ": "lista", "tytul": "Klienci firmowi, którzy ucichli", "wiersze": [{"tytul": "Agencja Przykładowa Eventy", "kolumny": ["ostatnio 61 dni temu", "zwykle co 30 dni"], "pasek": 88, "uwaga": null}, {"tytul": "Przykład Logistyka sp. z o.o.", "kolumny": ["ostatnio 45 dni temu", "zwykle co 21 dni"], "pasek": 81, "uwaga": null}, {"tytul": "Firma Przykładowa Serwis", "kolumny": ["ostatnio 92 dni temu", "zwykle co 40 dni"], "pasek": null, "uwaga": "opiekun zmienił się we wrześniu, nikt nie dzwonił"}]}]}, {"id": "oddzialy", "nazwa": "Oddziały", "ikona": "budynek", "odznaka": null, "bloki": [{"typ": "tabela", "kolumny": ["Oddział", "Obłożenie floty", "Popyt na 14 dni wobec aut", "Powracający klienci"], "wiersze": [{"tytul": "Oddział A, lotnisko", "opis": null, "komorki": [{"pasek": 91, "tekst": "91%"}, {"pasek": 97, "limit": 100, "tekst": "97%"}, {"tekst": "34%"}], "uwaga": false}, {"tytul": "Oddział B, centrum", "opis": "9 rezerwacji SUV na weekend, w oddziale 4 auta", "komorki": [{"pasek": 88, "tekst": "88%"}, {"pasek": 112, "limit": 100, "tekst": "112%"}, {"tekst": "29%"}], "uwaga": true}, {"tytul": "Oddział C, nad morzem", "opis": null, "komorki": [{"pasek": 79, "tekst": "79%"}, {"pasek": 93, "limit": 100, "tekst": "93%"}, {"tekst": "22%"}], "uwaga": false}, {"tytul": "Oddział D, przy dworcu", "opis": null, "komorki": [{"pasek": 64, "tekst": "64%"}, {"pasek": 71, "limit": 100, "tekst": "71%"}, {"tekst": "31%"}], "uwaga": false}, {"tytul": "Oddział E, strefa przemysłowa", "opis": null, "komorki": [{"pasek": 83, "tekst": "83%"}, {"pasek": 95, "limit": 100, "tekst": "95%"}, {"tekst": "41%"}], "uwaga": false}]}]}]}</script>
+  <script type="application/json" id="panel-dane">{"firma": "One Rent", "podpis": "panel firmy", "aktualizacja": "dziś, 7:00", "okresy": [{"id": "q", "nazwa": "Kwartał", "opis": "ostatni kwartał"}, {"id": "y", "nazwa": "12 miesięcy", "opis": "ostatnie 12 miesięcy"}], "kpi": {"q": [{"v": "2 z 3", "u": null, "l": "automatyzacji działa bez błędów", "d": "1 do sprawdzenia", "uwaga": true}, {"v": "1 790", "u": null, "l": "zadań wykonanych przez automatyzacje", "d": "kwartał wcześniej: 1 480"}, {"v": "168", "u": "h", "l": "pracy wróciło do zespołu", "d": "średnio 0,35 etatu miesięcznie"}, {"v": "3 840", "u": null, "l": "rezerwacji od powracających klientów", "d": "rok temu: 2 910"}], "y": [{"v": "2 z 3", "u": null, "l": "automatyzacji działa bez błędów", "d": "1 do sprawdzenia", "uwaga": true}, {"v": "6 383", "u": null, "l": "zadań wykonanych przez automatyzacje", "d": "średnio 532 miesięcznie"}, {"v": "640", "u": "h", "l": "pracy wróciło do zespołu", "d": "średnio 0,33 etatu miesięcznie"}, {"v": "13 920", "u": null, "l": "rezerwacji od powracających klientów", "d": "rok wcześniej: 10 380"}]}, "zakladki": [{"id": "automaty", "nazwa": "Automatyzacje", "ikona": "automat", "odznaka": "1", "bloki": [{"typ": "automaty", "tytul": null, "wiersze": [{"nazwa": "Zapytania firmowe do oferty", "opis": "AI czyta zapytanie, sprawdza wolne auta w oddziałach i pisze szkic oferty dla handlowca", "status": "uwaga", "wykonania": {"q": 214, "y": 802}, "ostatnio": "dziś, 9:47", "problem": "2 zapytania na ponad 20 aut, czekają na handlowca"}, {"nazwa": "Klienci, którzy wracają", "opis": "po zwrocie auta i przed sezonem AI pisze propozycję pod historię wynajmów", "status": "dziala", "wykonania": {"q": 1480, "y": 5210}, "ostatnio": "dziś, 8:00", "problem": null}, {"nazwa": "Kandydaci na wynajem na miesiące", "opis": "wyłapuje klientów, którzy biorą auto co tydzień, i daje ich opiekunowi wynajmu średnioterminowego", "status": "dziala", "wykonania": {"q": 96, "y": 371}, "ostatnio": "wczoraj, 18:00", "problem": null}]}, {"typ": "lista", "tytul": "Ostatnie zadania", "wiersze": [{"tytul": "Szkic oferty: 12 aut na 3 dni, konferencja w Warszawie", "kolumny": ["zapytania", "dziś, 9:47"], "pasek": null, "uwaga": null}, {"tytul": "Propozycja na sezon zimowy dla 340 klientów", "kolumny": ["powroty", "dziś, 8:00"], "pasek": null, "uwaga": null}, {"tytul": "Firma Przykładowa Budowy: 4 tygodnie z rzędu po 3 dni", "kolumny": ["na miesiące", "wczoraj, 18:00"], "pasek": null, "uwaga": null}]}]}, {"id": "narzedzia", "nazwa": "Narzędzia", "ikona": "narzedzie", "odznaka": null, "bloki": [{"typ": "narzedzia", "tytul": null, "wiersze": [{"nazwa": "Oferta na wydarzenie", "dla": "dział firmowy", "opis": "Podajesz miasto, termin i liczbę aut, dostajesz ofertę z klasami, które są wtedy wolne.", "uzycia": {"q": 38, "y": 131}, "przycisk": "Przygotuj", "wynik": "Gotowe: 14 aut na 3 dni w Warszawie, w tym 5 Premium. Plik oferta_konferencja.pdf, ceny wpisujesz Ty."}, {"nazwa": "Zdjęcia przy zwrocie auta", "dla": "pracownik oddziału", "opis": "Robisz zdjęcia telefonem, dostajesz porównanie z protokołem wydania i listę nowych uszkodzeń.", "uzycia": {"q": 2140, "y": 7980}, "przycisk": "Wgraj zdjęcia", "wynik": "Porównanie gotowe: 1 nowe zarysowanie, tylne prawe drzwi. Protokół czeka na podpis klienta."}, {"nazwa": "Odpowiedź na reklamację", "dla": "obsługa klienta", "opis": "Wklejasz reklamację, dostajesz szkic odpowiedzi z odwołaniem do protokołu zwrotu i warunków najmu.", "uzycia": {"q": 64, "y": 233}, "przycisk": "Napisz szkic", "wynik": "Szkic gotowy: 1 strona, 2 zdjęcia z protokołu zwrotu. Przeczytaj, zanim wyślesz."}, {"nazwa": "Pytanie do umów", "dla": "cały zespół", "opis": "Pytasz zwykłym językiem, dostajesz odpowiedź ze wskazaniem punktu w umowie albo warunkach najmu.", "uzycia": {"q": 410, "y": 1520}, "przycisk": "Zapytaj", "wynik": "Firma Przykładowa ma limit 4 000 km miesięcznie na auto. Umowa ramowa, §5 ust. 1, str. 3."}]}]}, {"id": "rezerwacje", "nazwa": "Rezerwacje", "ikona": "wykres", "odznaka": null, "bloki": [{"typ": "wykres", "tytul": "Rezerwacje miesiąc po miesiącu, w tysiącach", "serie": ["wszystkie", "od powracających klientów"], "etykiety": ["lis", "gru", "sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź"], "dane": [[2.9, 3.1, 2.7, 2.8, 3.2, 3.6, 4.4, 4.9, 5.6, 5.8, 4.1, 3.6], [0.8, 0.9, 0.8, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.7, 1.3, 1.2]], "ostatnie": {"q": 3}}, {"typ": "lejek", "tytul": "Zapytania firmowe i eventowe", "etapy": ["zapytania", "oferta w 24 h", "umowa", "kolejne zlecenie"], "dane": {"q": [214, 198, 61, 27], "y": [802, 731, 224, 98]}}, {"typ": "lista", "tytul": "Klienci firmowi, którzy ucichli", "wiersze": [{"tytul": "Agencja Przykładowa Eventy", "kolumny": ["ostatnio 61 dni temu", "zwykle co 30 dni"], "pasek": 88, "uwaga": null}, {"tytul": "Przykład Logistyka sp. z o.o.", "kolumny": ["ostatnio 45 dni temu", "zwykle co 21 dni"], "pasek": 81, "uwaga": null}, {"tytul": "Firma Przykładowa Serwis", "kolumny": ["ostatnio 92 dni temu", "zwykle co 40 dni"], "pasek": null, "uwaga": "opiekun zmienił się we wrześniu, nikt nie dzwonił"}]}], "grupa": "Raporty"}, {"id": "oddzialy", "nazwa": "Oddziały", "ikona": "budynek", "odznaka": null, "bloki": [{"typ": "tabela", "kolumny": ["Oddział", "Obłożenie floty", "Popyt na 14 dni wobec aut", "Powracający klienci"], "wiersze": [{"tytul": "Oddział A, lotnisko", "opis": null, "komorki": [{"pasek": 91, "tekst": "91%"}, {"pasek": 97, "limit": 100, "tekst": "97%"}, {"tekst": "34%"}], "uwaga": false}, {"tytul": "Oddział B, centrum", "opis": "9 rezerwacji SUV na weekend, w oddziale 4 auta", "komorki": [{"pasek": 88, "tekst": "88%"}, {"pasek": 112, "limit": 100, "tekst": "112%"}, {"tekst": "29%"}], "uwaga": true}, {"tytul": "Oddział C, nad morzem", "opis": null, "komorki": [{"pasek": 79, "tekst": "79%"}, {"pasek": 93, "limit": 100, "tekst": "93%"}, {"tekst": "22%"}], "uwaga": false}, {"tytul": "Oddział D, przy dworcu", "opis": null, "komorki": [{"pasek": 64, "tekst": "64%"}, {"pasek": 71, "limit": 100, "tekst": "71%"}, {"tekst": "31%"}], "uwaga": false}, {"tytul": "Oddział E, strefa przemysłowa", "opis": null, "komorki": [{"pasek": 83, "tekst": "83%"}, {"pasek": 95, "limit": 100, "tekst": "95%"}, {"tekst": "41%"}], "uwaga": false}]}], "grupa": "Raporty"}]}</script>
+</section>
+
+<!-- 5 -->
+<section id="s5" class="slide s-gfacts" data-kind="gfacts" aria-label="Z tym wchodzicie w kolejny rok">
+  <div class="eyebrow">Z&nbsp;onerent.pl i&nbsp;Waszych aktualności</div>
+  <h2 class="h2">Z&nbsp;tym wchodzicie w&nbsp;kolejny rok</h2>
+  <div class="gf4">
+    <div class="gfc"><div class="n">43</div><h3>oddziały w&nbsp;całej Polsce</h3><p>Na stronie głównej wymieniacie 43 oddziały, od Szczecina po Zamość, a&nbsp;Tarnów czeka na otwarcie. Wszystkie mają jedną infolinię i&nbsp;jeden adres do rezerwacji.</p><div class="gsrc">onerent.pl, lista oddziałów na stronie głównej</div></div>
+    <div class="gfc"><div class="n">3000</div><h3>nowych aut we flocie</h3><p>Od Yarisa po Porsche i&nbsp;Sprintera, w&nbsp;sześciu klasach, na dni i&nbsp;na miesiące. Segment Premium rozbudowujecie razem z&nbsp;autoryzowanymi partnerami.</p><div class="gsrc">onerent.pl, strona główna i&nbsp;aktualność „Flota OneRent rośnie”</div></div>
+    <div class="gfc"><div class="n">100&nbsp;000</div><h3>zrealizowanych rezerwacji</h3><p>Ten próg ogłosiliście w&nbsp;czerwcu. Piszecie, że najwięcej wynajmów przypada od maja do końca wakacji.</p><div class="gsrc">onerent.pl/aktualnosci, „100 000 rezerwacji” i&nbsp;„Flota gotowa na sezon 2026”</div></div>
+    <div class="gfc"><div class="n">24/7</div><h3>infolinia i&nbsp;osobne numery</h3><p>Obok rezerwacji online macie całodobową infolinię, osobny numer do wynajmu średnioterminowego i&nbsp;formularz z&nbsp;zapytaniem o&nbsp;ofertę dla firm.</p><div class="gsrc">onerent.pl/kontakt i&nbsp;strona główna</div></div>
+  </div>
+  <p class="gbar"><b>Od czego teraz zależy wzrost:</b> ile zapytań firmowych zamienicie w&nbsp;umowy, ilu z&nbsp;100&nbsp;000 klientów wróci i&nbsp;ilu klientów biorących auto na kilka dni przejdzie na wynajem na miesiące.</p>
+</section>
+
+<!-- 6 -->
+<section id="s6" class="slide s-lev" data-kind="levers" aria-label="Trzy rzeczy, od których zależy wzrost">
+  <div class="eyebrow">Gdzie da się rosnąć</div>
+  <h2 class="h2">Trzy rzeczy, od których zależy wzrost wypożyczalni</h2>
+  <div class="lev">
+    <div class="lv">
+      <div class="lv-top"><span class="i">01 · narzędzie</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 34L22 30L42 31L62 22L82 18L102 9L118 4"/></svg></div>
+      <h3>Zapytania firmowe zamienione w&nbsp;umowy</h3>
+      <p>Organizator konferencji pyta formularzem o&nbsp;12 aut na trzy dni w&nbsp;Warszawie. Handlowiec klika, a&nbsp;AI czyta zapytanie, nawet napisane byle jak, sprawdza wolne klasy w&nbsp;najbliższych oddziałach i&nbsp;pisze ofertę tego samego dnia. Cenę i&nbsp;rabat ustala handlowiec.</p>
+      <span class="chip">mierzymy: oferty w&nbsp;24&nbsp;h i&nbsp;umowy w&nbsp;kwartale</span>
+    </div>
+    <div class="lv">
+      <div class="lv-top"><span class="i">02 · automatyzacja</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 20L22 19L42 21L62 18L82 19L102 17L118 16"/><path class="lim" d="M2 14H118"/></svg></div>
+      <h3>Klienci, którzy wracają</h3>
+      <p>Ten sam klient bierze auto na wakacje, na wyjazd służbowy i&nbsp;na przeprowadzkę. Po zwrocie i&nbsp;przed sezonem AI pisze mu propozycję pod to, co wynajmował wcześniej, a&nbsp;firmy, które ucichły, daje opiekunowi do telefonu. Wiadomości idą tylko do osób ze zgodą.</p>
+      <span class="chip">mierzymy: rezerwacje od powracających</span>
+    </div>
+    <div class="lv">
+      <div class="lv-top"><span class="i">03 · raportowanie</span><svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M2 30L22 30L42 24L62 24L82 16L102 16L118 8"/></svg></div>
+      <h3>Z&nbsp;wynajmu na dni na wynajem na miesiące</h3>
+      <p>Firma bierze dostawczaka co tydzień na kilka dni, a&nbsp;o&nbsp;wynajmie średnioterminowym nikt jej nie powiedział. Raport z&nbsp;historii rezerwacji pokazuje takie firmy, a&nbsp;opiekun dostaje listę z&nbsp;wyliczeniem dni i&nbsp;propozycją wynajmu na miesiąc. Ofertę i&nbsp;rozmowę prowadzi opiekun.</p>
+      <span class="chip">mierzymy: przejścia na wynajem na miesiące</span>
+    </div>
+  </div>
+  <p class="lev-foot">Zaczynamy od jednej. Kolejne dokładamy, gdy pierwsza się sprawdzi.</p>
 </section>
 
 <!-- 7 -->
@@ -1083,11 +1115,11 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   <h2 class="h2">Trzy wdrożenia, trzy liczby</h2>
   <div class="nums">
     <div class="nc">
-      <div class="big"><span data-to="87">87</span><span class="to">→</span><span data-to="50">50</span></div>
-      <div class="unit">tys. zł miesięcznie na części, odkąd koszt widać przy każdym aucie</div>
-      <div class="who2"><b>Art-Tim</b> · podwykonawca kurierski</div>
-      <p>Flota w&nbsp;kilku miastach. Każdy zakup części kierownik regionu przypisuje do konkretnego auta, koszt widać per pojazd. Od kiedy zakupy są przypisane, koszty spadły.</p>
-      <div class="src"><span class="dot full"></span>liczba klienta, marzec do lipca 2026</div>
+      <div class="big"><span class="to f">ok.</span><span data-to="160">160</span><small>h</small></div>
+      <div class="unit">miesięcznie wróciło do zespołu</div>
+      <div class="who2"><b>Eticod</b> · drukarnia etykiet</div>
+      <p>Zamówienia przychodziły mailem w&nbsp;różnych formatach i&nbsp;trzy osoby przepisywały je do ERP. Dziś robi to automat: czyta mail i&nbsp;załącznik, sprawdza dane i&nbsp;zakłada zamówienie, także bez API. Czego nie jest pewien, odkłada do człowieka.</p>
+      <div class="src"><span class="dot half"></span>wyliczenie: 300 do&nbsp;500 zamówień po ok.&nbsp;20&nbsp;minut</div>
     </div>
     <div class="nc">
       <div class="big"><span data-to="3">3</span><small>razy</small></div>
@@ -1097,11 +1129,11 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <div class="src"><span class="dot full"></span>podana przez klienta po wdrożeniu, agent działa na produkcji</div>
     </div>
     <div class="nc">
-      <div class="big"><span class="to f">ok.</span><span data-to="160">160</span><small>h</small></div>
-      <div class="unit">miesięcznie wróciło do zespołu</div>
-      <div class="who2"><b>Eticod</b> · drukarnia etykiet</div>
-      <p>Zamówienia przychodziły mailem w&nbsp;różnych formatach i&nbsp;trzy osoby przepisywały je do ERP. Dziś robi to automat: czyta mail i&nbsp;załącznik, sprawdza dane i&nbsp;zakłada zamówienie, także bez API. Czego nie jest pewien, odkłada do człowieka.</p>
-      <div class="src"><span class="dot half"></span>wyliczenie: 300 do&nbsp;500 zamówień po ok.&nbsp;20&nbsp;minut</div>
+      <div class="big"><span data-to="87">87</span><span class="to">→</span><span data-to="50">50</span></div>
+      <div class="unit">tys. zł miesięcznie na części, odkąd koszt widać przy każdym aucie</div>
+      <div class="who2"><b>Art-Tim</b> · podwykonawca kurierski</div>
+      <p>Flota w&nbsp;kilku miastach. Każdy zakup części kierownik regionu przypisuje do konkretnego auta, koszt widać per pojazd. Od kiedy zakupy są przypisane, koszty spadły.</p>
+      <div class="src"><span class="dot full"></span>liczba klienta, marzec do lipca 2026</div>
     </div>
   </div>
   <div class="nums-foot">
@@ -1111,26 +1143,23 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 </section>
 
 <!-- 8 -->
-<section id="s8" class="slide tint s-weeks" data-kind="weeks" aria-label="Jak wdrażamy">
-  <div class="eyebrow">Jak wdrażamy</div>
-  <h2 class="h2">Pierwsze wdrożenie w&nbsp;cztery tygodnie</h2>
-  <div class="wk">
-    <span></span><span class="wh">tydzień 1</span><span class="wh">tydzień 2</span><span class="wh">tydzień 3</span><span class="wh">tydzień 4</span>
-    <div class="wl"><h3>Poznajemy Wasze dane</h3><p>Patrzymy na zapytania firmowe i&nbsp;system rezerwacji. Razem ustalamy, po jakiej liczbie poznacie, że wdrożenie działa.</p></div>
-    <div class="wb" style="grid-column:2/span 1"></div>
-    <div class="wl"><h3>Zapytania firmowe i&nbsp;rezerwacje</h3><p>Podpinamy formularz, skrzynkę działu firmowego i&nbsp;system rezerwacji. Pierwsze szkice ofert sprawdzacie na prawdziwych zapytaniach.</p></div>
-    <div class="wb" style="grid-column:3/span 1"></div>
-    <div class="wl"><h3>Panel z&nbsp;wynikiem</h3><p>Do panelu trafia raport z&nbsp;wdrożenia i&nbsp;pierwsze narzędzia AI dla działu firmowego.</p></div>
-    <div class="wb" style="grid-column:3/span 2"></div>
-    <div class="wl"><h3>Wdrożenie w&nbsp;całej firmie</h3><p>Szkolimy zespół i&nbsp;poprawiamy to, co zgrzyta. Przez 30 dni poprawki są w&nbsp;cenie.</p></div>
-    <div class="wb last" style="grid-column:5/span 1"><span class="wm">działa</span></div>
+<section id="s8" class="slide s-sec" data-kind="security" aria-label="Bezpieczeństwo danych">
+  <div class="eyebrow">Bezpieczeństwo danych</div>
+  <h2 class="h2">Sami decydujecie, jak daleko wychodzą Wasze dane</h2>
+  <div class="sec-steps">
+    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane wychodzą z firmy do modelu i zostają u dostawcy"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><path class="st" d="M150 72H180M150 78H180"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 1</span><h3>Czat w&nbsp;przeglądarce</h3><p>Najprostszy start. Rozmowy zostają na koncie u&nbsp;dostawcy, a&nbsp;od ustawień zależy, czy posłużą do uczenia modelu.</p><div class="sec-tags"><span class="no">poza firmą</span><span class="no">zapisywane</span><span class="no">może uczyć model</span></div></div><div class="sec-riser"></div></div>
+    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane idą do modelu szyfrowanym łączem i nie są zapisywane"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="lkb" x="96" y="56" width="14" height="11" rx="2"/><path class="lk" d="M99 56V52Q103 46 107 52V56"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 2</span><h3>API z&nbsp;wyłączonym zapisem</h3><p>Łączymy się z&nbsp;modelem bezpośrednio. Dostawca nie uczy na tym modelu, a&nbsp;przy zero data retention nie przechowuje zapytań po odpowiedzi.</p><div class="sec-tags"><span class="no">poza firmą</span><span class="ok">bez zapisu</span><span class="ok">bez uczenia</span></div></div><div class="sec-riser"></div></div>
+    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane idą do modelu, który działa w Unii Europejskiej"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="eu" x="1" y="8" width="198" height="92" rx="14"/><text class="te" x="100" y="22" text-anchor="middle">UE</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="lkb" x="96" y="56" width="14" height="11" rx="2"/><path class="lk" d="M99 56V52Q103 46 107 52V56"/><circle class="dot go" cx="36" cy="58" r="6"/></svg><span class="sec-n">Poziom 3</span><h3>Amazon Bedrock w&nbsp;Unii</h3><p>Te same modele na serwerach Amazona w&nbsp;Unii Europejskiej. Dane nie wyjeżdżają z&nbsp;UE, nikt ich nie zapisuje ani na nich nie uczy.</p><div class="sec-tags"><span class="ok">dane w&nbsp;UE</span><span class="ok">bez zapisu</span><span class="ok">bez uczenia</span></div></div><div class="sec-riser"></div></div>
+    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Dane wrażliwe zostają u Was, na zewnątrz idą same znaczniki"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="mb" x="136" y="30" width="58" height="56" rx="6"/><text class="tx" x="165" y="22" text-anchor="middle">model</text><path class="ln" d="M70 58H136"/><rect class="loc" x="16" y="48" width="22" height="20" rx="3"/><circle class="dot" cx="27" cy="58" r="4"/><rect class="tok go" x="46" y="51" width="16" height="14" rx="2"/></svg><span class="sec-n">Poziom 4</span><h3>Pseudonimizacja u&nbsp;Was</h3><p>Mały model na Waszym serwerze podmienia nazwy firm, NIP-y i&nbsp;kwoty na znaczniki. Na zewnątrz idzie sam tekst, a&nbsp;w&nbsp;odpowiedzi znaczniki wracają na swoje miejsce.</p><div class="sec-tags"><span class="ok">wrażliwe zostają u&nbsp;Was</span><span class="ok">pełna moc modelu</span></div></div><div class="sec-riser"></div></div>
+    <div class="sec-step"><div class="sec-card"><svg class="sec-svg" viewBox="0 0 200 104" role="img" aria-label="Model działa w Waszej firmie, nic nie wychodzi na zewnątrz"><rect class="fb" x="6" y="30" width="64" height="56" rx="6"/><text class="tw" x="38" y="22" text-anchor="middle">Wy</text><rect class="loc" x="40" y="44" width="24" height="28" rx="4"/><text class="tx" x="38" y="100" text-anchor="middle">model u Was</text><circle class="dot t in" cx="16" cy="58" r="6"/><path class="ln" d="M70 58H136" style="opacity:.25"/><path class="mb" d="M150 44L180 72M180 44L150 72" style="opacity:.5"/></svg><span class="sec-n">Poziom 5</span><h3>Model w&nbsp;całości u&nbsp;Was</h3><p>Model działa na Waszym sprzęcie. Nic nie wychodzi poza firmę. Mniejszy model i&nbsp;koszt serwera, ale pełna kontrola.</p><div class="sec-tags"><span class="ok">nic nie wychodzi</span><span>własny serwer</span></div></div><div class="sec-riser"></div></div>
   </div>
-  <p class="wk-foot">Kolejne dźwignie dokładamy dopiero wtedy, gdy pierwsza się sprawdzi. Cztery tygodnie zakładamy wtedy, gdy system rezerwacji da się podłączyć. Jeśli się nie da, mówimy o&nbsp;tym w&nbsp;pierwszym tygodniu.</p>
+  <div class="sec-axis"><span>mniej kontroli</span><i></i><span>więcej kontroli</span></div>
+  <p class="sec-foot"><b>Poziom dobieramy do rodzaju danych.</b> Dane klientów i&nbsp;dokumenty szkód mogą przechodzić przez pseudonimizację u&nbsp;Was albo zostać w&nbsp;Unii, a&nbsp;zestawienia rezerwacji bez nazwisk mogą iść przez API bez zapisu.</p>
 </section>
 
 <!-- 9 -->
-<section id="s9" class="slide s-offer" data-kind="offer" aria-label="Oferta">
-  <div class="eyebrow">Oferta</div>
+<section id="s9" class="slide s-offer" data-kind="offer" aria-label="Jak zaczynamy">
+  <div class="eyebrow">Jak zaczynamy</div>
   <h2 class="h2">Pierwsze wdrożenie dla One Rent</h2>
   <div class="offer">
     <div class="of-in">
@@ -1142,10 +1171,10 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
         <li><b>Panel firmy</b>: raport z&nbsp;wdrożenia i&nbsp;narzędzia AI dla działu firmowego, oddziałów i&nbsp;obsługi klienta</li>
         <li><b>Szkolenie zespołu</b> i&nbsp;30 dni poprawek</li>
       </ul>
-      <p class="of-then"><b>Potem, jeśli się sprawdzi:</b> klienci, którzy wracają, i&nbsp;przejście z&nbsp;wynajmu na dni na wynajem na miesiące.</p>
+      <p class="of-then"><b>Potem, jeśli się sprawdzi:</b> klienci, którzy wracają, i&nbsp;raport firm, które warto przenieść na wynajem na miesiące.</p>
     </div>
     <div class="of-pr">
-      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">od startu do działającego wdrożenia, jeśli system rezerwacji da się podłączyć</div></div>
+      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">tydzień 1: Wasze dane, tydzień 2 i&nbsp;3: wdrożenie, tydzień 4: cały zespół. Termin zakłada, że system rezerwacji da się podłączyć.</div></div>
       <div class="pr"><span class="k">Płatność</span><div class="price">etapami</div><div class="price-s">nigdy za godziny, opieka po wdrożeniu tylko jeśli chcecie</div></div>
       <div class="pr"><span class="k">Cena</span><div class="price">w&nbsp;rozmowie</div><div class="price-s">zależy od tego, co trzeba podłączyć; podajemy ją po kilku pytaniach o&nbsp;Wasze systemy</div></div>
     </div>
@@ -1177,6 +1206,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
     </div>
   </div>
 </section>
+
 
 </div>
 </main>
@@ -1317,7 +1347,8 @@ const PROWADZACY = 'Przemysław Kałuszka';
     var per=D.okresy[0].id, tab=D.zakladki[0]&&D.zakladki[0].id;
     root.innerHTML='<aside class="d-side"><div class="d-brand">'+esc(D.firma)+'<small>'+esc(D.podpis)+'</small></div>'+
       '<div class="d-tabs" role="tablist" style="--n:'+D.zakladki.length+'">'+D.zakladki.map(function(z,i){
-        return '<button type="button" class="d-tab'+(i?'':' on')+'" data-v="'+esc(z.id)+'" role="tab" aria-selected="'+(i?'false':'true')+'"><svg viewBox="0 0 20 20" aria-hidden="true">'+(IK[z.ikona]||IK.lista)+'</svg>'+esc(z.nazwa)+(z.odznaka?'<span class="d-badge">'+esc(z.odznaka)+'</span>':'')+'</button>';
+        var g=z.grupa&&(!i||D.zakladki[i-1].grupa!==z.grupa)?'<span class="d-grp">'+esc(z.grupa)+'</span>':'';
+        return g+'<button type="button" class="d-tab'+(i?'':' on')+'" data-v="'+esc(z.id)+'" role="tab" aria-selected="'+(i?'false':'true')+'"><svg viewBox="0 0 20 20" aria-hidden="true">'+(IK[z.ikona]||IK.lista)+'</svg>'+esc(z.nazwa)+(z.odznaka?'<span class="d-badge">'+esc(z.odznaka)+'</span>':'')+'</button>';
       }).join('')+'</div><div class="d-side-foot">aktualizacja: '+esc(D.aktualizacja)+'<br>dane przykładowe</div></aside>'+
       '<div class="d-main"><div class="d-bar"><span class="d-crumb"></span><div class="d-per" role="group" aria-label="Okres">'+
       D.okresy.map(function(o,i){ return '<button type="button" data-p="'+esc(o.id)+'"'+(i?'':' class="on"')+'>'+esc(o.nazwa)+'</button>'; }).join('')+
@@ -1374,7 +1405,7 @@ const PROWADZACY = 'Przemysław Kałuszka';
     var ST={dziala:'działa',uwaga:'do sprawdzenia',stoi:'wstrzymany'};
     function automaty(b){
       return '<div class="d-card full">'+(b.tytul?'<div class="d-ct">'+esc(b.tytul)+'</div>':'')+
-        '<div class="d-au h"><span>Automat</span><span>Status</span><span>Zadania</span><span>Ostatnio</span></div>'+b.wiersze.map(function(r,i){
+        '<div class="d-au h"><span>Automatyzacja</span><span>Status</span><span>Zadania</span><span>Ostatnio</span></div>'+b.wiersze.map(function(r,i){
         var st=ST[r.status]?r.status:'dziala';
         return '<div class="d-au'+(r.problem?' warn':'')+'" style="--i:'+i+'"><b>'+esc(r.nazwa)+(r.opis?'<em>'+esc(r.opis)+'</em>':'')+'</b>'+
           '<span class="d-st '+st+'"><i></i>'+ST[st]+'</span><span class="wy">'+esc(r.wykonania&&r.wykonania[per])+'</span>'+
