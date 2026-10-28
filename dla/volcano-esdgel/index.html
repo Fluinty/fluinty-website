@@ -682,7 +682,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 @keyframes dspark{from{stroke-dashoffset:200}}
 .slide.play .spark path:not(.lim){stroke-dasharray:200;animation:dspark 1.2s .5s cubic-bezier(.3,.6,.2,1) both}
 
-/* panel zarządu */
+/* panel */
 .s-dash{padding-top:58px}
 .s-dash .h2{font-size:42px;margin-top:8px}
 .dash{margin-top:16px;height:612px;display:grid;grid-template-columns:200px 1fr;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(7,40,73,.45)}
@@ -844,6 +844,15 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .d-tr.warn>span.ok{color:var(--ink)}
 .d-quiet{font:600 13.5px/1 var(--mono);color:var(--navy)!important}
 .gnote{margin-top:16px;font-size:17px;line-height:1.45;color:var(--muted);font-style:italic}
+/* wersja growth: zamiast karty z pierwszym krokiem same pytania, w dwóch kolumnach */
+.m-faq2{grid-template-columns:1fr 1fr;column-gap:72px;margin-top:40px}
+.m-faq2 div{padding:22px 0}
+.m-faq2 div:nth-last-child(2){border-bottom:1px solid var(--line)}
+.m-faq2 h3{font-size:27px}
+.m-faq2 p{font-size:19px}
+.slide.play .m-faq2 div{animation:rise .5s both}
+.slide.play .m-faq2 div:nth-child(3),.slide.play .m-faq2 div:nth-child(4){animation-delay:.12s}
+.slide.play .m-faq2 div:nth-child(5),.slide.play .m-faq2 div:nth-child(6){animation-delay:.24s}
 .slide.play .gnote{animation:fadein .6s 1s both}
 /* zamknięcie: ten sam wykrój, na metce ostatni rozmiar sprzedany */
 .m-end{position:absolute;right:104px;top:56px;width:520px;height:150px;margin:0;pointer-events:none}
@@ -868,6 +877,10 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .m-end{position:static;width:100%;max-width:400px;height:auto;aspect-ratio:520/150;margin:0 0 6px}
   .lin .tk.s{display:none}
   .gnote{font-size:15.5px}
+  .m-faq2{grid-template-columns:1fr;margin-top:24px}
+  .m-faq2 div:nth-last-child(2){border-bottom:0}
+  .m-faq2 h3{font-size:22px}
+  .m-faq2 p{font-size:17px}
 }
 </style>
 <noscript><style>
@@ -1041,14 +1054,14 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 </section>
 
 <!-- 6 -->
-<section id="s6" class="slide tint s-dash" data-kind="dash" aria-label="Przykład: panel zarządu z hurtem, kolekcją i zwrotami">
+<section id="s6" class="slide tint s-dash" data-kind="dash" aria-label="Przykład: panel z hurtem, kolekcją i zwrotami">
   <div class="dash-head">
     <div><div class="eyebrow">Przykład na zmyślonych danych · kliknijcie</div>
     <h2 class="h2">Hurt, kolekcja i&nbsp;zwroty na jednym ekranie</h2></div>
   </div>
   <div class="dash" id="dash">
     <aside class="d-side">
-      <div class="d-brand">VOLCANO<small>panel zarządu</small></div>
+      <div class="d-brand">VOLCANO</div>
       <div class="d-tabs" role="tablist">
         <button type="button" class="d-tab on" data-v="hurt" role="tab" aria-selected="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6.5L10 3l7 3.5v7L10 17l-7-3.5zM3 6.5l7 3.5 7-3.5M10 10v7"/></svg>Hurt</button>
         <button type="button" class="d-tab" data-v="kolekcja" role="tab" aria-selected="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8.2 4.6a1.8 1.8 0 1 1 2.6 1.6c-.5.3-.8.7-.8 1.2v.4M10 7.8L2.9 13.4c-.6.5-.3 1.3.5 1.3h13.2c.8 0 1.1-.8.5-1.3z"/></svg>Kolekcja<span class="d-badge">2</span></button>
@@ -1104,7 +1117,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       </div>
     </div>
   </div>
-  <p class="dash-foot"><b>Panel pokazuje, decydujecie Wy.</b> Co przesuwacie między salonami, komu dajecie zamiennik i&nbsp;co zmieniacie w&nbsp;kolekcji, zostaje u&nbsp;Was. Modele, partnerzy i&nbsp;liczby są zmyślone.</p>
+  <p class="dash-foot"><b>Dla każdego stanowiska panel może wyglądać inaczej.</b> Handlowiec widzi swoich partnerów, kierownik salonu swój salon, a&nbsp;każdy ma dostęp tylko do tych danych, których potrzebuje. Panel pokazuje, decydujecie Wy. Modele, partnerzy i&nbsp;liczby są zmyślone.</p>
 </section>
 
 <!-- 7 -->
@@ -1146,39 +1159,29 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   <h2 class="h2">Działający panel w&nbsp;cztery tygodnie</h2>
   <div class="wk">
     <span></span><span class="wh">tydzień 1</span><span class="wh">tydzień 2</span><span class="wh">tydzień 3</span><span class="wh">tydzień 4</span>
-    <div class="wl"><h3>Podpinamy dane</h3><p>Łączymy sklep, kasy w&nbsp;salonach, magazyn i&nbsp;zamówienia partnerów według ustaleń z&nbsp;audytu.</p></div>
+    <div class="wl"><h3>Poznajemy Wasze dane</h3><p>Sklep, kasy w&nbsp;salonach, magazyn, zamówienia partnerów i&nbsp;zwroty. Razem ustalamy, kto ma widzieć jakie liczby.</p></div>
     <div class="wb" style="grid-column:2/span 1"></div>
     <div class="wl"><h3>Partnerzy i&nbsp;zamówienia</h3><p>Podpinamy skrzynki hurt@ i&nbsp;export@. Pierwsze zamówienie partnera sprawdzacie na prawdziwym przykładzie.</p></div>
     <div class="wb" style="grid-column:3/span 1"></div>
     <div class="wl"><h3>Kolekcja i&nbsp;zwroty</h3><p>Sprzedaż i&nbsp;stany ze wszystkich kanałów w&nbsp;jednym widoku, powód zwrotu przy każdym modelu.</p></div>
     <div class="wb" style="grid-column:3/span 2"></div>
-    <div class="wl"><h3>Panel u&nbsp;zarządu</h3><p>Szkolimy zespół i&nbsp;poprawiamy to, co zgrzyta. Przez 30 dni poprawki są w&nbsp;cenie.</p></div>
+    <div class="wl"><h3>Panel w&nbsp;zespole</h3><p>Szkolimy zespół i&nbsp;poprawiamy to, co zgrzyta. Przez 30 dni poprawki są w&nbsp;cenie.</p></div>
     <div class="wb last" style="grid-column:5/span 1"><span class="wm">panel działa</span></div>
   </div>
   <p class="wk-foot">Potem dokładamy kolejne automaty, po jednym na miesiąc, i&nbsp;tylko wtedy, gdy poprzedni się sprawdził.</p>
 </section>
 
 <!-- 9 -->
-<section id="s9" class="slide" aria-label="Pierwszy krok i częste pytania">
-  <div class="eyebrow">Od czego zaczynamy</div>
-  <h2 class="h2">Pierwszy krok to audyt</h2>
-  <div class="m-first">
-    <div class="m-card">
-      <span class="k">Audyt</span>
-      <h3>Zwykle dwa dni robocze, na końcu dokument.</h3>
-      <ul>
-        <li>Razem z&nbsp;Wami wybieramy liczby, które zarząd chce widzieć co tydzień.</li>
-        <li>Sprawdzamy, skąd je wziąć: ze sklepu, z&nbsp;kas w&nbsp;salonach, z&nbsp;magazynu, z&nbsp;zamówień partnerów.</li>
-        <li>Piszemy, co da się zbudować w&nbsp;cztery tygodnie, a&nbsp;czego lepiej nie ruszać.</li>
-      </ul>
-      <p class="then">Jeśli z&nbsp;audytu wyjdzie, że warto, budujemy panel. Przez 30 dni od odbioru poprawki są w&nbsp;cenie.</p>
-    </div>
-    <div class="m-faq">
-      <div><h3>Czy musimy zmieniać programy?</h3><p>Nie. Panel czyta dane z&nbsp;tego, co już macie: sklepu, kas w&nbsp;salonach, magazynu i&nbsp;poczty.</p></div>
-      <div><h3>Ile to zajmie Waszym ludziom?</h3><p>Przy audycie jedną rozmowę i&nbsp;kilka eksportów z&nbsp;systemów. Resztę robimy my.</p></div>
-      <div><h3>Co z&nbsp;danymi?</h3><p>Zostają na Waszych kontach. Przed startem podpisujemy umowę powierzenia danych.</p></div>
-      <div><h3>Ile to kosztuje?</h3><p>Zależy od tego, ile źródeł danych podpinamy, więc cenę podajemy w&nbsp;rozmowie, a&nbsp;nie w&nbsp;prezentacji.</p></div>
-    </div>
+<section id="s9" class="slide" aria-label="Częste pytania">
+  <div class="eyebrow">Częste pytania</div>
+  <h2 class="h2">O&nbsp;to pytają nas najczęściej</h2>
+  <div class="m-faq m-faq2">
+    <div><h3>Od czego zaczynamy?</h3><p>Od rozmowy. W&nbsp;pierwszym tygodniu wdrożenia poznajemy Wasze dane: wystarczy jedna rozmowa i&nbsp;kilka eksportów z&nbsp;systemów, resztę robimy my.</p></div>
+    <div><h3>Czy musimy zmieniać programy?</h3><p>Nie. Panel czyta dane z&nbsp;tego, co już macie: sklepu, kas w&nbsp;salonach, magazynu i&nbsp;poczty.</p></div>
+    <div><h3>Kto co widzi w&nbsp;panelu?</h3><p>Każde stanowisko może mieć swój widok. Dostęp do danych nadajemy każdej osobie osobno i&nbsp;w&nbsp;każdej chwili możecie go odebrać.</p></div>
+    <div><h3>Co z&nbsp;danymi?</h3><p>Zostają na Waszych kontach. Przed startem podpisujemy umowę powierzenia danych.</p></div>
+    <div><h3>Co po wdrożeniu?</h3><p>Przez 30 dni od odbioru poprawki są w&nbsp;cenie. Potem możemy dalej pilnować panelu i&nbsp;automatów, jeśli chcecie.</p></div>
+    <div><h3>Ile to kosztuje?</h3><p>Zależy od tego, ile źródeł danych podpinamy, więc cenę podajemy w&nbsp;rozmowie, a&nbsp;nie w&nbsp;prezentacji.</p></div>
   </div>
 </section>
 
@@ -1214,7 +1217,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <ul>
         <li>Pytamy, które liczby chcecie widzieć co tydzień.</li>
         <li>Mówimy wprost, od której z&nbsp;trzech rzeczy warto u&nbsp;Was zacząć.</li>
-        <li>Dowiadujecie się, ile kosztuje audyt i co w nim dostaniecie.</li>
+        <li>Dowiadujecie się, ile kosztuje wdrożenie i&nbsp;od czego zaczniemy.</li>
       </ul>
       <p class="firm">Fluinty sp. z o.o., ul. Góreckiego 15/60, 40-204 Katowice, KRS 0001201664</p>
     </div>
@@ -1344,7 +1347,7 @@ const PROWADZACY = 'Przemysław Kałuszka';
   function countUp(root){ prepCount(root); runCount(root); }
   function restCount(root){ root.querySelectorAll('[data-to]').forEach(function(el){ el.classList.remove('go'); el.textContent=el.dataset.to; }); }
 
-  // panel zarządu (tryb wzrost): zmyślone dane, zakładki i okres przełączane kliknięciem, wykres rysowany z tablic
+  // panel (tryb wzrost): zmyślone dane, zakładki i okres przełączane kliknięciem, wykres rysowany z tablic
   (function(){
     var d=document.getElementById('dash'); if(!d) return;
     var MS=['lis','gru','sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź'];
