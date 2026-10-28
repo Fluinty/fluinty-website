@@ -655,6 +655,20 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .slide.play .fc:nth-child(3){animation-delay:.3s}
 .d-grp{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);padding:12px 10px 4px}
 
+/* jak zaczynamy (tryb mail): spotkanie, oferta, wdrożenie */
+.flw{margin-top:84px;display:grid;grid-template-columns:repeat(3,1fr);gap:64px}
+.fs{position:relative;border-top:3px solid var(--teal);padding-top:26px;display:flex;flex-direction:column}
+.fs.last{border-top-color:var(--navy)}
+.fs:not(.last):after{content:"";position:absolute;right:-44px;top:-9px;width:16px;height:16px;border-top:3px solid var(--teal);border-right:3px solid var(--teal);transform:rotate(45deg)}
+.fs .n{font:500 15px/1 var(--mono);color:var(--teal-ink);letter-spacing:.1em}
+.fs h3{font:700 58px/1.05 var(--display);letter-spacing:-.02em;margin-top:16px}
+.fs p{font-size:22px;line-height:1.5;color:#34475A;margin-top:16px}
+.fs .when{margin-top:24px;align-self:flex-start;font:500 13px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;background:var(--teal-soft);color:var(--teal-ink);padding:9px 12px;border-radius:4px}
+.slide.play .fs{animation:dup .6s cubic-bezier(.3,.6,.2,1) both}
+.slide.play .fs:nth-child(2){animation-delay:.2s}
+.slide.play .fs:nth-child(3){animation-delay:.4s}
+.flw-bar{margin-top:76px}
+
 /* tygodnie wdrożenia jak harmonogram */
 .wk{margin-top:26px;display:grid;grid-template-columns:420px repeat(4,1fr);align-items:center}
 .wh{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 0 12px 12px;border-left:1px dashed var(--line)}
@@ -782,6 +796,11 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .fc p{font-size:16.5px}
   .fil-foot{font-size:19px}
   .d-grp{display:none}
+  .flw{grid-template-columns:1fr;gap:34px;margin-top:28px}
+  .fs:not(.last):after{display:none}
+  .fs h3{font-size:34px}
+  .fs p{font-size:17px}
+  .flw-bar{margin-top:30px}
   .wk{grid-template-columns:repeat(4,1fr);margin-top:24px}
   .wk>span:first-child{display:none}
   .wh{font-size:10px;padding:0 0 8px 6px;letter-spacing:.04em}
@@ -1106,7 +1125,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <span class="chip">mierzymy: przejścia na wynajem na miesiące</span>
     </div>
   </div>
-  <p class="lev-foot">Zaczynamy od jednej. Kolejne dokładamy, gdy pierwsza się sprawdzi.</p>
+  <p class="lev-foot">To nasze pomysły z&nbsp;zewnątrz. Który ma u&nbsp;Was sens, sprawdzimy razem na spotkaniu.</p>
 </section>
 
 <!-- 7 -->
@@ -1158,28 +1177,30 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 </section>
 
 <!-- 9 -->
-<section id="s9" class="slide s-offer" data-kind="offer" aria-label="Jak zaczynamy">
+<section id="s9" class="slide s-flow" data-kind="flow" aria-label="Jak zaczynamy">
   <div class="eyebrow">Jak zaczynamy</div>
-  <h2 class="h2">Pierwsze wdrożenie dla One Rent</h2>
-  <div class="offer">
-    <div class="of-in">
-      <span class="k">Zaczynamy od</span>
-      <h3 class="of-h">Zapytania firmowe z&nbsp;ofertą w&nbsp;24 godziny</h3>
-      <p class="of-p">AI czyta zapytanie, nawet napisane byle jak, sprawdza wolne klasy aut w&nbsp;najbliższych oddziałach i&nbsp;pisze szkic oferty dla handlowca. Cenę i&nbsp;rabat ustala handlowiec. Poznacie po liczbie zapytań z&nbsp;ofertą w&nbsp;24 godziny i&nbsp;podpisanych umowach.</p>
-      <span class="k of-k2">W&nbsp;cenie</span>
-      <ul>
-        <li><b>Panel firmy</b>: raport z&nbsp;wdrożenia i&nbsp;narzędzia AI dla działu firmowego, oddziałów i&nbsp;obsługi klienta</li>
-        <li><b>Szkolenie zespołu</b> i&nbsp;30 dni poprawek</li>
-      </ul>
-      <p class="of-then"><b>Potem, jeśli się sprawdzi:</b> klienci, którzy wracają, i&nbsp;raport firm, które warto przenieść na wynajem na miesiące.</p>
+  <h2 class="h2">Spotkanie, oferta, wdrożenie</h2>
+  <div class="flw">
+    <div class="fs">
+      <span class="n">01</span>
+      <h3>Spotkanie</h3>
+      <p>Pół godziny online. Opowiadacie, gdzie dziś ucieka najwięcej czasu albo zleceń, a&nbsp;my pytamy, na jakich systemach pracujecie.</p>
+      <span class="when">pół godziny</span>
     </div>
-    <div class="of-pr">
-      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">tydzień 1: Wasze dane, tydzień 2 i&nbsp;3: wdrożenie, tydzień 4: cały zespół. Termin zakłada, że system rezerwacji da się podłączyć.</div></div>
-      <div class="pr"><span class="k">Płatność</span><div class="price">etapami</div><div class="price-s">nigdy za godziny, opieka po wdrożeniu tylko jeśli chcecie</div></div>
-      <div class="pr"><span class="k">Cena</span><div class="price">w&nbsp;rozmowie</div><div class="price-s">zależy od tego, co trzeba podłączyć; podajemy ją po kilku pytaniach o&nbsp;Wasze systemy</div></div>
+    <div class="fs">
+      <span class="n">02</span>
+      <h3>Oferta</h3>
+      <p>Po spotkaniu dostajecie ją na piśmie: co budujemy, w&nbsp;jakim terminie i&nbsp;za ile.</p>
+      <span class="when">kilka dni po spotkaniu</span>
+    </div>
+    <div class="fs last">
+      <span class="n">03</span>
+      <h3>Wdrożenie</h3>
+      <p>Zaczynamy od jednej rzeczy, którą razem wybierzemy. Panel jest w&nbsp;cenie, płacicie etapami, nigdy za godziny. Kolejne wdrożenia dopiero wtedy, gdy pierwsze się sprawdzi.</p>
+      <span class="when">pierwsze efekty po kilku tygodniach</span>
     </div>
   </div>
-  <p class="fine"><b>Bez osobnego audytu:</b> Wasze dane poznajemy w&nbsp;pierwszym tygodniu wdrożenia.</p>
+  <p class="gbar flw-bar"><b>Bez osobnego audytu.</b> Wszystko, czego potrzebujemy do oferty, usłyszymy na spotkaniu.</p>
 </section>
 
 <!-- 10 -->
@@ -1198,9 +1219,9 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
     <div class="m-next">
       <div class="eyebrow">Na rozmowie</div>
       <ul>
-        <li>Ustalamy, od której dźwigni zacząć i&nbsp;po czym poznacie, że działa.</li>
-        <li>Sprawdzamy, na jakich systemach pracujecie i&nbsp;od czego zależy termin wdrożenia.</li>
-        <li>Podajemy cenę wdrożenia.</li>
+        <li>Opowiadacie, gdzie dziś ucieka najwięcej czasu albo zleceń.</li>
+        <li>Mówimy, który z&nbsp;trzech filarów ma u&nbsp;Was największy sens.</li>
+        <li>Jeśli obie strony widzą sens, po rozmowie dostajecie ofertę na piśmie.</li>
       </ul>
       <p class="firm">Fluinty sp. z o.o., ul. Góreckiego 15/60, 40-204 Katowice, KRS 0001201664</p>
     </div>
