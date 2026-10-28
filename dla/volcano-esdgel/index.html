@@ -645,7 +645,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .m-photo{margin:0}
 .m-photo img{display:block;width:100%;height:206px;object-fit:cover;border:1px solid var(--line)}
 .m-photo figcaption{font:500 12.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:9px}
-/* ---------- tryb wzrost: fakty, dźwignie, panel, tygodnie (wzór: deck MANILO growth) ---------- */
+/* ---------- tryb wzrost: fakty, dźwignie, panel, tygodnie, oferta (wzór: deck MANILO growth) ---------- */
 @keyframes dgrowy{from{transform:scaleY(0)}}
 @keyframes dgrowx{from{transform:scaleX(0)}}
 @keyframes dup{from{opacity:0;transform:translateY(14px)}}
@@ -788,6 +788,27 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .s-weeks.play .wb:nth-child(9){animation-delay:.45s}
 .s-weeks.play .wb:nth-child(11){animation-delay:.7s}
 .s-weeks.play .wb:nth-child(13){animation-delay:.95s}
+
+/* oferta */
+.offer{margin-top:36px;display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.of-in{background:var(--deep);color:#fff;border-radius:6px;padding:30px 34px}
+.of-in .k,.of-pr .k{font:500 14px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.of-pr .k{color:var(--teal-ink)}
+.of-in ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:16px}
+.of-in li{font-size:19px;line-height:1.42;padding-left:34px;position:relative;color:rgba(255,255,255,.82)}
+.of-in li b{color:#fff;font-weight:600}
+.of-in li:before{content:"";position:absolute;left:2px;top:.25em;width:16px;height:9px;border-left:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);transform:rotate(-45deg)}
+.of-pr{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 30px;display:grid}
+.pr{padding:20px 0;border-top:1px solid var(--line)}
+.pr:first-child{border-top:0}
+.pr .price{font:700 44px/1.05 var(--display);letter-spacing:-.02em;color:var(--navy);margin-top:6px}
+.pr .price-s{font-size:16.5px;color:var(--muted);margin-top:4px}
+.slide.play .of-in li{animation:dup .5s both}
+.slide.play .of-in li:nth-child(2){animation-delay:.1s}
+.slide.play .of-in li:nth-child(3){animation-delay:.2s}
+.slide.play .of-in li:nth-child(4){animation-delay:.3s}
+.slide.play .of-in li:nth-child(5){animation-delay:.4s}
+.slide.play .pr{animation:dup .5s both;animation-delay:.45s}
 @media (max-width: 900px), (max-height: 500px) and (max-width: 1000px){
   .gf4{grid-template-columns:1fr;gap:12px;margin-top:24px}
   .gfc{min-height:0}
@@ -831,9 +852,14 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .wm{font-size:10px;padding-right:18px;right:-2px}
   .wm:after{width:10px;height:10px}
   .wk-foot{font-size:17px}
+  .offer{grid-template-columns:1fr}
+  .of-in{padding:22px 20px}
+  .of-in li{font-size:17px}
+  .of-pr{padding:4px 20px}
+  .pr .price{font-size:36px}
 }
 @media (prefers-reduced-motion: reduce){
-  .gfc,.gbar,.lv,.spark path,.dash,.d-kpi,.d-chart .gb,.d-fr .b,.d-row,.wb{animation:none!important}
+  .gfc,.gbar,.lv,.spark path,.dash,.d-kpi,.d-chart .gb,.d-fr .b,.d-row,.wb,.of-in li,.pr{animation:none!important}
 }
 /* znacznik w stopce jedzie transformacją i wystaje poza prawą krawędź slajdu; clip zamiast hidden,
    żeby slajdu nie dało się przewinąć w bok (zaznaczaniem tekstu albo przewinięciem do przycisku panelu) */
@@ -844,15 +870,6 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .d-tr.warn>span.ok{color:var(--ink)}
 .d-quiet{font:600 13.5px/1 var(--mono);color:var(--navy)!important}
 .gnote{margin-top:16px;font-size:17px;line-height:1.45;color:var(--muted);font-style:italic}
-/* wersja growth: zamiast karty z pierwszym krokiem same pytania, w dwóch kolumnach */
-.m-faq2{grid-template-columns:1fr 1fr;column-gap:72px;margin-top:40px}
-.m-faq2 div{padding:22px 0}
-.m-faq2 div:nth-last-child(2){border-bottom:1px solid var(--line)}
-.m-faq2 h3{font-size:27px}
-.m-faq2 p{font-size:19px}
-.slide.play .m-faq2 div{animation:rise .5s both}
-.slide.play .m-faq2 div:nth-child(3),.slide.play .m-faq2 div:nth-child(4){animation-delay:.12s}
-.slide.play .m-faq2 div:nth-child(5),.slide.play .m-faq2 div:nth-child(6){animation-delay:.24s}
 .slide.play .gnote{animation:fadein .6s 1s both}
 /* zamknięcie: ten sam wykrój, na metce ostatni rozmiar sprzedany */
 .m-end{position:absolute;right:104px;top:56px;width:520px;height:150px;margin:0;pointer-events:none}
@@ -877,10 +894,6 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .m-end{position:static;width:100%;max-width:400px;height:auto;aspect-ratio:520/150;margin:0 0 6px}
   .lin .tk.s{display:none}
   .gnote{font-size:15.5px}
-  .m-faq2{grid-template-columns:1fr;margin-top:24px}
-  .m-faq2 div:nth-last-child(2){border-bottom:0}
-  .m-faq2 h3{font-size:22px}
-  .m-faq2 p{font-size:17px}
 }
 </style>
 <noscript><style>
@@ -1172,17 +1185,27 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 </section>
 
 <!-- 9 -->
-<section id="s9" class="slide" aria-label="Częste pytania">
-  <div class="eyebrow">Częste pytania</div>
-  <h2 class="h2">O&nbsp;to pytają nas najczęściej</h2>
-  <div class="m-faq m-faq2">
-    <div><h3>Od czego zaczynamy?</h3><p>Od rozmowy. W&nbsp;pierwszym tygodniu wdrożenia poznajemy Wasze dane: wystarczy jedna rozmowa i&nbsp;kilka eksportów z&nbsp;systemów, resztę robimy my.</p></div>
-    <div><h3>Czy musimy zmieniać programy?</h3><p>Nie. Panel czyta dane z&nbsp;tego, co już macie: sklepu, kas w&nbsp;salonach, magazynu i&nbsp;poczty.</p></div>
-    <div><h3>Kto co widzi w&nbsp;panelu?</h3><p>Każde stanowisko może mieć swój widok. Dostęp do danych nadajemy każdej osobie osobno i&nbsp;w&nbsp;każdej chwili możecie go odebrać.</p></div>
-    <div><h3>Co z&nbsp;danymi?</h3><p>Zostają na Waszych kontach. Przed startem podpisujemy umowę powierzenia danych.</p></div>
-    <div><h3>Co po wdrożeniu?</h3><p>Przez 30 dni od odbioru poprawki są w&nbsp;cenie. Potem możemy dalej pilnować panelu i&nbsp;automatów, jeśli chcecie.</p></div>
-    <div><h3>Ile to kosztuje?</h3><p>Zależy od tego, ile źródeł danych podpinamy, więc cenę podajemy w&nbsp;rozmowie, a&nbsp;nie w&nbsp;prezentacji.</p></div>
+<section id="s9" class="slide s-offer" data-kind="offer" aria-label="Oferta">
+  <div class="eyebrow">Oferta</div>
+  <h2 class="h2">Panel wzrostu dla Volcano</h2>
+  <div class="offer">
+    <div class="of-in">
+      <span class="k">W&nbsp;pakiecie</span>
+      <ul>
+        <li><b>Panel z&nbsp;hurtem, kolekcją i&nbsp;zwrotami</b>: sprzedaż i&nbsp;stany ze wszystkich kanałów codziennie rano, osobny widok dla każdego stanowiska</li>
+        <li><b>Zamówienia partnerów z&nbsp;maila</b>: z&nbsp;hurt@ i&nbsp;export@ prosto do systemu, z&nbsp;zamiennikiem, gdy rozmiaru zabraknie</li>
+        <li><b>Partnerzy, którzy ucichli</b>: co rano lista dla handlowca, z&nbsp;dniami ciszy i&nbsp;zamówieniami sprzed roku</li>
+        <li><b>Zwroty, które kończą się wymianą</b>: link do większego rozmiaru i&nbsp;powód zwrotu przy każdym modelu</li>
+        <li><b>Szkolenie zespołu</b> i&nbsp;30 dni poprawek w&nbsp;cenie</li>
+      </ul>
+    </div>
+    <div class="of-pr">
+      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">od startu do działającego panelu</div></div>
+      <div class="pr"><span class="k">Płatność</span><div class="price">etapami</div><div class="price-s">nigdy za godziny, opieka po wdrożeniu tylko jeśli chcecie</div></div>
+      <div class="pr"><span class="k">Cena</span><div class="price">w&nbsp;rozmowie</div><div class="price-s">zależy od tego, ile źródeł podpinamy; podajemy ją po kilku pytaniach o&nbsp;Wasze systemy</div></div>
+    </div>
   </div>
+  <p class="fine"><b>Pierwszy tydzień:</b> poznajemy Wasze dane i&nbsp;ustalamy, kto ma widzieć jakie liczby.</p>
 </section>
 
 <!-- 10 -->
