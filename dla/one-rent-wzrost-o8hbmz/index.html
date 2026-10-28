@@ -665,6 +665,12 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 .of-in ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:16px}
 .of-in li{font-size:19px;line-height:1.42;padding-left:34px;position:relative;color:rgba(255,255,255,.82)}
 .of-in li b{color:#fff;font-weight:600}
+.of-h{font:700 34px/1.12 var(--display);letter-spacing:-.02em;color:#fff;margin:14px 0 0}
+.of-p{font-size:18.5px;line-height:1.45;color:rgba(255,255,255,.82);margin:10px 0 0}
+.of-k2{display:block;margin-top:26px}
+.of-in ul{margin-top:12px}
+.of-then{margin:22px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:16.5px;line-height:1.45;color:rgba(255,255,255,.7)}
+.of-then b{color:#fff;font-weight:600}
 .of-in li:before{content:"";position:absolute;left:2px;top:.25em;width:16px;height:9px;border-left:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);transform:rotate(-45deg)}
 .of-pr{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 30px;display:grid}
 .pr{padding:20px 0;border-top:1px solid var(--line)}
@@ -769,6 +775,8 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
   .offer{grid-template-columns:1fr}
   .of-in{padding:22px 20px}
   .of-in li{font-size:17px}
+  .of-h{font-size:28px}
+  .of-p{font-size:17px}
   .of-pr{padding:4px 20px}
   .pr .price{font-size:36px}
   body{overflow:auto;overflow-x:hidden;background:var(--deep)}
@@ -974,8 +982,8 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <div class="eyebrow">Kto do Was pisze</div>
       <h2 class="h2">Jesteśmy Fluinty. Pomagamy firmom rosnąć bez dokładania etatów.</h2>
       <div class="m-rows">
-        <div class="m-row"><span class="k">Co robimy</span><p>Budujemy automaty, które przejmują powtarzalną robotę, i&nbsp;panel, w&nbsp;którym widać, co zrobiły i&nbsp;gdzie coś stanęło. Zespół ma tam też swoje narzędzia, na przykład do ofert i&nbsp;pism.</p></div>
-        <div class="m-row"><span class="k">Jak pracujemy</span><p>Od razu konkretne wdrożenie, bez osobnego audytu. Wasze dane poznajemy w&nbsp;pierwszym tygodniu.</p></div>
+        <div class="m-row"><span class="k">Co robimy</span><p>Wdrażamy automaty, dzięki którym firma obsłuży więcej zleceń albo przestanie płacić za powtarzalną robotę. Co zrobiły, widać w&nbsp;panelu, który dostajecie w&nbsp;cenie.</p></div>
+        <div class="m-row"><span class="k">Jak pracujemy</span><p>Zaczynamy od jednego wdrożenia, bez osobnego audytu. Kolejne dokładamy dopiero wtedy, gdy pierwsze się sprawdzi.</p></div>
         <div class="m-row"><span class="k">Na czym</span><p>Na systemach, które już macie. Niczego nie wymieniamy, automaty budujemy i&nbsp;utrzymujemy sami.</p></div>
       </div>
     </div>
@@ -1038,15 +1046,15 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
       <span class="chip">mierzymy: przejścia na wynajem na miesiące</span>
     </div>
   </div>
-  <p class="lev-foot">Wszystkie trzy widać w&nbsp;jednym panelu, razem z&nbsp;narzędziami dla zespołu. Tak mógłby wyglądać u&nbsp;Was&nbsp;→</p>
+  <p class="lev-foot">Zaczynamy od pierwszej. To, że działa, zobaczycie w&nbsp;panelu&nbsp;→</p>
 </section>
 
 <!-- 6 -->
 <section id="s6" class="slide tint s-dash" data-kind="dash" aria-label="Przykład: panel firmy na zmyślonych danych">
   <div class="eyebrow">Przykład na zmyślonych danych · kliknijcie</div>
-  <h2 class="h2">Automaty, narzędzia, rezerwacje i&nbsp;oddziały w&nbsp;jednym panelu</h2>
+  <h2 class="h2">Tak widzicie, że to działa</h2>
   <div class="dash" id="dash"></div>
-  <p class="dash-foot"><b>Jedno miejsce dla całej firmy.</b> Ceny, rabaty i&nbsp;rozmowy z&nbsp;klientami zostają u&nbsp;ludzi. Firmy, nazwy i&nbsp;liczby są zmyślone.</p>
+  <p class="dash-foot"><b>Panel jest w&nbsp;cenie wdrożenia.</b> Ceny, rabaty i&nbsp;rozmowy z&nbsp;klientami zostają u&nbsp;ludzi. Firmy, nazwy i&nbsp;liczby są zmyślone.</p>
   <!--
   Format #panel-dane (FluintyPanel):
     firma, podpis, aktualizacja: teksty w lewej kolumnie panelu
@@ -1105,40 +1113,41 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
 <!-- 8 -->
 <section id="s8" class="slide tint s-weeks" data-kind="weeks" aria-label="Jak wdrażamy">
   <div class="eyebrow">Jak wdrażamy</div>
-  <h2 class="h2">Działający panel w&nbsp;cztery tygodnie</h2>
+  <h2 class="h2">Pierwsze wdrożenie w&nbsp;cztery tygodnie</h2>
   <div class="wk">
     <span></span><span class="wh">tydzień 1</span><span class="wh">tydzień 2</span><span class="wh">tydzień 3</span><span class="wh">tydzień 4</span>
-    <div class="wl"><h3>Poznajemy Wasze dane</h3><p>Patrzymy na rezerwacje, zapytania firmowe i&nbsp;listę aut w&nbsp;oddziałach. Razem wybieramy automaty na start i&nbsp;narzędzia, po które zespół będzie sięgał codziennie.</p></div>
+    <div class="wl"><h3>Poznajemy Wasze dane</h3><p>Patrzymy na zapytania firmowe i&nbsp;system rezerwacji. Razem ustalamy, po jakiej liczbie poznacie, że wdrożenie działa.</p></div>
     <div class="wb" style="grid-column:2/span 1"></div>
     <div class="wl"><h3>Zapytania firmowe i&nbsp;rezerwacje</h3><p>Podpinamy formularz, skrzynkę działu firmowego i&nbsp;system rezerwacji. Pierwsze szkice ofert sprawdzacie na prawdziwych zapytaniach.</p></div>
     <div class="wb" style="grid-column:3/span 1"></div>
-    <div class="wl"><h3>Powroty i&nbsp;wynajem na miesiące</h3><p>Do panelu trafia historia klientów, a&nbsp;z&nbsp;nią propozycje dla powracających i&nbsp;kandydaci na wynajem na miesiące.</p></div>
+    <div class="wl"><h3>Panel z&nbsp;wynikiem</h3><p>Do panelu trafia raport z&nbsp;automatu i&nbsp;pierwsze narzędzia dla działu firmowego.</p></div>
     <div class="wb" style="grid-column:3/span 2"></div>
-    <div class="wl"><h3>Panel w&nbsp;całej firmie</h3><p>Szkolimy zespół z&nbsp;narzędzi i&nbsp;poprawiamy to, co zgrzyta. Przez 30 dni poprawki są w&nbsp;cenie.</p></div>
-    <div class="wb last" style="grid-column:5/span 1"><span class="wm">panel działa</span></div>
+    <div class="wl"><h3>Wdrożenie w&nbsp;całej firmie</h3><p>Szkolimy zespół i&nbsp;poprawiamy to, co zgrzyta. Przez 30 dni poprawki są w&nbsp;cenie.</p></div>
+    <div class="wb last" style="grid-column:5/span 1"><span class="wm">działa</span></div>
   </div>
-  <p class="wk-foot">Cztery tygodnie zakładamy wtedy, gdy system rezerwacji da się podłączyć. Jeśli się nie da, mówimy o&nbsp;tym w&nbsp;pierwszym tygodniu, razem z&nbsp;nowym terminem.</p>
+  <p class="wk-foot">Kolejne dźwignie dokładamy dopiero wtedy, gdy pierwsza się sprawdzi. Cztery tygodnie zakładamy wtedy, gdy system rezerwacji da się podłączyć. Jeśli się nie da, mówimy o&nbsp;tym w&nbsp;pierwszym tygodniu.</p>
 </section>
 
 <!-- 9 -->
 <section id="s9" class="slide s-offer" data-kind="offer" aria-label="Oferta">
   <div class="eyebrow">Oferta</div>
-  <h2 class="h2">Panel firmy dla One Rent</h2>
+  <h2 class="h2">Pierwsze wdrożenie dla One Rent</h2>
   <div class="offer">
     <div class="of-in">
-      <span class="k">W&nbsp;pakiecie</span>
+      <span class="k">Zaczynamy od</span>
+      <h3 class="of-h">Zapytania firmowe z&nbsp;ofertą w&nbsp;24 godziny</h3>
+      <p class="of-p">Automat sprawdza, które klasy aut są wolne w&nbsp;danym terminie w&nbsp;najbliższych oddziałach, i&nbsp;składa szkic oferty dla handlowca. Cenę i&nbsp;rabat ustala handlowiec. Poznacie po liczbie zapytań z&nbsp;ofertą w&nbsp;24 godziny i&nbsp;podpisanych umowach.</p>
+      <span class="k of-k2">W&nbsp;cenie</span>
       <ul>
-        <li><b>Panel firmy</b>: raport z&nbsp;automatów, narzędzia dla działu firmowego, oddziałów i&nbsp;obsługi klienta, liczby rezerwacji, powrotów i&nbsp;obłożenia oddziałów</li>
-        <li><b>Automat do zapytań firmowych</b>: zapytanie firmowe albo eventowe zamienia w&nbsp;szkic oferty w&nbsp;24 godziny</li>
-        <li><b>Automat do powrotów</b>: propozycje dla klientów, którzy wracają, i&nbsp;lista firm, które ucichły</li>
-        <li><b>Automat do wynajmu na miesiące</b>: klienci, którzy biorą auto co tydzień, trafiają do opiekuna z&nbsp;wyliczeniem dni</li>
-        <li><b>Szkolenie zespołu</b> i&nbsp;30 dni poprawek w&nbsp;cenie</li>
+        <li><b>Panel firmy</b>: raport z&nbsp;automatu i&nbsp;narzędzia dla działu firmowego, oddziałów i&nbsp;obsługi klienta</li>
+        <li><b>Szkolenie zespołu</b> i&nbsp;30 dni poprawek</li>
       </ul>
+      <p class="of-then"><b>Potem, jeśli się sprawdzi:</b> klienci, którzy wracają, i&nbsp;przejście z&nbsp;wynajmu na dni na wynajem na miesiące.</p>
     </div>
     <div class="of-pr">
-      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">od startu do działającego panelu, jeśli system rezerwacji da się podłączyć</div></div>
+      <div class="pr"><span class="k">Czas</span><div class="price">4&nbsp;tygodnie</div><div class="price-s">od startu do działającego wdrożenia, jeśli system rezerwacji da się podłączyć</div></div>
       <div class="pr"><span class="k">Płatność</span><div class="price">etapami</div><div class="price-s">nigdy za godziny, opieka po wdrożeniu tylko jeśli chcecie</div></div>
-      <div class="pr"><span class="k">Cena</span><div class="price">w&nbsp;rozmowie</div><div class="price-s">zależy od tego, ile źródeł podpinamy; podajemy ją po kilku pytaniach o&nbsp;Wasze systemy</div></div>
+      <div class="pr"><span class="k">Cena</span><div class="price">w&nbsp;rozmowie</div><div class="price-s">zależy od tego, co trzeba podłączyć; podajemy ją po kilku pytaniach o&nbsp;Wasze systemy</div></div>
     </div>
   </div>
   <p class="fine"><b>Bez osobnego audytu:</b> Wasze dane poznajemy w&nbsp;pierwszym tygodniu wdrożenia.</p>
@@ -1160,7 +1169,7 @@ tr.hl.lit th,tr.hl.lit td{background:var(--teal-soft)}
     <div class="m-next">
       <div class="eyebrow">Na rozmowie</div>
       <ul>
-        <li>Pokazujemy panel na przykładzie z&nbsp;Waszej branży i&nbsp;pytamy, co chcielibyście w&nbsp;nim widzieć.</li>
+        <li>Ustalamy, od której dźwigni zacząć i&nbsp;po czym poznacie, że działa.</li>
         <li>Sprawdzamy, na jakich systemach pracujecie i&nbsp;od czego zależy termin wdrożenia.</li>
         <li>Podajemy cenę wdrożenia.</li>
       </ul>
