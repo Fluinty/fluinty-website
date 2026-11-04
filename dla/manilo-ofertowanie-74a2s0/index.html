@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>MANILO · ofertowanie · przykład od Fluinty</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23072849'/%3E%3Cpath d='M8 23V9l8 8 8-8v14' fill='none' stroke='%2300C4B4' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#F7F1E6;--paper-2:#EEE4D1;--card:#FFFDF8;--ink:#0C1B2E;--muted:#5A6470;--line:#DCD0BB;--line-2:#ECE3D3;
+  --navy:#0B3D70;--deep:#072849;--teal:#00C4B4;--teal-ink:#007F75;--teal-soft:#D5F5F1;--teal-line:#9FDFD7;
+  --amber:#9A5404;--amber-bg:#FDF1DF;--amber-line:#E9B56B;--red:#B42318;--red-bg:#FDECEA;--red-line:#F0A49C;
+  --display:"Bricolage Grotesque","Instrument Sans","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans","DejaVu Sans",sans-serif;
+  --body:"Instrument Sans","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans","DejaVu Sans",sans-serif;
+  --mono:"IBM Plex Mono",Consolas,"SF Mono","DejaVu Sans Mono",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+b{font-weight:600}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* layout */
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.side{background:var(--deep);color:#fff;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:26px;padding:22px 14px 18px}
+.brand{font:700 24px/1 var(--display);letter-spacing:-.01em;padding:0 8px}
+.brand small{display:block;margin-top:7px;font:500 11px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.nav{display:grid;gap:4px}
+.nav-b{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;padding:11px 10px;border-radius:7px;font:500 15px/1.15 var(--body);color:rgba(255,255,255,.74)}
+.nav-b svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav-b:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav-b.on{background:rgba(0,196,180,.16);color:#fff;box-shadow:inset 3px 0 0 var(--teal)}
+.nav-b:focus-visible{outline:2px solid var(--teal)}
+.badge{margin-left:auto;background:#C26A05;color:#fff;font:600 11px/1 var(--mono);padding:4px 7px;border-radius:9px}
+.side-foot{margin-top:auto;padding:0 8px;font:500 11px/1.6 var(--mono);color:rgba(255,255,255,.5);letter-spacing:.02em}
+.main{min-width:0;padding:20px 36px 64px;max-width:1440px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;margin-bottom:18px;flex-wrap:wrap}
+.crumb{font:500 12px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.role{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.role select{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:6px 10px;font-weight:600;color:var(--ink);cursor:pointer}
+
+/* shared */
+.h1{font:700 34px/1.1 var(--display);letter-spacing:-.02em;color:var(--deep)}
+.lead{color:var(--muted);margin-top:8px;max-width:76ch;font-size:15.5px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 16px}
+.kpi{background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:14px 16px;min-width:0}
+.kpi .v{font:700 28px/1.05 var(--display);letter-spacing:-.02em;color:var(--navy);white-space:nowrap}
+.kpi .v small{font-size:15px;margin-left:5px;letter-spacing:0}
+.kpi .l{font-size:13.5px;margin-top:6px}
+.kpi .d{font:500 12px/1.35 var(--mono);color:var(--teal-ink);margin-top:4px}
+.kpi .d.warn{color:var(--amber)}
+.card{background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:16px 18px;min-width:0}
+.ct{font:600 15.5px/1.25 var(--body);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:10px}
+.ct small{font:500 12px/1.3 var(--mono);color:var(--muted)}
+.note{font-size:13.5px;color:var(--muted);margin-top:12px}
+.note b{color:var(--ink)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+table.wide{min-width:680px}
+th{font:500 11px/1.2 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:bottom}
+td{padding:10px;border-bottom:1px solid var(--line-2);vertical-align:top;font-size:14px}
+tbody tr:last-child td{border-bottom:0}
+.r{text-align:right}
+td.r{white-space:nowrap}
+tr.warn{background:var(--amber-bg)}
+.sub{display:block;font:500 11.5px/1.4 var(--mono);color:var(--muted);margin-top:3px;white-space:normal}
+.sub.w{color:var(--amber)}
+.w{color:var(--amber);font-weight:600}
+.chip{display:inline-flex;align-items:center;gap:5px;font:500 11.5px/1.2 var(--mono);padding:4px 8px;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--card);white-space:nowrap}
+.chip.ok{color:var(--teal-ink);border-color:var(--teal-line);background:var(--teal-soft)}
+.chip.warn{color:var(--amber);border-color:var(--amber-line);background:var(--amber-bg)}
+.chip.risk{color:var(--red);border-color:var(--red-line);background:var(--red-bg)}
+.chip.ai{color:#fff;background:var(--navy);border-color:var(--navy)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:8px;font:600 14px/1 var(--body);background:var(--navy);color:#fff;white-space:nowrap}
+.btn:hover{background:#0E4A86}
+.btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--card)}
+.btn.sm{padding:6px 10px;font-size:12.5px}
+.btn:focus-visible{outline:3px solid var(--teal)}
+.seg{display:inline-flex;background:var(--paper-2);border-radius:7px;padding:2px;white-space:nowrap}
+.seg button{all:unset;cursor:pointer;font:500 12.5px/1 var(--body);padding:6px 9px;border-radius:5px;color:var(--muted)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.14)}
+.seg button:disabled{opacity:.35;cursor:not-allowed}
+.seg button:focus-visible{outline:2px solid var(--teal)}
+.chk{display:inline-flex;align-items:center;gap:7px;font:500 13px/1.2 var(--body);color:var(--muted);cursor:pointer;margin-bottom:6px}
+.chk input{accent-color:var(--teal);width:16px;height:16px;margin:0}
+
+/* list */
+.lr{cursor:pointer}
+.lr:hover{background:#FBF8F2}
+.lr.main-row{background:#F2FBFA}
+.lr.main-row:hover{background:#E8F8F6}
+.lr.warn:hover{background:#FCEBD2}
+.lr td:first-child b{font-size:15px}
+.go{display:inline-block;margin-left:8px;font:600 12.5px/1 var(--mono);color:var(--teal-ink);white-space:nowrap}
+.et{display:flex;gap:3px;margin-top:5px}
+.et i{width:22px;height:6px;border-radius:3px;background:var(--line-2)}
+.et i.d{background:var(--teal)}
+.et i.c{background:var(--navy)}
+
+/* offer */
+.back{all:unset;cursor:pointer;font:500 13px/1 var(--mono);color:var(--teal-ink);display:inline-block;margin-bottom:14px}
+.back:hover{text-decoration:underline}
+.o-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:end}
+.eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal-ink)}
+.o-head h1{font:700 30px/1.12 var(--display);letter-spacing:-.02em;color:var(--deep);margin-top:6px}
+.o-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.o-kpis{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.o-kpi{background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;min-width:118px}
+.o-kpi .v{font:700 22px/1.1 var(--display);letter-spacing:-.01em;color:var(--navy);white-space:nowrap}
+.o-kpi .l{font-size:12.5px;color:var(--muted);margin-top:3px}
+.steps{display:flex;gap:8px;margin:20px 0 4px;overflow-x:auto;padding:2px 2px 6px}
+.st{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);min-width:176px;flex:1 0 auto}
+.st .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 13px/1 var(--mono);background:var(--paper-2);color:var(--navy);flex:none}
+.st .t{display:block;font:600 15px/1.2 var(--body)}
+.st .s{display:block;font:500 11.5px/1.3 var(--mono);color:var(--muted);margin-top:3px;white-space:nowrap}
+.st:hover{border-color:#C9BBA0}
+.st.on{border-color:var(--navy);background:#fff;box-shadow:0 8px 20px -14px rgba(7,40,73,.6)}
+.st.on .n{background:var(--navy);color:#fff}
+.st.done .n{background:var(--teal);color:#fff}
+.st.lock{opacity:.55;cursor:not-allowed}
+.st:focus-visible{outline:3px solid var(--teal)}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 16px}
+.who>div{border-radius:10px;padding:12px 14px;font-size:14px}
+.who .a{background:var(--teal-soft);border:1px solid var(--teal-line)}
+.who .h{background:var(--card);border:1px solid var(--line)}
+.who b{display:block;font:600 11px/1.2 var(--mono);letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+.who .a b{color:var(--teal-ink)}
+.who .h b{color:var(--navy)}
+.g2{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.col{display:grid;gap:14px;align-content:start}
+.g2 .col{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:1600px){.g2{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}.g2 .col{grid-template-columns:minmax(0,1fr)}}
+.u{color:var(--muted);font-size:12px}
+td.r .sub,.nw .sub{white-space:nowrap}
+.swz{display:grid;gap:9px;font-size:13.5px}
+.swz div{padding-left:12px;border-left:3px solid var(--line)}
+.swz .warn{border-color:var(--amber)}
+.swz .ok{border-color:var(--teal)}
+.swz .ai{border-color:var(--navy)}
+.files{display:grid;font-size:13.5px}
+.files div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line-2)}
+.files div:last-child{border-bottom:0}
+.files span{font:500 11.5px/1.6 var(--mono);color:var(--muted);white-space:nowrap}
+.sum{margin-top:12px;padding:12px 14px;border-radius:9px;background:var(--card);border:1px solid var(--line);font-size:14px}
+
+/* subcontractors */
+.pk{background:#fff;border:1px solid var(--line-2);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.pk-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:var(--card)}
+.pk-h h3{font:600 16px/1.25 var(--body)}
+.pk-h .m{font:500 12px/1.3 var(--mono);color:var(--muted)}
+.of{display:grid;grid-template-columns:22px minmax(0,1.5fr) minmax(150px,auto) minmax(0,2.2fr) 100px;gap:8px 14px;align-items:center;padding:11px 16px;border-top:1px solid var(--line-2);cursor:pointer}
+.pk-h+.of{border-top:0}
+.of:hover{background:#FBF8F2}
+.of.sel{background:#F2FBFA;box-shadow:inset 3px 0 0 var(--teal)}
+.of input{accent-color:var(--teal);width:17px;height:17px;margin:0}
+.of .p{font:600 15px/1.25 var(--mono);text-align:right}
+.of .chips{display:flex;flex-wrap:wrap;gap:5px}
+.of .tags{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.miss{padding:9px 16px;border-top:1px dashed var(--line);font:500 12.5px/1.45 var(--mono);color:var(--muted)}
+
+/* decision */
+.dec{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;align-items:start}
+.calc td{padding:10px 6px;vertical-align:middle}
+.calc td:first-child{padding-left:0}
+.calc td:last-child{padding-right:0}
+.calc tr.tot td{font-weight:700;border-top:2px solid var(--line)}
+.calc tr.price td{border-top:2px solid var(--navy);font-weight:700;color:var(--deep)}
+.calc .big{font:700 26px/1 var(--display);color:var(--navy);letter-spacing:-.01em}
+.sl{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.sl input[type=range]{accent-color:var(--teal);width:116px;cursor:pointer}
+.sl output{font:600 13px/1 var(--mono);min-width:44px;text-align:right}
+.strip{position:relative;height:78px;margin:8px 10px 0}
+.strip .ax{position:absolute;left:0;right:0;top:40px;height:2px;background:var(--line)}
+.strip .dot{position:absolute;top:35px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--navy);opacity:.5}
+.strip .med{position:absolute;top:26px;height:30px;border-left:2px dashed var(--muted)}
+.strip .med span{position:absolute;top:34px;left:0;transform:translateX(-50%);font:500 11px/1 var(--mono);color:var(--muted);white-space:nowrap}
+.strip .me{position:absolute;top:20px;height:42px;width:3px;margin-left:-1.5px;background:var(--teal);border-radius:2px}
+.strip .me span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font:600 12px/1 var(--mono);color:var(--teal-ink);white-space:nowrap}
+.strip .lo,.strip .hi{position:absolute;top:62px;font:500 11px/1 var(--mono);color:var(--muted)}
+.strip .lo{left:0}
+.strip .hi{right:0}
+.gws{display:grid;gap:6px}
+.gw{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line-2);border-radius:8px;cursor:pointer;font-size:14px}
+.gw:has(input:checked){border-color:var(--teal);background:#F2FBFA}
+.gw input{accent-color:var(--teal);margin:3px 0 0}
+.al{padding:9px 12px;border-radius:8px;background:var(--amber-bg);border:1px solid var(--amber-line);font-size:13.5px;margin-bottom:8px}
+.al.risk{background:var(--red-bg);border-color:var(--red-line)}
+.al.ok{background:var(--teal-soft);border-color:var(--teal-line)}
+.akc>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line-2);font-size:14px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+/* how it works */
+.flow{display:grid;gap:10px;margin-top:20px;counter-reset:f}
+.fl{display:grid;grid-template-columns:36px minmax(0,1.25fr) minmax(0,1fr);gap:12px 18px;align-items:start;background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:14px 16px}
+.fl .n{counter-increment:f;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:600 14px/1 var(--mono)}
+.fl .n::before{content:counter(f)}
+.fl h3{font:600 16px/1.25 var(--body);margin-bottom:6px}
+.fl p{font-size:14px}
+.lab{display:block;font:600 11px/1.2 var(--mono);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.lab.a{color:var(--teal-ink)}
+.lab.h{color:var(--navy)}
+.fl .hh{padding-top:28px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.two ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:7px}
+.search{width:min(320px,100%);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:14px;font-weight:400}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--deep);color:#fff;padding:12px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;width:max-content;max-width:min(520px,calc(100vw - 32px));z-index:50;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:1100px){
+  .dec{grid-template-columns:1fr}
+  .o-head{grid-template-columns:1fr}
+  .o-kpis{justify-content:flex-start}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:10px 12px 8px}
+  .brand{font-size:19px;padding:0 4px;display:flex;align-items:baseline;gap:8px}
+  .brand small{margin:0}
+  .nav{display:flex;gap:2px;width:100%;overflow-x:auto}
+  .nav-b{padding:8px 10px;font-size:14px;white-space:nowrap}
+  .nav-b.on{box-shadow:inset 0 -2px 0 var(--teal)}
+  .side-foot{display:none}
+  .main{padding:14px 14px 56px}
+  .h1{font-size:26px}
+  .o-head h1{font-size:23px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi .v{font-size:23px}
+  .who,.two,.g2 .col{grid-template-columns:1fr}
+  .o-kpi{min-width:0;flex:1 1 40%}
+  .of{grid-template-columns:20px minmax(0,1fr) auto}
+  .of .chips,.of .tags{grid-column:2/-1}
+  .of .tags{flex-direction:row;align-items:flex-start}
+  .fl{grid-template-columns:32px minmax(0,1fr)}
+  .fl .hh{grid-column:2;padding-top:0}
+  .sl input[type=range]{width:96px}
+  .calc .big{font-size:21px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">MANILO<small>ofertowanie</small></div>
+    <nav class="nav" aria-label="Sekcje">
+      <button type="button" class="nav-b on" data-go="oferty"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 2.5h7l3 3v12H5z"/><path d="M12 2.5v3h3M8 10h5M8 13h5"/></svg>Oferty w toku<span class="badge" title="czeka na decyzję zarządu">1</span></button>
+      <button type="button" class="nav-b" data-go="baza"><svg viewBox="0 0 20 20" aria-hidden="true"><ellipse cx="10" cy="5" rx="6" ry="2.5"/><path d="M4 5v10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V5M4 10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5"/></svg>Baza cen</button>
+      <button type="button" class="nav-b" data-go="jak"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="5" r="2"/><circle cx="15" cy="10" r="2"/><circle cx="5" cy="15" r="2"/><path d="M7 5h3l3 4M7 15h3l3-4"/></svg>Jak to działa</button>
+    </nav>
+    <div class="side-foot">Przykład na zmyślonych danych.<br>Przygotowało Fluinty.</div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div class="crumb" id="crumb">Ofertowanie</div>
+      <label class="role">Widok dla
+        <select id="rola"><option value="zarzad">zarządu</option><option value="kosztorysant">kosztorysanta</option></select>
+      </label>
+    </div>
+
+    <!-- list of offers -->
+    <section class="view" data-view="oferty">
+      <h1 class="h1">Oferty w przygotowaniu</h1>
+      <p class="lead">Przykład na zmyślonych danych. Pełne dane ma hala sportowa: kliknijcie ją, żeby zobaczyć przedmiar, wycenę, oferty podwykonawców i decyzję o cenie.</p>
+      <div class="kpis" id="lKpis"></div>
+      <div class="card">
+        <div class="tw"><table class="wide">
+          <thead><tr><th>Oferta</th><th>Tryb</th><th class="r">Wartość netto</th><th>Etap</th><th>Termin</th><th>Co teraz</th></tr></thead>
+          <tbody id="lRows"></tbody>
+        </table></div>
+      </div>
+      <p class="note">Taką listę macie już w swoim systemie. Nowe jest to, co dzieje się w środku oferty: przedmiar z rysunków, wycena z Waszej bazy cen, zapytania do podwykonawców i sprawdzanie firm.</p>
+    </section>
+
+    <!-- one offer -->
+    <section class="view" data-view="oferta" hidden>
+      <button type="button" class="back" data-go="oferty">← Wszystkie oferty</button>
+      <div class="o-head">
+        <div>
+          <div class="eyebrow">Przetarg · Gmina Przykładowo</div>
+          <h1>Hala sportowa z łącznikiem przy SP nr 3</h1>
+          <div class="o-meta" id="oMeta"></div>
+        </div>
+        <div class="o-kpis" id="oKpis"></div>
+      </div>
+      <nav class="steps" id="steps" role="tablist" aria-label="Kroki oferty"></nav>
+
+      <div data-pane="przedmiar">
+        <div class="who">
+          <div class="a"><b>Automat zrobił</b>Pobrał dokumentację z platformy zamawiającego (<span data-d="-6"></span>, 14:20) i odłożył ją do folderu oferty na Dysku Google. Przeczytał 119 arkuszy rysunków i SWZ, w 1&nbsp;h 45&nbsp;min policzył przedmiar i porównał go z przedmiarem zamawiającego.</div>
+          <div class="h"><b>Zostaje dla kosztorysanta</b>Sprawdzić pozycje, w których ilości różnią się o więcej niż 5%. Przycisk „Zatwierdź” zapisuje, kto i kiedy sprawdził ilość.</div>
+        </div>
+        <div class="g2">
+          <div class="card">
+            <div class="ct">Przedmiar z rysunków obok przedmiaru zamawiającego<small id="pLeft"></small></div>
+            <label class="chk"><input type="checkbox" id="pTylko">tylko różnice powyżej 5%</label>
+            <div class="tw"><table class="wide">
+              <thead><tr><th>Pozycja</th><th class="r">Z rysunków</th><th class="r">Zamawiający</th><th class="r">Różnica</th><th class="r">Stan</th></tr></thead>
+              <tbody id="pRows"></tbody>
+            </table></div>
+            <div class="sum" id="pSum"></div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="ct">Najważniejsze z SWZ<small>wypisał automat</small></div>
+              <div class="swz">
+                <div class="warn"><b>Wynagrodzenie ryczałtowe.</b> Ilości, których brakuje w przedmiarze zamawiającego, idą na Wasz koszt.</div>
+                <div class="ok"><b>Doświadczenie:</b> hala sportowa za co najmniej 8&nbsp;mln&nbsp;zł brutto w ostatnich 5 latach. Spełniacie: hala w Przykładowie Dolnym, 2025.</div>
+                <div><b>Wadium:</b> 150&nbsp;000&nbsp;zł, do terminu składania ofert.</div>
+                <div><b>Gwarancja:</b> od 60 do 84 miesięcy, punkty za 72 i 84.</div>
+                <div><b>Kary:</b> 0,1% wynagrodzenia za każdy dzień zwłoki.</div>
+                <div><b>Płatności:</b> częściowe co miesiąc, do 90% wynagrodzenia.</div>
+                <div class="ai"><b>Pytania do zamawiającego:</b> do <span data-d="1" data-work></span>. Automat przygotował dwa projekty pytań: o ilość stali zbrojeniowej i o elewację hali.</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ct">Dokumentacja<small>folder oferty na Dysku</small></div>
+              <div class="files">
+                <div>Architektura<span>48 arkuszy · PDF</span></div>
+                <div>Konstrukcja<span>31 arkuszy · PDF i DWG</span></div>
+                <div>Instalacje sanitarne<span>22 arkusze · PDF</span></div>
+                <div>Instalacje elektryczne<span>18 arkuszy · PDF</span></div>
+                <div>Przedmiar zamawiającego<span>64 strony · PDF</span></div>
+                <div>SWZ ze wzorem umowy<span>PDF</span></div>
+                <div>Specyfikacje techniczne<span>PDF</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-pane="wycena" hidden>
+        <div class="who">
+          <div class="a"><b>Automat zrobił</b><span id="wAuto"></span></div>
+          <div class="h"><b>Zostaje dla kosztorysanta</b>Rozstrzygnąć pozycje na żółto. Wycena jest miarą dla ofert podwykonawców, a do ceny trafia tam, gdzie ofert jeszcze nie ma.</div>
+        </div>
+        <div class="card">
+          <div class="ct">Wycena z bazy cen<span class="seg" role="group" aria-label="Ustaw ceny we wszystkich pozycjach"><button type="button" data-all="auto">Jak podpowiada automat</button><button type="button" data-all="nasza">Wszędzie Wasze</button><button type="button" data-all="rynek">Wszędzie rynek</button></span></div>
+          <div class="tw"><table class="wide">
+            <thead><tr><th>Pozycja</th><th class="r">Ilość</th><th class="r">Wasza cena</th><th class="r">Rynek, mediana</th><th class="r">Różnica</th><th>Bierzemy</th><th class="r">Wartość</th></tr></thead>
+            <tbody id="wRows"></tbody>
+          </table></div>
+          <div class="sum" id="wSum"></div>
+        </div>
+      </div>
+
+      <div data-pane="podwykonawcy" hidden>
+        <div class="who">
+          <div class="a"><b>Automat zrobił</b>Złożył paczki z przedmiarem i rysunkami i <span data-d="-5"></span> wysłał je z Waszej skrzynki do 30 firm z Waszej listy. Zebrał 22 odpowiedzi, a do pozostałych firm napisał ponownie <span data-d="-1"></span>. Każdą firmę sprawdził w KRD, na białej liście VAT i w raportach finansowych.</div>
+          <div class="h"><b>Zostaje dla kierownika działu ofert</b>Wybrać ofertę w każdej paczce. Automat podpowiada najtańszą pewną firmę, ale ostatnie słowo należy do Was. Gdy oferta czegoś nie obejmuje, automat dolicza brakującą część z wyceny.</div>
+        </div>
+        <div class="kpis" id="kKpis"></div>
+        <div id="kList"></div>
+      </div>
+
+      <div data-pane="decyzja" hidden>
+        <div class="who">
+          <div class="a"><b>Automat zrobił</b>Zebrał koszty z wybranych ofert i z wyceny, doliczył rezerwy i porównał cenę z cenami, które wygrywały podobne przetargi.</div>
+          <div class="h"><b>Zostaje dla zarządu</b>Ustalić marżę i zatwierdzić cenę. Suwaki od razu zmieniają cenę w nagłówku.</div>
+        </div>
+        <div class="dec">
+          <div class="card">
+            <div class="ct">Od kosztu do ceny<small>kwoty netto</small></div>
+            <table class="calc">
+              <tr><td>Podwykonawcy i wycena<span class="sub" id="dKBn"></span></td><td></td><td class="r num" id="dKB"></td></tr>
+              <tr><td>Koszty ogólne budowy<span class="sub">zaplecze, kierownictwo, ubezpieczenia</span></td><td><div class="sl"><input type="range" id="sKO" min="4" max="9" step="0.5" value="6" aria-label="Koszty ogólne budowy w procentach"><output id="oKO"></output></div></td><td class="r num" id="dKO"></td></tr>
+              <tr><td>Rezerwa na ryzyko<span class="sub">to, czego nie widać w dokumentacji</span></td><td><div class="sl"><input type="range" id="sR" min="0" max="6" step="0.5" value="3" aria-label="Rezerwa na ryzyko w procentach"><output id="oR"></output></div></td><td class="r num" id="dR"></td></tr>
+              <tr><td>Rezerwa na gwarancję<span class="sub" id="dGn"></span></td><td></td><td class="r num" id="dG"></td></tr>
+              <tr class="tot"><td>Koszt całkowity</td><td></td><td class="r num" id="dK"></td></tr>
+              <tr><td>Marża<span class="sub">liczona od ceny oferty</span></td><td><div class="sl"><input type="range" id="sMa" min="3" max="15" step="0.5" value="8" aria-label="Marża w procentach"><output id="oMa"></output></div></td><td class="r num" id="dZ"></td></tr>
+              <tr class="price"><td>Cena oferty netto</td><td></td><td class="r num big" id="dC"></td></tr>
+              <tr><td>VAT 23%</td><td></td><td class="r num" id="dV"></td></tr>
+              <tr><td>Cena brutto</td><td></td><td class="r num" id="dB"></td></tr>
+            </table>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="ct">Na tle cen, które wygrywały<small>zł netto za m² PUM</small></div>
+              <div class="strip" id="dStrip"></div>
+              <p class="note" id="dStripT"></p>
+            </div>
+            <div class="card">
+              <div class="ct">Okres gwarancji<small>40 pkt w kryteriach</small></div>
+              <div class="gws">
+                <label class="gw"><input type="radio" name="gw" data-gw="60"><span><b>60 miesięcy</b><span class="sub">0 pkt · rezerwa 0,4% kosztów bezpośrednich</span></span></label>
+                <label class="gw"><input type="radio" name="gw" data-gw="72"><span><b>72 miesiące</b><span class="sub">20 pkt · rezerwa 0,7%</span></span></label>
+                <label class="gw"><input type="radio" name="gw" data-gw="84" checked><span><b>84 miesiące</b><span class="sub">40 pkt · rezerwa 1,0%</span></span></label>
+              </div>
+            </div>
+            <div class="card">
+              <div class="ct">Zanim złożycie ofertę</div>
+              <div id="dWarn"></div>
+              <div class="akc" id="dAkc"></div>
+              <div class="btns"><button type="button" class="btn ghost" data-plik>Pobierz kosztorys ofertowy</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- price base -->
+    <section class="view" data-view="baza" hidden>
+      <h1 class="h1">Baza cen</h1>
+      <p class="lead">Wasze ceny z wygranych ofert. Po każdej zakończonej budowie dochodzi koszt wykonania, więc widać, które ceny w ofertach były za niskie, a które za wysokie. Obok mediana z kosztorysów przetargowych, czyli za ile robi rynek.</p>
+      <div class="kpis" id="bKpis"></div>
+      <div class="card">
+        <div class="ct">Pozycje<input class="search" id="bQ" type="search" placeholder="Szukaj pozycji, np. stal" aria-label="Szukaj pozycji"></div>
+        <div class="tw"><table class="wide">
+          <thead><tr><th>Pozycja</th><th class="r">Wasza cena</th><th class="r">Koszt wykonania</th><th class="r">Rynek, mediana</th><th class="r">Rynek przez rok</th></tr></thead>
+          <tbody id="bRows"></tbody>
+        </table></div>
+        <p class="note">W przykładzie 12 pozycji z 1&nbsp;284. Ceny rynkowe pochodzą z kosztorysów ofertowych, które zamawiający publiczni udostępniają na wniosek.</p>
+      </div>
+    </section>
+
+    <!-- how it works -->
+    <section class="view" data-view="jak" hidden>
+      <h1 class="h1">Co dzieje się pod spodem</h1>
+      <p class="lead">Panel pokazuje tylko wynik. Pod spodem automat zbiera dokumenty, liczy, pisze do podwykonawców i sprawdza firmy, a człowiek wchodzi tam, gdzie trzeba zdecydować. Dopinamy to do systemu, który już macie, zamiast stawiać drugi obok.</p>
+      <div class="flow">
+        <div class="fl"><span class="n"></span><div><h3>Dokumentacja</h3><p><span class="lab a">Automat</span>Pobiera rysunki, SWZ i przedmiar z platformy zamawiającego albo z maila inwestora i odkłada je do folderu oferty na Dysku Google.</p></div><p class="hh"><span class="lab h">Człowiek</span>Nic nie robi. Gdy czegoś brakuje, automat sam prosi inwestora o rysunki.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Przedmiar i SWZ</h3><p><span class="lab a">Automat</span>Czyta rysunki w PDF i DWG, liczy ilości i porównuje je z przedmiarem zamawiającego. Z SWZ wypisuje terminy, wadium, kryteria, kary i warunki udziału.</p></div><p class="hh"><span class="lab h">Człowiek</span>Kosztorysant sprawdza pozycje, w których ilości różnią się o więcej niż 5%.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Wycena</h3><p><span class="lab a">Automat</span>Podstawia Wasze ceny z wygranych ofert. Gdzie ich brakuje albo są stare, bierze medianę z kosztorysów przetargowych.</p></div><p class="hh"><span class="lab h">Człowiek</span>Kosztorysant rozstrzyga pozycje oznaczone na żółto.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Zapytania do podwykonawców</h3><p><span class="lab a">Automat</span>Składa paczki z przedmiarem i rysunkami, wysyła je z Waszej skrzynki do firm z Waszej listy, przypomina się i zbiera odpowiedzi. Wyłapuje, czego oferta nie obejmuje, i dolicza to z wyceny.</p></div><p class="hh"><span class="lab h">Człowiek</span>Kierownik działu ofert negocjuje, kiedy uzna, że warto.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Sprawdzenie firm</h3><p><span class="lab a">Automat</span>Sprawdza każdą firmę w KRD, na białej liście VAT i w raportach finansowych. Dokłada historię Waszej współpracy: ile było budów i czy były opóźnienia.</p></div><p class="hh"><span class="lab h">Człowiek</span>Wybiera ofertę. Automat tylko podpowiada.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Decyzja o cenie</h3><p><span class="lab a">Automat</span>Liczy cenę przy różnych marżach i rezerwach i pokazuje ją na tle cen, które wygrywały podobne przetargi.</p></div><p class="hh"><span class="lab h">Człowiek</span>Zarząd ustala marżę i zatwierdza cenę.</p></div>
+        <div class="fl"><span class="n"></span><div><h3>Po wygranej</h3><p><span class="lab a">Automat</span>Zamienia ofertę w budżet budowy w Waszym systemie. Po odbiorze dopisuje do bazy cen koszt wykonania, więc następna oferta powstaje na aktualnych cenach.</p></div><p class="hh"><span class="lab h">Człowiek</span>Kierownik budowy prowadzi budżet tak jak dziś.</p></div>
+      </div>
+      <div class="two">
+        <div class="card">
+          <div class="ct">Gdzie leżą dane</div>
+          <ul>
+            <li>Baza cen, oferty i podwykonawcy: w Waszej bazie danych, obok tego, co już macie.</li>
+            <li>Dokumentacja i kosztorysy: w folderach ofert na Waszym Dysku Google.</li>
+            <li>Zapytania i odpowiedzi podwykonawców: w Waszej skrzynce.</li>
+            <li>Z zewnątrz: KRD, biała lista VAT, raporty finansowe i baza cen z kosztorysów przetargowych.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ct">Kto co widzi</div>
+          <p class="note" style="margin:0 0 10px">Każde stanowisko ma dostęp tylko do tego, czego potrzebuje.</p>
+          <ul>
+            <li>Kosztorysant: przedmiar i wycenę.</li>
+            <li>Kierownik działu ofert: do tego oferty podwykonawców.</li>
+            <li>Zarząd: wszystko, razem z marżą i ceną końcową.</li>
+            <li>Przełącznik „Widok dla” w prawym górnym rogu pokazuje, jak panel wygląda u kosztorysanta.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* helpers */
+const NB = ' ';
+const MINUS = '−';
+const PUM = 2140;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const dec = (x, d) => Number(x).toLocaleString('pl-PL', {minimumFractionDigits: d, maximumFractionDigits: d});
+const grp = n => (n < -0.5 ? MINUS : '') + String(Math.round(Math.abs(n))).replace(/\B(?=(\d{3})+(?!\d))/g, NB);
+const zl = n => grp(n) + NB + 'zł';
+const mln = (n, d = 2) => dec(n / 1e6, d) + NB + 'mln' + NB + 'zł';
+const pct = (x, d = 1) => dec(x, d) + '%';
+const spct = (x, d = 1) => Math.abs(x) < 0.05 ? '0%' : (x > 0 ? '+' : MINUS) + dec(Math.abs(x), d) + '%';
+const qty = q => Number.isInteger(q) ? grp(q) : dec(q, 1);
+const plural = (n, a, b, c) => {
+  const n10 = n % 10, n100 = n % 100;
+  if (n === 1) return a;
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return b;
+  return c;
+};
+
+/* dates relative to today, so the example stays consistent whenever it is opened */
+const T0 = new Date(); T0.setHours(12, 0, 0, 0);
+const day = (off, work) => {
+  const d = new Date(T0); d.setDate(d.getDate() + off);
+  if (work) { const w = d.getDay(); if (w === 6) d.setDate(d.getDate() + 2); else if (w === 0) d.setDate(d.getDate() + 1); }
+  return d;
+};
+const fd = d => String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0');
+const dd = (off, work) => fd(day(off, work));
+const inDays = d => Math.round((d - T0) / 864e5);
+const zaIle = d => { const n = inDays(d); return n <= 0 ? 'dziś' : n === 1 ? 'jutro' : 'za ' + n + NB + 'dni'; };
+const hhmm = () => { const d = new Date(); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
+
+/* data (made up) */
+const OFERTY = [
+  {id: 'hala', nazwa: 'Hala sportowa z łącznikiem przy SP nr 3', zam: 'Gmina Przykładowo', tryb: 'przetarg', etap: 3, termin: 7},
+  {id: 'szpital', nazwa: 'Przebudowa oddziału wewnętrznego', zam: 'Szpital Przykładowy', tryb: 'przetarg', etap: 4, termin: 3, wartosc: 6940000, teraz: 'cena gotowa, zarząd decyduje o marży', decyzja: true},
+  {id: 'biuro', nazwa: 'Budynek biurowy B2, stan deweloperski', zam: 'Przykład Development sp. z o.o.', tryb: 'zapytanie prywatne', etap: 1, termin: 16, wartosc: 22400000, teraz: 'przedmiar gotowy, 6 pozycji do sprawdzenia'},
+  {id: 'przedszkole', nazwa: 'Przedszkole czterooddziałowe', zam: 'Gmina Przykładowo Druga', tryb: 'przetarg', etap: 2, termin: 23, wartosc: 9310000, teraz: 'wycena gotowa, 3 pozycje bez Waszej ceny'},
+  {id: 'magazyn', nazwa: 'Magazyn z częścią socjalną', zam: 'Inwestor prywatny', tryb: 'zapytanie prywatne', etap: 1, termin: 30, wartosc: 5620000, warn: true}
+];
+const ETAPY = ['Przedmiar', 'Wycena', 'Podwykonawcy', 'Decyzja'];
+
+/* bill of quantities: qm = from drawings (model), qz = from the client's own bill */
+const POZ = [
+  {id: 1, p: 'P1', nazwa: 'Wykopy mechaniczne z wywozem gruntu', jm: 'm³', qm: 4850, qz: 4610, nasza: 38, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, rynek: 41, n: 46},
+  {id: 2, p: 'P1', nazwa: 'Ławy i stopy fundamentowe, beton C25/30', jm: 'm³', qm: 412, qz: 405, nasza: 1180, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 1210, n: 52},
+  {id: 3, p: 'P2', nazwa: 'Ściany, słupy i wieńce żelbetowe, beton C30/37', jm: 'm³', qm: 286, qz: 281, nasza: 1650, skad: 'Biurowiec A1', rok: 2025, rynek: 1720, n: 39},
+  {id: 4, p: 'P2', nazwa: 'Stropy żelbetowe monolityczne w zapleczu', jm: 'm²', qm: 1180, qz: 1180, nasza: 410, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 395, n: 41},
+  {id: 5, p: 'P2', nazwa: 'Stal zbrojeniowa B500SP z montażem', jm: 't', qm: 94.5, qz: 88, nasza: 6300, skad: 'Biurowiec A1', rok: 2025, rynek: 6450, n: 57},
+  {id: 6, p: 'P3', nazwa: 'Dźwigary i płatwie stalowe z montażem i ochroną ogniową', jm: 't', qm: 118, qz: 118, nasza: 14800, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, rynek: 15600, n: 18},
+  {id: 7, p: 'P4', nazwa: 'Ściany z bloczków silikatowych 24 cm', jm: 'm²', qm: 2960, qz: 3040, nasza: 205, skad: 'Przychodnia, Przykładowo Małe', rok: 2024, rynek: 198, n: 44},
+  {id: 8, p: 'P4', nazwa: 'Ścianki działowe 12 cm', jm: 'm²', qm: 1120, qz: 1090, nasza: 150, skad: 'Przychodnia, Przykładowo Małe', rok: 2024, rynek: 145, n: 38},
+  {id: 9, p: 'P5', nazwa: 'Dach hali: blacha trapezowa, wełna 25 cm, membrana PVC', jm: 'm²', qm: 1760, qz: 1760, nasza: 365, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, rynek: 352, n: 21},
+  {id: 10, p: 'P5', nazwa: 'Dach zaplecza: papa termozgrzewalna, styropian 25 cm', jm: 'm²', qm: 640, qz: 610, nasza: 290, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 305, n: 33},
+  {id: 11, p: 'P6', nazwa: 'Okna i fasady aluminiowe', jm: 'm²', qm: 412, qz: 412, nasza: 2350, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 2480, n: 29},
+  {id: 12, p: 'P6', nazwa: 'Drzwi zewnętrzne i wewnętrzne', jm: 'szt.', qm: 86, qz: 84, nasza: 3400, skad: 'Biurowiec A1', rok: 2025, rynek: 3250, n: 35},
+  {id: 13, p: 'P7', nazwa: 'Ocieplenie ścian: wełna 20 cm, tynk cienkowarstwowy', jm: 'm²', qm: 1940, qz: 1940, nasza: 335, skad: 'Przychodnia, Przykładowo Małe', rok: 2024, rynek: 318, n: 48},
+  {id: 14, p: 'P7', nazwa: 'Elewacja hali z płyt włóknocementowych', jm: 'm²', qm: 1280, qz: 1150, nasza: null, skad: null, rok: null, rynek: 520, n: 12},
+  {id: 15, p: 'P8', nazwa: 'Posadzka sportowa poliuretanowa z wyposażeniem boiska', jm: 'm²', qm: 1380, qz: 1380, nasza: 410, skad: 'Hala sportowa, Przykładowo Wielkie', rok: 2023, rynek: 465, n: 16},
+  {id: 16, p: 'P8', nazwa: 'Wykończenie zaplecza: tynki, płytki, sufity, malowanie', jm: 'm²', qm: 1650, qz: 1650, nasza: 390, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 405, n: 27},
+  {id: 17, p: 'P9', nazwa: 'Instalacje sanitarne, ogrzewanie, wentylacja z odzyskiem ciepła', jm: 'm² PUM', qm: 2140, qz: 2140, nasza: 610, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, rynek: 655, n: 19},
+  {id: 18, p: 'P10', nazwa: 'Instalacje elektryczne, oświetlenie hali, fotowoltaika 50 kWp', jm: 'm² PUM', qm: 2140, qz: 2140, nasza: 420, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, rynek: 445, n: 19},
+  {id: 19, p: 'P11', nazwa: 'Drogi, chodniki i parking z kostki', jm: 'm²', qm: 1450, qz: 1380, nasza: 185, skad: 'Szkoła, Przykładowo Górne', rok: 2025, rynek: 192, n: 40}
+];
+
+/* work packages sent to subcontractors */
+const PACZKI = [
+  {id: 'P1', nazwa: 'Roboty ziemne i fundamenty', brak: [], oferty: [
+    {f: 'Ziemia i Fundamenty Przykład sp. z o.o.', m: 'Szczecin', c: 648000, ocena: 'ok', krd: 0, wynik: 0.9, hist: '2 budowy z Wami, bez opóźnień'},
+    {f: 'ZRB Przykładny i Syn', m: 'Stargard', c: 689500, ocena: 'ok', krd: 0, wynik: 0.4, hist: '4 budowy z Wami, bez opóźnień'},
+    {f: 'Przykład-Grunt s.c.', m: 'Goleniów', c: 702000, ocena: 'uwaga', krd: 0, wynik: -0.1, hist: 'pierwsza oferta dla Was', histW: true}
+  ]},
+  {id: 'P2', nazwa: 'Żelbety', brak: [], oferty: [
+    {f: 'Przykład-Bet sp. z o.o.', m: 'Szczecin', c: 1389000, ocena: 'ryzyko', krd: [3, 214], wynik: -1.1, hist: 'pierwsza oferta dla Was', histW: true},
+    {f: 'Konstrukcje Żelbetowe Przykładowo', m: 'Police', c: 1498000, ocena: 'ok', krd: 0, wynik: 2.3, hist: '5 budów z Wami, bez opóźnień'},
+    {f: 'Żelbet Przykładny sp.j.', m: 'Gryfino', c: 1536000, ocena: 'uwaga', krd: 0, wynik: 1.1, hist: '1 budowa z Wami, 2 tygodnie opóźnienia', histW: true}
+  ]},
+  {id: 'P3', nazwa: 'Konstrukcja stalowa dachu', brak: ['Przykład Steel sp. z o.o.'], oferty: [
+    {f: 'Stal Przykładowa sp. z o.o.', m: 'Szczecin', c: 1712000, ocena: 'ok', krd: 0, wynik: 3.4, hist: '2 budowy z Wami, bez opóźnień'},
+    {f: 'Montaż Konstrukcji Przykład', m: 'Koszalin', c: 1655000, dop: 46000, dopOpis: 'bez ochrony ogniowej, dokładamy z wyceny', ocena: 'uwaga', krd: 0, wynik: 0.8, hist: 'pierwsza oferta dla Was', histW: true}
+  ]},
+  {id: 'P4', nazwa: 'Mury', brak: [], oferty: [
+    {f: 'Mur-Przykład s.c.', m: 'Szczecin', c: 742000, ocena: 'ok', krd: 0, wynik: 0.3, hist: '6 budów z Wami, bez opóźnień'},
+    {f: 'Budowlanka Przykładowo', m: 'Pyrzyce', c: 731000, ocena: 'uwaga', krd: [1, 18], wynik: 0.1, hist: '1 budowa z Wami, bez uwag'},
+    {f: 'PHU Przykładny', m: 'Szczecin', c: 798000, ocena: 'ok', krd: 0, wynik: 0.5, hist: '2 budowy z Wami, bez opóźnień'}
+  ]},
+  {id: 'P5', nazwa: 'Dach', brak: [], oferty: [
+    {f: 'Przykładowe Dachy sp. z o.o.', m: 'Szczecin', c: 815000, ocena: 'ok', krd: 0, wynik: 1.2, hist: '3 budowy z Wami, bez opóźnień'},
+    {f: 'Dekarstwo Przykład', m: 'Police', c: 779000, ocena: 'ok', krd: 0, wynik: 0.6, hist: '2 budowy z Wami, bez opóźnień'},
+    {f: 'Krycie Przykładowo s.c.', m: 'Stargard', c: 846000, ocena: 'uwaga', krd: 0, wynik: 0.4, hist: 'pierwsza oferta dla Was', histW: true}
+  ]},
+  {id: 'P6', nazwa: 'Okna i drzwi', brak: ['Alu-Przykład s.c.'], oferty: [
+    {f: 'Fasady Aluminiowe Przykład', m: 'Szczecin', c: 1214000, ocena: 'ok', krd: 0, wynik: 2.9, hist: '3 budowy z Wami, bez opóźnień'},
+    {f: 'Okna Przykładowo sp. z o.o.', m: 'Gorzów Wielkopolski', c: 1188000, dop: 52000, dopOpis: 'bez drzwi wewnętrznych, dokładamy z wyceny', ocena: 'uwaga', krd: 0, wynik: 1.6, hist: 'pierwsza oferta dla Was', histW: true}
+  ]},
+  {id: 'P7', nazwa: 'Elewacja', termin: 2, brak: ['Elewacje Przykładowo', 'Termo-Przykład s.c.', 'Fasady Przykładny'], oferty: []},
+  {id: 'P8', nazwa: 'Posadzka sportowa i wykończenie', brak: ['Sport-Przykład sp. z o.o.', 'Wykończenia Przykładowo'], oferty: [
+    {f: 'Przykład Posadzki Sportowe', m: 'Poznań', c: 1268000, ocena: 'ok', krd: 0, wynik: 1.9, hist: '1 budowa z Wami, bez uwag'}
+  ]},
+  {id: 'P9', nazwa: 'Instalacje sanitarne i wentylacja', brak: [], oferty: [
+    {f: 'Instal-Przykład sp. z o.o.', m: 'Szczecin', c: 1342000, ocena: 'ok', krd: 0, wynik: 2.2, hist: '4 budowy z Wami, bez opóźnień'},
+    {f: 'Przykładowa Wentylacja', m: 'Szczecin', c: 1268000, ocena: 'ok', krd: 0, wynik: 0.7, hist: '2 budowy z Wami, bez opóźnień'},
+    {f: 'Sanit Przykładowo', m: 'Koszalin', c: 1225000, ocena: 'ryzyko', krd: [2, 96], wynik: -0.4, hist: '1 budowa z Wami, kary za zwłokę', histW: true}
+  ]},
+  {id: 'P10', nazwa: 'Instalacje elektryczne', brak: ['Instalacje Przykładny'], oferty: [
+    {f: 'Elektro Przykład sp. z o.o.', m: 'Szczecin', c: 872000, ocena: 'ok', krd: 0, wynik: 1.1, hist: '5 budów z Wami, bez opóźnień'},
+    {f: 'Przykładowa Energia s.c.', m: 'Police', c: 905000, ocena: 'ok', krd: 0, wynik: 0.3, hist: '1 budowa z Wami, bez uwag'}
+  ]},
+  {id: 'P11', nazwa: 'Zagospodarowanie terenu', wlasne: true, brak: [], oferty: []}
+];
+
+/* winning offers in similar tenders, zł net per m² of usable area */
+const WYG = [5980, 6150, 6310, 6420, 6540, 6650, 6720, 6860, 6940, 7050, 7180, 7290, 7420, 7640];
+const MED = (WYG[6] + WYG[7]) / 2;
+const AX = [5800, 7800];
+
+const BAZA = [
+  {n: 'Wykopy mechaniczne z wywozem gruntu', jm: 'm³', c: 38, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, wyk: 36.4, ryn: 41, tr: 3},
+  {n: 'Ławy i stopy fundamentowe, beton C25/30', jm: 'm³', c: 1180, skad: 'Szkoła, Przykładowo Górne', rok: 2025, wyk: 1215, ryn: 1210, tr: 4},
+  {n: 'Stal zbrojeniowa B500SP z montażem', jm: 't', c: 6300, skad: 'Biurowiec A1', rok: 2025, wyk: 6420, ryn: 6450, tr: -1},
+  {n: 'Stropy żelbetowe monolityczne', jm: 'm²', c: 410, skad: 'Szkoła, Przykładowo Górne', rok: 2025, wyk: 418, ryn: 395, tr: 3},
+  {n: 'Ściany z bloczków silikatowych 24 cm', jm: 'm²', c: 205, skad: 'Przychodnia, Przykładowo Małe', rok: 2024, wyk: 199, ryn: 198, tr: 2},
+  {n: 'Dach hali: blacha trapezowa, wełna, membrana PVC', jm: 'm²', c: 365, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, wyk: 372, ryn: 352, tr: 3},
+  {n: 'Okna i fasady aluminiowe', jm: 'm²', c: 2350, skad: 'Szkoła, Przykładowo Górne', rok: 2025, wyk: 2290, ryn: 2480, tr: 5},
+  {n: 'Ocieplenie ścian, wełna 20 cm', jm: 'm²', c: 335, skad: 'Przychodnia, Przykładowo Małe', rok: 2024, wyk: 356, ryn: 318, tr: 1},
+  {n: 'Posadzka sportowa poliuretanowa', jm: 'm²', c: 410, skad: 'Hala sportowa, Przykładowo Wielkie', rok: 2023, wyk: 428, ryn: 465, tr: 6},
+  {n: 'Instalacje sanitarne i wentylacja', jm: 'm² PUM', c: 610, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, wyk: 634, ryn: 655, tr: 4},
+  {n: 'Instalacje elektryczne i oświetlenie', jm: 'm² PUM', c: 420, skad: 'Hala sportowa, Przykładowo Dolne', rok: 2025, wyk: 431, ryn: 445, tr: 5},
+  {n: 'Drogi, chodniki i parking z kostki', jm: 'm²', c: 185, skad: 'Szkoła, Przykładowo Górne', rok: 2025, wyk: 181, ryn: 192, tr: 2}
+];
+
+/* state and calculations */
+const S = {view: 'oferty', krok: 'przedmiar', spr: new Set(), tylko: false, cena: {}, wyb: {}, ko: 6, ry: 3, ma: 8, gw: 84, rola: 'zarzad', zatw: false, zatwGodz: ''};
+const autoCena = p => (p.nasza != null && p.rok >= 2024) ? 'nasza' : 'rynek';
+const cenaPoz = p => (S.cena[p.id] === 'nasza' && p.nasza != null) ? p.nasza : p.rynek;
+const wartPoz = p => p.qm * cenaPoz(p);
+const roz = p => (p.qm - p.qz) / p.qz * 100;
+const flag = p => Math.abs(roz(p)) > 5;
+const doSpr = () => POZ.filter(p => flag(p) && !S.spr.has(p.id)).length;
+const wycenaPaczki = k => POZ.filter(p => p.p === k.id).reduce((s, p) => s + wartPoz(p), 0);
+const porown = o => o.c + (o.dop || 0);
+const polecana = k => {
+  for (const lvl of ['ok', 'uwaga']) {
+    let b = -1;
+    k.oferty.forEach((o, i) => { if (o.ocena === lvl && (b < 0 || porown(o) < porown(k.oferty[b]))) b = i; });
+    if (b >= 0) return b;
+  }
+  return -1;
+};
+const kosztPaczki = k => { const i = S.wyb[k.id]; return (i >= 0 && k.oferty[i]) ? porown(k.oferty[i]) : wycenaPaczki(k); };
+const zapytane = () => PACZKI.reduce((s, k) => s + (k.wlasne ? 0 : k.oferty.length + k.brak.length), 0);
+const odebrane = () => PACZKI.reduce((s, k) => s + k.oferty.length, 0);
+const bezOfert = () => PACZKI.filter(k => !k.wlasne && !k.oferty.length);
+const GW = {60: {pkt: 0, rez: 0.4}, 72: {pkt: 20, rez: 0.7}, 84: {pkt: 40, rez: 1.0}};
+const licz = () => {
+  const KB = PACZKI.reduce((s, k) => s + kosztPaczki(k), 0);
+  const KO = KB * S.ko / 100;
+  const R = (KB + KO) * S.ry / 100;
+  const G = KB * GW[S.gw].rez / 100;
+  const K = KB + KO + R + G;
+  const C = K / (1 - S.ma / 100);
+  return {KB, KO, R, G, K, C, Z: C - K, m2: C / PUM};
+};
+POZ.forEach(p => { S.cena[p.id] = autoCena(p); });
+PACZKI.forEach(k => { S.wyb[k.id] = polecana(k); });
+
+/* small renderers */
+const kpi = (v, l, d, warn) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div>${d ? `<div class="d${warn ? ' warn' : ''}">${d}</div>` : ''}</div>`;
+const okpi = (v, l) => `<div class="o-kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`;
+const etap = n => `<div class="et" title="Etap ${n} z 4">${ETAPY.map((e, i) => `<i class="${i < n - 1 ? 'd' : i === n - 1 ? 'c' : ''}"></i>`).join('')}</div><span class="sub">${ETAPY[n - 1]}</span>`;
+const ocenaChip = o => o === 'ok' ? '<span class="chip ok">pewna firma</span>' : o === 'uwaga' ? '<span class="chip warn">do sprawdzenia</span>' : '<span class="chip risk">ryzyko</span>';
+const krdTxt = k => k ? `KRD: ${k[0]} ${plural(k[0], 'wpis', 'wpisy', 'wpisów')}, ${k[1]}${NB}tys.${NB}zł` : 'KRD: brak wpisów';
+const wynTxt = w => `${w >= 0 ? 'zysk' : 'strata'} 2025: ${dec(Math.abs(w), 1)}${NB}mln${NB}zł`;
+const setH = (id, v) => { const el = document.getElementById(id); if (el) el.innerHTML = v; };
+
+/* list of offers */
+function rOferty() {
+  const w = licz();
+  const val = o => o.id === 'hala' ? w.C : o.wartosc;
+  const suma = OFERTY.reduce((s, o) => s + val(o), 0);
+  const nb = OFERTY.slice().sort((a, b) => day(a.termin, true) - day(b.termin, true))[0];
+  const nbd = day(nb.termin, true);
+  const prz = OFERTY.filter(o => o.tryb === 'przetarg').length, pryw = OFERTY.length - prz;
+  const decyzje = OFERTY.filter(o => o.decyzja).length;
+  setH('lKpis',
+    kpi(String(OFERTY.length), plural(OFERTY.length, 'oferta w przygotowaniu', 'oferty w przygotowaniu', 'ofert w przygotowaniu'), `${prz} ${plural(prz, 'przetarg', 'przetargi', 'przetargów')}, ${pryw} ${plural(pryw, 'zapytanie prywatne', 'zapytania prywatne', 'zapytań prywatnych')}`) +
+    kpi(dec(suma / 1e6, 1) + '<small>mln zł</small>', 'łącznie netto', 'hala liczona na bieżąco z wyceny') +
+    kpi(fd(nbd), 'najbliższy termin składania', `${esc(nb.zam)}, ${zaIle(nbd)}`) +
+    kpi(String(decyzje), 'czeka na decyzję zarządu', 'szpital: marża i cena', true));
+  const brak = zapytane() - odebrane();
+  setH('lRows', OFERTY.map(o => {
+    const d = day(o.termin, true);
+    const teraz = o.id === 'hala' ? `czekamy na ${brak} ${plural(brak, 'ofertę', 'oferty', 'ofert')} podwykonawców`
+      : o.id === 'magazyn' ? `brakuje rysunków instalacji, automat poprosił o nie inwestora ${dd(-2)}` : o.teraz;
+    return `<tr class="lr${o.id === 'hala' ? ' main-row' : ''}${o.warn ? ' warn' : ''}" data-oferta="${o.id}" tabindex="0">
+      <td><b>${esc(o.nazwa)}</b><span class="sub">${esc(o.zam)}</span></td>
+      <td>${o.tryb}</td>
+      <td class="r num">${mln(val(o))}<span class="sub">${o.id === 'hala' ? 'z bieżącej wyceny' : 'szacunek'}</span></td>
+      <td>${etap(o.etap)}</td>
+      <td class="num nw">${fd(d)}<span class="sub">${zaIle(d)}</span></td>
+      <td>${o.decyzja ? '<span class="chip warn">decyzja</span> ' : ''}${esc(teraz)}${o.id === 'hala' ? '<span class="go">Otwórz →</span>' : ''}</td>
+    </tr>`;
+  }).join(''));
+}
+
+/* offer header and steps */
+function rHead() {
+  const w = licz(), d = day(7, true), n = inDays(d);
+  setH('oMeta', [`składanie ofert ${fd(d)}, 10:00`, `PUM ${grp(PUM)}${NB}m²`, 'realizacja 14 miesięcy', 'cena 60 pkt, gwarancja 40 pkt']
+    .map(t => `<span class="chip">${t}</span>`).join('') + '<span class="chip warn">wynagrodzenie ryczałtowe</span>');
+  setH('oKpis', (S.rola === 'zarzad'
+      ? okpi(mln(w.C), 'cena oferty netto') + okpi(pct(S.ma), 'marża') + okpi(zl(w.m2), 'za m² PUM')
+      : okpi(mln(w.KB), 'koszty bezpośrednie') + okpi(zl(w.KB / PUM), 'koszt bezpośredni za m²'))
+    + okpi(n + NB + plural(n, 'dzień', 'dni', 'dni'), 'do terminu'));
+}
+
+function rSteps() {
+  const n = doSpr();
+  const nR = POZ.filter(p => S.cena[p.id] === 'rynek').length;
+  const lock = S.rola !== 'zarzad';
+  const st = [
+    ['przedmiar', 'Przedmiar', n ? `${n} do sprawdzenia` : 'sprawdzony', n === 0],
+    ['wycena', 'Wycena', `z bazy ${POZ.length - nR}, z rynku ${nR}`, false],
+    ['podwykonawcy', 'Podwykonawcy', `${odebrane()} z ${zapytane()} ofert`, false],
+    ['decyzja', 'Decyzja', lock ? 'widzi zarząd' : S.zatw ? 'zatwierdzona' : 'czeka na zarząd', S.zatw && !lock]
+  ];
+  setH('steps', st.map((s, i) => {
+    const on = S.krok === s[0], lk = s[0] === 'decyzja' && lock;
+    return `<button type="button" role="tab" aria-selected="${on}" class="st${on ? ' on' : ''}${s[3] ? ' done' : ''}${lk ? ' lock' : ''}" data-krok="${s[0]}"><span class="n">${s[3] ? '✓' : i + 1}</span><span><span class="t">${s[1]}</span><span class="s">${s[2]}</span></span></button>`;
+  }).join(''));
+  $$('[data-pane]').forEach(el => { el.hidden = el.dataset.pane !== S.krok; });
+}
+
+/* step 1: bill of quantities */
+function rPrzedmiar() {
+  setH('pRows', POZ.filter(p => !S.tylko || flag(p)).map(p => {
+    const f = flag(p), ok = S.spr.has(p.id);
+    const stan = !f ? '<span class="chip">zgadza się</span>'
+      : ok ? '<span class="chip ok">✓ sprawdzone</span>'
+      : `<button type="button" class="btn sm" data-spr="${p.id}">Zatwierdź</button>`;
+    return `<tr class="${f && !ok ? 'warn' : ''}"><td>${esc(p.nazwa)}</td><td class="r num">${qty(p.qm)}${NB}<span class="u">${p.jm}</span></td><td class="r num">${qty(p.qz)}${NB}<span class="u">${p.jm}</span></td><td class="r num${f ? ' w' : ''}">${spct(roz(p))}</td><td class="r">${stan}</td></tr>`;
+  }).join(''));
+  const X = POZ.reduce((s, p) => s + (p.qm - p.qz) * cenaPoz(p), 0);
+  setH('pSum', `Rysunki pokazują więcej robót niż przedmiar zamawiającego: po cenach z wyceny to <b>${zl(X)}</b>. Umowa jest ryczałtowa, więc do wyceny bierzemy ilości z rysunków.`);
+  $('#pTylko').checked = S.tylko;
+  const n = doSpr();
+  setH('pLeft', n ? `${n} ${plural(n, 'pozycja czeka', 'pozycje czekają', 'pozycji czeka')} na sprawdzenie` : 'wszystkie różnice sprawdzone');
+}
+
+/* step 2: pricing */
+function rWycena() {
+  const autoN = POZ.filter(p => autoCena(p) === 'nasza').length, autoR = POZ.length - autoN;
+  setH('wAuto', `Podstawił Wasze ceny z wygranych ofert w ${autoN} ${autoN === 1 ? 'pozycji' : 'pozycjach'}, a w ${autoR} medianę z kosztorysów przetargowych, bo Waszej ceny nie ma albo jest stara.`);
+  setH('wRows', POZ.map(p => {
+    const brak = p.nasza == null, stara = !brak && p.rok < 2024;
+    const r = brak ? 0 : (p.nasza - p.rynek) / p.rynek * 100;
+    const note = brak ? 'Nie macie tej pozycji w bazie, zostaje rynek.'
+      : stara ? `Wasza cena jest z ${p.rok} roku i o ${dec(Math.abs(r), 0)}% ${r < 0 ? 'niższa' : 'wyższa'} od rynku. Automat podpowiada rynek.` : '';
+    const c = S.cena[p.id];
+    return `<tr class="${note ? 'warn' : ''}">
+      <td>${esc(p.nazwa)}<span class="sub${note ? ' w' : ''}">${note || `z wygranej oferty: ${esc(p.skad)}, ${p.rok}`}</span></td>
+      <td class="r num">${qty(p.qm)}${NB}<span class="u">${p.jm}</span></td>
+      <td class="r num">${brak ? '<span class="u">brak w bazie</span>' : `${grp(p.nasza)}${NB}zł/${p.jm}`}</td>
+      <td class="r num">${grp(p.rynek)}${NB}zł/${p.jm}<span class="sub">z ${p.n} kosztorysów</span></td>
+      <td class="r num${Math.abs(r) > 10 ? ' w' : ''}">${brak ? '' : spct(r)}</td>
+      <td><span class="seg"><button type="button" class="${c === 'nasza' ? 'on' : ''}" data-cena="${p.id}:nasza"${brak ? ' disabled' : ''}>Wasza</button><button type="button" class="${c === 'rynek' ? 'on' : ''}" data-cena="${p.id}:rynek">Rynek</button></span></td>
+      <td class="r num"><b>${zl(wartPoz(p))}</b></td>
+    </tr>`;
+  }).join(''));
+  const KBw = POZ.reduce((s, p) => s + wartPoz(p), 0), KBr = POZ.reduce((s, p) => s + p.qm * p.rynek, 0);
+  const zWyceny = PACZKI.filter(k => !(S.wyb[k.id] >= 0 && k.oferty[S.wyb[k.id]])).map(k => k.nazwa.toLowerCase());
+  setH('wSum', `Koszty bezpośrednie z wyceny: <b>${zl(KBw)}</b>. Gdyby wszędzie brać medianę rynkową: ${zl(KBr)} (${spct((KBr - KBw) / KBw * 100)}). ` +
+    (zWyceny.length ? `Do ceny oferty wycena trafia tylko tam, gdzie nie ma wybranej oferty podwykonawcy: ${zWyceny.join(', ')}. W pozostałych paczkach służy do porównania ofert.` : 'W każdej paczce jest już wybrana oferta, więc wycena służy do ich porównania.'));
+  const tryb = POZ.every(p => S.cena[p.id] === autoCena(p)) ? 'auto'
+    : POZ.every(p => S.cena[p.id] === (p.nasza != null ? 'nasza' : 'rynek')) ? 'nasza'
+    : POZ.every(p => S.cena[p.id] === 'rynek') ? 'rynek' : '';
+  $$('[data-all]').forEach(b => b.classList.toggle('on', b.dataset.all === tryb));
+}
+
+/* step 3: subcontractors */
+function rPodw() {
+  const wybrane = PACZKI.filter(k => k.oferty.length && S.wyb[k.id] >= 0);
+  const sumC = wybrane.reduce((s, k) => s + porown(k.oferty[S.wyb[k.id]]), 0);
+  const sumE = wybrane.reduce((s, k) => s + wycenaPaczki(k), 0);
+  const brak = zapytane() - odebrane();
+  setH('kKpis',
+    kpi(mln(sumC), `wybrane oferty w ${wybrane.length} ${wybrane.length === 1 ? 'paczce' : 'paczkach'}`, '') +
+    kpi(mln(sumE), 'wycena z bazy dla tych paczek', '') +
+    kpi(spct((sumC - sumE) / sumE * 100), 'oferty wobec wyceny', sumC <= sumE ? `taniej o ${zl(sumE - sumC)}` : `drożej o ${zl(sumC - sumE)}`, sumC > sumE) +
+    kpi(`${odebrane()}<small>z ${zapytane()}</small>`, 'ofert przyszło', `do ${brak} ${plural(brak, 'firmy', 'firm', 'firm')} automat napisał ponownie`));
+  setH('kList', PACZKI.map(k => {
+    const est = wycenaPaczki(k);
+    if (k.wlasne) return `<div class="pk"><div class="pk-h"><h3>${esc(k.nazwa)}</h3><span class="m">wycena z bazy: ${zl(est)}</span></div><div class="miss">Własna brygada, bez zapytań. Do ceny idzie wycena z bazy.</div></div>`;
+    const z = k.oferty.length + k.brak.length, pol = polecana(k);
+    let minI = -1;
+    k.oferty.forEach((o, i) => { if (minI < 0 || porown(o) < porown(k.oferty[minI])) minI = i; });
+    const rows = k.oferty.map((o, i) => {
+      const sel = S.wyb[k.id] === i, pc = porown(o), vs = (pc - est) / est * 100;
+      return `<label class="of${sel ? ' sel' : ''}">
+        <input type="radio" name="w-${k.id}" data-wyb="${k.id}:${i}"${sel ? ' checked' : ''}>
+        <span class="f"><b>${esc(o.f)}</b><span class="sub">${esc(o.m)}</span></span>
+        <span class="p num">${zl(pc)}<span class="sub">${o.dop ? `oferta ${zl(o.c)} + ${zl(o.dop)}<br>` : ''}wobec wyceny ${spct(vs)}</span></span>
+        <span class="chips">${ocenaChip(o.ocena)}<span class="chip${o.krd ? ' risk' : ''}">${krdTxt(o.krd)}</span><span class="chip${o.wynik < 0 ? ' warn' : ''}">${wynTxt(o.wynik)}</span><span class="chip${o.histW ? ' warn' : ''}">${esc(o.hist)}</span>${o.dop ? `<span class="chip warn">${esc(o.dopOpis)}</span>` : ''}</span>
+        <span class="tags">${i === pol ? '<span class="chip ai">podpowiedź</span>' : ''}${i === minI && i !== pol ? '<span class="chip">najtańsza</span>' : ''}</span>
+      </label>`;
+    }).join('');
+    const miss = k.brak.map(b => `<div class="miss">${esc(b)}: brak odpowiedzi, automat przypomniał się ${dd(-1)}</div>`).join('');
+    const none = k.oferty.length ? '' : `<div class="miss">Do ceny idzie wycena z bazy, dopóki nie przyjdą oferty. Termin odpowiedzi: ${dd(k.termin || 2, true)}.</div>`;
+    return `<div class="pk"><div class="pk-h"><h3>${esc(k.nazwa)}</h3><span class="m">${k.oferty.length} z ${z} ofert · wycena z bazy: ${zl(est)}</span></div>${rows}${miss}${none}</div>`;
+  }).join(''));
+}
+
+/* step 4: decision */
+function rDecyzja() {
+  const w = licz();
+  const zOfert = PACZKI.filter(k => S.wyb[k.id] >= 0 && k.oferty.length).length, zWyc = PACZKI.length - zOfert;
+  setH('dKBn', `z ofert: ${zOfert} ${plural(zOfert, 'paczka', 'paczki', 'paczek')}, z wyceny: ${zWyc}`);
+  setH('dKB', zl(w.KB)); setH('dKO', zl(w.KO)); setH('dR', zl(w.R)); setH('dG', zl(w.G));
+  setH('dGn', `${S.gw} ${plural(S.gw, 'miesiąc', 'miesiące', 'miesięcy')} gwarancji`);
+  setH('dK', zl(w.K)); setH('dZ', zl(w.Z)); setH('dC', zl(w.C)); setH('dV', zl(w.C * 0.23)); setH('dB', zl(w.C * 1.23));
+  setH('oKO', pct(S.ko)); setH('oR', pct(S.ry)); setH('oMa', pct(S.ma));
+
+  const px = v => Math.max(0, Math.min(100, (v - AX[0]) / (AX[1] - AX[0]) * 100));
+  setH('dStrip', `<div class="ax"></div>${WYG.map(v => `<i class="dot" style="left:${px(v)}%" title="${zl(v)} za m²"></i>`).join('')}<div class="med" style="left:${px(MED)}%"><span>mediana</span></div><div class="me" style="left:${px(w.m2)}%"><span>Wasza cena</span></div><span class="lo">${grp(AX[0])}</span><span class="hi">${grp(AX[1])}</span>`);
+  const diff = (w.m2 - MED) / MED * 100, nizej = WYG.filter(v => v < w.m2).length;
+  setH('dStripT', `Wasza cena za m² PUM: <b>${zl(w.m2)}</b>, mediana zwycięskich ofert: ${zl(MED)}. Jesteście ${dec(Math.abs(diff), 1)}% ${diff < 0 ? 'poniżej' : 'powyżej'} mediany, a niższa cena wygrała w ${nizej} z ${WYG.length} przetargów. Porównanie: hale sportowe przy szkołach od 2024 roku, zachodniopomorskie, lubuskie i wielkopolskie.`);
+
+  const al = [];
+  bezOfert().forEach(k => al.push(['', `${k.nazwa}: nie ma jeszcze żadnej oferty, do ceny idzie wycena z bazy (${zl(wycenaPaczki(k))}). Termin odpowiedzi: ${dd(k.termin || 2, true)}.`]));
+  PACZKI.forEach(k => { const i = S.wyb[k.id]; if (i >= 0 && k.oferty[i] && k.oferty[i].ocena === 'ryzyko') al.push(['risk', `${k.nazwa}: wybraliście firmę z wpisami w KRD i stratą za 2025 rok.`]); });
+  const n = doSpr();
+  if (n) al.push(['', `Przedmiar: ${n} ${plural(n, 'pozycja czeka', 'pozycje czekają', 'pozycji czeka')} na sprawdzenie.`]);
+  if (S.ma < 5) al.push(['risk', 'Marża poniżej 5%. Przy umowie ryczałtowej to mało.']);
+  if (diff > 0) al.push(['', 'Cena za m² jest powyżej mediany zwycięskich ofert.']);
+  if (!al.length) al.push(['ok', 'Wszystko gotowe do złożenia.']);
+  setH('dWarn', al.map(a => `<div class="al ${a[0]}">${a[1]}</div>`).join(''));
+
+  const ok = t => `<span class="chip ok">✓ ${t}</span>`, wn = t => `<span class="chip warn">${t}</span>`;
+  setH('dAkc', [
+    ['Kosztorysant', 'przedmiar i wycena', n ? wn(`${n} do sprawdzenia`) : ok('gotowe')],
+    ['Kierownik działu ofert', 'podwykonawcy', bezOfert().length ? wn('elewacja czeka na oferty') : ok('gotowe')],
+    ['Zarząd', 'marża i cena', S.zatw ? ok(`zatwierdzone dziś, ${S.zatwGodz}`) : '<button type="button" class="btn sm" data-zatw="1">Zatwierdzam cenę</button>']
+  ].map(r => `<div><span><b>${r[0]}</b><span class="sub">${r[1]}</span></span>${r[2]}</div>`).join(''));
+}
+
+/* price base */
+function rBaza() {
+  const q = ($('#bQ').value || '').trim().toLowerCase();
+  const uwagi = b => {
+    const dw = (b.wyk - b.c) / b.c * 100, dr = (b.ryn - b.c) / b.c * 100;
+    if (b.rok < 2024) return `Cena z ${b.rok} roku, rynek jest o ${dec(Math.abs(dr), 0)}% ${dr > 0 ? 'wyżej' : 'niżej'}. Automat podpowiada aktualizację.`;
+    if (Math.abs(dw) > 5) return `Na budowie wyszło o ${dec(Math.abs(dw), 0)}% ${dw > 0 ? 'drożej' : 'taniej'}. Automat podpowiada nową cenę: ${grp(b.wyk)}${NB}zł.`;
+    return '';
+  };
+  const doAkt = BAZA.filter(b => uwagi(b)).length;
+  setH('bKpis',
+    kpi(grp(1284), 'pozycje w bazie', 'z 38 zakończonych budów') +
+    kpi(dd(-1), 'ostatnio dopisany koszt wykonania', 'Szkoła, Przykładowo Górne') +
+    kpi(grp(4726), 'kosztorysów przetargowych w medianie', 'zewnętrzna baza do podpięcia') +
+    kpi(String(doAkt), plural(doAkt, 'cena do aktualizacji', 'ceny do aktualizacji', 'cen do aktualizacji'), 'automat podpowiada nowe', true));
+  const rows = BAZA.filter(b => !q || b.n.toLowerCase().includes(q));
+  setH('bRows', rows.length ? rows.map(b => {
+    const note = uwagi(b), dw = (b.wyk - b.c) / b.c * 100;
+    const wyk = Number.isInteger(b.wyk) ? grp(b.wyk) : dec(b.wyk, 2);
+    return `<tr class="${note ? 'warn' : ''}"><td>${esc(b.n)}${note ? `<span class="sub w">${note}</span>` : ''}</td><td class="r num">${grp(b.c)}${NB}zł/${b.jm}<span class="sub">${esc(b.skad)}, ${b.rok}</span></td><td class="r num">${wyk}${NB}zł<span class="sub">${spct(dw)} wobec oferty</span></td><td class="r num">${grp(b.ryn)}${NB}zł</td><td class="r num">${spct(b.tr, 0)}</td></tr>`;
+  }).join('') : `<tr><td colspan="5" class="note">Nic nie pasuje do „${esc(q)}”.</td></tr>`);
+}
+
+function rOferta() { rHead(); rSteps(); rPrzedmiar(); rWycena(); rPodw(); rDecyzja(); }
+
+/* navigation */
+const CRUMB = {oferty: 'Ofertowanie', oferta: 'Ofertowanie · Hala sportowa', baza: 'Baza cen', jak: 'Jak to działa'};
+function go(v) {
+  S.view = v;
+  $$('.view').forEach(el => { el.hidden = el.dataset.view !== v; });
+  $$('.nav-b').forEach(b => b.classList.toggle('on', b.dataset.go === (v === 'oferta' ? 'oferty' : v)));
+  $('#crumb').textContent = CRUMB[v];
+  if (v === 'oferty') rOferty();
+  window.scrollTo(0, 0);
+}
+let tt;
+function toast(m) {
+  const el = $('#toast');
+  el.textContent = m; el.classList.add('on');
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove('on'), 4200);
+}
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-go],[data-oferta],[data-krok],[data-spr],[data-cena],[data-all],[data-zatw],[data-plik]');
+  if (!t) return;
+  const ds = t.dataset;
+  if (ds.go) go(ds.go);
+  else if (ds.oferta) { if (ds.oferta === 'hala') go('oferta'); else toast('W tym przykładzie pełne dane ma tylko hala sportowa.'); }
+  else if (ds.krok) {
+    if (ds.krok === 'decyzja' && S.rola !== 'zarzad') { toast('Marżę i cenę końcową widzi zarząd. Przełączcie widok na zarząd.'); return; }
+    S.krok = ds.krok; rSteps();
+  }
+  else if (ds.spr) { S.spr.add(+ds.spr); rOferta(); }
+  else if (ds.cena) { const [id, v] = ds.cena.split(':'); S.cena[+id] = v; S.zatw = false; rOferta(); }
+  else if (ds.all) {
+    POZ.forEach(p => { S.cena[p.id] = ds.all === 'auto' ? autoCena(p) : (ds.all === 'nasza' && p.nasza != null) ? 'nasza' : 'rynek'; });
+    S.zatw = false; rOferta();
+  }
+  else if (ds.zatw) { S.zatw = true; S.zatwGodz = hhmm(); rOferta(); toast('Zatwierdzone. W działającym systemie cena przechodzi teraz do formularza ofertowego i kosztorysu.'); }
+  else if ('plik' in ds) toast('W przykładzie nie ma pliku. W działającym systemie to kosztorys w Excelu albo w formacie Waszego programu do kosztorysowania.');
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.dataset.wyb) { const [k, i] = t.dataset.wyb.split(':'); S.wyb[k] = +i; S.zatw = false; rOferta(); }
+  else if (t.dataset.gw) { S.gw = +t.dataset.gw; S.zatw = false; rHead(); rSteps(); rDecyzja(); }
+  else if (t.id === 'pTylko') { S.tylko = t.checked; rPrzedmiar(); }
+  else if (t.id === 'rola') {
+    S.rola = t.value;
+    if (S.rola !== 'zarzad' && S.krok === 'decyzja') S.krok = 'przedmiar';
+    rOferta();
+  }
+});
+document.addEventListener('input', e => {
+  const t = e.target, key = {sKO: 'ko', sR: 'ry', sMa: 'ma'}[t.id];
+  if (key) { S[key] = +t.value; S.zatw = false; rHead(); rSteps(); rDecyzja(); }
+  else if (t.id === 'bQ') rBaza();
+});
+document.addEventListener('keydown', e => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('tr[data-oferta]')) { e.preventDefault(); e.target.click(); }
+});
+
+/* start */
+$$('[data-d]').forEach(el => { el.textContent = dd(+el.dataset.d, el.hasAttribute('data-work')); });
+rOferty(); rOferta(); rBaza();
+const h = location.hash.replace('#', '');
+go(h === 'hala' ? 'oferta' : (h === 'baza' || h === 'jak') ? h : 'oferty');
+})();
+</script>
+<script>
+/* Licznik otwarć decku. Wkleja go wrzuc_do_repo.py na końcu każdego decku. Bez cookies,
+   bez IP, bez zewnętrznych bibliotek. Liczy tylko na fluinty.pl, więc podglądy lokalne nic
+   nie wysyłają.
+   Dane idą na /dla/_z w NASZEJ domenie, a Netlify przekazuje je do Apps Scriptu (reguła
+   w _redirects, pilnuje jej wrzuc_do_repo.py). Wprost do script.google.com przez sendBeacon
+   blokowała je EasyPrivacy (reguła *$ping,third-party), domyślna w uBlock Origin, AdGuard i Brave.
+   ?my=1 w adresie wyłącza liczenie na tym urządzeniu na stałe (?my=0 włącza z powrotem). */
+(function(){
+  var ADRES='/dla/_z';
+  if(!/(^|\.)fluinty\.pl$/.test(location.hostname) || !window.fetch) return;
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  var my=/[?&]my=([01])/.exec(location.search);
+  if(my) ls('fl_nie_licz',my[1]);
+  if(ls('fl_nie_licz')==='1') return;
+
+  var deck=((location.pathname.match(/\/dla\/([^\/]+)/)||[])[1]||'').toLowerCase();
+  if(!deck) return;
+  var v=''; for(var i=0;i<16;i++) v+='abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random()*36)];
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var mq=window.matchMedia('(max-width: 900px), (max-height: 500px) and (max-width: 1000px)');
+  var ref=''; try{ref=document.referrer?new URL(document.referrer).hostname:'';}catch(e){}
+  if(ref===location.hostname) ref='';
+  var st={v:v,d:deck,n:0,dev:mq.matches?'telefon':'komputer',max:1,of:slides.length,t:0,demo:false,cal:false,ref:ref};
+  var liczone=false, widoczne=0, naDemo=0, wyslane='';
+
+  function slajd(){
+    if(!mq.matches){ var a=document.querySelector('.slide.active'); return a?slides.indexOf(a)+1:1; }
+    var n=1; slides.forEach(function(s,i){ if(s.getBoundingClientRect().top<innerHeight*.6) n=i+1; }); return n;
+  }
+  function wyslij(){
+    if(!liczone) return;
+    var j=JSON.stringify(st); if(j===wyslane) return; wyslane=j;
+    try{fetch(ADRES,{method:'POST',body:j,keepalive:true,redirect:'manual',headers:{'Content-Type':'text/plain'}}).catch(function(){});}
+    catch(e){try{navigator.sendBeacon(ADRES,j);}catch(e2){}}
+  }
+  // Skanery linków w poczcie otwierają stronę, zanim zrobi to człowiek. Liczymy dopiero
+  // po 5 s na wierzchu albo po pierwszym ruchu człowieka.
+  function start(){
+    if(liczone) return; liczone=true;
+    st.dev=mq.matches?'telefon':'komputer';
+    var n=(Number(ls('fl_w_'+deck))||0)+1; ls('fl_w_'+deck,String(n)); st.n=n;
+    wyslij();
+  }
+  ['pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,start,{passive:true,once:true});});
+
+  setInterval(function(){
+    if(document.visibilityState!=='visible') return;
+    widoczne++; st.t=widoczne;
+    if(widoczne>=5) start();
+    var s=slajd(); if(s>st.max) st.max=s;
+    var cur=slides[s-1];
+    if(cur && cur.dataset.kind==='demo'){ if(++naDemo>=8) st.demo=true; }
+    if(widoczne%15===0) wyslij();
+  },1000);
+
+  var zmiana=null;
+  function poZmianie(){ clearTimeout(zmiana); zmiana=setTimeout(function(){ var s=slajd(); if(s>st.max){st.max=s;wyslij();} },700); }
+  addEventListener('scroll',poZmianie,{passive:true});
+  addEventListener('keyup',poZmianie); addEventListener('click',poZmianie); addEventListener('pointerup',poZmianie);
+
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){
+    a.addEventListener('click',function(){ start(); st.cal=true; wyslane=''; wyslij(); });
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') wyslij(); });
+  addEventListener('pagehide',wyslij);
+})();
+</script>
+</body>
+</html>
