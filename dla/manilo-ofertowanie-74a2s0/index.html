@@ -273,6 +273,22 @@ td.r .sub,.nw .sub{white-space:nowrap}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--deep);color:#fff;padding:12px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;width:max-content;max-width:min(520px,calc(100vw - 32px));z-index:50;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* role views */
+.rola-info{display:flex;align-items:center;gap:10px;margin:-6px 0 18px;padding:8px 12px;border-radius:9px;background:var(--card);border:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.rola-info b{color:var(--ink)}
+.rola-info .ic{width:28px;height:28px;border-radius:8px}
+.rola-info .ic svg{width:17px;height:17px}
+body:not(.rola-zarzad) .tz{display:none}
+.lr.muted td{opacity:.5}
+.pn.off,.bus.off{opacity:.45;cursor:not-allowed}
+.pn.off:hover{transform:none;border-color:var(--line)}
+.bus.off:hover{border-color:#9AA8B8}
+.who .h.moje{border-color:var(--navy);box-shadow:inset 3px 0 0 var(--navy)}
+.who .h.moje b::after{content:" · to Wasze zadanie";color:var(--teal-ink)}
+.two li.ty{font-weight:600;color:var(--ink)}
+.two li.ty::marker{color:var(--teal)}
+.sub + .btn{margin-top:7px}
+
 @media (max-width:1100px){
   .dec{grid-template-columns:1fr}
   .o-head{grid-template-columns:1fr}
@@ -323,9 +339,10 @@ td.r .sub,.nw .sub{white-space:nowrap}
     <div class="top">
       <div class="crumb" id="crumb">Ofertowanie</div>
       <label class="role">Widok dla
-        <select id="rola"><option value="zarzad">zarządu</option><option value="kosztorysant">kosztorysanta</option></select>
+        <select id="rola"><option value="zarzad">zarządu</option><option value="kierownik">kierownika działu ofert</option><option value="kosztorysant">kosztorysanta</option></select>
       </label>
     </div>
+    <div class="rola-info" id="rolaInfo"></div>
 
     <!-- process map -->
     <section class="view" data-view="procesy">
@@ -342,7 +359,7 @@ td.r .sub,.nw .sub{white-space:nowrap}
       <div class="kpis" id="lKpis"></div>
       <div class="card">
         <div class="tw"><table class="wide">
-          <thead><tr><th>Oferta</th><th>Tryb</th><th class="r">Wartość netto</th><th>Etap</th><th>Termin</th><th>Co teraz</th></tr></thead>
+          <thead><tr><th>Oferta</th><th>Tryb</th><th class="r tz">Wartość netto</th><th>Etap</th><th>Termin</th><th id="lZadTh">Co teraz</th></tr></thead>
           <tbody id="lRows"></tbody>
         </table></div>
       </div>
@@ -365,7 +382,7 @@ td.r .sub,.nw .sub{white-space:nowrap}
       <div data-pane="przedmiar">
         <div class="who">
           <div class="a"><b>Automat zrobił</b>Pobrał dokumentację z platformy zamawiającego (<span data-d="-6"></span>, 14:20) i odłożył ją do folderu oferty na Dysku Google. Przeczytał 119 arkuszy rysunków i SWZ, w 1&nbsp;h 45&nbsp;min policzył przedmiar i porównał go z przedmiarem zamawiającego.</div>
-          <div class="h"><b>Zostaje dla kosztorysanta</b>Sprawdzić pozycje, w których ilości różnią się o więcej niż 5%. Przycisk „Zatwierdź” zapisuje, kto i kiedy sprawdził ilość.</div>
+          <div class="h" data-dla="kosztorysant"><b>Zostaje dla kosztorysanta</b>Sprawdzić pozycje, w których ilości różnią się o więcej niż 5%. Przycisk „Zatwierdź” zapisuje, kto i kiedy sprawdził ilość.</div>
         </div>
         <div class="g2">
           <div class="card">
@@ -409,7 +426,7 @@ td.r .sub,.nw .sub{white-space:nowrap}
       <div data-pane="wycena" hidden>
         <div class="who">
           <div class="a"><b>Automat zrobił</b><span id="wAuto"></span></div>
-          <div class="h"><b>Zostaje dla kosztorysanta</b>Rozstrzygnąć pozycje na żółto. Wycena jest miarą dla ofert podwykonawców, a do ceny trafia tam, gdzie ofert jeszcze nie ma.</div>
+          <div class="h" data-dla="kosztorysant"><b>Zostaje dla kosztorysanta</b>Rozstrzygnąć pozycje na żółto. Wycena jest miarą dla ofert podwykonawców, a do ceny trafia tam, gdzie ofert jeszcze nie ma.</div>
         </div>
         <div class="card">
           <div class="ct">Wycena z bazy cen<span class="seg" role="group" aria-label="Ustaw ceny we wszystkich pozycjach"><button type="button" data-all="auto">Jak podpowiada automat</button><button type="button" data-all="nasza">Wszędzie Wasze</button><button type="button" data-all="rynek">Wszędzie rynek</button></span></div>
@@ -424,7 +441,7 @@ td.r .sub,.nw .sub{white-space:nowrap}
       <div data-pane="podwykonawcy" hidden>
         <div class="who">
           <div class="a"><b>Automat zrobił</b>Złożył paczki z przedmiarem i rysunkami i <span data-d="-5"></span> wysłał je z Waszej skrzynki do 30 firm z Waszej listy. Zebrał 22 odpowiedzi, a do pozostałych firm napisał ponownie <span data-d="-1"></span>. Każdą firmę sprawdził w KRD, na białej liście VAT i w raportach finansowych.</div>
-          <div class="h"><b>Zostaje dla kierownika działu ofert</b>Wybrać ofertę w każdej paczce. Automat podpowiada najtańszą pewną firmę, ale ostatnie słowo należy do Was. Gdy oferta czegoś nie obejmuje, automat dolicza brakującą część z wyceny.</div>
+          <div class="h" data-dla="kierownik"><b>Zostaje dla kierownika działu ofert</b>Wybrać ofertę w każdej paczce. Automat podpowiada najtańszą pewną firmę, ale ostatnie słowo należy do Was. Gdy oferta czegoś nie obejmuje, automat dolicza brakującą część z wyceny.</div>
         </div>
         <div class="kpis" id="kKpis"></div>
         <div id="kList"></div>
@@ -433,7 +450,7 @@ td.r .sub,.nw .sub{white-space:nowrap}
       <div data-pane="decyzja" hidden>
         <div class="who">
           <div class="a"><b>Automat zrobił</b>Zebrał koszty z wybranych ofert i z wyceny, doliczył rezerwy i porównał cenę z cenami, które wygrywały podobne przetargi.</div>
-          <div class="h"><b>Zostaje dla zarządu</b>Ustalić marżę i zatwierdzić cenę. Suwaki od razu zmieniają cenę w nagłówku.</div>
+          <div class="h" data-dla="zarzad"><b>Zostaje dla zarządu</b>Ustalić marżę i zatwierdzić cenę. Suwaki od razu zmieniają cenę w nagłówku.</div>
         </div>
         <div class="dec">
           <div class="card">
@@ -517,10 +534,10 @@ td.r .sub,.nw .sub{white-space:nowrap}
           <div class="ct">Kto co widzi</div>
           <p class="note" style="margin:0 0 10px">Każde stanowisko ma dostęp tylko do tego, czego potrzebuje.</p>
           <ul>
-            <li>Kosztorysant: przedmiar i wycenę.</li>
-            <li>Kierownik działu ofert: do tego oferty podwykonawców.</li>
-            <li>Zarząd: wszystko, razem z marżą i ceną końcową.</li>
-            <li>Przełącznik „Widok dla” w prawym górnym rogu pokazuje, jak panel wygląda u kosztorysanta.</li>
+            <li data-r="kosztorysant">Kosztorysant: przedmiar, wycenę i bazę cen.</li>
+            <li data-r="kierownik">Kierownik działu ofert: do tego przetargi, oferty podwykonawców i umowy.</li>
+            <li data-r="zarzad">Zarząd: wszystko, razem z marżą, ceną końcową i raportami.</li>
+            <li>Przełącznik „Widok dla” w prawym górnym rogu pokazuje, jak panel wygląda u każdego z nich.</li>
           </ul>
         </div>
       </div>
@@ -705,8 +722,21 @@ const RAPORTY = {id: 'raporty', nazwa: 'Raporty dla zarządu',
   panel: ['wszystkie budowy na jednym ekranie: marżę w planie i w prognozie, zagrożone terminy i płynność,', 'dla każdego stanowiska to, czego potrzebuje, a dla zarządu całość.'],
   automat: 'Co tydzień składa raport z danych, które już są w pozostałych procesach, więc nikt nic nie przepisuje.'};
 
+/* who sees what */
+const ROLE = {
+  zarzad: {kroki: ['przedmiar', 'wycena', 'podwykonawcy', 'decyzja'], start: 'decyzja', procesy: null,
+    info: '<b>Widok dla zarządu.</b> Wszystkie procesy, marża, cena końcowa i raporty. Przełączcie widok, żeby zobaczyć, co widzą inni.'},
+  kierownik: {kroki: ['przedmiar', 'wycena', 'podwykonawcy'], start: 'podwykonawcy', procesy: ['przetargi', 'ofertowanie', 'umowy'],
+    info: '<b>Widok dla kierownika działu ofert.</b> Przetargi, ofertowanie i umowy z podwykonawcami. Bez marży, ceny końcowej i raportów.'},
+  kosztorysant: {kroki: ['przedmiar', 'wycena'], start: 'przedmiar', procesy: ['ofertowanie'],
+    info: '<b>Widok dla kosztorysanta.</b> Przedmiar, wycena i baza cen. Bez marży, ceny końcowej i ofert podwykonawców.'}
+};
+const KTO = {zarzad: 'Zarząd', kierownik: 'Kierownik działu ofert', kosztorysant: 'Kosztorysant'};
+const ZAMEK = '<svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>';
+const dostep = id => ROLE[S.rola].procesy === null || (id !== 'raporty' && ROLE[S.rola].procesy.includes(id));
+
 /* state and calculations */
-const S = {view: 'procesy', proc: null, krok: 'przedmiar', spr: new Set(), tylko: false, cena: {}, wyb: {}, ko: 6, ry: 3, ma: 8, gw: 84, rola: 'zarzad', zatw: false, zatwGodz: ''};
+const S = {view: 'procesy', proc: null, krok: 'przedmiar', spr: new Set(), przyjete: new Set(), tylko: false, cena: {}, wyb: {}, ko: 6, ry: 3, ma: 8, gw: 84, rola: 'zarzad', zatw: false, zatwGodz: ''};
 const autoCena = p => (p.nasza != null && p.rok >= 2024) ? 'nasza' : 'rynek';
 const cenaPoz = p => (S.cena[p.id] === 'nasza' && p.nasza != null) ? p.nasza : p.rynek;
 const wartPoz = p => p.qm * cenaPoz(p);
@@ -749,34 +779,79 @@ const krdTxt = k => k ? `KRD: ${k[0]} ${plural(k[0], 'wpis', 'wpisy', 'wpisów')
 const wynTxt = w => `${w >= 0 ? 'zysk' : 'strata'} 2025: ${dec(Math.abs(w), 1)}${NB}mln${NB}zł`;
 const setH = (id, v) => { const el = document.getElementById(id); if (el) el.innerHTML = v; };
 
-/* list of offers */
+/* list of offers: every role sees its own tasks */
+function zadanie(o) {
+  const n = doSpr(), brak = zapytane() - odebrane();
+  const Z = {
+    zarzad: {
+      hala: [`czekamy na ${brak} ${plural(brak, 'ofertę', 'oferty', 'ofert')} podwykonawców`, false],
+      szpital: ['cena gotowa, zarząd decyduje o marży', true],
+      biuro: ['przedmiar gotowy, 6 pozycji do sprawdzenia', false],
+      przedszkole: ['wycena gotowa, 3 pozycje bez Waszej ceny', false],
+      magazyn: [`brakuje rysunków instalacji, automat poprosił o nie inwestora ${dd(-2)}`, false]
+    },
+    kierownik: {
+      hala: [`brakuje ${brak} ${plural(brak, 'oferty', 'ofert', 'ofert')} podwykonawców, elewacja bez żadnej`, true],
+      szpital: ['podwykonawcy wybrani, cena czeka na zarząd', false],
+      biuro: ['zapytania do podwykonawców pójdą po wycenie', false],
+      przedszkole: ['paczki dla podwykonawców gotowe do wysyłki', true],
+      magazyn: ['czeka na rysunki instalacji od inwestora', false]
+    },
+    kosztorysant: {
+      hala: [n ? `przedmiar: ${n} ${plural(n, 'pozycja', 'pozycje', 'pozycji')} do sprawdzenia` : 'przedmiar sprawdzony, wycena gotowa', n > 0],
+      szpital: ['nic, cena czeka na zarząd', false],
+      biuro: ['przedmiar: 6 pozycji do sprawdzenia', true],
+      przedszkole: ['wycena: 3 pozycje bez Waszej ceny', true],
+      magazyn: ['czeka na rysunki instalacji od inwestora', false]
+    }
+  };
+  return Z[S.rola][o.id];
+}
+
 function rOferty() {
   const w = licz();
   const val = o => o.id === 'hala' ? w.C : o.wartosc;
-  const suma = OFERTY.reduce((s, o) => s + val(o), 0);
   const nb = OFERTY.slice().sort((a, b) => day(a.termin, true) - day(b.termin, true))[0];
   const nbd = day(nb.termin, true);
-  const prz = OFERTY.filter(o => o.tryb === 'przetarg').length, pryw = OFERTY.length - prz;
-  const decyzje = OFERTY.filter(o => o.decyzja).length;
-  setH('lKpis',
-    kpi(String(OFERTY.length), plural(OFERTY.length, 'oferta w przygotowaniu', 'oferty w przygotowaniu', 'ofert w przygotowaniu'), `${prz} ${plural(prz, 'przetarg', 'przetargi', 'przetargów')}, ${pryw} ${plural(pryw, 'zapytanie prywatne', 'zapytania prywatne', 'zapytań prywatnych')}`) +
-    kpi(dec(suma / 1e6, 1) + '<small>mln zł</small>', 'łącznie netto', 'hala liczona na bieżąco z wyceny') +
-    kpi(fd(nbd), 'najbliższy termin składania', `${esc(nb.zam)}, ${zaIle(nbd)}`) +
-    kpi(String(decyzje), 'czeka na decyzję zarządu', 'szpital: marża i cena', true));
+  const termin = kpi(fd(nbd), 'najbliższy termin składania', `${esc(nb.zam)}, ${zaIle(nbd)}`);
   const brak = zapytane() - odebrane();
+  let k;
+  if (S.rola === 'zarzad') {
+    const suma = OFERTY.reduce((s, o) => s + val(o), 0);
+    const prz = OFERTY.filter(o => o.tryb === 'przetarg').length, pryw = OFERTY.length - prz;
+    const decyzje = OFERTY.filter(o => o.decyzja).length;
+    k = kpi(String(OFERTY.length), plural(OFERTY.length, 'oferta w przygotowaniu', 'oferty w przygotowaniu', 'ofert w przygotowaniu'), `${prz} ${plural(prz, 'przetarg', 'przetargi', 'przetargów')}, ${pryw} ${plural(pryw, 'zapytanie prywatne', 'zapytania prywatne', 'zapytań prywatnych')}`) +
+      kpi(dec(suma / 1e6, 1) + '<small>mln zł</small>', 'łącznie netto', 'hala liczona na bieżąco z wyceny') + termin +
+      kpi(String(decyzje), 'czeka na decyzję zarządu', 'szpital: marża i cena', true);
+  } else if (S.rola === 'kierownik') {
+    const pust = bezOfert().length;
+    const ryz = PACZKI.reduce((s, p) => s + p.oferty.filter(o => o.ocena === 'ryzyko').length, 0);
+    k = kpi(String(brak), plural(brak, 'oferta podwykonawcy jeszcze nie przyszła', 'oferty podwykonawców jeszcze nie przyszły', 'ofert podwykonawców jeszcze nie przyszło'), `automat przypomniał się ${dd(-1)}`) +
+      kpi(String(pust), plural(pust, 'paczka bez żadnej oferty', 'paczki bez żadnej oferty', 'paczek bez żadnej oferty'), `elewacja, termin odpowiedzi ${dd(2, true)}`, true) +
+      kpi(String(ryz), plural(ryz, 'firma z wpisami w KRD', 'firmy z wpisami w KRD', 'firm z wpisami w KRD'), 'automat ich nie podpowiada', true) + termin;
+  } else {
+    const n = doSpr(), razem = n + 6, ceny = POZ.filter(p => p.nasza == null || p.rok < 2024).length + 3, akt = bazaDoAkt();
+    k = kpi(String(razem), `${plural(razem, 'pozycja', 'pozycje', 'pozycji')} przedmiaru do sprawdzenia`, `hala ${n}, biuro 6`, true) +
+      kpi(String(ceny), `${plural(ceny, 'cena', 'ceny', 'cen')} do rozstrzygnięcia`, `hala ${ceny - 3}, przedszkole 3`) +
+      kpi(String(akt), `${plural(akt, 'cena', 'ceny', 'cen')} w bazie do aktualizacji`, akt ? 'automat podpowiada nowe' : 'baza aktualna', akt > 0) + termin;
+  }
+  setH('lKpis', k);
+  setH('lZadTh', S.rola === 'zarzad' ? 'Co teraz' : 'Zadanie');
   setH('lRows', OFERTY.map(o => {
-    const d = day(o.termin, true);
-    const teraz = o.id === 'hala' ? `czekamy na ${brak} ${plural(brak, 'ofertę', 'oferty', 'ofert')} podwykonawców`
-      : o.id === 'magazyn' ? `brakuje rysunków instalacji, automat poprosił o nie inwestora ${dd(-2)}` : o.teraz;
-    return `<tr class="lr${o.id === 'hala' ? ' main-row' : ''}${o.warn ? ' warn' : ''}" data-oferta="${o.id}" tabindex="0">
+    const d = day(o.termin, true), [txt, moje] = zadanie(o);
+    const muted = S.rola !== 'zarzad' && !moje;
+    return `<tr class="lr${o.id === 'hala' ? ' main-row' : ''}${o.warn ? ' warn' : ''}${muted ? ' muted' : ''}" data-oferta="${o.id}" tabindex="0">
       <td><b>${esc(o.nazwa)}</b><span class="sub">${esc(o.zam)}</span></td>
       <td>${o.tryb}</td>
-      <td class="r num">${mln(val(o))}<span class="sub">${o.id === 'hala' ? 'z bieżącej wyceny' : 'szacunek'}</span></td>
+      <td class="r num tz">${mln(val(o))}<span class="sub">${o.id === 'hala' ? 'z bieżącej wyceny' : 'szacunek'}</span></td>
       <td>${etap(o.etap)}</td>
       <td class="num nw">${fd(d)}<span class="sub">${zaIle(d)}</span></td>
-      <td>${o.decyzja ? '<span class="chip warn">decyzja</span> ' : ''}${esc(teraz)}${o.id === 'hala' ? '<span class="go">Otwórz →</span>' : ''}</td>
+      <td>${moje ? `<span class="chip warn">${S.rola === 'zarzad' ? 'decyzja' : 'do zrobienia'}</span> ` : ''}${esc(txt)}${o.id === 'hala' ? '<span class="go">Otwórz →</span>' : ''}</td>
     </tr>`;
   }).join(''));
+  const ile = OFERTY.filter(o => zadanie(o)[1]).length, bd = $('.nav-b .badge');
+  bd.textContent = ile; bd.hidden = !ile;
+  bd.title = S.rola === 'zarzad' ? 'czeka na decyzję zarządu' : 'oferty z zadaniem dla tego widoku';
 }
 
 /* offer header and steps */
@@ -793,16 +868,16 @@ function rHead() {
 function rSteps() {
   const n = doSpr();
   const nR = POZ.filter(p => S.cena[p.id] === 'rynek').length;
-  const lock = S.rola !== 'zarzad';
+  const ma = k => ROLE[S.rola].kroki.includes(k);
   const st = [
     ['przedmiar', 'Przedmiar', n ? `${n} do sprawdzenia` : 'sprawdzony', n === 0],
     ['wycena', 'Wycena', `z bazy ${POZ.length - nR}, z rynku ${nR}`, false],
-    ['podwykonawcy', 'Podwykonawcy', `${odebrane()} z ${zapytane()} ofert`, false],
-    ['decyzja', 'Decyzja', lock ? 'widzi zarząd' : S.zatw ? 'zatwierdzona' : 'czeka na zarząd', S.zatw && !lock]
+    ['podwykonawcy', 'Podwykonawcy', ma('podwykonawcy') ? `${odebrane()} z ${zapytane()} ofert` : 'widzi kierownik ofert', false],
+    ['decyzja', 'Decyzja', !ma('decyzja') ? 'widzi zarząd' : S.zatw ? 'zatwierdzona' : 'czeka na zarząd', S.zatw && ma('decyzja')]
   ];
   setH('steps', st.map((s, i) => {
-    const on = S.krok === s[0], lk = s[0] === 'decyzja' && lock;
-    return `<button type="button" role="tab" aria-selected="${on}" class="st${on ? ' on' : ''}${s[3] ? ' done' : ''}${lk ? ' lock' : ''}" data-krok="${s[0]}"><span class="n">${s[3] ? '✓' : i + 1}</span><span><span class="t">${s[1]}</span><span class="s">${s[2]}</span></span></button>`;
+    const on = S.krok === s[0], lk = !ma(s[0]);
+    return `<button type="button" role="tab" aria-selected="${on}" aria-disabled="${lk}" class="st${on ? ' on' : ''}${s[3] ? ' done' : ''}${lk ? ' lock' : ''}" data-krok="${s[0]}"><span class="n">${lk ? ZAMEK : s[3] ? '✓' : i + 1}</span><span><span class="t">${s[1]}</span><span class="s">${s[2]}</span></span></button>`;
   }).join(''));
   $$('[data-pane]').forEach(el => { el.hidden = el.dataset.pane !== S.krok; });
 }
@@ -813,7 +888,7 @@ function rPrzedmiar() {
     const f = flag(p), ok = S.spr.has(p.id);
     const stan = !f ? '<span class="chip">zgadza się</span>'
       : ok ? '<span class="chip ok">✓ sprawdzone</span>'
-      : `<button type="button" class="btn sm" data-spr="${p.id}">Zatwierdź</button>`;
+      : S.rola === 'kosztorysant' ? `<button type="button" class="btn sm" data-spr="${p.id}">Zatwierdź</button>` : '<span class="chip warn">czeka na kosztorysanta</span>';
     return `<tr class="${f && !ok ? 'warn' : ''}"><td>${esc(p.nazwa)}</td><td class="r num">${qty(p.qm)}${NB}<span class="u">${p.jm}</span></td><td class="r num">${qty(p.qz)}${NB}<span class="u">${p.jm}</span></td><td class="r num${f ? ' w' : ''}">${spct(roz(p))}</td><td class="r">${stan}</td></tr>`;
   }).join(''));
   const X = POZ.reduce((s, p) => s + (p.qm - p.qz) * cenaPoz(p), 0);
@@ -919,36 +994,42 @@ function rDecyzja() {
   ].map(r => `<div><span><b>${r[0]}</b><span class="sub">${r[1]}</span></span>${r[2]}</div>`).join(''));
 }
 
-/* price base */
+/* price base: the estimator accepts suggested prices, the others only see them */
+const bazaNowa = b => b.rok < 2024 ? b.ryn : b.wyk;
+const bazaUwaga = b => {
+  const dw = (b.wyk - b.c) / b.c * 100, dr = (b.ryn - b.c) / b.c * 100;
+  if (b.rok < 2024) return `Cena z ${b.rok} roku, rynek jest o ${dec(Math.abs(dr), 0)}% ${dr > 0 ? 'wyżej' : 'niżej'}. Automat podpowiada ${grp(b.ryn)}${NB}zł.`;
+  if (Math.abs(dw) > 5) return `Na budowie wyszło o ${dec(Math.abs(dw), 0)}% ${dw > 0 ? 'drożej' : 'taniej'}. Automat podpowiada ${grp(b.wyk)}${NB}zł.`;
+  return '';
+};
+const bazaDoAkt = () => BAZA.filter((b, i) => bazaUwaga(b) && !S.przyjete.has(i)).length;
 function rBaza() {
   const q = ($('#bQ').value || '').trim().toLowerCase();
-  const uwagi = b => {
-    const dw = (b.wyk - b.c) / b.c * 100, dr = (b.ryn - b.c) / b.c * 100;
-    if (b.rok < 2024) return `Cena z ${b.rok} roku, rynek jest o ${dec(Math.abs(dr), 0)}% ${dr > 0 ? 'wyżej' : 'niżej'}. Automat podpowiada aktualizację.`;
-    if (Math.abs(dw) > 5) return `Na budowie wyszło o ${dec(Math.abs(dw), 0)}% ${dw > 0 ? 'drożej' : 'taniej'}. Automat podpowiada nową cenę: ${grp(b.wyk)}${NB}zł.`;
-    return '';
-  };
-  const doAkt = BAZA.filter(b => uwagi(b)).length;
+  const akt = bazaDoAkt();
   setH('bKpis',
     kpi(grp(1284), 'pozycje w bazie', 'z 38 zakończonych budów') +
     kpi(dd(-1), 'ostatnio dopisany koszt wykonania', 'Szkoła, Przykładowo Górne') +
     kpi(grp(4726), 'kosztorysów przetargowych w medianie', 'zewnętrzna baza do podpięcia') +
-    kpi(String(doAkt), plural(doAkt, 'cena do aktualizacji', 'ceny do aktualizacji', 'cen do aktualizacji'), 'automat podpowiada nowe', true));
-  const rows = BAZA.filter(b => !q || b.n.toLowerCase().includes(q));
-  setH('bRows', rows.length ? rows.map(b => {
-    const note = uwagi(b), dw = (b.wyk - b.c) / b.c * 100;
+    kpi(String(akt), plural(akt, 'cena do aktualizacji', 'ceny do aktualizacji', 'cen do aktualizacji'), !akt ? 'baza aktualna' : S.rola === 'kosztorysant' ? 'automat podpowiada nowe' : 'czeka na kosztorysanta', akt > 0));
+  const rows = BAZA.map((b, i) => [b, i]).filter(([b]) => !q || b.n.toLowerCase().includes(q));
+  setH('bRows', rows.length ? rows.map(([b, i]) => {
+    const note = bazaUwaga(b), ok = S.przyjete.has(i), c = ok ? bazaNowa(b) : b.c;
+    const dw = (b.wyk - c) / c * 100;
     const wyk = Number.isInteger(b.wyk) ? grp(b.wyk) : dec(b.wyk, 2);
-    return `<tr class="${note ? 'warn' : ''}"><td>${esc(b.n)}${note ? `<span class="sub w">${note}</span>` : ''}</td><td class="r num">${grp(b.c)}${NB}zł/${b.jm}<span class="sub">${esc(b.skad)}, ${b.rok}</span></td><td class="r num">${wyk}${NB}zł<span class="sub">${spct(dw)} wobec oferty</span></td><td class="r num">${grp(b.ryn)}${NB}zł</td><td class="r num">${spct(b.tr, 0)}</td></tr>`;
+    const akcja = S.rola === 'kosztorysant' ? `<button type="button" class="btn sm" data-przyjmij="${i}">Przyjmij ${grp(bazaNowa(b))}${NB}zł</button>` : '<span class="chip warn">czeka na kosztorysanta</span>';
+    const pod = ok ? `<span class="sub">Przyjęta nowa cena, wcześniej ${grp(b.c)}${NB}zł.</span>` : note ? `<span class="sub w">${note}</span>${akcja}` : '';
+    return `<tr class="${note && !ok ? 'warn' : ''}"><td>${esc(b.n)}${pod}</td><td class="r num">${grp(c)}${NB}zł/${b.jm}<span class="sub">${ok ? 'przyjęta dziś' : `${esc(b.skad)}, ${b.rok}`}</span></td><td class="r num">${wyk}${NB}zł<span class="sub">${spct(dw)} wobec oferty</span></td><td class="r num">${grp(b.ryn)}${NB}zł</td><td class="r num">${spct(b.tr, 0)}</td></tr>`;
   }).join('') : `<tr><td colspan="5" class="note">Nic nie pasuje do „${esc(q)}”.</td></tr>`);
 }
 
 function rProcesy() {
   const ik = id => `<span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true">${IKONY[id]}</svg></span>`;
-  const chip = p => p.gotowy ? '<span class="chip ok">przykład gotowy</span>' : '<span class="chip">do omówienia</span>';
+  const chip = p => !dostep(p.id) ? `<span class="chip">${ZAMEK} brak dostępu</span>` : p.gotowy ? '<span class="chip ok">przykład gotowy</span>' : '<span class="chip">do omówienia</span>';
+  const off = id => dostep(id) ? '' : ' off';
   setH('pMap',
-    `<button type="button" class="bus${S.proc === 'raporty' ? ' sel' : ''}" data-proc="raporty">${ik('raporty')}<b>${RAPORTY.nazwa}</b><span class="t2">zbierają dane ze wszystkich procesów poniżej</span>${chip(RAPORTY)}</button>` +
+    `<button type="button" class="bus${S.proc === 'raporty' ? ' sel' : ''}${off('raporty')}" data-proc="raporty" aria-disabled="${!dostep('raporty')}">${ik('raporty')}<b>${RAPORTY.nazwa}</b><span class="t2">zbierają dane ze wszystkich procesów poniżej</span>${chip(RAPORTY)}</button>` +
     `<div class="ph"><div class="f0">${FAZY[0]}</div><div class="f1">${FAZY[1]}</div><div class="f2">${FAZY[2]}</div></div>` +
-    `<div class="pipe">${PROC.map(p => `<button type="button" class="pn${p.gotowy ? ' ready' : ''}${S.proc === p.id ? ' sel' : ''}" data-proc="${p.id}">${ik(p.id)}<span class="tx"><b>${p.nazwa}</b><span class="fz">${FAZY[p.faza]}</span></span>${chip(p)}${p.gotowy ? '<span class="arr">→</span>' : ''}</button>`).join('')}</div>` +
+    `<div class="pipe">${PROC.map(p => `<button type="button" class="pn${p.gotowy ? ' ready' : ''}${S.proc === p.id ? ' sel' : ''}${off(p.id)}" data-proc="${p.id}" aria-disabled="${!dostep(p.id)}">${ik(p.id)}<span class="tx"><b>${p.nazwa}</b><span class="fz">${FAZY[p.faza]}</span></span>${chip(p)}${p.gotowy ? '<span class="arr">→</span>' : ''}</button>`).join('')}</div>` +
     '<div class="loop" aria-hidden="true"><div><span>koszt wykonania wraca do bazy cen</span></div></div>' +
     '<p class="loopnote">Koszt wykonania z odbiorów wraca do bazy cen w ofertowaniu.</p>');
   const p = S.proc === 'raporty' ? RAPORTY : PROC.find(x => x.id === S.proc);
@@ -959,6 +1040,16 @@ function rProcesy() {
 
 function rOferta() { rHead(); rSteps(); rPrzedmiar(); rWycena(); rPodw(); rDecyzja(); }
 
+function rRola() {
+  document.body.classList.remove('rola-zarzad', 'rola-kierownik', 'rola-kosztorysant');
+  document.body.classList.add('rola-' + S.rola);
+  if (S.proc && !dostep(S.proc)) S.proc = null;
+  setH('rolaInfo', `<span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"/></svg></span><span>${ROLE[S.rola].info}</span>`);
+  $$('.who .h[data-dla]').forEach(el => el.classList.toggle('moje', el.dataset.dla === S.rola));
+  $$('.two li[data-r]').forEach(el => el.classList.toggle('ty', el.dataset.r === S.rola));
+  rProcesy(); rOferty(); rOferta(); rBaza();
+}
+
 /* navigation */
 const CRUMB = {procesy: 'Procesy', oferty: 'Ofertowanie', oferta: 'Ofertowanie · Hala sportowa', baza: 'Ofertowanie · Baza cen', jak: 'Ofertowanie · Jak to działa'};
 function go(v) {
@@ -967,6 +1058,7 @@ function go(v) {
   $$('.nav-b').forEach(b => b.classList.toggle('on', b.dataset.go === (v === 'oferta' ? 'oferty' : v)));
   $('#crumb').textContent = CRUMB[v];
   if (v === 'oferty') rOferty();
+  if (v === 'oferta') { S.krok = ROLE[S.rola].start; rSteps(); }
   window.scrollTo(0, 0);
 }
 let tt;
@@ -977,18 +1069,19 @@ function toast(m) {
 }
 
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-proc],[data-oferta],[data-krok],[data-spr],[data-cena],[data-all],[data-zatw],[data-plik]');
+  const t = e.target.closest('[data-go],[data-proc],[data-oferta],[data-krok],[data-spr],[data-cena],[data-all],[data-zatw],[data-plik],[data-przyjmij]');
   if (!t) return;
   const ds = t.dataset;
   if (ds.go) go(ds.go);
   else if (ds.proc) {
+    if (!dostep(ds.proc)) { toast(`${KTO[S.rola]} nie widzi tego procesu. Każde stanowisko ma dostęp tylko do tego, czego potrzebuje.`); return; }
     if (ds.proc === 'ofertowanie') { go('oferty'); return; }
     S.proc = ds.proc; rProcesy();
     if (window.innerWidth < 1250) $('#pDet').scrollIntoView({behavior: 'smooth', block: 'nearest'});
   }
   else if (ds.oferta) { if (ds.oferta === 'hala') go('oferta'); else toast('W tym przykładzie pełne dane ma tylko hala sportowa.'); }
   else if (ds.krok) {
-    if (ds.krok === 'decyzja' && S.rola !== 'zarzad') { toast('Marżę i cenę końcową widzi zarząd. Przełączcie widok na zarząd.'); return; }
+    if (!ROLE[S.rola].kroki.includes(ds.krok)) { toast(ds.krok === 'decyzja' ? 'Marżę i cenę końcową widzi tylko zarząd.' : 'Oferty podwykonawców widzą kierownik działu ofert i zarząd.'); return; }
     S.krok = ds.krok; rSteps();
   }
   else if (ds.spr) { S.spr.add(+ds.spr); rOferta(); }
@@ -998,6 +1091,7 @@ document.addEventListener('click', e => {
     S.zatw = false; rOferta();
   }
   else if (ds.zatw) { S.zatw = true; S.zatwGodz = hhmm(); rOferta(); toast('Zatwierdzone. W działającym systemie cena przechodzi teraz do formularza ofertowego i kosztorysu.'); }
+  else if (ds.przyjmij) { S.przyjete.add(+ds.przyjmij); rBaza(); rOferty(); }
   else if ('plik' in ds) toast('W przykładzie nie ma pliku. W działającym systemie to kosztorys w Excelu albo w formacie Waszego programu do kosztorysowania.');
 });
 document.addEventListener('change', e => {
@@ -1007,8 +1101,8 @@ document.addEventListener('change', e => {
   else if (t.id === 'pTylko') { S.tylko = t.checked; rPrzedmiar(); }
   else if (t.id === 'rola') {
     S.rola = t.value;
-    if (S.rola !== 'zarzad' && S.krok === 'decyzja') S.krok = 'przedmiar';
-    rOferta();
+    if (S.view === 'oferta' || !ROLE[S.rola].kroki.includes(S.krok)) S.krok = ROLE[S.rola].start;
+    rRola();
   }
 });
 document.addEventListener('input', e => {
@@ -1022,7 +1116,7 @@ document.addEventListener('keydown', e => {
 
 /* start */
 $$('[data-d]').forEach(el => { el.textContent = dd(+el.dataset.d, el.hasAttribute('data-work')); });
-rProcesy(); rOferty(); rOferta(); rBaza();
+rRola();
 const h = location.hash.replace('#', '');
 go(h === 'hala' ? 'oferta' : ['oferty', 'baza', 'jak'].includes(h) ? h : 'procesy');
 })();
