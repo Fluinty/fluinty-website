@@ -1,0 +1,316 @@
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (jak we wpisie o Eticodzie) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+
+    /* tresc artykulu */
+    [data-post] .art h2 { font-size: clamp(23px, 2.4vw, 30px); margin-top: 22px; scroll-margin-top: 96px; }
+    [data-post] .art h2:first-child { margin-top: 0; }
+    [data-post] .art h3 { font-size: clamp(19px, 1.9vw, 22px); margin-top: 8px; scroll-margin-top: 96px; }
+    [data-post] .art a:not(.link-more) { color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px; }
+    [data-post] .art-list { display: flex; flex-direction: column; gap: 10px; }
+    [data-post] .art-list li { position: relative; padding-left: 22px; color: var(--text-2); }
+    [data-post] .art-list li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 2px; background: var(--teal); }
+    [data-post] .art-list b { color: var(--text); }
+    [data-post] .art-quote { border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text); }
+    [data-post] .art-calc { background: var(--gray); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; font-family: var(--mono); font-size: 15px; line-height: 1.6; color: var(--text); }
+    /* spis tresci: na komputerze z prawej i przyklejony, na telefonie nad tekstem */
+    [data-post] .art-toc ol { display: flex; flex-direction: column; gap: 10px; counter-reset: toc; }
+    [data-post] .art-toc li { counter-increment: toc; display: flex; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+    [data-post] .art-toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--text-3); padding-top: 2px; }
+    [data-post] .art-toc a { color: var(--text-2); }
+    [data-post] .art-toc a:hover { color: var(--teal-text); }
+    /* overflow: hidden z .sec wylacza sticky, clip przycina tak samo, a sticky dziala */
+    section.sec[data-post] { overflow: clip; }
+    @media (min-width: 900px) {
+      [data-post] .art-aside { order: 2; position: sticky; top: 96px; }
+    }
+    /* ramka "Nasze zdanie" */
+    [data-post] .art-take { background: var(--gray); border: 1px solid var(--line); border-left: 3px solid var(--teal); border-radius: 12px; padding: 18px 22px; display: flex; flex-direction: column; gap: 8px; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Automatyzacja procesów produkcyjnych w MŚP. Gdzie naprawdę uciekają godziny i jak je odzyskać",
+    "description": "Automatyzacja produkcji w małej i średniej firmie: co robić na hali, a co w biurze przy produkcji. Zamówienia, faktury i reklamacje na przykładach drukarni, producenta ekspozytorów i odlewni.",
+    "inLanguage": "pl-PL",
+    "datePublished": "2026-11-06",
+    "dateModified": "2026-11-06",
+    "mainEntityOfPage": "https://fluinty.pl/blog/automatyzacja-procesow-produkcyjnych/",
+    "author": { "@type": "Person", "name": "Patryk Bielecki", "url": "https://fluinty.pl/zespol/patryk-bielecki/" },
+    "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Czy automatyzacja biura produkcji zmienia coś na hali?", "acceptedAnswer": { "@type": "Answer", "text": "Na hali ludzie pracują tak jak dotąd. Zmienia się to, co do nich dociera: zamówienie trafia do systemu szybciej, z wyliczonymi datami i bez literówek w indeksie albo ilości." } },
+      { "@type": "Question", "name": "Czy da się to połączyć z naszym programem do produkcji albo ERP?", "acceptedAnswer": { "@type": "Answer", "text": "Prawie zawsze. Jeśli program da się połączyć z innymi bezpośrednio, korzystamy z tego. Jeśli nie, robot wpisuje dane przez ten sam ekran, którego używa pracownik. Tak działa to w drukarni Eticod." } },
+      { "@type": "Question", "name": "Kto po naszej stronie musi się tym zająć?", "acceptedAnswer": { "@type": "Answer", "text": "Na start osoba, która zna proces i opowie, jak wygląda dziś, oraz ktoś od IT na godzinę albo dwie: dostęp do skrzynki, konto techniczne w systemie, czasem VPN. Po wdrożeniu jedna osoba odbiera wyjątki, czyli sprawy, których system nie był pewien." } }
+    ]
+  }
+  </script>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Okruszki">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="{{ROOT}}blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Poradnik</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Automatyzacja procesów produkcyjnych w MŚP. Gdzie naprawdę uciekają godziny i jak je odzyskać</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="{{ROOT}}assets/zespol/patryk-bielecki.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);"><a href="{{ROOT}}zespol/patryk-bielecki/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Patryk Bielecki</a> &middot; 5 min &middot; <time datetime="2026-11-06">06.11.2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">Automatyzacja produkcji kojarzy się z robotem spawalniczym i linią,
+          która sama pakuje kartony. W firmie, która zatrudnia 30 czy 150 osób, godziny uciekają też gdzie indziej:
+          w zamówieniach przepisywanych do systemu, w fakturach od dostawców i w reklamacjach, które ktoś musi
+          rozplątać, zanim sprawa w ogóle ruszy. Opisujemy obie strony, ale więcej miejsca dajemy tej drugiej. Tam
+          małe i średnie zakłady odzyskują czas najtaniej i najszybciej.</p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <aside class="card sr art-aside art-toc" aria-label="Spis treści"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 16px;">
+          <p class="eyebrow">W tym tekście</p>
+          <ol>
+            <li><a href="#czym-jest">Czym jest automatyzacja produkcji</a></li>
+            <li><a href="#hala">Automatyzacja na hali</a></li>
+            <li><a href="#biuro">Gdzie uciekają godziny</a></li>
+            <li><a href="#zamowienia">Zamówienia: drukarnia etykiet</a></li>
+            <li><a href="#faktury">Faktury: producent ekspozytorów</a></li>
+            <li><a href="#reklamacje">Reklamacje: odlewnia</a></li>
+            <li><a href="#od-czego">Od czego zacząć</a></li>
+            <li><a href="#koszt">Ile kosztuje i ile trwa</a></li>
+            <li><a href="#pytania">Częste pytania</a></li>
+          </ol>
+          <p style="border-top: 1px solid var(--line); padding-top: 16px;">
+            <a class="link-more" href="{{ROOT}}#kalkulator">Policz koszt ręcznej pracy
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
+            </a>
+          </p>
+        </aside>
+
+        <div class="stack art" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+
+          <h2 id="czym-jest">Czym jest automatyzacja procesów produkcyjnych</h2>
+          <p class="body-2">Automatyzacja procesów produkcyjnych to przekazanie maszynom i programom czynności, które
+            dziś wykonują ludzie. W zakładzie dzieje się to na dwóch piętrach:</p>
+          <ul class="art-list body-2">
+            <li><b>Na hali.</b> Maszyny, roboty przemysłowe, sterowniki i linie, które same podają, obrabiają,
+              sprawdzają i pakują. Tu mówi się też o robotyzacji produkcji.</li>
+            <li><b>W biurze przy produkcji.</b> Przyjmowanie zamówień, planowanie terminów, zakupy, faktury od
+              dostawców, reklamacje i raporty. To wszystko, co musi się wydarzyć, zanim maszyna ruszy, i to, co
+              zostaje po wysyłce.</li>
+          </ul>
+          <p class="body-2">Większość tekstów o automatyzacji produkcji dotyczy pierwszego piętra. Pierwsza strona
+            Google to integratorzy automatyki, producenci maszyn i kierunki studiów. Drugie piętro ginie w tym
+            szumie, chociaż w małym zakładzie to tam leży najwięcej godzin do odzyskania.</p>
+
+          <h2 id="hala">Automatyzacja na hali: kiedy ma sens</h2>
+          <p class="body-2">Robot albo zautomatyzowana linia to inwestycja w sprzęt, projekt integratora i często
+            przebudowa stanowiska. Opłaca się przy dużych, powtarzalnych seriach: tym samym detalu, tej samej
+            operacji, tysiącach sztuk. Przy krótkich seriach i częstych przezbrojeniach rachunek wychodzi gorzej, bo
+            robota trzeba za każdym razem przestawiać.</p>
+          <p class="body-2">Tym się nie zajmujemy. Jeśli myślicie o robotyzacji stanowiska, porozmawiajcie
+            z integratorem automatyki przemysłowej. My zajmujemy się drugim piętrem.</p>
+
+          <h2 id="biuro">Gdzie w małym zakładzie naprawdę uciekają godziny</h2>
+          <p class="body-2">W zakładach, z którymi pracujemy, najwięcej czasu ucieka na to, co dzieje się wokół
+            produkcji. Zwykle wygląda to tak:</p>
+          <ul class="art-list body-2">
+            <li>zamówienia przychodzą mailem i ktoś przepisuje je do systemu, pozycja po pozycji,</li>
+            <li>faktury i dokumenty zakupowe trafiają do arkusza ręcznie, więc raporty kosztów są zawsze spóźnione,</li>
+            <li>reklamacje przychodzą w różnych językach, ze zdjęciami i bez kompletu danych,</li>
+            <li>terminy wysyłki i produkcji ktoś liczy w głowie albo w kalendarzu na ścianie.</li>
+          </ul>
+          <p class="body-2">Każda z tych czynności powtarza się dziesiątki albo setki razy w miesiącu i za każdym
+            razem może się skończyć literówką. Literówka w indeksie albo w ilości wychodzi dopiero na produkcji,
+            kiedy kosztuje najwięcej.</p>
+          <aside class="art-take" aria-label="Nasze zdanie">
+            <p class="eyebrow">Nasze zdanie</p>
+            <p class="body-2"><b>W małym zakładzie zacznijcie od biura.</b> Robot na hali to wydatek liczony
+              zwykle w setkach tysięcy złotych i miesiące przygotowań. Zamówienia, faktury i reklamacje da się uporządkować
+              w kilka tygodni, za ułamek tej kwoty i bez zatrzymywania produkcji. Pieniądze odzyskane w biurze można
+              potem wydać na halę, kiedy wiadomo już, że się zwrócą.</p>
+          </aside>
+
+          <h2 id="zamowienia">Zamówienia z maili: drukarnia etykiet</h2>
+          <p class="body-2">Eticod z Katowic drukuje etykiety samoprzylepne od 30 lat. Zamówienia przychodzą mailem,
+            w treści albo w załączniku PDF, a każdy klient wysyła je po swojemu. Przepisanie jednego do systemu
+            zajmowało od 20 do 25&nbsp;minut, a miesięcznie jest ich od 300 do 500.</p>
+          <p class="body-2">Dziś agent pilnuje skrzynki, czyta maila i załącznik, sprawdza, czy ma wszystkie pola,
+            i wpisuje zamówienie do systemu. Przy okazji liczy terminy: wysyłka wypada 7&nbsp;dni przed dostawą,
+            produkcja 2&nbsp;dni przed wysyłką, a jeśli którakolwiek data trafia na weekend, cofa ją na piątek.
+            Zamówienie „jak ostatnio” bez indeksu nie idzie dalej, tylko wraca do człowieka.</p>
+          <p class="body-2">Zespół odzyskał w ten sposób około 160&nbsp;godzin miesięcznie, a od startu w marcu 2026
+            do systemu nie trafił ani jeden błędny wpis. Program drukarni nie przyjmuje danych z zewnątrz, więc
+            ostatni krok wykonuje robot, który klika w nim to samo co pracownik. Więcej o tym we wpisie
+            <a href="{{ROOT}}blog/co-to-jest-rpa/">Co to jest RPA</a>, a cały przebieg jest w
+            <a href="{{ROOT}}realizacje/eticod/">case study Eticod</a>.</p>
+          <aside class="art-take" aria-label="Nasze zdanie">
+            <p class="eyebrow">Nasze zdanie</p>
+            <p class="body-2"><b>Nie wymieniajcie systemu tylko po to, żeby coś zautomatyzować.</b> Zakłady często
+              zakładają, że najpierw potrzebny jest nowy ERP. Programu w Eticodzie nie da się
+              z niczym połączyć, a mimo to zamówienia trafiają do niego same. Wymiana systemu to często rok pracy
+              i duże ryzyko. Uporządkowanie tego, co do niego trafia, to kilka tygodni.</p>
+          </aside>
+
+          <h2 id="faktury">Faktury i dokumenty zakupowe: producent ekspozytorów</h2>
+          <p class="body-2">Holbox projektuje i produkuje ekspozytory oraz materiały POS z tektury. Faktury
+            od dostawców przychodzą mailem: PDF-y w różnych układach, czasem zdjęcie z telefonu. Zespół przepisywał
+            je do arkuszy, z których powstają raporty kosztów, i schodziło na to od 30 do 40&nbsp;godzin
+            miesięcznie.</p>
+          <p class="body-2">Teraz system wyłapuje maile z fakturą, odkłada załączniki na Dysk, czyta z nich
+            dostawcę, numer, daty i kwoty i wpisuje je do arkusza. Dokument z pustym albo nieczytelnym polem do
+            arkusza nie trafia, tylko czeka na człowieka. Od listopada 2025 przeszło tak około 2&nbsp;400 dokumentów
+            bez jednej ręcznej poprawki. Szczegóły w <a href="{{ROOT}}realizacje/holbox/">case study Holbox</a>.</p>
+          <p class="body-2">Na produkcji ma to znaczenie, które łatwo przeoczyć. Koszt materiału, transportu
+            i podwykonawców widać w raporcie od razu. Nie trzeba czekać, aż ktoś znajdzie czas na przepisywanie,
+            więc na bieżąco widać, czy zlecenie zarabia.</p>
+
+          <h2 id="reklamacje">Reklamacje ze zdjęciami: odlewnia</h2>
+          <p class="body-2">Bodtech z Wodzisławia Śląskiego odlewa złącza i sprzęt przeciwpożarowy dla klientów
+            w wielu krajach. Reklamacje przychodzą mailem, po niemiecku, po angielsku i w innych językach, ze
+            zdjęciami uszkodzeń i często bez numeru reklamacji. Zanim sprawa trafiła do rzeczoznawcy, ktoś musiał ją
+            przeczytać, obejrzeć zdjęcia i dopytać o braki. Zajmowało to około godziny na każde zgłoszenie.</p>
+          <p class="body-2">Dziś agent rozpoznaje język, opisuje zdjęcia, zakłada folder i wpis w rejestrze, a o
+            brakujący numer prosi klienta w jego języku. Prośbę o telefon od razu przekazuje człowiekowi.
+            Rzeczoznawca dostaje komplet: kartę sprawy i opisane zdjęcia. Więcej w
+            <a href="{{ROOT}}realizacje/bodtech/">case study Bodtech</a>.</p>
+          <aside class="art-take" aria-label="Nasze zdanie">
+            <p class="eyebrow">Nasze zdanie</p>
+            <p class="body-2"><b>Automatyzujemy to, co dzieje się przed decyzją.</b> W Bodtechu system nie ocenia
+              żadnej reklamacji, o tym decyduje rzeczoznawca. Tak samo w Eticodzie nikt poza człowiekiem nie
+              uzupełnia brakującego indeksu, a w Holboksie nieczytelnego terminu płatności. Wszędzie, gdzie trzeba
+              coś ocenić albo zgadnąć, sprawa trafia do człowieka. Dzięki temu temu, co trafia do systemu, da się
+              ufać.</p>
+          </aside>
+
+          <h2 id="od-czego">Od czego zacząć automatyzację w zakładzie</h2>
+          <p class="body-2">Przez tydzień zapisujcie czynności w biurze, które ktoś powtarza codziennie. Przy
+            każdej dopiszcie, ile razy w miesiącu się zdarza i ile trwa. Na górę listy trafiają te, które zaczynają
+            się od maila, pliku albo formularza i mają jasną regułę, co zrobić z danymi. Potem policzcie koszt:</p>
+          <p class="art-calc">liczba powtórzeń w miesiącu × minuty na jeden raz × koszt godziny pracy</p>
+          <p class="body-2">Własne liczby możecie podstawić w <a href="{{ROOT}}#kalkulator">kalkulatorze na naszej
+            stronie głównej</a>. Wybierzcie jedną czynność z góry listy i jedną liczbę, po której poznacie, czy
+            działa, na przykład liczbę zamówień wpisanych bez poprawek. Za kolejny proces warto się brać dopiero
+            wtedy, gdy pierwszy działa. Szerzej piszemy o tym w poradniku
+            <a href="{{ROOT}}blog/automatyzacja-biznesu/">Automatyzacja biznesu w MŚP</a>.</p>
+
+          <h2 id="koszt">Ile kosztuje i ile trwa</h2>
+          <ul class="art-list body-2">
+            <li><b>Audyt</b> trwa około dwóch dni i kosztuje 1&nbsp;500&nbsp;zł netto. Odliczamy go od wdrożenia.</li>
+            <li><b>Wdrożenie</b> zaczyna się od 5&nbsp;000&nbsp;zł netto i trwa od trzech do siedmiu tygodni, zależnie
+              od zakresu.</li>
+            <li><b>Opieka</b> po wdrożeniu kosztuje od 500&nbsp;zł miesięcznie i jest opcjonalna.</li>
+          </ul>
+          <p class="body-2">Jeśli z rachunku wyjdzie, że wdrożenie się nie zwróci, mówimy to przed umową.
+            <a href="{{ROOT}}#cennik">Cały cennik jest na stronie głównej</a>.</p>
+
+          <h2 id="pytania">Częste pytania</h2>
+          <div class="faq">
+            <details open>
+              <summary>
+                <h3>Czy automatyzacja biura produkcji zmienia coś na hali?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Na hali ludzie pracują tak jak dotąd. Zmienia się to, co do nich dociera:
+                zamówienie trafia do systemu szybciej, z wyliczonymi datami i bez literówek w indeksie albo
+                ilości.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy da się to połączyć z naszym programem do produkcji albo ERP?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Prawie zawsze. Jeśli program da się połączyć z innymi bezpośrednio, korzystamy
+                z tego. Jeśli nie, robot wpisuje dane przez ten sam ekran, którego używa pracownik. Tak działa to
+                w drukarni Eticod.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Kto po naszej stronie musi się tym zająć?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Na start osoba, która zna proces i opowie, jak wygląda dziś, oraz ktoś od IT na
+                godzinę albo dwie: dostęp do skrzynki, konto techniczne w systemie, czasem VPN. Po wdrożeniu jedna
+                osoba odbiera wyjątki, czyli sprawy, których system nie był pewien.</div>
+            </details>
+          </div>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="{{ROOT}}blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              Wszystkie wpisy
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <h2 id="cta-h">Opowiedzcie nam o jednym procesie.</h2>
+        <p class="lead" style="max-width: 580px;">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem
+          korzyści. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <a class="btn btn-primary glow" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
+        <p class="row small cta-contacts">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span class="cta-dot" aria-hidden="true"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
