@@ -1,0 +1,341 @@
+  <style>
+    /* CTA na dole: rury z kulkami, oddychajaca luna od dolu, siatka (jak we wpisie o Eticodzie) */
+    [data-cta-deco] { background-image: radial-gradient(760px 420px at 50% 115%, rgba(0,196,180,.2), transparent 70%), repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 90px), repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 90px); }
+    [data-cta-deco] .bg-deco { opacity: .8; }
+    [data-cta-deco] .cta-contacts { gap: 24px; justify-content: center; font-family: var(--mono); }
+    [data-cta-deco] .cta-dot { width: 4px; height: 4px; border-radius: 50%; background: #4E7099; display: inline-block; }
+    @media (max-width: 640px) {
+      [data-cta-deco] { background-image: radial-gradient(360px 240px at 50% 115%, rgba(0,196,180,.2), transparent 70%); }
+      [data-cta-deco] .bg-deco, [data-cta-deco] .cta-dot { display: none; }
+      [data-cta-deco] .cta-contacts { flex-direction: column; gap: 4px; }
+      [data-cta-deco] .cta-contacts a, [data-post] .link-more, [data-post] nav a { display: inline-flex; align-items: center; min-height: 40px; }
+      [data-post] nav a { min-width: 40px; }
+    }
+    @keyframes pbRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    [data-post] .wrap > .stack > * { animation: pbRise .7s cubic-bezier(.2,.7,.2,1) .05s both; }
+    [data-post] .wrap > .stack > :nth-child(2) { animation-delay: .18s; }
+    [data-post] .wrap > .stack > :nth-child(3) { animation-delay: .31s; }
+    [data-post] .wrap > .stack > :nth-child(4) { animation-delay: .44s; }
+    @media (prefers-reduced-motion: reduce) { [data-post] .wrap > .stack > * { animation: none !important; } }
+    [data-post] .wrap > .stack > p.row { flex-wrap: nowrap; }
+
+    /* tresc artykulu */
+    [data-post] .art h2 { font-size: clamp(23px, 2.4vw, 30px); margin-top: 22px; scroll-margin-top: 96px; }
+    [data-post] .art h2:first-child { margin-top: 0; }
+    [data-post] .art h3 { font-size: clamp(19px, 1.9vw, 22px); margin-top: 8px; scroll-margin-top: 96px; }
+    [data-post] .art a:not(.link-more) { color: var(--teal-text); text-decoration: underline; text-underline-offset: 3px; }
+    [data-post] .art-list { display: flex; flex-direction: column; gap: 10px; }
+    [data-post] .art-list li { position: relative; padding-left: 22px; color: var(--text-2); }
+    [data-post] .art-list li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 6px; height: 6px; border-radius: 2px; background: var(--teal); }
+    [data-post] .art-list b { color: var(--text); }
+    [data-post] .art-quote { border-left: 3px solid var(--teal); padding: 6px 0 6px 28px; margin-block: 4px; font-size: clamp(20px, 2.1vw, 26px); line-height: 1.35; color: var(--text); }
+    [data-post] .art-calc { background: var(--gray); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; font-family: var(--mono); font-size: 15px; line-height: 1.6; color: var(--text); }
+    /* spis tresci: na komputerze z prawej i przyklejony, na telefonie nad tekstem */
+    [data-post] .art-toc ol { display: flex; flex-direction: column; gap: 10px; counter-reset: toc; }
+    [data-post] .art-toc li { counter-increment: toc; display: flex; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+    [data-post] .art-toc li::before { content: counter(toc, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--text-3); padding-top: 2px; }
+    [data-post] .art-toc a { color: var(--text-2); }
+    [data-post] .art-toc a:hover { color: var(--teal-text); }
+    /* overflow: hidden z .sec wylacza sticky, clip przycina tak samo, a sticky dziala */
+    section.sec[data-post] { overflow: clip; }
+    @media (min-width: 900px) {
+      [data-post] .art-aside { order: 2; position: sticky; top: 96px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Co to jest RPA? Robotyzacja procesów wyjaśniona na przykładzie ERP bez API",
+    "description": "RPA, czyli robotyzacja procesów: program, który klika w systemach tak jak pracownik. Jak działa, do czego się nadaje, gdzie zawodzi, czym różni się od AI i ile kosztuje w małej firmie.",
+    "inLanguage": "pl-PL",
+    "datePublished": "2026-11-06",
+    "dateModified": "2026-11-06",
+    "mainEntityOfPage": "https://fluinty.pl/blog/co-to-jest-rpa/",
+    "author": { "@type": "Person", "name": "Patryk Bielecki", "url": "https://fluinty.pl/zespol/patryk-bielecki/" },
+    "publisher": { "@type": "Organization", "name": "Fluinty", "url": "https://fluinty.pl/", "logo": { "@type": "ImageObject", "url": "https://fluinty.pl/assets/logo.png" } }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Co to jest RPA w prostych słowach?", "acceptedAnswer": { "@type": "Answer", "text": "RPA (Robotic Process Automation) to program, który obsługuje inne programy tak jak człowiek: loguje się, otwiera okna, wpisuje dane w pola i klika „Zapisz”. Robi to według stałej instrukcji, za każdym razem tak samo, i zapisuje każdą operację w logu." } },
+      { "@type": "Question", "name": "Czym RPA różni się od sztucznej inteligencji?", "acceptedAnswer": { "@type": "Answer", "text": "Robot RPA wykonuje instrukcję i niczego nie rozumie. Potrzebuje danych w uporządkowanej postaci. Model AI potrafi przeczytać maila, PDF albo zdjęcie i wyciągnąć z nich dane. W praktyce oba łączy się w jednym procesie: AI czyta, reguły sprawdzają komplet danych, a robot wpisuje wynik do systemu." } },
+      { "@type": "Question", "name": "Czy RPA działa w systemie, który nie ma API?", "acceptedAnswer": { "@type": "Answer", "text": "Tak, właśnie do tego się go używa. Robot korzysta z tego samego ekranu co pracownik, więc system nie musi mieć API ani nowego modułu. Potrzebne jest konto techniczne z uprawnieniami do tych czynności, które robot ma wykonywać." } },
+      { "@type": "Question", "name": "Ile kosztuje wdrożenie RPA w małej firmie?", "acceptedAnswer": { "@type": "Answer", "text": "U nas wdrożenie zaczyna się od 5 000 zł netto, a opieka po wdrożeniu od 500 zł miesięcznie i jest opcjonalna. Audyt kosztuje 1 500 zł netto i odliczamy go od wdrożenia. Duże platformy RPA mają własne licencje, które opłacają się zwykle dopiero przy wielu robotach." } },
+      { "@type": "Question", "name": "Czy robot RPA zastąpi pracownika?", "acceptedAnswer": { "@type": "Answer", "text": "Zastępuje czynność, a nie osobę. Przejmuje przepisywanie i przeklejanie danych, a człowiek zostaje przy wyjątkach i decyzjach. W Eticodzie zespół odzyskał w ten sposób około 160 godzin miesięcznie na inną pracę." } },
+      { "@type": "Question", "name": "Czy RPA to to samo co raport ZUS RPA?", "acceptedAnswer": { "@type": "Answer", "text": "Nie. Raport ZUS RPA to dokument składany do ZUS i nie ma nic wspólnego z automatyzacją. Opis raportu i terminy są na stronie zus.pl." } }
+    ]
+  }
+  </script>
+
+  <section class="sec sec-white" aria-labelledby="post-h" data-animated data-post>
+    <svg style="position: absolute; top: 0; right: 0; width: min(460px, 42%); height: auto; pointer-events: none;" viewBox="0 0 460 240"
+      fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M 480,42 H 250 Q 222,42 222,70 V 130" stroke="#E2EAF2" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 480,88 H 330 Q 302,88 302,116 V 250" stroke="#EAF1F7" stroke-width="3" stroke-linejoin="round"></path>
+      <circle cx="222" cy="70" r="3.5" fill="#00C4B4" opacity="0.4"></circle>
+      <rect x="218" y="126" width="8" height="8" rx="2" fill="#00C4B4" opacity="0.45"></rect>
+      <circle r="2.8" fill="#00C4B4" opacity="0" style="filter: drop-shadow(0 0 4px rgba(0,196,180,0.5));"><set attributeName="opacity" to="0.55" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M 480,42 H 250 Q 222,42 222,70 V 130"></animateMotion></circle>
+    </svg>
+
+    <div class="wrap" style="position: relative;">
+      <div class="stack" style="max-width: 880px;">
+        <nav aria-label="Okruszki">
+          <ol class="row label" style="gap: 8px;">
+            <li><a href="{{ROOT}}blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li style="color: var(--teal-text);">Poradnik</li>
+          </ol>
+        </nav>
+
+        <h1 id="post-h">Co to jest RPA? Robotyzacja procesów wyjaśniona na przykładzie ERP bez API</h1>
+
+        <p class="row small" style="gap: 12px;">
+          <img src="{{ROOT}}assets/zespol/patryk-bielecki.jpg" alt="" width="38" height="38"
+            style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: top; border: 1px solid var(--line);">
+          <span style="font-family: var(--mono);"><a href="{{ROOT}}zespol/patryk-bielecki/" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Patryk Bielecki</a> &middot; 9 min &middot; <time datetime="2026-11-06">06.11.2026</time></span>
+        </p>
+
+        <p class="lead" style="max-width: 800px;">RPA to program, który pracuje w systemach firmy tak jak człowiek przy
+          klawiaturze. Loguje się, otwiera formularz, wpisuje dane w pola i klika „Zapisz”. Nie ma w tym żadnego
+          robota z metalu, „robot” to po prostu nazwa takiego programu. Wyjaśniamy, jak działa, gdzie się sprawdza,
+          gdzie zawodzi i czym różni się od agentów AI. Pokazujemy to na przykładzie z naszego
+          wdrożenia.</p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(28px, 4vw, 64px); margin-top: clamp(30px, 4vw, 48px);">
+        <aside class="card sr art-aside art-toc" aria-label="Spis treści"
+          style="flex: 1 1 260px; max-width: 320px; background: var(--gray); gap: 16px;">
+          <p class="eyebrow">W tym tekście</p>
+          <ol>
+            <li><a href="#co-to-jest-rpa">Co to jest RPA</a></li>
+            <li><a href="#jak-dziala">Jak działa robot RPA</a></li>
+            <li><a href="#przyklad">Przykład: zamówienia do ERP bez API</a></li>
+            <li><a href="#do-czego">Do czego RPA się nadaje</a></li>
+            <li><a href="#ograniczenia">Gdzie RPA zawodzi</a></li>
+            <li><a href="#rpa-a-ai">RPA a AI i API</a></li>
+            <li><a href="#narzedzia">Narzędzia RPA</a></li>
+            <li><a href="#koszt">Ile to kosztuje i od czego zacząć</a></li>
+            <li><a href="#pytania">Częste pytania</a></li>
+          </ol>
+          <p style="border-top: 1px solid var(--line); padding-top: 16px;">
+            <a class="link-more" href="{{ROOT}}#kalkulator">Policz koszt ręcznej pracy
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"></path></svg>
+            </a>
+          </p>
+        </aside>
+
+        <div class="stack art" style="flex: 1 1 520px; max-width: 720px; font-size: 17px; line-height: 1.72;">
+
+          <h2 id="co-to-jest-rpa">Co to jest RPA</h2>
+          <p class="body-2"><b>RPA</b> (ang. <i>Robotic Process Automation</i>, po polsku robotyzacja procesów) to
+            oprogramowanie, które wykonuje w innych programach te same kroki co pracownik: klika w przyciski, przepisuje
+            dane z jednego okna do drugiego, pobiera pliki, wypełnia formularze. Działa według stałej instrukcji
+            i za każdym razem robi to samo, w tej samej kolejności.</p>
+          <p class="body-2">Najważniejsza cecha RPA jest taka, że robot korzysta z ekranu, a nie z zaplecza systemu.
+            Nie potrzebuje API, czyli wejścia, przez które jeden program przekazuje dane drugiemu. Dlatego RPA
+            stosuje się tam, gdzie system jest stary, zamknięty albo jego producent nie przewidział połączenia
+            z czymkolwiek innym. W polskich firmach to bardzo częsta sytuacja, zwłaszcza w ERP i programach
+            magazynowych sprzed lat.</p>
+          <p class="body-2">Jeśli szukacie informacji o raporcie ZUS RPA, to zupełnie inna sprawa. Skrót jest ten
+            sam, ale chodzi o dokument składany do ZUS. Opis i terminy znajdziecie na
+            <a href="https://www.zus.pl/-/raport-zus-rpa" rel="noopener">stronie ZUS</a>.</p>
+
+          <h2 id="jak-dziala">Jak działa robot RPA</h2>
+          <p class="body-2">Robot dostaje dane w uporządkowanej postaci, na przykład wiersz w arkuszu, i instrukcję,
+            co z nimi zrobić. Wpisanie zamówienia do systemu może wyglądać tak:</p>
+          <ul class="art-list body-2">
+            <li>loguje się do systemu na konto techniczne,</li>
+            <li>otwiera ekran nowego zamówienia i wybiera klienta z listy,</li>
+            <li>wpisuje pozycje, ilości i daty, pole po polu,</li>
+            <li>zapisuje zamówienie i sprawdza, czy system je przyjął,</li>
+            <li>zapisuje w logu, co zrobił, z numerem zamówienia i linkiem do źródła.</li>
+          </ul>
+          <p class="body-2">Roboty pracują w dwóch trybach. Jedne uruchamia pracownik, kiedy ich potrzebuje, na
+            przykład jednym przyciskiem na koniec dnia. Drugie działają same na serwerze: co kilka minut sprawdzają,
+            czy jest nowa robota, i biorą się do niej bez udziału człowieka. W małej firmie zwykle lepiej sprawdza się
+            ten drugi tryb, bo nikt nie musi pamiętać o uruchomieniu robota.</p>
+
+          <h2 id="przyklad">Przykład: zamówienia z maili do ERP, który nie ma API</h2>
+          <p class="body-2">Eticod to drukarnia etykiet z Katowic. Zamówienia przychodzą mailem, w treści albo
+            w załączniku PDF, a ERP drukarni nie wystawia API. Przed wdrożeniem pracownik przepisywał każde zamówienie
+            ręcznie, co zajmowało od 20 do 25&nbsp;minut.</p>
+          <p class="body-2">Sam robot RPA nie rozwiązałby tego problemu, bo zamówienia nie przychodzą jako ładny
+            arkusz. Każdy klient pisze inaczej, a PDF-y mają różne układy. Dlatego proces ma trzy części:</p>
+          <ul class="art-list body-2">
+            <li><b>Odczyt.</b> Agent AI czyta maila, a załącznik trafia na Dysk Google i do OCR. Oba tory kończą
+              w jednym arkuszu, który jest jednocześnie kolejką i logiem.</li>
+            <li><b>Kontrola.</b> Zanim cokolwiek trafi do ERP, automat sprawdza komplet pól: klienta, pozycje,
+              ilości, terminy. Jeśli czegoś brakuje, zamówienie wraca do człowieka z informacją, którego pola nie udało
+              się odczytać.</li>
+            <li><b>Wpis.</b> Dopiero tu wchodzi RPA. Automat przeglądarkowy loguje się do ERP i wpisuje zamówienie klik
+              po kliku, dokładnie tak, jak robił to pracownik.</li>
+          </ul>
+          <p class="body-2">Przy 300 do 500 zamówieniach miesięcznie daje to około 160&nbsp;godzin pracy, które zespół
+            odzyskał. Od startu w marcu 2026 do ERP nie trafił ani jeden błędny wpis. Pełny opis jest we wpisie
+            <a href="{{ROOT}}blog/zamowienia-z-maili-do-erp/">Zamówienia z maili do ERP bez API</a> i w
+            <a href="{{ROOT}}realizacje/eticod/">case study Eticod</a>.</p>
+          <blockquote class="art-quote">Robot RPA jest ostatnim krokiem procesu. To, co trafia do systemu, sprawdza
+            się wcześniej.</blockquote>
+
+          <h2 id="do-czego">Do czego RPA się nadaje</h2>
+          <p class="body-2">Robot sprawdza się przy czynnościach, które da się opisać na jednej kartce bez słów „to
+            zależy”. Najczęściej spotykamy je w takich miejscach:</p>
+          <ul class="art-list body-2">
+            <li>wpisywanie zamówień, faktur albo zleceń do ERP, który nie ma API,</li>
+            <li>przenoszenie danych między dwoma programami, które się ze sobą nie łączą,</li>
+            <li>pobieranie raportów i dokumentów z portali, na przykład od dostawców albo przewoźników,</li>
+            <li>zakładanie kartotek kontrahentów i towarów na podstawie danych z arkusza.</li>
+          </ul>
+          <p class="body-2">Dobry kandydat na RPA ma też skalę. Jeśli coś zdarza się kilka razy w miesiącu, robot się
+            nie zwróci. Jeśli kilkaset razy, zwykle zwraca się szybko. Rachunek jest prosty: liczba powtórzeń razy
+            czas jednego razu razy koszt godziny pracy. Więcej o tym, jak go policzyć, piszemy w poradniku
+            <a href="{{ROOT}}blog/automatyzacja-biznesu/">Automatyzacja biznesu w MŚP</a>.</p>
+
+          <h2 id="ograniczenia">Gdzie RPA zawodzi</h2>
+          <p class="body-2">RPA ma jedną dużą słabość: zależy od wyglądu ekranu. Kiedy producent systemu przesunie
+            przycisk, zmieni nazwę pola albo doda okienko z komunikatem, robot może stanąć w miejscu, w którym
+            człowiek nawet by nie mrugnął. Tak samo kłopot sprawiają wygasające sesje i system, który akurat nie
+            odpowiada.</p>
+          <p class="body-2">Na to nie ma cudownego leku, są za to dobre nawyki. U nas każdy robot po nieudanej próbie
+            ponawia operację, a jeśli dalej nie idzie, zatrzymuje się i wysyła nam raport.
+            Zamówienie nie ginie, czeka w kolejce, aż poprawimy instrukcję. Dlatego przy wycenie zawsze pytamy, jak
+            często producent zmienia system, i dlatego opieka po wdrożeniu ma przy RPA więcej sensu niż przy
+            połączeniu przez API.</p>
+          <p class="body-2">Druga słabość: robot nie czyta. Nie wyciągnie danych z maila napisanego własnymi słowami
+            ani z krzywego skanu faktury. Potrzebuje danych, które ktoś albo coś wcześniej uporządkowało.</p>
+
+          <h2 id="rpa-a-ai">RPA a AI i API: co wybrać</h2>
+
+          <h3 id="rpa-a-api">Jeśli system ma API, robot nie jest potrzebny</h3>
+          <p class="body-2">Połączenie przez API jest szybsze i odporne na zmiany wyglądu systemu, więc zawsze
+            sprawdzamy je najpierw. RPA zostaje na sytuacje, w których API nie ma, jest płatne ponad sens albo jego
+            uruchomienie u producenta trwałoby miesiącami.</p>
+
+          <h3 id="rpa-a-ai-agent">RPA i agent AI pracują razem</h3>
+          <p class="body-2">Robot RPA wykonuje instrukcję i niczego nie rozumie. Agent AI, czyli automat z modelem
+            językowym, potrafi przeczytać maila, PDF albo zdjęcie i wyciągnąć z nich to, czego potrzebuje reszta
+            procesu. Dla firmy oznacza to, że do robotyzacji nadaje się dziś dużo więcej czynności niż kilka lat
+            temu, bo dane nie muszą już przychodzić w równym formacie.</p>
+          <p class="body-2">W naszych wdrożeniach podział jest stały: AI czyta, reguły sprawdzają komplet danych,
+            robot wpisuje wynik do systemu, a człowiek zatwierdza to, co niepewne. Model nie decyduje o tym, czy coś
+            trafi do ERP. Decyduje reguła, więc każdy wpis da się sprawdzić w logu.</p>
+
+          <h2 id="narzedzia">Narzędzia RPA</h2>
+          <p class="body-2">Na rynku działają duże platformy RPA, na przykład UiPath, Microsoft Power Automate,
+            Automation Anywhere i Blue Prism. Mają rozbudowane studia do budowania robotów, zarządzanie wieloma
+            robotami naraz i własne licencje. Opłacają się w firmach, które uruchamiają dziesiątki robotów
+            i mają zespół, który się nimi zajmuje.</p>
+          <p class="body-2">W firmie zatrudniającej kilkadziesiąt osób zwykle nie ma takiej potrzeby. Nasze roboty to
+            automaty przeglądarkowe uruchamiane z n8n, na naszym serwerze albo na instancji u klienta. Bez osobnej
+            licencji na każdego robota, a w tym samym miejscu działa odczyt dokumentów, kontrola danych i log.</p>
+
+          <h2 id="koszt">Ile kosztuje RPA i od czego zacząć</h2>
+          <p class="body-2">Zacznijcie od listy czynności, przy których ktoś przepisuje dane z jednego miejsca do
+            drugiego. Przy każdej zapiszcie, ile razy w miesiącu się zdarza i ile trwa. Policzcie koszt:</p>
+          <p class="art-calc">liczba powtórzeń w miesiącu × minuty na jeden raz × koszt godziny pracy</p>
+          <p class="body-2">Możecie podstawić własne liczby w <a href="{{ROOT}}#kalkulator">kalkulatorze na naszej
+            stronie głównej</a>. Po drugiej stronie rachunku stoi koszt automatu. U nas audyt kosztuje 1&nbsp;500&nbsp;zł
+            netto i odliczamy go od wdrożenia, wdrożenie zaczyna się od 5&nbsp;000&nbsp;zł, a opieka od 500&nbsp;zł
+            miesięcznie. Jeśli z rachunku wyjdzie, że robot się nie zwróci, mówimy to przed umową.</p>
+
+          <h2 id="pytania">Częste pytania o RPA</h2>
+          <div class="faq">
+            <details open>
+              <summary>
+                <h3>Co to jest RPA w prostych słowach?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">To program, który obsługuje inne programy tak jak człowiek: loguje się, otwiera
+                okna, wpisuje dane w pola i klika „Zapisz”. Robi to według stałej instrukcji, za każdym razem tak
+                samo, i zapisuje każdą operację w logu.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czym RPA różni się od sztucznej inteligencji?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Robot RPA wykonuje instrukcję i potrzebuje danych w uporządkowanej postaci. Model
+                AI potrafi przeczytać maila, PDF albo zdjęcie i wyciągnąć z nich dane. W praktyce łączy się je
+                w jednym procesie: AI czyta, reguły sprawdzają, robot wpisuje.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy RPA działa w systemie, który nie ma API?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Tak, właśnie do tego się go używa. Robot korzysta z tego samego ekranu co
+                pracownik, więc system nie musi mieć API ani nowego modułu. Potrzebne jest konto techniczne
+                z uprawnieniami do czynności, które robot ma wykonywać.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Ile kosztuje wdrożenie RPA w małej firmie?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">U nas wdrożenie zaczyna się od 5&nbsp;000&nbsp;zł netto, a opieka po wdrożeniu od
+                500&nbsp;zł miesięcznie i jest opcjonalna. Audyt kosztuje 1&nbsp;500&nbsp;zł netto i odliczamy go od
+                wdrożenia. <a href="{{ROOT}}#cennik">Cały cennik jest na stronie głównej</a>.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy robot RPA zastąpi pracownika?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Zastępuje czynność, a nie osobę. Przejmuje przepisywanie i przeklejanie danych,
+                a człowiek zostaje przy wyjątkach i decyzjach. W Eticodzie zespół odzyskał w ten sposób około
+                160&nbsp;godzin miesięcznie na inną pracę.</div>
+            </details>
+            <details>
+              <summary>
+                <h3>Czy RPA to to samo co raport ZUS RPA?</h3>
+                <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="color: var(--teal-text);"><path d="M3 6l5 5 5-5"></path></svg>
+              </summary>
+              <div class="answer">Nie. Raport ZUS RPA to dokument składany do ZUS i nie ma nic wspólnego
+                z automatyzacją. Opis raportu i terminy są na <a href="https://www.zus.pl/-/raport-zus-rpa" rel="noopener">stronie ZUS</a>.</div>
+            </details>
+          </div>
+
+          <p style="border-top: 1px solid var(--line); padding-top: 22px; margin-top: 10px;">
+            <a class="link-more" href="{{ROOT}}blog/">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5"></path></svg>
+              Wszystkie wpisy
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec sec-navy glow-bottom" aria-labelledby="cta-h" data-animated data-cta-deco>
+    <svg class="bg-deco" viewBox="0 0 1440 520" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M -20,90 H 300 Q 330,90 330,120 V 220" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M 1460,120 H 1180 Q 1150,120 1150,150 V 280" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linejoin="round"></path>
+      <path d="M -20,430 H 220" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <path d="M 1460,400 H 1260" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+      <rect x="326" y="216" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <rect x="1146" y="276" width="8" height="8" rx="2" fill="#2DD4BF" opacity="0.4"></rect>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="2s"></set><animateMotion dur="10s" begin="2s" repeatCount="indefinite" path="M -20,90 H 300 Q 330,90 330,120 V 220"></animateMotion></circle>
+      <circle class="flow-orb" r="3" fill="#5FE9D7" opacity="0"><set attributeName="opacity" to="0.7" begin="6s"></set><animateMotion dur="12s" begin="6s" repeatCount="indefinite" path="M 1460,120 H 1180 Q 1150,120 1150,150 V 280"></animateMotion></circle>
+    </svg>
+    <div class="wrap">
+      <div class="stack sr" style="align-items: center; text-align: center; max-width: 760px; margin-inline: auto;">
+        <h2 id="cta-h">Opowiedzcie nam o jednym procesie.</h2>
+        <p class="lead" style="max-width: 580px;">W 24 godziny wracamy z pomysłem na automatyzację i wyliczeniem
+          korzyści. Rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <a class="btn btn-primary glow" href="{{ROOT}}kontakt/">Umów bezpłatną konsultację</a>
+        <p class="row small cta-contacts">
+          <a href="mailto:kontakt@fluinty.pl">kontakt@fluinty.pl</a>
+          <span class="cta-dot" aria-hidden="true"></span>
+          <a href="tel:+48509843514">+48 509 843 514</a>
+        </p>
+      </div>
+    </div>
+  </section>
