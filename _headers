@@ -22,3 +22,7 @@
 # Decki dla klientow: nigdy w wyszukiwarce
 /dla/*
   X-Robots-Tag: noindex, nofollow
+
+# Prywatne strony Adama: nigdy w wyszukiwarce
+/adam/*
+  X-Robots-Tag: noindex, nofollow
