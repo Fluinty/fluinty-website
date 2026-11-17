@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Oferta dla BDO Advisory: nowy WPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin-ext" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="icon" href="data:,">
+<style>
+:root {
+  --teal: #00C4B4; --teal2: #0E9F93; --tealL: #F0FDFC; --tealM: #2DD4BF; --tealS: #7FE3DA;
+  --navy: #0B3D70; --navy2: #082C52; --ink: #0F172A; --mut: #64748B; --line: #E2E8F0; --bg2: #F1F5F9;
+  --green: #10B981; --red: #DC2626; --redL: #FEF2F2; --redB: #FCA5A5;
+  --amber: #B45309; --amberL: #FFFBEB; --amberB: #FCD34D;
+  --font: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Noto Sans", "DejaVu Sans", sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 58px; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: #fff; font-size: 16.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { margin: 0; letter-spacing: -0.015em; }
+p { margin: 0 0 .7em; }
+a { color: inherit; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+/* pasek postępu i górna nawigacja */
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60; background: transparent; }
+.progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), var(--tealM)); transition: width .1s linear; }
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; gap: 24px; padding: 12px 28px; transition: background .35s, box-shadow .35s, color .35s; color: #fff; }
+.topbar.solid { background: #fff; box-shadow: 0 1px 0 var(--line); color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 800; text-decoration: none; white-space: nowrap; letter-spacing: -0.01em; }
+.brand .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(0,196,180,.22); }
+.brand .x { color: var(--teal); font-weight: 600; }
+#nav { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+#nav::-webkit-scrollbar { display: none; }
+#nav a { text-decoration: none; font-size: 14px; font-weight: 600; padding: 7px 11px; border-radius: 999px; opacity: .75; white-space: nowrap; transition: opacity .2s, background .2s, color .2s; }
+#nav a:hover { opacity: 1; }
+#nav a.on { opacity: 1; background: var(--teal); color: #fff; }
+
+/* przyciski */
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: 15px; text-decoration: none; color: var(--navy); background: var(--teal); padding: 12px 20px; border-radius: 999px; transition: transform .2s var(--ease), box-shadow .2s, background .2s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(0,196,180,.8); }
+.btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.55); }
+.btn.ghost.dark { color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+.btn.sm { padding: 8px 14px; font-size: 14px; }
+.btn:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid var(--tealM); outline-offset: 2px; }
+
+/* okładka */
+.hero { position: relative; min-height: 100vh; background: var(--navy); color: #fff; overflow: hidden; display: flex; align-items: center; padding: 110px 0 90px; }
+.hero-bg i { position: absolute; border-radius: 50%; background: var(--teal); filter: blur(2px); }
+.hero-bg i:nth-child(1) { width: 560px; height: 560px; right: -160px; top: -200px; opacity: .17; animation: float 14s ease-in-out infinite; }
+.hero-bg i:nth-child(2) { width: 380px; height: 380px; right: 160px; bottom: -220px; opacity: .12; animation: float 18s ease-in-out infinite reverse; }
+.hero-bg i:nth-child(3) { width: 180px; height: 180px; left: -60px; bottom: 80px; opacity: .08; animation: float 11s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-26px, 22px); } }
+.hero-in { position: relative; width: 100%; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 700; color: var(--tealS); }
+.hero h1 { font-size: clamp(38px, 6vw, 72px); line-height: 1.02; font-weight: 800; margin: 10px 0 18px; }
+.lead { font-size: clamp(17px, 2vw, 21px); color: #CFE3F5; max-width: 720px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 38px 0 30px; }
+.stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px 18px 16px; backdrop-filter: blur(4px); }
+.stat b { display: block; font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.stat small { display: block; margin-top: 8px; color: #CFE3F5; font-size: 14px; line-height: 1.45; }
+.stat.accent { background: var(--teal); border-color: var(--teal); color: var(--navy); }
+.stat.accent small { color: #08403B; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.who { margin-top: 26px; color: #9FBAD6; font-size: 14px; }
+.scroll-hint { position: absolute; left: 50%; bottom: 26px; width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.45); border-radius: 14px; transform: translateX(-50%); }
+.scroll-hint span { position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: wheel 1.8s infinite; }
+@keyframes wheel { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
+
+/* sekcje */
+.sec { padding: 96px 0; }
+.sec.alt { background: var(--tealL); }
+.sh { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 30px; }
+.sh .num { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 800; font-size: 16px; transform: translateY(-4px); }
+.sh h2 { font-size: clamp(26px, 3.2vw, 38px); color: var(--navy); font-weight: 800; }
+.sh .sub { margin: 0; flex-basis: 100%; padding-left: 50px; color: var(--mut); font-size: 16px; }
+.note { color: var(--mut); font-size: 15px; margin-top: 22px; }
+.small { font-size: 14px; color: var(--mut); }
+.intro { font-size: 18px; max-width: 920px; }
+
+/* W skrócie */
+.cards5 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.card { grid-column: span 2; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 14px; position: relative; overflow: hidden; transition: transform .3s var(--ease), box-shadow .3s; }
+.card:nth-child(4), .card:nth-child(5) { grid-column: span 3; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--teal); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -24px rgba(11,61,112,.45); }
+.card h3 { color: var(--navy); font-size: 19px; margin-bottom: 10px; }
+.card p { font-size: 15.5px; }
+
+/* Obszary */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.chip { border: 1px solid var(--line); background: #fff; color: var(--navy); font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 999px; cursor: pointer; transition: all .2s; }
+.chip i { font-style: normal; opacity: .55; margin-left: 4px; }
+.chip.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.areas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
+.area { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: box-shadow .3s, border-color .3s, opacity .35s, transform .35s var(--ease); }
+.area.reveal.dim { opacity: .25; transform: scale(.985); }
+.area.open { border-color: var(--teal); box-shadow: 0 16px 40px -26px rgba(11,61,112,.6); }
+.area-h { width: 100%; display: flex; align-items: center; gap: 12px; padding: 16px 18px; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; color: var(--ink); }
+.area-h h3 { font-size: 17px; flex: 1; color: var(--navy); }
+.plus { width: 24px; height: 24px; border-radius: 50%; background: var(--bg2); position: relative; flex: none; transition: transform .3s var(--ease), background .3s; }
+.plus::before, .plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 2px; margin: -1px 0 0 -5px; background: var(--navy); }
+.plus::after { transform: rotate(90deg); transition: transform .3s; }
+.area.open .plus { background: var(--teal); transform: rotate(180deg); }
+.area.open .plus::after { transform: rotate(0); }
+.area-d { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
+.area.open .area-d { grid-template-rows: 1fr; }
+.area-d > div { overflow: hidden; }
+.area-d dl { margin: 0; padding: 0 18px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+.area-d dt { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--mut); font-weight: 700; }
+.area-d dd { margin: 2px 0 0; font-size: 15px; }
+.tag { flex: none; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; text-transform: lowercase; }
+.t-start { background: var(--teal); color: #fff; }
+.t-etap { background: #E0ECFF; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+.t-kol { background: var(--bg2); color: var(--navy); }
+.t-nie { background: var(--redL); color: var(--red); box-shadow: inset 0 0 0 1.5px var(--redB); }
+
+/* Dziś */
+.today { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; position: relative; }
+.steps::before { content: ""; position: absolute; left: 19px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--teal), var(--navy)); opacity: .3; }
+.steps li { counter-increment: s; position: relative; padding: 4px 0 18px 58px; font-size: 16px; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--teal); color: var(--navy); font-weight: 800; }
+.steps li:hover::before { background: var(--teal); color: #fff; }
+.today-side { position: sticky; top: 90px; display: grid; gap: 18px; }
+.box { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.box h3 { color: var(--navy); font-size: 18px; margin-bottom: 12px; }
+.box ul { margin: 0; padding-left: 18px; }
+.box li { margin-bottom: 8px; }
+.box.warn { background: var(--redL); border-color: var(--redB); }
+.box.good { background: var(--tealL); border-color: var(--tealS); }
+.box.amber { background: var(--amberL); border-color: var(--amberB); }
+.box.amber h3 { color: var(--amber); }
+.retype { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.retype span { position: relative; font-size: 13px; font-weight: 700; color: var(--red); background: #fff; border: 1px solid var(--redB); padding: 4px 10px; border-radius: 8px; }
+.retype.go span { animation: dup 2.8s var(--ease) infinite; }
+.retype.go span:nth-child(2) { animation-delay: .35s; }
+.retype.go span:nth-child(3) { animation-delay: .7s; }
+.retype.go span:nth-child(4) { animation-delay: 1.05s; }
+@keyframes dup { 0%, 100% { box-shadow: 0 0 0 rgba(220,38,38,0); transform: none; } 30% { box-shadow: 4px 4px 0 #FCA5A5, 8px 8px 0 #FECACA; transform: translate(-4px, -4px); } 60% { box-shadow: 4px 4px 0 #FCA5A5, 8px 8px 0 #FECACA; transform: translate(-4px, -4px); } }
+
+/* Podział pracy */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.col { border-radius: 20px; padding: 26px; }
+.col.auto { background: #fff; border: 2px solid var(--teal); }
+.col.people { background: var(--navy); color: #fff; }
+.col h3 { font-size: 21px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.col.auto h3 { color: var(--navy); }
+.badge { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; padding: 3px 9px; border-radius: 999px; background: var(--teal); color: #fff; }
+.col.people .badge { background: var(--tealS); color: var(--navy); }
+.ticks { list-style: none; margin: 0; padding: 0; }
+.ticks li { position: relative; padding: 0 0 11px 28px; font-size: 15.5px; opacity: 0; transform: translateX(-8px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.in .ticks li { opacity: 1; transform: none; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 7px; width: 14px; height: 14px; border-radius: 4px; background: var(--teal); }
+.col.people .ticks li::before { background: var(--tealS); border-radius: 50%; }
+
+/* Przepływ */
+.flow-bar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.legend { display: flex; gap: 8px; flex-wrap: wrap; }
+.lg { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 8px; }
+.lg.a { background: var(--tealL); color: var(--ink); box-shadow: inset 4px 0 0 var(--teal2), inset 0 0 0 1.5px var(--teal2); }
+.lg.c { background: var(--navy); color: #fff; }
+.lg.ac { background: var(--tealL); box-shadow: inset 0 0 0 1.5px var(--teal2); }
+.lg.g { background: var(--amberL); color: #92400E; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--amber); }
+.lg.x { background: #fff; color: #334155; outline: 1.5px dashed #64748B; outline-offset: -1.5px; }
+.lg.s { background: var(--bg2); color: var(--ink); box-shadow: inset 0 0 0 1.5px #94A3B8; }
+.flow-ctl { display: flex; gap: 8px; }
+#przeplyw .wrap { max-width: 1440px; }
+.flow-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 18px; align-items: start; }
+#flowStage:fullscreen { background: #fff; padding: 0 24px 24px; overflow: auto; }
+#flowStage:fullscreen .flow-bar { position: sticky; top: 0; z-index: 3; background: #fff; padding: 12px 0 10px; margin: 0; }
+#flowStage:fullscreen .flow-etap, #flowStage:fullscreen .flow-wrap { max-width: 1500px; margin-left: auto; margin-right: auto; }
+#flowStage:fullscreen .flow-wrap { grid-template-columns: minmax(0, 1fr) 340px; }
+#flowStage:fullscreen .flow-info { top: 72px; }
+.flow-svg { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 10px; overflow-x: auto; }
+.flow-svg svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.flow-info { position: sticky; top: 90px; background: var(--navy); color: #fff; border-radius: 18px; padding: 22px; min-height: 220px; }
+.flow-info .hint { color: #CFE3F5; margin: 0; }
+.flow-info .k { display: inline-block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: 3px 9px; border-radius: 999px; background: var(--teal); color: var(--navy); margin-bottom: 10px; }
+.flow-info h3 { font-size: 20px; margin-bottom: 6px; }
+.flow-info .lane { color: var(--tealS); font-weight: 600; font-size: 14px; margin-bottom: 12px; }
+.flow-info p { color: #E2EEF9; }
+.flow-info .stepno { color: #9FBAD6; font-size: 13px; margin-top: 14px; }
+.flow-info.pop { animation: pop .45s var(--ease); }
+@keyframes pop { from { opacity: .3; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+svg .fnode { cursor: pointer; }
+svg .fnode .bx { transition: filter .3s, stroke-width .3s; }
+svg .fnode:hover .bx { filter: drop-shadow(0 6px 10px rgba(11,61,112,.25)); }
+svg .fnode.sel .bx { stroke: #F59E0B !important; stroke-width: 3.5 !important; }
+svg .fnode.lit .bx { filter: drop-shadow(0 0 10px rgba(0,196,180,.85)); }
+svg .fnode.lit .halo { opacity: 1; animation: halo 1.4s ease-out infinite; }
+svg .halo { opacity: 0; fill: none; stroke: var(--teal); stroke-width: 3; transform-box: fill-box; transform-origin: center; }
+@keyframes halo { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(1.15); } }
+svg .edge { transition: stroke .3s, opacity .3s; }
+svg .edge.lit { stroke: var(--teal) !important; stroke-width: 3; stroke-dasharray: 9 6; animation: flowdash .7s linear infinite; }
+@keyframes flowdash { to { stroke-dashoffset: -15; } }
+svg.hide-x .xn, svg.hide-x .xe { opacity: .1; }
+svg.playing .fnode:not(.lit) { opacity: .55; }
+svg .fnode { transition: opacity .35s; }
+
+/* Etapy */
+.timeline { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px 26px 18px; margin-bottom: 22px; }
+.tl-row { display: flex; gap: 6px; height: 54px; }
+.tl-bar { position: relative; flex: 0 0 auto; width: 0; border-radius: 12px; display: flex; align-items: center; padding: 0 16px; color: #fff; font-weight: 700; font-size: 15px; white-space: nowrap; transition: width 1.4s var(--ease); }
+.timeline.in .tl-bar { width: calc(var(--w) - 3px); }
+.tl-bar.s1 { background: linear-gradient(90deg, var(--navy) 0 82%, #2C5A8A 82%); }
+.tl-bar.s2 { background: linear-gradient(90deg, var(--teal2) 0 80%, #4FD1C5 80%); transition-delay: .5s; }
+.tl-bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.tl-mark { position: absolute; left: var(--at); top: -10px; bottom: -10px; width: 3px; background: #F59E0B; border-radius: 2px; opacity: 0; transition: opacity .6s 1.4s; }
+.timeline.in .tl-mark { opacity: 1; }
+.tl-mark em { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-style: normal; font-size: 13px; font-weight: 700; color: var(--amber); white-space: nowrap; }
+.tl-total { margin: 30px 0 0; color: var(--mut); font-weight: 600; text-align: right; }
+.timeline { padding-top: 46px; }
+.stages { display: grid; gap: 16px; }
+.stage { display: grid; grid-template-columns: 250px 1fr; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.st-lab { padding: 22px; color: #fff; display: flex; flex-direction: column; gap: 8px; }
+.stage.s1 .st-lab { background: var(--navy); }
+.stage.s2 .st-lab { background: var(--teal2); }
+.st-lab small { letter-spacing: .12em; font-weight: 700; opacity: .85; }
+.st-lab h3 { font-size: 22px; line-height: 1.15; }
+.st-lab b { margin-top: auto; font-size: 22px; }
+.st-txt { padding: 22px 26px; }
+
+/* Dane: opcje */
+.opt-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 14px; }
+.opt-t { position: relative; text-align: left; border: 2px solid var(--line); background: #fff; border-radius: 16px; padding: 14px 16px; font: inherit; cursor: pointer; color: var(--ink); transition: all .25s var(--ease); }
+.opt-t b { display: block; color: var(--navy); font-size: 16.5px; }
+.opt-t small { color: var(--mut); font-size: 13.5px; }
+.opt-t .rec { position: absolute; top: -11px; right: 14px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: 2px 9px; border-radius: 999px; }
+.opt-t.on { border-color: var(--teal); background: var(--tealL); box-shadow: 0 14px 30px -20px rgba(0,196,180,.9); transform: translateY(-2px); }
+.opt-view { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.opt-diagram { background: var(--navy); border-radius: 18px; padding: 10px; }
+.opt-diagram svg { display: block; width: 100%; height: auto; }
+.opt-detail { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.opt-detail dl { margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.opt-detail dt { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--mut); font-weight: 800; }
+.opt-detail dd { margin: 2px 0 0; }
+.opt-detail h3 { color: var(--navy); font-size: 20px; margin-bottom: 14px; }
+.opt-detail.pop { animation: pop .45s var(--ease); }
+.three { display: grid; grid-template-columns: 1fr 1.15fr .9fr; gap: 16px; margin-top: 28px; align-items: start; }
+.defs { list-style: none; padding: 0 !important; }
+.defs li { margin-bottom: 10px; }
+.defs b { color: var(--navy); }
+.sec-list { margin: 0; padding-left: 20px; }
+.sec-list li { margin-bottom: 8px; }
+.box.secure { border-color: var(--tealS); }
+
+/* Cena */
+.price { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.eq { background: var(--navy); color: #fff; border-radius: 20px; padding: 26px; }
+.eq-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 17px; }
+.eq-row b { font-size: 26px; font-weight: 800; }
+.eq-row.minus b { color: var(--tealS); }
+.eq-row.total { border-bottom: 0; }
+.eq-row.total span { font-weight: 700; }
+.eq-row.total b { font-size: 40px; color: var(--teal); }
+.eq-inv { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0 16px; }
+.eq-inv div { background: rgba(255,255,255,.07); border-radius: 12px; padding: 12px 14px; }
+.eq-inv small { display: block; color: #9FBAD6; font-size: 13px; }
+.eq-inv b { font-size: 20px; }
+.eq .small { color: #9FBAD6; margin: 0; }
+.care { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.care-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.care-t { position: relative; text-align: left; border: 2px solid var(--line); background: #fff; border-radius: 14px; padding: 12px 14px; font: inherit; font-weight: 600; color: var(--navy); cursor: pointer; transition: all .25s var(--ease); }
+.care-t b { display: block; font-size: 22px; margin-top: 4px; }
+.care-t i { position: absolute; top: -10px; right: 12px; font-style: normal; background: var(--teal); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: 2px 8px; border-radius: 999px; }
+.care-t.on { border-color: var(--teal); background: var(--tealL); }
+.care-body { flex: 1; }
+.care-body.pop { animation: pop .4s var(--ease); }
+.care-body ul { margin: 0; padding-left: 18px; }
+.care-body li { margin-bottom: 7px; }
+.machine { background: var(--bg2); border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+
+/* Dalej */
+.queue { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.q { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 8px; transition: transform .3s var(--ease), box-shadow .3s; }
+.q:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -26px rgba(11,61,112,.5); }
+.q:first-child { border: 2px solid var(--teal); background: var(--tealL); }
+.qn { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-size: 14px; }
+.q h3 { color: var(--navy); font-size: 17px; }
+.q p { font-size: 15px; margin: 0; flex: 1; }
+.q .btn { align-self: flex-start; margin-top: 6px; }
+.next { list-style: none; counter-reset: n; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.next li { counter-increment: n; position: relative; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 46px 16px 16px; font-size: 14.5px; }
+.next li::before { content: counter(n); position: absolute; top: 12px; left: 16px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--teal); color: #fff; font-weight: 800; font-size: 13px; }
+.next li:not(:last-child)::after { content: ""; position: absolute; top: 24px; left: 48px; right: -12px; height: 2px; background: linear-gradient(90deg, var(--teal), transparent); }
+.end { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; margin-top: 22px; }
+.contact { background: var(--navy); color: #fff; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 4px; }
+.contact small { color: var(--tealS); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; font-size: 12px; }
+.contact b { font-size: 22px; }
+.contact span { color: #CFE3F5; }
+.fine { margin-top: 24px; font-size: 13px; color: var(--mut); }
+.foot { background: var(--navy2); color: #9FBAD6; font-size: 13px; padding: 16px 0; }
+.foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* wejścia przy przewijaniu */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 1020px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .cards5, .areas, .today, .split, .flow-wrap, .opt-view, .three, .price, .end { grid-template-columns: 1fr; }
+  .card, .card:nth-child(4), .card:nth-child(5) { grid-column: auto; }
+  .queue { grid-template-columns: 1fr 1fr; }
+  .next { grid-template-columns: 1fr 1fr; }
+  .next li::after { display: none; }
+  .today-side, .flow-info { position: static; }
+  .opt-tabs { grid-template-columns: 1fr; }
+  .opt-detail dl { grid-template-columns: 1fr 1fr; }
+  .stage { grid-template-columns: 1fr; }
+  #nav { display: none; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .stats, .queue, .next, .area-d dl, .opt-detail dl { grid-template-columns: 1fr; }
+  .sh .sub { padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .ticks li { opacity: 1; transform: none; }
+  .tl-bar { width: calc(var(--w) - 3px); }
+}
+
+/* znaczniki */
+.tag { text-transform: none; }
+.t-e2 { background: var(--navy); color: #fff; }
+.t-e34 { background: #E0ECFF; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+
+/* tryb statyczny do zrzutów i druku (adres z ?static) */
+.static .reveal { opacity: 1; transform: none; transition: none; }
+.static .ticks li { opacity: 1; transform: none; }
+.static .tl-bar { width: calc(var(--w) - 3px); transition: none; }
+.static .tl-mark { opacity: 1; transition: none; }
+.static .hero { min-height: 0; }
+
+/* wnioski */
+.finds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.find { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; transition: opacity .7s var(--ease), transform .3s var(--ease), box-shadow .3s; }
+.find:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -26px rgba(11,61,112,.5); }
+.find .fn { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-size: 15px; }
+.find h3 { color: var(--navy); font-size: 18.5px; line-height: 1.25; }
+.find p { font-size: 15.5px; margin: 0; flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chips span { font-size: 12.5px; font-weight: 600; color: var(--navy); background: var(--bg2); border-radius: 999px; padding: 3px 10px; }
+.chips em { font-style: normal; font-size: 12.5px; color: var(--mut); }
+.works { margin-top: 22px; }
+.works ul { columns: 2; column-gap: 40px; }
+.works li { break-inside: avoid; }
+
+/* działy w zakładkach */
+.dtabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.dtab { border: 2px solid var(--line); background: #fff; color: var(--navy); font: inherit; font-size: 15px; font-weight: 700; padding: 9px 13px; border-radius: 999px; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
+.dtab:hover { border-color: var(--teal); }
+.dtab.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.dpanel.pop { animation: pop .45s var(--ease); }
+.dsub { color: var(--mut); margin: 0 0 24px; }
+.kier { list-style: none; padding: 0 !important; }
+.kier li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.kier .tag { margin-top: 3px; white-space: nowrap; }
+
+/* przepływ, wybór etapu */
+.flow-etap { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 0 0 12px; }
+.flow-etap > span { font-size: 14px; color: var(--mut); font-weight: 600; margin-right: 2px; }
+svg .fnode.off { opacity: .16; }
+svg .edge.off { opacity: .12; }
+svg.playing .fnode.off:not(.lit) { opacity: .16; }
+
+/* dane, kolejka, zakończenie */
+.opt-diagram svg .df { stroke-dasharray: 7 6; animation: flowdash .9s linear infinite; }
+.care-t i { background: var(--navy); }
+.care-t.on i { background: var(--teal); }
+.q .tag { align-self: flex-start; }
+.end3 { display: grid; grid-template-columns: 1fr 1fr 1fr .8fr; gap: 16px; margin-top: 22px; align-items: start; }
+.end3 > .wide { grid-column: 1 / -1; }
+.end3 > .wide ul { columns: 2; column-gap: 40px; }
+.end3 > .wide li { break-inside: avoid; }
+.note + .note { margin-top: 8px; }
+
+@media (max-width: 1020px) {
+  .finds, .end3 { grid-template-columns: 1fr; }
+  .works ul, .end3 > .wide ul { columns: 1; }
+}
+@media (max-width: 560px) {
+  .kier li { flex-direction: column; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-diagram svg .df { animation: none; }
+}
+
+/* poprawki po przeglądzie */
+svg .elab { transition: opacity .3s; }
+svg .elab.off { opacity: .12; }
+.t-start, .sh .num, #nav a.on, .col.auto .badge, .opt-t .rec, .care-t.on i, .next li::before, .steps li:hover::before { color: var(--navy2); }
+.steps li { min-height: 58px; }
+@media (min-width: 1021px) and (max-height: 760px) {
+  .hero { padding: 76px 0 28px; }
+  .hero h1 { font-size: 56px; margin: 6px 0 12px; }
+  .lead { font-size: 18px; max-width: 860px; }
+  .stats { margin: 22px 0 18px; }
+  .who { margin-top: 14px; }
+  .scroll-hint { display: none; }
+}
+@media (min-width: 1021px) and (max-width: 1180px) {
+  .flow-wrap { grid-template-columns: minmax(0, 1fr) 230px; }
+  .flow-svg svg { min-width: 640px; }
+  #nav a { padding: 7px 6px; }
+}
+@media (max-width: 560px) {
+  .tl-row { flex-direction: column; height: auto; gap: 34px; }
+  .timeline.in .tl-bar, .static .tl-bar { width: 100%; height: 48px; }
+  .tl-mark { bottom: auto; height: 14px; }
+  .opt-diagram { overflow-x: auto; }
+  .opt-diagram svg { min-width: 760px; }
+  .area-h { display: grid; grid-template-columns: 1fr 24px; gap: 6px 12px; }
+  .area-h .tag { grid-column: 1 / -1; justify-self: start; }
+}
+@media print {
+  @page { size: 1440px 1018px; margin: 36px; }
+  @page przeplyw { size: 1018px 1440px; margin: 36px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .topbar, .progress, .scroll-hint, .cta, .flow-ctl, .flow-etap, .flow-info, .filters, .dtabs, .keys, .area .plus, #obszary .note { display: none !important; }
+  .hero { min-height: 0; padding: 40px 0; }
+  .sec { padding: 26px 0; }
+  .reveal, .ticks li { opacity: 1 !important; transform: none !important; }
+  .tl-bar { width: calc(var(--w) - 3px) !important; }
+  .tl-mark { opacity: 1 !important; }
+  .dpanel[hidden] { display: block !important; }
+  .dpanel + .dpanel { break-before: page; }
+  .dpanel::before { content: attr(data-name); display: block; font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .area .area-d { grid-template-rows: 1fr; }
+  .flow-wrap { display: block; page: przeplyw; }
+  .flow-svg { overflow: visible; border: 0; padding: 0; }
+  .flow-svg svg { min-width: 0; width: auto; height: 1340px; margin: 0 auto; }
+  .today-side { position: static; }
+  .card, .find, .box, .area, .stage, .q, .next li, .eq, .care, .contact, .timeline, .opt-diagram, .opt-detail, .col, .steps li { break-inside: avoid; }
+}
+
+/* działy z tematami (sekcja 3) i trzy priorytety w „W skrócie” */
+.dz-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin: 34px 0 14px; font-size: 20px; color: var(--navy); }
+.dz-h small { font-size: 14px; font-weight: 500; color: var(--mut); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; align-items: start; }
+.prio { margin-top: 22px; background: var(--tealL); border: 1px solid var(--tealS); border-radius: 18px; padding: 22px 24px 20px; }
+.prio h3 { color: var(--navy); font-size: 19px; margin: 0 0 14px; }
+.prio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.prio li { font-size: 15.5px; }
+.prio li b { display: block; color: var(--navy); font-size: 16.5px; margin-bottom: 4px; }
+@media (max-width: 1020px) { .two, .prio ol { grid-template-columns: 1fr; } }
+
+/* sekcja 10: opis planu nad kafelkami */
+#dalej .intro { margin-bottom: 26px; }
+
+/* sekcja 3: zakładka „Wszystko” */
+.dtab-all { border-color: var(--teal); }
+/* dziewięć zakładek w jednym rzędzie */
+.dtabs { gap: 6px; }
+.dtab { font-size: 14px; padding: 8px 11px; }
+.dz-licz { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dz-licz div { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--teal); border-radius: 14px; padding: 14px 16px; }
+.dz-licz b { display: block; font-size: 34px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--navy); }
+.dz-licz small { display: block; margin-top: 6px; color: var(--mut); font-size: 14px; line-height: 1.4; }
+@media (max-width: 1020px) { .dz-licz { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .dz-licz { grid-template-columns: 1fr; } }
+
+</style>
+<style>
+/* Oferta WPS: dopiski do styles.css (wspólny układ ofert Fluinty). */
+
+/* okładka */
+.hero-note { max-width: 880px; margin: -8px 0 28px; padding: 14px 18px; border-left: 4px solid var(--teal); border-radius: 12px; background: rgba(255,255,255,.06); color: #CFE3F5; font-size: 15.5px; line-height: 1.55; }
+.hero-note b { color: #fff; }
+
+/* ---------- krok po kroku: terminal i panel ---------- */
+.demo { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 30px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 28px; box-shadow: 0 22px 44px -34px rgba(8,44,82,.5); }
+.demo-dev { position: relative; height: 440px; overflow: hidden; border-radius: 16px; background: radial-gradient(circle at 50% 45%, var(--tealL), #fff 70%); }
+.dev { --k: 1; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--k)); transition: opacity .5s var(--ease), transform .6s var(--ease); }
+.dev.off { opacity: 0; transform: translate(-50%, -46%) scale(calc(var(--k) * .96)); pointer-events: none; }
+
+/* terminal przy linii */
+.term { width: 340px; }
+.term-frame { background: #1E293B; border-radius: 24px; padding: 14px 14px 18px; box-shadow: 0 30px 50px -30px rgba(8,44,82,.75); }
+.term-scr { height: 290px; background: #F8FAFC; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; padding: 10px 12px 12px; }
+.ts-top { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 700; color: var(--mut); margin-bottom: 8px; }
+.ts-top b { color: var(--navy); }
+.ts-box { position: relative; flex: 1; }
+.ts { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transition: opacity .45s; }
+.ts.on { opacity: 1; }
+.term-reader { position: relative; width: 150px; height: 46px; margin: 14px auto 0; border-radius: 12px; background: #334155; display: grid; place-items: center; color: #94A3B8; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; }
+.term-reader i { position: absolute; top: 8px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: #64748B; transition: background .3s, box-shadow .3s; }
+.term-reader i.ok { background: var(--green); box-shadow: 0 0 10px var(--green); }
+.term-stand { width: 70px; height: 40px; margin: 0 auto; background: linear-gradient(#CBD5E1, #94A3B8); clip-path: polygon(32% 0, 68% 0, 100% 100%, 0 100%); }
+.rfid { position: absolute; left: 380px; top: 314px; width: 86px; height: 54px; border-radius: 8px; background: linear-gradient(135deg, var(--teal), var(--teal2)); box-shadow: 0 12px 22px -10px rgba(0,0,0,.55); opacity: 0; transition: transform 1s var(--ease), opacity .4s; }
+.rfid::before { content: "WPS"; position: absolute; left: 9px; top: 7px; font-size: 11px; font-weight: 800; color: var(--navy2); }
+.rfid::after { content: ""; position: absolute; left: 9px; bottom: 9px; width: 16px; height: 12px; border-radius: 3px; background: #FDE68A; }
+.rfid.in { opacity: 1; transform: translateX(-253px); }
+
+/* ekran: karta */
+.ts-wait, .ts-hello { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; }
+.ts-wait .ic { width: 84px; height: 56px; border: 3px dashed var(--teal); border-radius: 10px; animation: ic-puls 1.6s ease-in-out infinite; }
+@keyframes ic-puls { 50% { transform: scale(1.07); border-color: var(--tealS); } }
+.ts-wait p, .ts-hello p { margin: 0; font-weight: 800; color: var(--navy); font-size: 17px; line-height: 1.3; }
+.ts-hello { display: none; }
+.ts-hello small { color: var(--mut); font-size: 12.5px; }
+.ok-big { width: 58px; height: 58px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 30px; font-weight: 800; }
+.ts.hit .ts-wait { display: none; }
+.ts.hit .ts-hello { display: flex; animation: pop .45s var(--ease); }
+
+/* ekran: kafelki */
+.crumb { align-self: flex-start; font-size: 12.5px; font-weight: 700; color: var(--navy); background: #E0ECFF; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px; }
+.crumb .c2 { display: none; }
+.ts.l2 .crumb .c2 { display: inline; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; flex: 1; }
+.tiles span { display: grid; place-items: center; text-align: center; border-radius: 10px; background: #fff; border: 1.5px solid var(--line); font-weight: 700; color: var(--navy); font-size: 14px; padding: 6px; transition: background .25s, border-color .25s, transform .25s; }
+.tiles span.back { color: var(--mut); background: var(--bg2); }
+.tiles span.tap { background: var(--teal); border-color: var(--teal); color: var(--navy2); transform: scale(.95); }
+.tiles.lvl2 { display: none; }
+.ts.l2 .tiles.lvl1 { display: none; }
+.ts.l2 .tiles.lvl2 { display: grid; animation: pop .4s var(--ease); }
+.quick { margin-top: 8px; border-radius: 10px; background: var(--navy); color: #fff; font-size: 12.5px; font-weight: 700; padding: 8px 10px; }
+.quick em { font-style: normal; color: var(--tealS); }
+
+/* ekran: licznik */
+.path { font-weight: 800; color: var(--navy); font-size: 15px; }
+.zl { align-self: flex-start; margin-top: 6px; font-size: 12px; font-weight: 700; background: var(--tealL); color: var(--teal2); border: 1.5px solid var(--tealS); border-radius: 999px; padding: 2px 10px; opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s; }
+.ts.scan .zl { opacity: 1; transform: none; }
+.timer { font-size: 46px; font-weight: 800; letter-spacing: -.02em; color: var(--navy); text-align: center; margin: 12px 0 0; font-variant-numeric: tabular-nums; }
+.since { text-align: center; font-size: 12.5px; color: var(--mut); }
+.btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.btns span { border-radius: 10px; text-align: center; padding: 12px 6px; font-weight: 800; font-size: 14px; }
+.b-stop { background: var(--red); color: #fff; }
+.b-zm { background: #E2E8F0; color: var(--navy); }
+
+/* ekran: dzisiaj */
+.toast { font-size: 12.5px; font-weight: 700; color: #065F46; background: #D1FAE5; border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
+.tdh { color: var(--navy); font-size: 15px; }
+.today-l { list-style: none; margin: 4px 0 0; padding: 0; font-size: 13.5px; }
+.today-l li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.today-l li b { color: var(--navy); white-space: nowrap; }
+.open-tag { font-size: 11px; font-weight: 800; color: var(--amber); background: var(--amberL); border-radius: 999px; padding: 1px 7px; margin-left: 6px; }
+.strip { position: relative; height: 18px; border-radius: 6px; background: var(--bg2); margin-top: auto; overflow: hidden; }
+.strip i { position: absolute; top: 0; bottom: 0; left: calc(var(--a) * 1%); width: calc(var(--w) * 1%); }
+.strip .s-a { background: var(--teal); }
+.strip .s-b { background: var(--navy); animation: zywe 1.4s ease-in-out infinite; }
+@keyframes zywe { 50% { opacity: .45; } }
+.strip-l { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--mut); margin-top: 3px; }
+
+/* panel na laptopie */
+.pan { width: min(560px, 100%); }
+.pan-frame { background: #1E293B; border-radius: 14px 14px 6px 6px; padding: 10px; box-shadow: 0 30px 50px -30px rgba(8,44,82,.75); }
+.pan-scr { position: relative; height: 330px; background: #fff; border-radius: 6px; overflow: hidden; }
+.pan-base { height: 14px; margin: 0 -22px; background: linear-gradient(#CBD5E1, #94A3B8); border-radius: 0 0 16px 16px; }
+.pan-top { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: 12px; white-space: nowrap; }
+.pan-top .lg2 { font-weight: 800; color: var(--navy); }
+.pan-tabs { display: flex; gap: 4px; }
+.pan-tabs span { padding: 3px 9px; border-radius: 999px; font-weight: 700; color: var(--mut); transition: background .3s, color .3s; }
+.pan-tabs span.on { background: var(--teal); color: var(--navy2); }
+.pan-top .firm { margin-left: auto; color: var(--mut); }
+.ps { position: absolute; top: 38px; left: 0; right: 0; bottom: 0; padding: 12px 14px; opacity: 0; transition: opacity .45s; overflow: hidden; }
+.ps.on { opacity: 1; }
+.ps h4 { margin: 0 0 8px; color: var(--navy); font-size: 15px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.ps h4 small { color: var(--mut); font-weight: 600; font-size: 12px; text-align: right; }
+.dot-live { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 6px; animation: zywe 1.4s infinite; }
+
+/* panel: pracujący */
+.tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.tbl th { text-align: left; font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.tbl th.r { text-align: right; }
+.tbl td { padding: 7px 6px; border-bottom: 1px solid var(--line); }
+.tbl td.t { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--navy); text-align: right; white-space: nowrap; }
+.tbl tr.warn td { background: var(--amberL); }
+.tbl tr.warn td:first-child { box-shadow: inset 3px 0 0 var(--amber); }
+.fix { font-size: 11px; font-weight: 800; color: #fff; background: var(--amber); border-radius: 999px; padding: 2px 8px; }
+
+/* panel: do wyjaśnienia */
+.issues { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.issues li { display: flex; align-items: center; gap: 8px; font-size: 12.5px; border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; opacity: 0; transform: translateX(-8px); transition: opacity .4s, transform .4s; }
+.issues li span { margin-left: auto; color: var(--mut); text-align: right; }
+.issues li b { color: var(--navy); }
+.issues li i { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); flex: none; }
+.issues li i.r { background: var(--red); }
+.ps.on .issues li { opacity: 1; transform: none; }
+.ps.on .issues li:nth-child(2) { transition-delay: .25s; }
+.ps.on .issues li:nth-child(3) { transition-delay: .5s; }
+.ps.on .issues li:nth-child(4) { transition-delay: .75s; }
+.plan { margin-top: 12px; font-size: 12px; }
+.plan > b { color: var(--navy); font-size: 12.5px; }
+.plan-bar { display: flex; height: 18px; border-radius: 6px; overflow: hidden; margin: 6px 0 5px; background: var(--bg2); }
+.plan-bar i { display: block; width: 0; transition: width 1s .9s var(--ease); }
+.ps.on .plan-bar i { width: var(--w); }
+.k-reg, .plan-bar .p-reg { background: var(--teal); }
+.k-brk, .plan-bar .p-brk { background: #94A3B8; }
+.k-un, .plan-bar .p-un { background: repeating-linear-gradient(135deg, #F59E0B 0 5px, #FCD34D 5px 10px); }
+.plan-l { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--mut); }
+.plan-l i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+/* panel: raport */
+.dims { display: flex; gap: 5px; margin-bottom: 10px; }
+.dims span { font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--bg2); color: var(--navy); }
+.dims span.on { background: var(--navy); color: #fff; }
+.stack { display: flex; height: 30px; border-radius: 8px; overflow: hidden; background: var(--bg2); }
+.stack i { display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 800; color: #fff; width: 0; white-space: nowrap; overflow: hidden; transition: width 1s var(--ease); }
+.ps.on .stack i { width: var(--w); }
+.stack .va { background: var(--teal2); }
+.stack .sva { background: #2C5A8A; transition-delay: .15s; }
+.stack .nva { background: #F59E0B; color: var(--navy2); transition-delay: .3s; }
+.lh { display: block; margin: 14px 0 4px; color: var(--navy); font-size: 12.5px; }
+.lh small { color: var(--mut); font-weight: 600; }
+.loss { list-style: none; margin: 0; padding: 0; font-size: 12.5px; }
+.loss li { display: grid; grid-template-columns: 1fr 120px 40px; align-items: center; gap: 8px; padding: 4px 0; }
+.loss li i { display: block; height: 8px; border-radius: 4px; background: #FCD34D; width: 0; transition: width 1s .4s var(--ease); }
+.ps.on .loss li i { width: var(--w); }
+.loss li b { text-align: right; color: var(--navy); }
+.more { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 800; color: var(--teal2); }
+
+/* panel: OLE */
+.ole { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ole div { background: var(--bg2); border-radius: 10px; padding: 10px; }
+.ole small { display: block; font-size: 10.5px; color: var(--mut); font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+.ole b { display: block; font-size: 26px; color: var(--navy); font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.ole em { display: block; font-style: normal; font-size: 11px; color: var(--mut); line-height: 1.3; }
+.ole-tot { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; background: var(--navy); color: #fff; border-radius: 12px; padding: 10px 16px; }
+.ole-tot span { font-size: 13px; color: #CFE3F5; font-weight: 600; }
+.ole-tot b { font-size: 34px; color: var(--teal); font-variant-numeric: tabular-nums; }
+.ole-note { margin: 8px 0 0; font-size: 11.5px; color: var(--mut); line-height: 1.4; }
+
+/* podpis kroku i sterowanie */
+.demo-cap { min-height: 210px; }
+.demo-cap small { display: block; font-size: 12.5px; font-weight: 700; color: var(--mut); text-transform: uppercase; letter-spacing: .06em; }
+.demo-cap h3 { color: var(--navy); font-size: 24px; margin: 6px 0 10px; line-height: 1.2; }
+.demo-cap p { font-size: 16px; margin: 0; }
+.demo-cap.pop { animation: pop .45s var(--ease); }
+.et { display: inline-block; vertical-align: 3px; margin-left: 10px; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.et.e1 { background: var(--teal); color: var(--navy2); }
+.et.e2 { background: var(--navy); color: #fff; }
+.et.e3 { background: #2C5A8A; color: #fff; }
+.et.e4 { background: var(--teal2); color: #fff; }
+.dm-prog { height: 3px; background: var(--bg2); border-radius: 2px; margin-top: 18px; overflow: hidden; }
+.dm-prog i { display: block; height: 100%; width: 0; background: var(--teal); }
+@keyframes dm-fill { from { width: 0; } to { width: 100%; } }
+.demo-ctl { display: flex; align-items: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.dm-nav { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--navy); font-size: 21px; font-weight: 800; line-height: 1; cursor: pointer; }
+.dm-dots { display: flex; gap: 6px; }
+.dm-dots button { width: 11px; height: 11px; border-radius: 50%; border: 0; padding: 0; background: #CBD5E1; cursor: pointer; }
+.dm-dots button.on { background: var(--teal); box-shadow: 0 0 0 3px rgba(0,196,180,.25); }
+#dmPlay { margin-left: auto; }
+
+/* Co proponujemy: cztery karty 2 × 2 */
+.cards4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.cards4 .card { grid-column: auto; padding-bottom: 18px; }
+.cards4 .card p { margin: 0; }
+
+/* kolory etapów: te same w kalendarzu, na kartach i w podpisie kroku */
+.stage .st-lab { color: #fff; }
+.stage.s1 .st-lab { background: var(--teal); color: var(--navy2); }
+.stage.s2 .st-lab { background: var(--navy); }
+.stage.s3 .st-lab { background: #2C5A8A; }
+.stage.s4 .st-lab { background: var(--teal2); }
+.st-txt p:last-of-type { margin-bottom: 10px; }
+.st-txt .chips { margin-top: 4px; }
+
+/* kalendarz liczony w dniach: 1 stycznia to 0, 31 maja to 150 */
+.gnt { background: #fff; border: 1px solid var(--line); border-radius: 18px; margin-bottom: 22px; overflow-x: auto; }
+.gnt-in { position: relative; min-width: 780px; padding: 54px 24px 46px; }
+.gnt-row { display: grid; grid-template-columns: 230px 1fr; column-gap: 14px; align-items: center; margin-bottom: 10px; }
+.gnt-months { position: relative; height: 18px; }
+.gnt-months span { position: absolute; left: calc(var(--d) / 151 * 100%); padding-left: 6px; font-size: 12.5px; font-weight: 700; color: var(--mut); text-transform: uppercase; letter-spacing: .06em; }
+.g-lab b { display: block; color: var(--navy); font-size: 15px; line-height: 1.2; }
+.g-lab small { color: var(--mut); font-size: 13px; }
+.gnt-track { position: relative; height: 34px; border-radius: 9px; background: var(--bg2); }
+.gnt-bar { position: absolute; top: 0; bottom: 0; left: calc(var(--s) / 151 * 100%); width: calc((var(--e) - var(--s)) / 151 * 100%); border-radius: 9px; display: flex; align-items: center; padding: 0 10px; font-style: normal; font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; transform-origin: left center; transform: scaleX(0); transition: transform 1.1s var(--ease); }
+.gnt.in .gnt-bar { transform: none; }
+.gnt-bar.e1 { background: var(--teal); color: var(--navy2); }
+.gnt-bar.e2 { background: var(--navy); color: #fff; transition-delay: .3s; }
+.gnt-bar.e3 { background: #2C5A8A; color: #fff; transition-delay: .5s; }
+.gnt-bar.e4 { background: var(--teal2); color: #fff; transition-delay: .7s; }
+.gnt-over { position: absolute; top: 0; bottom: 0; left: calc(24px + 230px + 14px); right: 24px; pointer-events: none; }
+.gnt-sep { position: absolute; top: 48px; bottom: 36px; left: calc(var(--d) / 151 * 100%); width: 1px; background: var(--line); }
+.gnt-mark { position: absolute; top: 34px; bottom: 30px; left: calc(var(--d) / 151 * 100%); width: 3px; margin-left: -1.5px; background: #F59E0B; border-radius: 2px; opacity: 0; transition: opacity .6s 1.2s; }
+.gnt-mark em { position: absolute; top: -26px; left: 8px; font-style: normal; font-size: 12.5px; font-weight: 700; color: var(--amber); white-space: nowrap; }
+.gnt-mark.m-l em { left: auto; right: 8px; }
+.gnt.in .gnt-mark { opacity: 1; }
+
+/* opcje */
+.opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.opt { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px 18px; display: flex; flex-direction: column; gap: 8px; transition: opacity .7s var(--ease), transform .3s var(--ease), box-shadow .3s; }
+.opt:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -26px rgba(11,61,112,.5); }
+.opt h3 { color: var(--navy); font-size: 18.5px; line-height: 1.25; padding-right: 48px; }
+.opt p { margin: 0; font-size: 15px; flex: 1; }
+.op-id { position: absolute; top: 18px; right: 16px; font-size: 12px; font-weight: 800; color: var(--teal2); background: var(--tealL); border-radius: 999px; padding: 2px 9px; }
+.op-price { font-size: 21px; font-weight: 800; color: var(--navy); margin-top: 6px; }
+.op-price small { font-size: 14px; font-weight: 700; color: var(--mut); }
+.op-care { font-size: 13.5px; color: var(--mut); }
+.opt.ask .op-price { font-size: 16px; }
+
+/* cena: lista etapów */
+.eq.list .eq-row { gap: 16px; font-size: 15.5px; padding: 10px 0; }
+.eq.list .eq-row span { min-width: 0; }
+.eq.list .eq-row b { font-size: 20px; white-space: nowrap; }
+.eq.list .eq-row b small, .eq-inv b small { font-size: 13px; font-weight: 600; color: #9FBAD6; margin-left: 2px; }
+.eq.list .eq-row.sub { margin: 4px -12px; padding: 12px; border: 0; border-radius: 12px; background: rgba(255,255,255,.09); }
+.eq.list .eq-row.sub span { font-weight: 600; }
+.eq.list .eq-row.sub b { color: var(--teal); font-size: 24px; }
+.eq.list .eq-row.total b { font-size: 36px; }
+.eq.list .eq-row.total b small { font-size: 15px; }
+.eq.list .eq-cap { margin: 6px 0 8px; font-weight: 700; color: #fff; }
+.eq.list .eq-inv { grid-template-columns: 1fr 1fr; margin: 0 0 14px; }
+.eq.list .eq-inv small { font-size: 12.5px; }
+.eq.list .eq-inv b { font-size: 18px; white-space: nowrap; }
+.eq.list .small { margin-top: 12px; }
+
+/* opieka: schodki */
+.care h3 { color: var(--navy); font-size: 20px; }
+.care p { margin: 0; }
+.care-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; align-items: end; height: 170px; }
+.care-steps li { height: calc(var(--h) * 1%); min-height: 70px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, var(--teal), var(--teal2)); color: #fff; padding: 8px 9px; display: flex; flex-direction: column; justify-content: flex-end; transform-origin: bottom; transform: scaleY(0); transition: transform .9s var(--ease); }
+.care.in .care-steps li { transform: none; }
+.care-steps li:nth-child(2) { transition-delay: .12s; }
+.care-steps li:nth-child(3) { transition-delay: .24s; }
+.care-steps li:nth-child(4) { transition-delay: .36s; }
+.care-steps small { font-size: 11.5px; line-height: 1.2; opacity: .92; }
+.care-steps b { font-size: 16px; white-space: nowrap; }
+.care ul { margin: 0; padding-left: 18px; }
+.care li { margin-bottom: 7px; }
+.costs { margin-top: 18px; }
+.costs ul { columns: 3; column-gap: 32px; }
+.costs li { break-inside: avoid; }
+
+/* Co dalej */
+#kroki .end3 { grid-template-columns: 1.25fr 1fr .8fr; }
+.end3 > .wide ul { columns: 2; column-gap: 40px; }
+
+/* zrzuty i druk bez animacji */
+.static .gnt-bar, .static .care-steps li { transform: none; transition: none; }
+.static .gnt-mark { opacity: 1; transition: none; }
+.static .stack i, .static .loss li i, .static .plan-bar i, .static .issues li, .static .dev, .static .rfid { transition: none; }
+
+@media (max-width: 1020px) {
+  .demo { grid-template-columns: 1fr; }
+  .demo-cap { min-height: 0; }
+  .cards4, .opts { grid-template-columns: 1fr 1fr; }
+  .costs ul { columns: 1; }
+  #kroki .end3 { grid-template-columns: 1fr; }
+  .end3 > .wide ul { columns: 1; }
+}
+@media (max-width: 560px) {
+  .demo { padding: 14px; }
+  .demo-dev { height: 505px; }
+  .dev.term { --k: .8; }
+  .pan-scr { height: 445px; }
+  .issues li { padding: 5px 8px; font-size: 12px; }
+  .ole { gap: 6px; }
+  .ole b { font-size: 21px; }
+  .ole em { font-size: 10px; }
+  .pan .tbl .hm, .pan-top .firm { display: none; }
+  .ps { padding: 10px; }
+  .loss li { grid-template-columns: 1fr 70px 36px; }
+  .issues li { flex-wrap: wrap; }
+  .issues li span { margin-left: 17px; flex-basis: 100%; text-align: left; }
+  .cards4, .opts { grid-template-columns: 1fr; }
+  .care-steps { gap: 5px; }
+  .care-steps b { font-size: 13.5px; }
+  .demo-cap h3 { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gnt-bar, .care-steps li { transform: none; transition: none; }
+  .gnt-mark { opacity: 1; transition: none; }
+}
+@media print {
+  .demo-ctl, .dm-prog { display: none !important; }
+  .gnt-bar, .care-steps li { transform: none !important; }
+  .gnt-mark { opacity: 1 !important; }
+  .demo, .gnt, .opt, .stage, .eq, .care { break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+<div class="progress"><span id="progress"></span></div>
+
+<header class="topbar">
+  <a class="brand" href="#start"><span class="dot"></span>Fluinty <span class="x">×</span> BDO Advisory</a>
+  <nav id="nav">
+    <a href="#krok">Krok po kroku</a>
+    <a href="#propozycja">Co proponujemy</a>
+    <a href="#etapy">Etapy i kalendarz</a>
+    <a href="#opcje">Dodatki</a>
+    <a href="#cena">Cena i opieka</a>
+    <a href="#kroki">Co dalej</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="start" class="hero">
+  <div class="hero-bg"><i></i><i></i><i></i></div>
+  <div class="wrap hero-in">
+    <p class="kicker reveal">Fluinty · BDO Advisory · oferta z 17.11.2026</p>
+    <h1 class="reveal">Nowy WPS, z którym pracownik<br>poradzi sobie sam</h1>
+    <p class="lead reveal">Robimy WPS od nowa, według Waszej specyfikacji. Pracownik odbija kartę przy terminalu albo zapisuje czas w telefonie. Lider na bieżąco widzi, kto czym się zajmuje, a konsultant od razu ma raporty: na co idzie czas, gdzie są straty i ile wynosi OLE. Pierwsze pomiary u klientów zrobicie na nowym WPS pod koniec marca 2027.</p>
+    <div class="stats">
+      <div class="stat reveal"><b>4 etapy</b><small>Każdy etap ma swoją cenę i zamawiacie go osobno. Etapy 1 i 2 obejmują wszystko, co oznaczyliście w specyfikacji jako P0.</small></div>
+      <div class="stat reveal"><b>7 stycznia</b><small>zaczynamy pracę, jeśli podpiszemy umowę do połowy grudnia.</small></div>
+      <div class="stat reveal"><b>koniec maja</b><small>działa już wszystko, także analizy i OLE.</small></div>
+      <div class="stat accent reveal"><b><span class="count" data-to="92900">92 900</span> zł</b><small>netto za etap 1, czyli rejestrację czasu i nadzór. Płacicie w dwóch ratach, drugą po odbiorze.</small></div>
+    </div>
+    <p class="hero-note reveal"><b>Kod, konta i dane od początku należą do Was.</b> Serwery w UE wynajmujemy na Waszą firmę, a kod z dokumentacją trzymacie u siebie. Poprawki i nowe funkcje dla Waszych klientów robimy po stałej stawce, w ramach puli godzin, którą co miesiąc sami ustalacie.</p>
+    <div class="cta reveal">
+      <a class="btn" href="#krok">Jak to może wyglądać</a>
+      <a class="btn ghost" href="#cena">Cena i opieka</a>
+    </div>
+    <p class="who reveal">Przygotował Adam Nelip, Fluinty sp. z o.o. · adam@fluinty.pl · +48 509 843 514</p>
+  </div>
+  <a class="scroll-hint" href="#krok" aria-label="Przewiń dalej"><span></span></a>
+</section>
+
+<section id="krok" class="sec alt">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">1</span><h2>Jedna zmiana na hali, krok po kroku</h2><p class="sub">Tak może wyglądać praca z nowym WPS: od odbicia karty przy terminalu do raportu dla konsultanta. Przy każdym kroku zaznaczyliśmy, w którym etapie zrobimy tę część aplikacji. Dane na ekranach są przykładowe.</p></header>
+    <div class="demo reveal" id="demo">
+      <div class="demo-dev" aria-hidden="true">
+
+        <div class="dev term" id="devTerm">
+          <div class="term-frame">
+            <div class="term-scr">
+              <div class="ts-top"><b>LINIA 2 · terminal T-07</b><span id="clk">06:02</span></div>
+              <div class="ts-box">
+                <div class="ts" data-s="karta" id="tsKarta">
+                  <div class="ts-wait"><div class="ic"></div><p>Zbliż kartę, aby rozpocząć<br>lub zakończyć pracę</p></div>
+                  <div class="ts-hello"><div class="ok-big">✓</div><p>Dzień dobry, Tomasz</p><small>karta 0142 · zmiana I</small></div>
+                </div>
+                <div class="ts" data-s="kafelki" id="tsKaf">
+                  <span class="crumb"><span class="c1">LINIA 2</span><span class="c2"> › Montaż</span></span>
+                  <div class="tiles lvl1"><span data-k="mon">Montaż</span><span>Przezbrojenie</span><span>Kontrola jakości</span><span>Transport</span><span>Sprzątanie</span><span>Przerwa</span></div>
+                  <div class="tiles lvl2"><span data-k="pa">Podzespół A</span><span>Podzespół B</span><span>Pakowanie</span><span class="back">‹ Wstecz</span></div>
+                  <div class="quick">Szybki wybór: <em>Montaż › Podzespół A</em></div>
+                </div>
+                <div class="ts" data-s="start" id="tsStart">
+                  <div class="path">Montaż › Podzespół A</div>
+                  <span class="zl">Zlecenie ZL-2041 · ze skanera</span>
+                  <div class="timer" id="timer">00:00:00</div>
+                  <div class="since">START o 06:03 · godzina z serwera</div>
+                  <div class="btns"><span class="b-stop">STOP</span><span class="b-zm">Zmień czynność</span></div>
+                </div>
+                <div class="ts" data-s="dzisiaj">
+                  <div class="toast">✓ Montaż zamknięty o 08:41, przezbrojenie trwa</div>
+                  <b class="tdh">Dzisiaj</b>
+                  <ul class="today-l">
+                    <li><span>Montaż › Podzespół A</span><b>2 h 38 min</b></li>
+                    <li><span>Przezbrojenie<span class="open-tag">w toku</span></span><b>12 min</b></li>
+                  </ul>
+                  <div class="strip"><i class="s-a" style="--a:0.6;--w:32.9"></i><i class="s-b" style="--a:33.5;--w:2.5"></i></div>
+                  <div class="strip-l"><span>6:00</span><span>10:00</span><span>14:00</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="term-reader">CZYTNIK KART<i id="led"></i></div>
+          </div>
+          <div class="term-stand"></div>
+          <div class="rfid" id="rfid"></div>
+        </div>
+
+        <div class="dev pan off" id="devPan">
+          <div class="pan-frame">
+            <div class="pan-scr">
+              <div class="pan-top"><span class="lg2">WPS</span><span class="pan-tabs"><span data-t="0">Pracujący</span><span data-t="1">Do wyjaśnienia</span><span data-t="2">Raporty</span><span data-t="3">OLE</span></span><span class="firm">Zakład Przykładowy</span></div>
+              <div class="ps" data-s="live" id="psLive">
+                <h4>Pracujący <small><span class="dot-live"></span>5 osób na zmianie I · 1 zapis do poprawy</small></h4>
+                <table class="tbl">
+                  <thead><tr><th>Osoba</th><th class="hm">Miejsce</th><th>Czynność</th><th class="r">Czas</th></tr></thead>
+                  <tbody>
+                    <tr><td>Tomasz K.</td><td class="hm">LINIA 2</td><td>Przezbrojenie</td><td class="t" data-sec="732">0:12:12</td></tr>
+                    <tr><td>Anna W.</td><td class="hm">LINIA 1</td><td>Montaż › Podzespół B</td><td class="t" data-sec="6420">1:47:00</td></tr>
+                    <tr><td>Ewa M.</td><td class="hm">LINIA 2</td><td>Kontrola jakości</td><td class="t" data-sec="7505">2:05:05</td></tr>
+                    <tr><td>Piotr S.</td><td class="hm">Magazyn</td><td>Transport</td><td class="t" data-sec="1866">0:31:06</td></tr>
+                    <tr><td>Marta L.</td><td class="hm">LINIA 1</td><td>Montaż › Pakowanie</td><td class="t" data-sec="3010">0:50:10</td></tr>
+                    <tr class="warn"><td>Kamil R.</td><td class="hm">LINIA 1</td><td>Montaż, otwarte od wczoraj 14:02</td><td class="t"><span class="fix">Popraw</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="ps" data-s="braki">
+                <h4>Do wyjaśnienia <small>linie 1 i 2 · 19.01</small></h4>
+                <ul class="issues">
+                  <li><i class="r"></i><b>Brak końca dnia</b><span>Kamil R. · 18.01, od 14:02</span></li>
+                  <li><i></i><b>Zapisy nachodzą na siebie</b><span>Ewa M. · 7:40–7:52</span></li>
+                  <li><i></i><b>Brak numeru zlecenia</b><span>3 zapisy · LINIA 2</span></li>
+                  <li><i></i><b>Nadgodziny</b><span>Piotr S. · +1 h 20 min</span></li>
+                </ul>
+                <div class="plan">
+                  <b>Anna W. · zmiana I · plan 8 h</b>
+                  <div class="plan-bar"><i class="p-reg" style="--w:89.6%"></i><i class="p-brk" style="--w:3.1%"></i><i class="p-un" style="--w:7.3%"></i></div>
+                  <div class="plan-l"><span><i class="k-reg"></i>zarejestrowane 7 h 10 min</span><span><i class="k-brk"></i>przerwa 15 min</span><span><i class="k-un"></i>niewyjaśnione 35 min</span></div>
+                </div>
+              </div>
+              <div class="ps" data-s="raport">
+                <h4>Na co idzie czas <small>LINIA 2 · styczeń</small></h4>
+                <div class="dims"><span>Klient</span><span class="on">Produkt</span><span>Projekt</span><span>Oddział</span></div>
+                <div class="stack"><i class="va" style="--w:61%">VA 61%</i><i class="sva" style="--w:24%">SVA 24%</i><i class="nva" style="--w:15%">NVA 15%</i></div>
+                <b class="lh">Największe straty <small>· % czasu zmiany</small></b>
+                <ul class="loss">
+                  <li><span>Oczekiwanie na materiał</span><i style="--w:100%"></i><b>6,2%</b></li>
+                  <li><span>Szukanie narzędzi</span><i style="--w:39%"></i><b>2,4%</b></li>
+                  <li><span>Poprawki</span><i style="--w:29%"></i><b>1,8%</b></li>
+                </ul>
+                <span class="more">Pokaż pomiary (1 248) ›</span>
+              </div>
+              <div class="ps" data-s="ole">
+                <h4>OLE <small>przykład z Waszej specyfikacji</small></h4>
+                <div class="ole">
+                  <div><small>A · dostępność</small><b data-n="96">96%</b><em>72 z 75 rbh planu netto</em></div>
+                  <div><small>P · wydajność</small><b data-n="95">95%</b><em>normogodziny wyniku do rbh operacji</em></div>
+                  <div><small>Q · jakość</small><b data-n="98">98%</b><em>dobre za pierwszym razem</em></div>
+                </div>
+                <div class="ole-tot"><span>OLE = A × P × Q</span><b id="oleTot">89,4%</b></div>
+                <p class="ole-note">Jeśli brakuje normy albo danych o jakości, aplikacja wyświetla „brak danych do pełnego OLE” i pokazuje tylko to, co da się policzyć.</p>
+              </div>
+            </div>
+          </div>
+          <div class="pan-base"></div>
+        </div>
+
+      </div>
+      <div class="demo-side">
+        <div class="demo-cap" id="cap" aria-live="polite">
+          <small id="capWho">Krok 1 z 8</small>
+          <h3><span id="capH">Pracownik odbija kartę</span><span class="et e1" id="capE">Etap 1</span></h3>
+          <p id="capP">Pracownik przykłada kartę do czytnika przy linii.</p>
+        </div>
+        <div class="dm-prog"><i id="dmProg"></i></div>
+        <div class="demo-ctl">
+          <button class="dm-nav" id="dmPrev" type="button" aria-label="Poprzedni krok">‹</button>
+          <div class="dm-dots" id="dmDots"></div>
+          <button class="dm-nav" id="dmNext" type="button" aria-label="Następny krok">›</button>
+          <button class="btn sm ghost dark" id="dmPlay" type="button">Pauza</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="propozycja" class="sec">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">2</span><h2>Co proponujemy</h2></header>
+    <div class="cards4">
+      <article class="card reveal"><h3>Wszyscy Wasi klienci pracują w jednej aplikacji</h3><p>Dane każdej firmy są oddzielone od pozostałych. Nowe firmy zakładacie sami w panelu BDO i tam też dajecie dostęp konsultantom. Listy pracowników, karty i słownik czynności wczytujecie z Excela.</p></article>
+      <article class="card reveal"><h3>Pracownik poradzi sobie bez pomocy</h3><p>Na terminalu i w telefonie ma duże kafelki, szybki wybór i licznik na ekranie. Zanim oddamy etap 1, damy aplikację do sprawdzenia kilku pracownikom przy prawdziwym terminalu, bo na co dzień nikt nie będzie im pomagał.</p></article>
+      <article class="card reveal"><h3>Konsultant może ufać liczbom</h3><p>Pracownik ma zawsze otwartą tylko jedną czynność, a godzinę zapisuje serwer. Każda poprawka zostaje w historii, a lider co rano dostaje listę braków. Sumy w raporcie i w pliku z eksportu zawsze się zgadzają.</p></article>
+      <article class="card reveal"><h3>Aplikacja od początku należy do Was</h3><p>Kod trzymacie u siebie, a serwery są wynajęte na Waszą firmę. Dokumentację przygotujemy tak, żeby projekt mógł przejąć każdy programista. Prawa do kodu przechodzą na Was po zapłacie za etap. Na tej samej technologii działa panel floty, który wdrożyliśmy dla Art-Tim i z którego firma korzysta na co dzień.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="etapy" class="sec alt">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">3</span><h2>Etapy i kalendarz</h2><p class="sub">Zaczynamy 7 stycznia 2027, jeśli podpiszemy umowę do połowy grudnia. Fakturę za etap wystawiamy dopiero po jego odbiorze.</p></header>
+    <div class="gnt reveal">
+      <div class="gnt-in">
+        <div class="gnt-row"><span></span><div class="gnt-months"><span style="--d:0">styczeń</span><span style="--d:31">luty</span><span style="--d:59">marzec</span><span style="--d:90">kwiecień</span><span style="--d:120">maj</span></div></div>
+        <div class="gnt-row"><div class="g-lab"><b>Etap 1. Rejestracja czasu i nadzór</b><small>7.01–26.03</small></div><div class="gnt-track"><i class="gnt-bar e1" style="--s:6;--e:85">11 tygodni</i></div></div>
+        <div class="gnt-row"><div class="g-lab"><b>Etap 2. Plan pracy i kontrola danych</b><small>29.03–16.04</small></div><div class="gnt-track"><i class="gnt-bar e2" style="--s:87;--e:106">3 tyg.</i></div></div>
+        <div class="gnt-row"><div class="g-lab"><b>Etap 3. Analizy i wskaźniki</b><small>19.04–7.05</small></div><div class="gnt-track"><i class="gnt-bar e3" style="--s:108;--e:127">3 tyg.</i></div></div>
+        <div class="gnt-row"><div class="g-lab"><b>Etap 4. Normy i OLE</b><small>10.05–28.05</small></div><div class="gnt-track"><i class="gnt-bar e4" style="--s:129;--e:148">3 tyg.</i></div></div>
+        <div class="gnt-over">
+          <i class="gnt-sep" style="--d:31"></i><i class="gnt-sep" style="--d:59"></i><i class="gnt-sep" style="--d:90"></i><i class="gnt-sep" style="--d:120"></i>
+          <span class="gnt-mark" style="--d:6"><em>start</em></span>
+          <span class="gnt-mark" style="--d:85"><em>pierwsze pomiary u klientów</em></span>
+          <span class="gnt-mark m-l" style="--d:148"><em>wszystko gotowe</em></span>
+        </div>
+      </div>
+    </div>
+    <div class="stages">
+      <article class="stage s1 reveal">
+        <div class="st-lab"><small>ETAP 1 · 7.01–26.03</small><h3>Rejestracja czasu i nadzór</h3><b>92 900 zł netto</b></div>
+        <div class="st-txt">
+          <p>Robimy podstawę aplikacji dla wszystkich firm i wszystko, czego potrzeba do pomiarów. Dla pracownika robimy ekran terminala i wersję na telefon: kafelki z czynnościami do pięciu poziomów, przyciski START, STOP i zmianę czynności, numer zlecenia ze skanera i zakładkę „Dzisiaj”.</p>
+          <p>W panelu zakładacie firmy, wczytujecie z Excela pracowników i karty, prowadzicie słownik czynności z podziałem na VA, SVA i NVA i ustawiacie terminale. Lider na bieżąco widzi, kto pracuje, i poprawia zapisy, a każda poprawka zostaje w historii. Dane można wyeksportować do pliku.</p>
+          <p>Po tym etapie możecie już mierzyć czas u nowych klientów.</p>
+          <div class="chips"><em>Pozycje z Waszej listy:</em><span>F01–F10</span><span>F12</span><span>F14–F17</span><span>F19–F21</span><span>R01</span><span>R06</span><span>R08</span></div>
+        </div>
+      </article>
+      <article class="stage s2 reveal">
+        <div class="st-lab"><small>ETAP 2 · 29.03–16.04</small><h3>Plan pracy i kontrola danych</h3><b>24 900 zł netto</b></div>
+        <div class="st-txt">
+          <p>Wpisujecie grafiki zmian, rotacje, święta, urlopy i przerwy. Aplikacja poprawnie liczy też nocną zmianę, która kończy się następnego dnia. Lider widzi, ile kto miał pracować, ile czasu nikt nie wyjaśnił i gdzie są przekroczenia. Co rano dostaje też listę braków w danych.</p>
+          <p>Razem z etapem 1 to wszystko, co oznaczyliście jako P0.</p>
+          <div class="chips"><em>Pozycje z Waszej listy:</em><span>F18</span><span>R02</span><span>R03</span></div>
+        </div>
+      </article>
+      <article class="stage s3 reveal">
+        <div class="st-lab"><small>ETAP 3 · 19.04–7.05</small><h3>Analizy i wskaźniki</h3><b>24 900 zł netto</b></div>
+        <div class="st-txt">
+          <p>Konsultant dostaje analizy w podziale na klientów, produkty, projekty i oddziały: udział czynności VA, SVA i NVA, przestoje, zbędne czynności i wąskie gardła. Dochodzą do tego stałe wskaźniki z Waszej listy i porównanie z wartościami referencyjnymi. Z każdego wyniku przejdzie do pojedynczych pomiarów, a gotowe zestawienie wyeksportuje albo wydrukuje do raportu z audytu.</p>
+          <div class="chips"><em>Pozycje z Waszej listy:</em><span>F23–F25</span><span>F27</span><span>F28</span></div>
+        </div>
+      </article>
+      <article class="stage s4 reveal">
+        <div class="st-lab"><small>ETAP 4 · 10.05–28.05</small><h3>Normy i OLE</h3><b>23 900 zł netto</b></div>
+        <div class="st-txt">
+          <p>Wpisujecie normy, a w aplikacji zostaje historia ich wersji i informacja, kto je zatwierdził. Pracownik podaje ilości i jakość. Plan netto i OLE liczymy dokładnie tak, jak opisaliście w specyfikacji: sumujemy liczniki i mianowniki zamiast uśredniać procenty, a gdy czegoś brakuje, aplikacja wyświetla „brak danych do pełnego OLE”.</p>
+          <div class="chips"><em>Pozycje z Waszej listy:</em><span>R09</span><span>R10</span><span>moduł OLE</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="opcje" class="sec">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">4</span><h2>Co możemy dołożyć</h2><p class="sub">Każdy dodatek zamawiacie osobno, także wtedy, gdy aplikacja już działa.</p></header>
+    <div class="opts">
+      <article class="opt reveal"><span class="op-id">R14</span><h3>Praca bez internetu</h3><p>Terminal i telefon zapisują czas także wtedy, gdy nie ma sieci, i wysyłają zapisy, kiedy połączenie wróci. Polecamy to klientom, którzy pracują na nocne zmiany albo mają słaby zasięg na hali.</p><b class="op-price">11 900 zł <small>netto</small></b><small class="op-care">do opieki +500 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">R16</span><h3>Zgłoszenia do przełożonego</h3><p>Pracownik zgłasza problem prosto z terminala, a przełożony dostaje maila albo SMS-a.</p><b class="op-price">3 900 zł <small>netto</small></b><small class="op-care">do opieki +200 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">F30</span><h3>Dane dla systemów Waszych klientów</h3><p>Klient sam pobiera dane przez API do swojego MES-a, ERP-a albo programu do raportów. Każda firma dostaje osobny klucz dostępu.</p><b class="op-price">5 900 zł <small>netto</small></b><small class="op-care">do opieki +200 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">AI</span><h3>Analizy z pomocą AI</h3><p>Konsultant albo klient pyta o dane firmy zwykłymi słowami, a klient co miesiąc dostaje gotowe podsumowanie. Model AI analizuje tylko dane zbiorcze i nie ocenia konkretnych ludzi, bo systemy, które oceniają pracowników, AI Act zalicza do wysokiego ryzyka.</p><b class="op-price">17 900 zł <small>netto</small></b><small class="op-care">do opieki +700 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><h3>Logowanie kontem Microsoft</h3><p>Jeśli macie firmowe konta Microsoft, konsultanci BDO logują się nimi do panelu i nie potrzebują osobnego hasła.</p><b class="op-price">2 900 zł <small>netto</small></b><small class="op-care">bez dopłaty do opieki</small></article>
+      <article class="opt ask reveal"><h3>Przeniesienie danych ze starego WPS</h3><p>Przeniesiemy historię pomiarów, jeśli da się ją wyeksportować z obecnego systemu.</p><b class="op-price">Wycenimy, gdy zobaczymy eksport</b></article>
+    </div>
+    <p class="note reveal">Aplikację natywną na telefon, o której piszecie w specyfikacji, wycenimy, gdy będzie potrzebna.</p>
+  </div>
+</section>
+
+<section id="cena" class="sec alt">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">5</span><h2>Cena i opieka</h2></header>
+    <div class="price">
+      <div class="eq list reveal">
+        <div class="eq-row"><span>Etap 1. Rejestracja czasu i nadzór</span><b>92 900 zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 2. Plan pracy i kontrola danych</span><b>24 900 zł <small>netto</small></b></div>
+        <div class="eq-row sub"><span>Etapy 1 i 2, czyli wszystko z P0</span><b>117 800 zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 3. Analizy i wskaźniki</span><b>24 900 zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 4. Normy i OLE</span><b>23 900 zł <small>netto</small></b></div>
+        <div class="eq-row total"><span>Razem za cztery etapy</span><b>166 600 zł <small>netto</small></b></div>
+        <p class="eq-cap">Fakturę wystawiamy po odbiorze, a na zapłatę macie 14 dni</p>
+        <div class="eq-inv">
+          <div><small>Etap 1, pierwsza rata: gdy terminal i telefon działają w wersji testowej</small><b>46 450 zł <small>netto</small></b></div>
+          <div><small>Etap 1, druga rata: po odbiorze</small><b>46 450 zł <small>netto</small></b></div>
+          <div><small>Etap 2: po odbiorze</small><b>24 900 zł <small>netto</small></b></div>
+          <div><small>Etapy 3 i 4: po odbiorze każdego z nich</small><b>24 900 zł <small>i</small> 23 900 zł <small>netto</small></b></div>
+        </div>
+        <p class="small">Do wszystkich kwot doliczamy VAT. Ceny dodatków są w sekcji 4.</p>
+      </div>
+      <div class="care reveal">
+        <h3>Opieka po uruchomieniu</h3>
+        <p>Płacicie tylko za opiekę nad tym, co już działa, więc kwota rośnie z każdym etapem.</p>
+        <ol class="care-steps">
+          <li style="--h:58"><small>po etapie 1</small><b>1 900 zł</b><small>netto</small></li>
+          <li style="--h:73"><small>po etapie 2</small><b>2 400 zł</b><small>netto</small></li>
+          <li style="--h:85"><small>po etapie 3</small><b>2 800 zł</b><small>netto</small></li>
+          <li style="--h:100"><small>po etapie 4</small><b>3 300 zł</b><small>netto</small></li>
+        </ol>
+        <p class="small">miesięcznie, od odbioru etapu</p>
+        <p>W ramach opieki:</p>
+        <ul>
+          <li>pilnujemy, czy aplikacja działa, i reagujemy na awarię w ciągu 4 godzin roboczych,</li>
+          <li>poprawiamy błędy w tym, co już działa,</li>
+          <li>aktualizujemy zabezpieczenia i biblioteki,</li>
+          <li>robimy kopie zapasowe, a raz na kwartał sprawdzamy, czy da się z nich odtworzyć dane,</li>
+          <li>pilnujemy serwerów i ich kosztów.</li>
+        </ul>
+        <p>Pytania pracowników i klientów, zakładanie firm i wydawanie kart zostają po Waszej stronie. Za pierwszy miesiąc nie płacicie. Potem miesięczny okres wypowiedzenia.</p>
+        <div class="machine"><b>Nowe funkcje i zmiany.</b> Kupujecie pulę godzin po 200 zł netto za godzinę, co najmniej 5 godzin w miesiącu. Wielkość puli ustalacie co miesiąc, więc w spokojniejszych miesiącach płacicie mniej, a zgłoszenia z puli robimy w pierwszej kolejności. Pojedyncze zlecenia bez puli kosztują 240 zł netto za godzinę i robimy je, gdy znajdzie się wolny termin.</div>
+      </div>
+    </div>
+    <div class="box costs reveal">
+      <h3>Koszty po Waszej stronie</h3>
+      <ul>
+        <li>Za serwery w UE, wynajęte na Waszą firmę, zapłacicie na początek ok. 500–900 zł netto miesięcznie. Kwota rośnie razem z liczbą firm, a dokładną podamy przed startem.</li>
+        <li>Za SMS-y przy zgłoszeniach i za model AI przy analizach płacicie dostawcom tyle, ile zużyjecie.</li>
+        <li>Terminale, czytniki kart i skanery kupujecie Wy albo Wasi klienci. Pomożemy dobrać sprzęt.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="kroki" class="sec">
+  <div class="wrap">
+    <header class="sh reveal"><span class="num">6</span><h2>Co dalej</h2></header>
+    <ol class="next">
+      <li class="reveal">Pokazujecie nam przez godzinę obecny WPS: ekrany, raporty i eksport. Sprawdzimy, czy niczego nie pominęliśmy.</li>
+      <li class="reveal">Odpowiadacie na kilka pytań z ramki poniżej, a my potwierdzamy cenę stałą i kalendarz.</li>
+      <li class="reveal">Podpisujemy umowę o poufności, umowę na wdrożenie i umowę podpowierzenia danych, bo w aplikacji będą dane pracowników Waszych klientów.</li>
+      <li class="reveal">7 stycznia zaczynamy od warsztatu o rolach i sprzęcie, a potem pokazujemy klikalną makietę terminala, telefonu i panelu.</li>
+      <li class="reveal">Pod koniec marca odbieracie etap 1 i robicie pierwsze pomiary u klientów. Kolejne etapy zamawiacie według kalendarza.</li>
+    </ol>
+    <div class="end3">
+      <div class="box amber wide reveal">
+        <h3>Na czym opieramy cenę</h3>
+        <ul>
+          <li>Obecnego WPS jeszcze nie widzieliśmy, dlatego cenę stałą potwierdzimy po godzinie pokazu. Jeśli używacie czegoś, czego nie ma na liście, powiemy Wam o tym przed podpisaniem umowy.</li>
+          <li>Wszystkie firmy pracują w jednej aplikacji, a ich dane są od siebie oddzielone. Jeśli któraś firma będzie chciała mieć aplikację na osobnym serwerze, wycenimy to oddzielnie.</li>
+          <li>Opieka w tej cenie obejmuje do 30 firm, które korzystają z aplikacji w tym samym czasie.</li>
+          <li>Na terminalach jest Windows i przeglądarka w trybie kiosku, a czytniki kart i skanery działają jak klawiatura. Tryb kiosku ustawiacie Wy albo informatycy klienta, według naszej instrukcji.</li>
+          <li>Na iPhonie pracownik się loguje, bo przeglądarka w telefonie nie odczyta karty. Kartę przyłożoną do iPhone'a odczyta dopiero aplikacja natywna.</li>
+          <li>Aplikacja działa na serwerach w UE. Starego kodu ani bazy nie potrzebujemy. Wygląd przygotujemy od nowa, w barwach BDO.</li>
+          <li>Listę stałych wskaźników i opis, co liczymy jako stratę, przekażecie nam przed etapem 3.</li>
+          <li>Tak jak w Waszej specyfikacji, oferta nie obejmuje planowania i sterowania produkcją, płac i kadr, rozpoznawania pracy z kamer, GPS i AI, platformy szkoleń ani kopii 1:1 starego systemu.</li>
+        </ul>
+      </div>
+      <div class="box reveal">
+        <h3>Warunki</h3>
+        <ul>
+          <li>Każdy etap ma stałą cenę. Fakturę wystawiamy po odbiorze i macie 14 dni na zapłatę.</li>
+          <li>Na uwagi przy odbiorze macie 7 dni roboczych, a po odbiorze 30 dni na poprawki w cenie.</li>
+          <li>Kod od początku trzymacie u siebie, a serwery są wynajęte na Waszą firmę. Prawa majątkowe do kodu przechodzą na Was po zapłacie za etap.</li>
+          <li>Ceny obowiązują, jeśli etap 1 zamówicie do 31 stycznia 2027 r., a każdy kolejny w ciągu 60 dni od odbioru poprzedniego.</li>
+        </ul>
+      </div>
+      <div class="box good reveal">
+        <h3>O co Was prosimy</h3>
+        <ul>
+          <li>godzinę pokazu obecnego WPS,</li>
+          <li>model czytników kart i skanerów, rodzaj kart oraz wersję Windowsa i przeglądarki na terminalach,</li>
+          <li>informację, jakich telefonów używają pracownicy: tylko iPhone'ów czy także Androidów, służbowych czy prywatnych,</li>
+          <li>liczbę firm, które korzystają z WPS w tym samym czasie, i liczbę pracowników w największej z nich,</li>
+          <li>wymagania Waszych informatyków co do serwerów, logowania i bezpieczeństwa,</li>
+          <li>listę języków, w których pracownicy mają widzieć czynności.</li>
+        </ul>
+      </div>
+      <div class="contact reveal">
+        <small>Kontakt</small>
+        <b>Adam Nelip</b>
+        <span>Fluinty sp. z o.o.</span>
+        <span>adam@fluinty.pl</span>
+        <span>+48&nbsp;509&nbsp;843&nbsp;514</span>
+      </div>
+    </div>
+    <p class="fine reveal">Sama oferta do niczego nie zobowiązuje. Wiążą nas dopiero podpisana umowa i zamówienie. Ceny wszystkich etapów są stałe, jeśli potwierdzą się założenia opisane na tej stronie. Wszystkie kwoty są netto. Dokument jest poufny i przeznaczony dla BDO Advisory.</p>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap"><span>Fluinty sp. z o.o. · BDO Advisory · oferta: nowy WPS · wersja z 17.11.2026</span><span>Ceny netto</span></div>
+</footer>
+<script>
+/* Oferta WPS dla BDO Advisory: przewijanie, liczniki i pokaz „krok po kroku”.
+   ?static wyłącza animacje (zrzuty i druk), ?krok=N otwiera wybrany krok pokazu. */
+(() => {
+  'use strict';
+  const qs = new URLSearchParams(location.search);
+  const STATIC = qs.has('static');
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  if (STATIC) document.body.classList.add('static');
+
+  // pasek postępu i górna belka
+  const prog = $('#progress'), topbar = $('.topbar'), hero = $('#start');
+  const onScroll = () => {
+    const d = document.documentElement, max = d.scrollHeight - d.clientHeight;
+    prog.style.width = (max > 0 ? d.scrollTop / max * 100 : 0) + '%';
+    topbar.classList.toggle('solid', d.scrollTop > hero.offsetHeight - 70);
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // zaznaczona sekcja w nawigacji
+  const links = $$('#nav a');
+  const navIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(a => { const s = $(a.getAttribute('href')); if (s) navIO.observe(s); });
+
+  // liczniki na okładce
+  const fmt = n => n.toLocaleString('pl-PL');
+  const countUp = el => {
+    const to = +el.dataset.to;
+    if (STATIC || REDUCED) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 1400;
+    const f = t => {
+      const k = Math.min(1, (t - t0) / dur);
+      el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) requestAnimationFrame(f);
+    };
+    requestAnimationFrame(f);
+  };
+
+  // wejścia przy przewijaniu
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    $$('.count', e.target).forEach(countUp);
+    io.unobserve(e.target);
+  }), { threshold: 0.12 });
+  $$('.reveal, .gnt, .care').forEach(el => {
+    if (STATIC) { el.classList.add('in'); $$('.count', el).forEach(countUp); }
+    else io.observe(el);
+  });
+
+  // ---------- pokaz „Jedna zmiana, krok po kroku” ----------
+  const STEPS = [
+    { s: 'karta', d: 'term', clk: '06:02', e: 1, h: 'Pracownik odbija kartę',
+      p: 'Pracownik przykłada kartę do czytnika przy linii. Nieznanej albo zablokowanej karty terminal nie przyjmie. Po każdym zapisie ekran wraca do początku, więc następna osoba nie zobaczy cudzych danych.' },
+    { s: 'kafelki', d: 'term', clk: '06:03', e: 1, h: 'Pracownik wybiera czynność',
+      p: 'Najpierw wybiera miejsce pracy, a potem czynność z dużych kafelków. Czynności mogą mieć do pięciu poziomów, a te najczęstsze są pod przyciskiem „Szybki wybór”. Nazwy czynności każdy widzi w swoim języku.' },
+    { s: 'start', d: 'term', clk: '06:03', e: 1, h: 'Pracownik klika START',
+      p: 'Licznik rusza od razu, a godzinę zapisuje serwer, więc źle ustawiony zegar w terminalu niczego nie popsuje. Numer zlecenia pracownik wczytuje skanerem albo aparatem w telefonie.' },
+    { s: 'dzisiaj', d: 'term', clk: '08:53', e: 1, h: 'Pracownik zmienia czynność',
+      p: 'Gdy wybiera nową czynność, poprzednia od razu się zamyka. Nie da się robić dwóch rzeczy naraz, więc żadna minuta nie policzy się dwa razy. W zakładce „Dzisiaj” pracownik widzi, ile czasu spędził przy każdej czynności i która jeszcze trwa.' },
+    { s: 'live', d: 'pan', t: 0, e: 1, h: 'Lider widzi, kto teraz pracuje',
+      p: 'Na ekranie „Pracujący” lider widzi, kto pracuje, przy czym, gdzie i od kiedy. Od razu zauważy, że ktoś wczoraj nie kliknął STOP, i poprawi to na miejscu. Każda poprawka zostaje w historii zmian.' },
+    { s: 'braki', d: 'pan', t: 1, e: 2, h: 'Lider dostaje listę braków',
+      p: 'W aplikacji jest grafik zmian, więc lider widzi, ile kto miał pracować, ile trwały przerwy i ile czasu zostało niewyjaśnione. Co rano dostaje listę rzeczy do wyjaśnienia: zapisy bez końca, zapisy, które na siebie nachodzą, nadgodziny i brak numeru zlecenia.' },
+    { s: 'raport', d: 'pan', t: 2, e: 3, h: 'Konsultant widzi, na co idzie czas',
+      p: 'W raporcie konsultant sprawdza, ile czasu zajmują czynności VA, SVA i NVA i gdzie są przestoje oraz wąskie gardła. Wyniki może rozbić na klientów, produkty, projekty i oddziały, a z każdej liczby przejść do pojedynczych pomiarów. Sumy w raporcie i w pliku z eksportu zawsze się zgadzają.' },
+    { s: 'ole', d: 'pan', t: 3, e: 4, h: 'Kierownik sprawdza OLE',
+      p: 'Na podstawie norm, ilości i jakości aplikacja liczy osobno dostępność, wydajność i jakość. OLE pokazuje dopiero wtedy, gdy ma wszystkie dane, i nie uśrednia procentów z różnych zmian. Dla przykładu z Waszej specyfikacji wychodzi 89,4%.' }
+  ];
+
+  const demo = $('#demo');
+  if (!demo) return;
+  const term = $('#devTerm'), pan = $('#devPan');
+  const screens = $$('[data-s]', demo), tabs = $$('.pan-tabs [data-t]', demo);
+  const clk = $('#clk'), led = $('#led'), rfid = $('#rfid');
+  const tsKarta = $('#tsKarta'), tsKaf = $('#tsKaf'), tsStart = $('#tsStart'), timerEl = $('#timer');
+  const cap = $('#cap'), capWho = $('#capWho'), capH = $('#capH'), capE = $('#capE'), capP = $('#capP');
+  const bar = $('#dmProg'), dotsEl = $('#dmDots'), prevB = $('#dmPrev'), nextB = $('#dmNext'), playB = $('#dmPlay');
+  const DUR = 9000;
+  let cur = 0, timers = [], tick = null, nextT = null, seen = false;
+  let auto = !STATIC && !REDUCED && !qs.has('krok'), visible = false, hover = false;
+
+  const pad = n => String(n).padStart(2, '0');
+  const hms = (s, short) => {
+    const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    return (short ? h : pad(h)) + ':' + pad(m) + ':' + pad(x);
+  };
+  const later = (ms, fn) => timers.push(setTimeout(fn, STATIC ? 0 : ms));
+
+  const dots = STEPS.map((st, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Krok ' + (i + 1) + ': ' + st.h);
+    b.addEventListener('click', () => { stopAuto(); show(i); });
+    dotsEl.appendChild(b);
+    return b;
+  });
+
+  // ruch na ekranach w trakcie kroku
+  const SUB = {
+    karta() {
+      later(700, () => rfid.classList.add('in'));
+      later(1700, () => { led.classList.add('ok'); tsKarta.classList.add('hit'); });
+    },
+    kafelki() {
+      later(900, () => $('[data-k="mon"]', tsKaf).classList.add('tap'));
+      later(1600, () => tsKaf.classList.add('l2'));
+      later(2500, () => $('[data-k="pa"]', tsKaf).classList.add('tap'));
+    },
+    start() {
+      let s = STATIC ? 754 : 0;
+      timerEl.textContent = hms(s);
+      if (!STATIC) tick = setInterval(() => { timerEl.textContent = hms(++s); }, 1000);
+      later(1500, () => tsStart.classList.add('scan'));
+    },
+    live() {
+      const cells = $$('[data-sec]', demo), t0 = Date.now();
+      const upd = () => cells.forEach(c => { c.textContent = hms(+c.dataset.sec + Math.floor((Date.now() - t0) / 1000), true); });
+      upd();
+      if (!STATIC) tick = setInterval(upd, 1000);
+    },
+    ole() {
+      if (STATIC || REDUCED) return;
+      const els = $$('.ole b[data-n]', demo), tot = $('#oleTot'), t0 = performance.now(), dur = 1200;
+      const f = t => {
+        const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        els.forEach(b => { b.textContent = Math.round(+b.dataset.n * e) + '%'; });
+        tot.textContent = (89.376 * e).toFixed(1).replace('.', ',') + '%';
+        if (k < 1 && STEPS[cur].s === 'ole') requestAnimationFrame(f);
+      };
+      requestAnimationFrame(f);
+    }
+  };
+
+  function reset() {
+    timers.forEach(clearTimeout);
+    timers = [];
+    clearInterval(tick);
+    tick = null;
+    rfid.classList.remove('in');
+    led.classList.remove('ok');
+    tsKarta.classList.remove('hit');
+    tsKaf.classList.remove('l2');
+    tsStart.classList.remove('scan');
+    $$('.tap', tsKaf).forEach(x => x.classList.remove('tap'));
+    $$('.ole b[data-n]', demo).forEach(b => { b.textContent = b.dataset.n + '%'; });
+    $('#oleTot').textContent = '89,4%';
+  }
+
+  function show(i) {
+    reset();
+    cur = (i + STEPS.length) % STEPS.length;
+    const st = STEPS[cur];
+    term.classList.toggle('off', st.d !== 'term');
+    pan.classList.toggle('off', st.d !== 'pan');
+    screens.forEach(x => x.classList.toggle('on', x.dataset.s === st.s));
+    tabs.forEach(t => t.classList.toggle('on', +t.dataset.t === st.t));
+    if (st.clk) clk.textContent = st.clk;
+    capWho.textContent = 'Krok ' + (cur + 1) + ' z ' + STEPS.length;
+    capH.textContent = st.h;
+    capE.textContent = 'Etap ' + st.e;
+    capE.className = 'et e' + st.e;
+    capP.textContent = st.p;
+    if (!STATIC) { cap.classList.remove('pop'); void cap.offsetWidth; cap.classList.add('pop'); }
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+    if (SUB[st.s]) SUB[st.s]();
+    run();
+  }
+
+  // samo odtwarzanie: tylko gdy pokaz jest na ekranie i nikt nie trzyma nad nim myszy
+  function run() {
+    clearTimeout(nextT);
+    bar.style.animation = 'none';
+    void bar.offsetWidth;
+    if (auto && visible && !hover) {
+      bar.style.animation = 'dm-fill ' + DUR + 'ms linear forwards';
+      nextT = setTimeout(() => show(cur + 1), DUR);
+    }
+  }
+  function stopAuto() {
+    auto = false;
+    playB.textContent = 'Odtwórz';
+    run();
+  }
+
+  playB.addEventListener('click', () => {
+    if (auto) { stopAuto(); return; }
+    auto = true;
+    playB.textContent = 'Pauza';
+    show(cur);
+  });
+  prevB.addEventListener('click', () => { stopAuto(); show(cur - 1); });
+  nextB.addEventListener('click', () => { stopAuto(); show(cur + 1); });
+  demo.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { hover = true; run(); } });
+  demo.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { hover = false; run(); } });
+  new IntersectionObserver(es => es.forEach(e => {
+    visible = e.isIntersecting;
+    if (visible && !seen) { seen = true; show(cur); } else run();
+  }), { threshold: 0.4 }).observe(demo);
+
+  if (!auto) playB.textContent = 'Odtwórz';
+  const k = parseInt(qs.get('krok'), 10);
+  show(k >= 1 && k <= STEPS.length ? k - 1 : 0);
+})();
+
+</script>
+<script>
+/* Licznik otwarć decku. Wkleja go wrzuc_do_repo.py na końcu każdego decku. Bez cookies,
+   bez IP, bez zewnętrznych bibliotek. Liczy tylko na fluinty.pl, więc podglądy lokalne nic
+   nie wysyłają.
+   Dane idą na /dla/_z w NASZEJ domenie, a Netlify przekazuje je do Apps Scriptu (reguła
+   w _redirects, pilnuje jej wrzuc_do_repo.py). Wprost do script.google.com przez sendBeacon
+   blokowała je EasyPrivacy (reguła *$ping,third-party), domyślna w uBlock Origin, AdGuard i Brave.
+   ?my=1 w adresie wyłącza liczenie na tym urządzeniu na stałe (?my=0 włącza z powrotem). */
+(function(){
+  var ADRES='/dla/_z';
+  if(!/(^|\.)fluinty\.pl$/.test(location.hostname) || !window.fetch) return;
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  var my=/[?&]my=([01])/.exec(location.search);
+  if(my) ls('fl_nie_licz',my[1]);
+  if(ls('fl_nie_licz')==='1') return;
+
+  var deck=((location.pathname.match(/\/dla\/([^\/]+)/)||[])[1]||'').toLowerCase();
+  if(!deck) return;
+  var v=''; for(var i=0;i<16;i++) v+='abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random()*36)];
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var mq=window.matchMedia('(max-width: 900px), (max-height: 500px) and (max-width: 1000px)');
+  var ref=''; try{ref=document.referrer?new URL(document.referrer).hostname:'';}catch(e){}
+  if(ref===location.hostname) ref='';
+  var st={v:v,d:deck,n:0,dev:mq.matches?'telefon':'komputer',max:1,of:slides.length,t:0,demo:false,cal:false,ref:ref};
+  var liczone=false, widoczne=0, naDemo=0, wyslane='';
+
+  function slajd(){
+    if(!mq.matches){ var a=document.querySelector('.slide.active'); return a?slides.indexOf(a)+1:1; }
+    var n=1; slides.forEach(function(s,i){ if(s.getBoundingClientRect().top<innerHeight*.6) n=i+1; }); return n;
+  }
+  function wyslij(){
+    if(!liczone) return;
+    var j=JSON.stringify(st); if(j===wyslane) return; wyslane=j;
+    try{fetch(ADRES,{method:'POST',body:j,keepalive:true,redirect:'manual',headers:{'Content-Type':'text/plain'}}).catch(function(){});}
+    catch(e){try{navigator.sendBeacon(ADRES,j);}catch(e2){}}
+  }
+  // Skanery linków w poczcie otwierają stronę, zanim zrobi to człowiek. Liczymy dopiero
+  // po 5 s na wierzchu albo po pierwszym ruchu człowieka.
+  function start(){
+    if(liczone) return; liczone=true;
+    st.dev=mq.matches?'telefon':'komputer';
+    var n=(Number(ls('fl_w_'+deck))||0)+1; ls('fl_w_'+deck,String(n)); st.n=n;
+    wyslij();
+  }
+  ['pointerdown','keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,start,{passive:true,once:true});});
+
+  setInterval(function(){
+    if(document.visibilityState!=='visible') return;
+    widoczne++; st.t=widoczne;
+    if(widoczne>=5) start();
+    var s=slajd(); if(s>st.max) st.max=s;
+    var cur=slides[s-1];
+    if(cur && cur.dataset.kind==='demo'){ if(++naDemo>=8) st.demo=true; }
+    if(widoczne%15===0) wyslij();
+  },1000);
+
+  var zmiana=null;
+  function poZmianie(){ clearTimeout(zmiana); zmiana=setTimeout(function(){ var s=slajd(); if(s>st.max){st.max=s;wyslij();} },700); }
+  addEventListener('scroll',poZmianie,{passive:true});
+  addEventListener('keyup',poZmianie); addEventListener('click',poZmianie); addEventListener('pointerup',poZmianie);
+
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){
+    a.addEventListener('click',function(){ start(); st.cal=true; wyslane=''; wyslij(); });
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') wyslij(); });
+  addEventListener('pagehide',wyslij);
+})();
+</script>
+</body>
+</html>
