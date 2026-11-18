@@ -777,13 +777,25 @@ svg .elab.off { opacity: .12; }
   .demo, .gnt, .opt, .stage, .eq, .care { break-inside: avoid; }
 }
 
+/* widełki cen (18.11.2026) */
+.stat b.rng { font-size: clamp(24px, 2.5vw, 32px); }
+.eq.list .eq-row.total b { font-size: 30px; }
+.care-steps b { font-size: 14px; white-space: normal; line-height: 1.15; }
+@media (max-width: 560px) { .care-steps b { font-size: 12.5px; } }
+
+/* linki w kontakcie i przycisk pokazu (18.11.2026) */
+.contact a:not(.btn) { color: #CFE3F5; text-decoration: none; }
+.contact a:not(.btn):hover { text-decoration: underline; }
+.contact .btn { margin-top: 12px; align-self: flex-start; }
+.who a { text-decoration: none; }
+
 </style>
 </head>
 <body>
 <div class="progress"><span id="progress"></span></div>
 
 <header class="topbar">
-  <a class="brand" href="#start"><span class="dot"></span>Fluinty <span class="x">×</span> BDO Advisory</a>
+  <a class="brand" href="#start"><span class="dot"></span>Fluinty <span class="x">·</span> oferta dla BDO Advisory</a>
   <nav id="nav">
     <a href="#krok">Krok po kroku</a>
     <a href="#propozycja">Co proponujemy</a>
@@ -799,28 +811,28 @@ svg .elab.off { opacity: .12; }
 <section id="start" class="hero">
   <div class="hero-bg"><i></i><i></i><i></i></div>
   <div class="wrap hero-in">
-    <p class="kicker reveal">Fluinty · BDO Advisory · oferta z 17.11.2026</p>
+    <p class="kicker reveal">Fluinty · BDO Advisory · oferta z 18.11.2026</p>
     <h1 class="reveal">Nowy WPS, z którym pracownik<br>poradzi sobie sam</h1>
     <p class="lead reveal">Robimy WPS od nowa, według Waszej specyfikacji. Pracownik odbija kartę przy terminalu albo zapisuje czas w telefonie. Lider na bieżąco widzi, kto czym się zajmuje, a konsultant od razu ma raporty: na co idzie czas, gdzie są straty i ile wynosi OLE. Pierwsze pomiary u klientów zrobicie na nowym WPS pod koniec marca 2027.</p>
     <div class="stats">
       <div class="stat reveal"><b>4 etapy</b><small>Każdy etap ma swoją cenę i zamawiacie go osobno. Etapy 1 i 2 obejmują wszystko, co oznaczyliście w specyfikacji jako P0.</small></div>
       <div class="stat reveal"><b>7 stycznia</b><small>zaczynamy pracę, jeśli podpiszemy umowę do połowy grudnia.</small></div>
-      <div class="stat reveal"><b>koniec maja</b><small>działa już wszystko, także analizy i OLE.</small></div>
-      <div class="stat accent reveal"><b><span class="count" data-to="92900">92 900</span> zł</b><small>netto za etap 1, czyli rejestrację czasu i nadzór. Płacicie w dwóch ratach, drugą po odbiorze.</small></div>
+      <div class="stat reveal"><b>do końca maja</b><small>działa już wszystko, także analizy i OLE.</small></div>
+      <div class="stat accent reveal"><b class="rng">55&nbsp;700–92&nbsp;900&nbsp;zł</b><small>netto kosztuje etap 1, czyli rejestracja czasu i nadzór. Dokładną cenę podamy po pokazie obecnego WPS.</small></div>
     </div>
-    <p class="hero-note reveal"><b>Kod, konta i dane od początku należą do Was.</b> Serwery w UE wynajmujemy na Waszą firmę, a kod z dokumentacją trzymacie u siebie. Poprawki i nowe funkcje dla Waszych klientów robimy po stałej stawce, w ramach puli godzin, którą co miesiąc sami ustalacie.</p>
+    <p class="hero-note reveal"><b>Kod od początku leży w Waszym repozytorium, a serwery wynajmujemy na Waszą firmę.</b> Prawa do kodu przechodzą na Was po zapłacie za etap. Zmiany i nowe funkcje dla Waszych klientów robimy po stałej stawce, w ramach puli godzin, którą co miesiąc sami ustalacie.</p>
     <div class="cta reveal">
       <a class="btn" href="#krok">Jak to może wyglądać</a>
       <a class="btn ghost" href="#cena">Cena i opieka</a>
     </div>
-    <p class="who reveal">Przygotował Adam Nelip, Fluinty sp. z o.o. · adam@fluinty.pl · +48 509 843 514</p>
+    <p class="who reveal">Przygotował Adam Nelip, Fluinty sp. z o.o. · <a href="mailto:adam@fluinty.pl">adam@fluinty.pl</a> · <a href="tel:+48509843514">+48 509 843 514</a></p>
   </div>
   <a class="scroll-hint" href="#krok" aria-label="Przewiń dalej"><span></span></a>
 </section>
 
 <section id="krok" class="sec alt">
   <div class="wrap">
-    <header class="sh reveal"><span class="num">1</span><h2>Jedna zmiana na hali, krok po kroku</h2><p class="sub">Tak może wyglądać praca z nowym WPS: od odbicia karty przy terminalu do raportu dla konsultanta. Przy każdym kroku zaznaczyliśmy, w którym etapie zrobimy tę część aplikacji. Dane na ekranach są przykładowe.</p></header>
+    <header class="sh reveal"><span class="num">1</span><h2>Jak może wyglądać jedna zmiana na hali</h2><p class="sub">Pracownik odbija kartę przy terminalu, a na końcu konsultant dostaje raport. Przy każdym kroku zaznaczyliśmy, w którym etapie zrobimy tę część aplikacji. Dane na ekranach są przykładowe.</p></header>
     <div class="demo reveal" id="demo">
       <div class="demo-dev" aria-hidden="true">
 
@@ -878,7 +890,7 @@ svg .elab.off { opacity: .12; }
                     <tr><td>Ewa M.</td><td class="hm">LINIA 2</td><td>Kontrola jakości</td><td class="t" data-sec="7505">2:05:05</td></tr>
                     <tr><td>Piotr S.</td><td class="hm">Magazyn</td><td>Transport</td><td class="t" data-sec="1866">0:31:06</td></tr>
                     <tr><td>Marta L.</td><td class="hm">LINIA 1</td><td>Montaż › Pakowanie</td><td class="t" data-sec="3010">0:50:10</td></tr>
-                    <tr class="warn"><td>Kamil R.</td><td class="hm">LINIA 1</td><td>Montaż, otwarte od wczoraj 14:02</td><td class="t"><span class="fix">Popraw</span></td></tr>
+                    <tr class="warn"><td>Kamil R.</td><td class="hm">LINIA 1</td><td>Montaż, rozpoczęty wczoraj o 14:02</td><td class="t"><span class="fix">Popraw</span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -886,7 +898,7 @@ svg .elab.off { opacity: .12; }
                 <h4>Do wyjaśnienia <small>linie 1 i 2 · 19.01</small></h4>
                 <ul class="issues">
                   <li><i class="r"></i><b>Brak końca dnia</b><span>Kamil R. · 18.01, od 14:02</span></li>
-                  <li><i></i><b>Zapisy nachodzą na siebie</b><span>Ewa M. · 7:40–7:52</span></li>
+                  <li><i></i><b>Zapisy nachodzą na siebie po poprawce</b><span>Ewa M. · 7:40–7:52</span></li>
                   <li><i></i><b>Brak numeru zlecenia</b><span>3 zapisy · LINIA 2</span></li>
                   <li><i></i><b>Nadgodziny</b><span>Piotr S. · +1 h 20 min</span></li>
                 </ul>
@@ -948,20 +960,20 @@ svg .elab.off { opacity: .12; }
     <div class="cards4">
       <article class="card reveal"><h3>Wszyscy Wasi klienci pracują w jednej aplikacji</h3><p>Dane każdej firmy są oddzielone od pozostałych. Nowe firmy zakładacie sami w panelu BDO i tam też dajecie dostęp konsultantom. Listy pracowników, karty i słownik czynności wczytujecie z Excela.</p></article>
       <article class="card reveal"><h3>Pracownik poradzi sobie bez pomocy</h3><p>Na terminalu i w telefonie ma duże kafelki, szybki wybór i licznik na ekranie. Zanim oddamy etap 1, damy aplikację do sprawdzenia kilku pracownikom przy prawdziwym terminalu, bo na co dzień nikt nie będzie im pomagał.</p></article>
-      <article class="card reveal"><h3>Konsultant może ufać liczbom</h3><p>Pracownik ma zawsze otwartą tylko jedną czynność, a godzinę zapisuje serwer. Każda poprawka zostaje w historii, a lider co rano dostaje listę braków. Sumy w raporcie i w pliku z eksportu zawsze się zgadzają.</p></article>
-      <article class="card reveal"><h3>Aplikacja od początku należy do Was</h3><p>Kod trzymacie u siebie, a serwery są wynajęte na Waszą firmę. Dokumentację przygotujemy tak, żeby projekt mógł przejąć każdy programista. Prawa do kodu przechodzą na Was po zapłacie za etap. Na tej samej technologii działa panel floty, który wdrożyliśmy dla Art-Tim i z którego firma korzysta na co dzień.</p></article>
+      <article class="card reveal"><h3>Konsultant może ufać liczbom</h3><p>Pracownik ma zawsze otwartą tylko jedną czynność, a godzinę zapisuje serwer. Każda poprawka zostaje w historii, a lider co rano dostaje listę braków. Przy tych samych filtrach sumy w raporcie i w pliku z eksportu zawsze się zgadzają.</p></article>
+      <article class="card reveal"><h3>Nie jesteście od nas uzależnieni</h3><p>Kod od początku leży w Waszym repozytorium, a prawa do niego przechodzą na Was po zapłacie za etap. Dokumentację przygotujemy tak, żeby projekt mógł przejąć każdy programista. Aplikację piszemy w Next.js, a dane trzymamy w bazie Postgres. W tej samej technologii wdrożyliśmy panel floty dla Art-Tim, a firma korzysta z niego na co dzień.</p></article>
     </div>
   </div>
 </section>
 
 <section id="etapy" class="sec alt">
   <div class="wrap">
-    <header class="sh reveal"><span class="num">3</span><h2>Etapy i kalendarz</h2><p class="sub">Zaczynamy 7 stycznia 2027, jeśli podpiszemy umowę do połowy grudnia. Fakturę za etap wystawiamy dopiero po jego odbiorze.</p></header>
+    <header class="sh reveal"><span class="num">3</span><h2>Etapy i kalendarz</h2><p class="sub">Zaczynamy 7 stycznia 2027, jeśli podpiszemy umowę do połowy grudnia.</p></header>
     <div class="gnt reveal">
       <div class="gnt-in">
         <div class="gnt-row"><span></span><div class="gnt-months"><span style="--d:0">styczeń</span><span style="--d:31">luty</span><span style="--d:59">marzec</span><span style="--d:90">kwiecień</span><span style="--d:120">maj</span></div></div>
         <div class="gnt-row"><div class="g-lab"><b>Etap 1. Rejestracja czasu i nadzór</b><small>7.01–26.03</small></div><div class="gnt-track"><i class="gnt-bar e1" style="--s:6;--e:85">11 tygodni</i></div></div>
-        <div class="gnt-row"><div class="g-lab"><b>Etap 2. Plan pracy i kontrola danych</b><small>29.03–16.04</small></div><div class="gnt-track"><i class="gnt-bar e2" style="--s:87;--e:106">3 tyg.</i></div></div>
+        <div class="gnt-row"><div class="g-lab"><b>Etap 2. Plan pracy i kontrola danych</b><small>30.03–16.04</small></div><div class="gnt-track"><i class="gnt-bar e2" style="--s:88;--e:106">3 tyg.</i></div></div>
         <div class="gnt-row"><div class="g-lab"><b>Etap 3. Analizy i wskaźniki</b><small>19.04–7.05</small></div><div class="gnt-track"><i class="gnt-bar e3" style="--s:108;--e:127">3 tyg.</i></div></div>
         <div class="gnt-row"><div class="g-lab"><b>Etap 4. Normy i OLE</b><small>10.05–28.05</small></div><div class="gnt-track"><i class="gnt-bar e4" style="--s:129;--e:148">3 tyg.</i></div></div>
         <div class="gnt-over">
@@ -974,16 +986,16 @@ svg .elab.off { opacity: .12; }
     </div>
     <div class="stages">
       <article class="stage s1 reveal">
-        <div class="st-lab"><small>ETAP 1 · 7.01–26.03</small><h3>Rejestracja czasu i nadzór</h3><b>92 900 zł netto</b></div>
+        <div class="st-lab"><small>ETAP 1 · 7.01–26.03</small><h3>Rejestracja czasu i nadzór</h3><b>55&nbsp;700–92&nbsp;900&nbsp;zł netto</b></div>
         <div class="st-txt">
-          <p>Robimy podstawę aplikacji dla wszystkich firm i wszystko, czego potrzeba do pomiarów. Dla pracownika robimy ekran terminala i wersję na telefon: kafelki z czynnościami do pięciu poziomów, przyciski START, STOP i zmianę czynności, numer zlecenia ze skanera i zakładkę „Dzisiaj”.</p>
-          <p>W panelu zakładacie firmy, wczytujecie z Excela pracowników i karty, prowadzicie słownik czynności z podziałem na VA, SVA i NVA i ustawiacie terminale. Lider na bieżąco widzi, kto pracuje, i poprawia zapisy, a każda poprawka zostaje w historii. Dane można wyeksportować do pliku.</p>
+          <p>Robimy część aplikacji wspólną dla wszystkich firm i wszystko, czego potrzeba do pomiarów. Dla pracownika robimy ekran terminala i wersję na telefon. Pracownik wybiera czynność z kafelków do pięciu poziomów, ma przyciski START, STOP i „Zmień czynność”, numer zlecenia wczytuje skanerem, a w zakładce „Dzisiaj” widzi podsumowanie dnia.</p>
+          <p>W panelu zakładacie firmy, wczytujecie z Excela pracowników i karty, prowadzicie słownik czynności z podziałem na VA, SVA i NVA i ustawiacie terminale. Lider na bieżąco widzi, kto pracuje, i poprawia zapisy, a każda poprawka zostaje w historii. Z każdej sumy przejdziecie do pojedynczych pomiarów, a dane wyeksportujecie do pliku.</p>
           <p>Po tym etapie możecie już mierzyć czas u nowych klientów.</p>
           <div class="chips"><em>Pozycje z Waszej listy:</em><span>F01–F10</span><span>F12</span><span>F14–F17</span><span>F19–F21</span><span>R01</span><span>R06</span><span>R08</span></div>
         </div>
       </article>
       <article class="stage s2 reveal">
-        <div class="st-lab"><small>ETAP 2 · 29.03–16.04</small><h3>Plan pracy i kontrola danych</h3><b>24 900 zł netto</b></div>
+        <div class="st-lab"><small>ETAP 2 · 30.03–16.04</small><h3>Plan pracy i kontrola danych</h3><b>14&nbsp;900–24&nbsp;900&nbsp;zł netto</b></div>
         <div class="st-txt">
           <p>Wpisujecie grafiki zmian, rotacje, święta, urlopy i przerwy. Aplikacja poprawnie liczy też nocną zmianę, która kończy się następnego dnia. Lider widzi, ile kto miał pracować, ile czasu nikt nie wyjaśnił i gdzie są przekroczenia. Co rano dostaje też listę braków w danych.</p>
           <p>Razem z etapem 1 to wszystko, co oznaczyliście jako P0.</p>
@@ -991,16 +1003,16 @@ svg .elab.off { opacity: .12; }
         </div>
       </article>
       <article class="stage s3 reveal">
-        <div class="st-lab"><small>ETAP 3 · 19.04–7.05</small><h3>Analizy i wskaźniki</h3><b>24 900 zł netto</b></div>
+        <div class="st-lab"><small>ETAP 3 · 19.04–7.05</small><h3>Analizy i wskaźniki</h3><b>14&nbsp;900–24&nbsp;900&nbsp;zł netto</b></div>
         <div class="st-txt">
-          <p>Konsultant dostaje analizy w podziale na klientów, produkty, projekty i oddziały: udział czynności VA, SVA i NVA, przestoje, zbędne czynności i wąskie gardła. Dochodzą do tego stałe wskaźniki z Waszej listy i porównanie z wartościami referencyjnymi. Z każdego wyniku przejdzie do pojedynczych pomiarów, a gotowe zestawienie wyeksportuje albo wydrukuje do raportu z audytu.</p>
+          <p>Konsultant może podzielić wyniki według klientów, produktów, projektów i oddziałów. Widzi udział czynności VA, SVA i NVA, przestoje, zbędne czynności i wąskie gardła. Dochodzą do tego stałe wskaźniki z Waszej listy i porównanie z wartościami referencyjnymi. Konsultant z każdego wyniku przejdzie do pojedynczych pomiarów, a gotowe zestawienie wyeksportuje albo wydrukuje do raportu z audytu.</p>
           <div class="chips"><em>Pozycje z Waszej listy:</em><span>F23–F25</span><span>F27</span><span>F28</span></div>
         </div>
       </article>
       <article class="stage s4 reveal">
-        <div class="st-lab"><small>ETAP 4 · 10.05–28.05</small><h3>Normy i OLE</h3><b>23 900 zł netto</b></div>
+        <div class="st-lab"><small>ETAP 4 · 10.05–28.05</small><h3>Normy i OLE</h3><b>14&nbsp;300–23&nbsp;900&nbsp;zł netto</b></div>
         <div class="st-txt">
-          <p>Wpisujecie normy, a w aplikacji zostaje historia ich wersji i informacja, kto je zatwierdził. Pracownik podaje ilości i jakość. Plan netto i OLE liczymy dokładnie tak, jak opisaliście w specyfikacji: sumujemy liczniki i mianowniki zamiast uśredniać procenty, a gdy czegoś brakuje, aplikacja wyświetla „brak danych do pełnego OLE”.</p>
+          <p>Wpisujecie normy, a w aplikacji zostaje historia ich wersji i informacja, kto je zatwierdził. Pracownik wpisuje, ile zrobił i ile z tego było dobrych za pierwszym razem. Plan netto i OLE liczymy dokładnie tak, jak opisaliście w specyfikacji: sumujemy liczniki i mianowniki zamiast uśredniać procenty, a gdy czegoś brakuje, aplikacja wyświetla „brak danych do pełnego OLE”.</p>
           <div class="chips"><em>Pozycje z Waszej listy:</em><span>R09</span><span>R10</span><span>moduł OLE</span></div>
         </div>
       </article>
@@ -1012,11 +1024,11 @@ svg .elab.off { opacity: .12; }
   <div class="wrap">
     <header class="sh reveal"><span class="num">4</span><h2>Co możemy dołożyć</h2><p class="sub">Każdy dodatek zamawiacie osobno, także wtedy, gdy aplikacja już działa.</p></header>
     <div class="opts">
-      <article class="opt reveal"><span class="op-id">R14</span><h3>Praca bez internetu</h3><p>Terminal i telefon zapisują czas także wtedy, gdy nie ma sieci, i wysyłają zapisy, kiedy połączenie wróci. Polecamy to klientom, którzy pracują na nocne zmiany albo mają słaby zasięg na hali.</p><b class="op-price">11 900 zł <small>netto</small></b><small class="op-care">do opieki +500 zł netto miesięcznie</small></article>
-      <article class="opt reveal"><span class="op-id">R16</span><h3>Zgłoszenia do przełożonego</h3><p>Pracownik zgłasza problem prosto z terminala, a przełożony dostaje maila albo SMS-a.</p><b class="op-price">3 900 zł <small>netto</small></b><small class="op-care">do opieki +200 zł netto miesięcznie</small></article>
-      <article class="opt reveal"><span class="op-id">F30</span><h3>Dane dla systemów Waszych klientów</h3><p>Klient sam pobiera dane przez API do swojego MES-a, ERP-a albo programu do raportów. Każda firma dostaje osobny klucz dostępu.</p><b class="op-price">5 900 zł <small>netto</small></b><small class="op-care">do opieki +200 zł netto miesięcznie</small></article>
-      <article class="opt reveal"><span class="op-id">AI</span><h3>Analizy z pomocą AI</h3><p>Konsultant albo klient pyta o dane firmy zwykłymi słowami, a klient co miesiąc dostaje gotowe podsumowanie. Model AI analizuje tylko dane zbiorcze i nie ocenia konkretnych ludzi, bo systemy, które oceniają pracowników, AI Act zalicza do wysokiego ryzyka.</p><b class="op-price">17 900 zł <small>netto</small></b><small class="op-care">do opieki +700 zł netto miesięcznie</small></article>
-      <article class="opt reveal"><h3>Logowanie kontem Microsoft</h3><p>Jeśli macie firmowe konta Microsoft, konsultanci BDO logują się nimi do panelu i nie potrzebują osobnego hasła.</p><b class="op-price">2 900 zł <small>netto</small></b><small class="op-care">bez dopłaty do opieki</small></article>
+      <article class="opt reveal"><span class="op-id">R14</span><h3>Praca bez internetu</h3><p>Pracownik zapisuje czas także bez sieci, a terminal albo telefon wyśle zapisy, kiedy wróci internet. Polecamy to klientom, którzy pracują na nocne zmiany albo mają słaby zasięg na hali.</p><b class="op-price">7&nbsp;100–11&nbsp;900&nbsp;zł <small>netto</small></b><small class="op-care">do opieki dochodzi 300–500 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">R16</span><h3>Zgłoszenia do przełożonego</h3><p>Pracownik zgłasza problem prosto z terminala, a przełożony dostaje maila albo SMS-a.</p><b class="op-price">2&nbsp;300–3&nbsp;900&nbsp;zł <small>netto</small></b><small class="op-care">do opieki dochodzi 100–200 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">F30</span><h3>Dane dla systemów Waszych klientów</h3><p>Klient sam pobiera dane przez API do swojego MES-a, ERP-a albo programu do raportów. Każda firma dostaje osobny klucz dostępu.</p><b class="op-price">3&nbsp;500–5&nbsp;900&nbsp;zł <small>netto</small></b><small class="op-care">do opieki dochodzi 100–200 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><span class="op-id">AI</span><h3>Analizy z pomocą AI</h3><p>Konsultant albo klient pyta o dane firmy zwykłymi słowami, a klient co miesiąc dostaje gotowe podsumowanie. Model AI analizuje tylko dane zbiorcze i nie ocenia konkretnych osób. Według AI Act systemy, które oceniają pracowników, należą do grupy wysokiego ryzyka.</p><b class="op-price">10&nbsp;700–17&nbsp;900&nbsp;zł <small>netto</small></b><small class="op-care">do opieki dochodzi 400–700 zł netto miesięcznie</small></article>
+      <article class="opt reveal"><h3>Logowanie kontem Microsoft</h3><p>Jeśli macie firmowe konta Microsoft, konsultanci BDO logują się nimi do panelu i nie potrzebują osobnego hasła.</p><b class="op-price">1&nbsp;700–2&nbsp;900&nbsp;zł <small>netto</small></b><small class="op-care">opieka kosztuje tyle samo</small></article>
       <article class="opt ask reveal"><h3>Przeniesienie danych ze starego WPS</h3><p>Przeniesiemy historię pomiarów, jeśli da się ją wyeksportować z obecnego systemu.</p><b class="op-price">Wycenimy, gdy zobaczymy eksport</b></article>
     </div>
     <p class="note reveal">Aplikację natywną na telefon, o której piszecie w specyfikacji, wycenimy, gdy będzie potrzebna.</p>
@@ -1028,29 +1040,24 @@ svg .elab.off { opacity: .12; }
     <header class="sh reveal"><span class="num">5</span><h2>Cena i opieka</h2></header>
     <div class="price">
       <div class="eq list reveal">
-        <div class="eq-row"><span>Etap 1. Rejestracja czasu i nadzór</span><b>92 900 zł <small>netto</small></b></div>
-        <div class="eq-row"><span>Etap 2. Plan pracy i kontrola danych</span><b>24 900 zł <small>netto</small></b></div>
-        <div class="eq-row sub"><span>Etapy 1 i 2, czyli wszystko z P0</span><b>117 800 zł <small>netto</small></b></div>
-        <div class="eq-row"><span>Etap 3. Analizy i wskaźniki</span><b>24 900 zł <small>netto</small></b></div>
-        <div class="eq-row"><span>Etap 4. Normy i OLE</span><b>23 900 zł <small>netto</small></b></div>
-        <div class="eq-row total"><span>Razem za cztery etapy</span><b>166 600 zł <small>netto</small></b></div>
-        <p class="eq-cap">Fakturę wystawiamy po odbiorze, a na zapłatę macie 14 dni</p>
-        <div class="eq-inv">
-          <div><small>Etap 1, pierwsza rata: gdy terminal i telefon działają w wersji testowej</small><b>46 450 zł <small>netto</small></b></div>
-          <div><small>Etap 1, druga rata: po odbiorze</small><b>46 450 zł <small>netto</small></b></div>
-          <div><small>Etap 2: po odbiorze</small><b>24 900 zł <small>netto</small></b></div>
-          <div><small>Etapy 3 i 4: po odbiorze każdego z nich</small><b>24 900 zł <small>i</small> 23 900 zł <small>netto</small></b></div>
-        </div>
+        <div class="eq-row"><span>Etap 1. Rejestracja czasu i nadzór</span><b>55&nbsp;700–92&nbsp;900&nbsp;zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 2. Plan pracy i kontrola danych</span><b>14&nbsp;900–24&nbsp;900&nbsp;zł <small>netto</small></b></div>
+        <div class="eq-row sub"><span>Etapy 1 i 2, czyli wszystko z P0</span><b>70&nbsp;600–117&nbsp;800&nbsp;zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 3. Analizy i wskaźniki</span><b>14&nbsp;900–24&nbsp;900&nbsp;zł <small>netto</small></b></div>
+        <div class="eq-row"><span>Etap 4. Normy i OLE</span><b>14&nbsp;300–23&nbsp;900&nbsp;zł <small>netto</small></b></div>
+        <div class="eq-row total"><span>Razem za cztery etapy</span><b>99&nbsp;800–166&nbsp;600&nbsp;zł <small>netto</small></b></div>
+        <p class="eq-cap">Fakturę wystawiamy po odbiorze etapu, a na zapłatę macie 14 dni.</p>
+        <p class="small">Za etap 1 płacicie w dwóch równych ratach. Pierwszą fakturę wystawiamy, gdy pokażemy Wam działający terminal i telefon w wersji testowej, a drugą po odbiorze. Dokładną cenę każdego etapu w tych widełkach podamy po pokazie obecnego WPS i odpowiedziach na nasze pytania.</p>
         <p class="small">Do wszystkich kwot doliczamy VAT. Ceny dodatków są w sekcji 4.</p>
       </div>
       <div class="care reveal">
         <h3>Opieka po uruchomieniu</h3>
-        <p>Płacicie tylko za opiekę nad tym, co już działa, więc kwota rośnie z każdym etapem.</p>
+        <p>Płacicie tylko za opiekę nad tym, co już działa, więc po każdym kolejnym etapie opieka trochę drożeje.</p>
         <ol class="care-steps">
-          <li style="--h:58"><small>po etapie 1</small><b>1 900 zł</b><small>netto</small></li>
-          <li style="--h:73"><small>po etapie 2</small><b>2 400 zł</b><small>netto</small></li>
-          <li style="--h:85"><small>po etapie 3</small><b>2 800 zł</b><small>netto</small></li>
-          <li style="--h:100"><small>po etapie 4</small><b>3 300 zł</b><small>netto</small></li>
+          <li style="--h:58"><small>po etapie 1</small><b>1&nbsp;100–1&nbsp;900&nbsp;zł</b><small>netto</small></li>
+          <li style="--h:73"><small>po etapie 2</small><b>1&nbsp;400–2&nbsp;400&nbsp;zł</b><small>netto</small></li>
+          <li style="--h:85"><small>po etapie 3</small><b>1&nbsp;700–2&nbsp;800&nbsp;zł</b><small>netto</small></li>
+          <li style="--h:100"><small>po etapie 4</small><b>2&nbsp;000–3&nbsp;300&nbsp;zł</b><small>netto</small></li>
         </ol>
         <p class="small">miesięcznie, od odbioru etapu</p>
         <p>W ramach opieki:</p>
@@ -1061,14 +1068,14 @@ svg .elab.off { opacity: .12; }
           <li>robimy kopie zapasowe, a raz na kwartał sprawdzamy, czy da się z nich odtworzyć dane,</li>
           <li>pilnujemy serwerów i ich kosztów.</li>
         </ul>
-        <p>Pytania pracowników i klientów, zakładanie firm i wydawanie kart zostają po Waszej stronie. Za pierwszy miesiąc nie płacicie. Potem miesięczny okres wypowiedzenia.</p>
-        <div class="machine"><b>Nowe funkcje i zmiany.</b> Kupujecie pulę godzin po 200 zł netto za godzinę, co najmniej 5 godzin w miesiącu. Wielkość puli ustalacie co miesiąc, więc w spokojniejszych miesiącach płacicie mniej, a zgłoszenia z puli robimy w pierwszej kolejności. Pojedyncze zlecenia bez puli kosztują 240 zł netto za godzinę i robimy je, gdy znajdzie się wolny termin.</div>
+        <p>Na pytania pracowników i klientów odpowiadacie Wy. Wy też zakładacie firmy i wydajecie karty. Za pierwszy miesiąc nie płacicie. Potem miesięczny okres wypowiedzenia.</p>
+        <div class="machine"><b>Nowe funkcje i zmiany.</b> Kupujecie pulę godzin po 200 zł netto za godzinę, co najmniej 5 godzin w miesiącu. Wielkość puli ustalacie co miesiąc, więc w spokojniejszych miesiącach płacicie mniej. Zgłoszenia z puli robimy w pierwszej kolejności. Pojedyncze zlecenia bez puli kosztują 240 zł netto za godzinę i robimy je, gdy znajdzie się wolny termin.</div>
       </div>
     </div>
     <div class="box costs reveal">
-      <h3>Koszty po Waszej stronie</h3>
+      <h3>Za co płacicie sami</h3>
       <ul>
-        <li>Za serwery w UE, wynajęte na Waszą firmę, zapłacicie na początek ok. 500–900 zł netto miesięcznie. Kwota rośnie razem z liczbą firm, a dokładną podamy przed startem.</li>
+        <li>Za serwery w UE, wynajęte na Waszą firmę, zapłacicie na początek ok. 500–900 zł netto miesięcznie. Przy większej liczbie firm zapłacicie więcej. Dokładną kwotę podamy przed startem.</li>
         <li>Za SMS-y przy zgłoszeniach i za model AI przy analizach płacicie dostawcom tyle, ile zużyjecie.</li>
         <li>Terminale, czytniki kart i skanery kupujecie Wy albo Wasi klienci. Pomożemy dobrać sprzęt.</li>
       </ul>
@@ -1080,30 +1087,30 @@ svg .elab.off { opacity: .12; }
   <div class="wrap">
     <header class="sh reveal"><span class="num">6</span><h2>Co dalej</h2></header>
     <ol class="next">
-      <li class="reveal">Pokazujecie nam przez godzinę obecny WPS: ekrany, raporty i eksport. Sprawdzimy, czy niczego nie pominęliśmy.</li>
-      <li class="reveal">Odpowiadacie na kilka pytań z ramki poniżej, a my potwierdzamy cenę stałą i kalendarz.</li>
-      <li class="reveal">Podpisujemy umowę o poufności, umowę na wdrożenie i umowę podpowierzenia danych, bo w aplikacji będą dane pracowników Waszych klientów.</li>
-      <li class="reveal">7 stycznia zaczynamy od warsztatu o rolach i sprzęcie, a potem pokazujemy klikalną makietę terminala, telefonu i panelu.</li>
+      <li class="reveal">Podpisujemy umowę o poufności. Wzór mamy gotowy.</li>
+      <li class="reveal">Pokazujecie nam przez godzinę obecny WPS, najlepiej na firmie testowej. Sprawdzimy, czy niczego nie pominęliśmy.</li>
+      <li class="reveal">Odpowiadacie na kilka pytań z ramki poniżej, a my podajemy dokładne ceny i kalendarz.</li>
+      <li class="reveal">Podpisujemy umowę na wdrożenie i umowę podpowierzenia danych, bo w aplikacji będą dane pracowników Waszych klientów. 7 stycznia zaczynamy od warsztatu i klikalnej makiety.</li>
       <li class="reveal">Pod koniec marca odbieracie etap 1 i robicie pierwsze pomiary u klientów. Kolejne etapy zamawiacie według kalendarza.</li>
     </ol>
     <div class="end3">
       <div class="box amber wide reveal">
         <h3>Na czym opieramy cenę</h3>
         <ul>
-          <li>Obecnego WPS jeszcze nie widzieliśmy, dlatego cenę stałą potwierdzimy po godzinie pokazu. Jeśli używacie czegoś, czego nie ma na liście, powiemy Wam o tym przed podpisaniem umowy.</li>
+          <li>Obecnego WPS jeszcze nie widzieliśmy, dlatego dokładne ceny w podanych widełkach ustalimy po godzinie pokazu. Jeśli używacie czegoś, czego nie ma na liście, powiemy Wam o tym przed podpisaniem umowy.</li>
           <li>Wszystkie firmy pracują w jednej aplikacji, a ich dane są od siebie oddzielone. Jeśli któraś firma będzie chciała mieć aplikację na osobnym serwerze, wycenimy to oddzielnie.</li>
-          <li>Opieka w tej cenie obejmuje do 30 firm, które korzystają z aplikacji w tym samym czasie.</li>
+          <li>Opieka w tej cenie obejmuje do 30 firm, które w tym samym miesiącu mierzą czas w aplikacji.</li>
           <li>Na terminalach jest Windows i przeglądarka w trybie kiosku, a czytniki kart i skanery działają jak klawiatura. Tryb kiosku ustawiacie Wy albo informatycy klienta, według naszej instrukcji.</li>
-          <li>Na iPhonie pracownik się loguje, bo przeglądarka w telefonie nie odczyta karty. Kartę przyłożoną do iPhone'a odczyta dopiero aplikacja natywna.</li>
+          <li>Na iPhonie pracownik się loguje, bo przeglądarka w telefonie nie odczyta karty. Czy iPhone odczyta kartę w aplikacji natywnej, zależy od rodzaju kart.</li>
           <li>Aplikacja działa na serwerach w UE. Starego kodu ani bazy nie potrzebujemy. Wygląd przygotujemy od nowa, w barwach BDO.</li>
           <li>Listę stałych wskaźników i opis, co liczymy jako stratę, przekażecie nam przed etapem 3.</li>
-          <li>Tak jak w Waszej specyfikacji, oferta nie obejmuje planowania i sterowania produkcją, płac i kadr, rozpoznawania pracy z kamer, GPS i AI, platformy szkoleń ani kopii 1:1 starego systemu.</li>
+          <li>Tak jak w Waszej specyfikacji, oferta nie obejmuje planowania i sterowania produkcją, płac i kadr, automatycznego rozpoznawania czynności z kamer, śledzenia klawiatury, GPS czy przez AI, platformy szkoleń ani kopii 1:1 starego systemu.</li>
         </ul>
       </div>
       <div class="box reveal">
         <h3>Warunki</h3>
         <ul>
-          <li>Każdy etap ma stałą cenę. Fakturę wystawiamy po odbiorze i macie 14 dni na zapłatę.</li>
+          <li>Cenę etapu ustalamy w widełkach przed jego zamówieniem i potem już jej nie zmieniamy. Fakturę wystawiamy po odbiorze i macie 14 dni na zapłatę.</li>
           <li>Na uwagi przy odbiorze macie 7 dni roboczych, a po odbiorze 30 dni na poprawki w cenie.</li>
           <li>Kod od początku trzymacie u siebie, a serwery są wynajęte na Waszą firmę. Prawa majątkowe do kodu przechodzą na Was po zapłacie za etap.</li>
           <li>Ceny obowiązują, jeśli etap 1 zamówicie do 31 stycznia 2027 r., a każdy kolejny w ciągu 60 dni od odbioru poprzedniego.</li>
@@ -1112,11 +1119,12 @@ svg .elab.off { opacity: .12; }
       <div class="box good reveal">
         <h3>O co Was prosimy</h3>
         <ul>
-          <li>godzinę pokazu obecnego WPS,</li>
+          <li>godzinę pokazu obecnego WPS, najlepiej na firmie testowej,</li>
+          <li>możliwość sprawdzenia aplikacji w marcu z kilkoma pracownikami u jednego z Waszych klientów,</li>
           <li>model czytników kart i skanerów, rodzaj kart oraz wersję Windowsa i przeglądarki na terminalach,</li>
           <li>informację, jakich telefonów używają pracownicy: tylko iPhone'ów czy także Androidów, służbowych czy prywatnych,</li>
           <li>liczbę firm, które korzystają z WPS w tym samym czasie, i liczbę pracowników w największej z nich,</li>
-          <li>wymagania Waszych informatyków co do serwerów, logowania i bezpieczeństwa,</li>
+          <li>wymagania Waszych informatyków co do serwerów, logowania i bezpieczeństwa oraz informację, kto u Was podpisuje umowy,</li>
           <li>listę języków, w których pracownicy mają widzieć czynności.</li>
         </ul>
       </div>
@@ -1124,17 +1132,18 @@ svg .elab.off { opacity: .12; }
         <small>Kontakt</small>
         <b>Adam Nelip</b>
         <span>Fluinty sp. z o.o.</span>
-        <span>adam@fluinty.pl</span>
-        <span>+48&nbsp;509&nbsp;843&nbsp;514</span>
+        <a href="mailto:adam@fluinty.pl">adam@fluinty.pl</a>
+        <a href="tel:+48509843514">+48&nbsp;509&nbsp;843&nbsp;514</a>
+        <a class="btn sm" href="mailto:adam@fluinty.pl?subject=Pokaz%20WPS">Umówmy pokaz WPS</a>
       </div>
     </div>
-    <p class="fine reveal">Sama oferta do niczego nie zobowiązuje. Wiążą nas dopiero podpisana umowa i zamówienie. Ceny wszystkich etapów są stałe, jeśli potwierdzą się założenia opisane na tej stronie. Wszystkie kwoty są netto. Dokument jest poufny i przeznaczony dla BDO Advisory.</p>
+    <p class="fine reveal">Sama oferta do niczego nie zobowiązuje. Wiążą nas dopiero podpisana umowa i zamówienie. Widełki cen obowiązują, o ile potwierdzą się założenia opisane na tej stronie. Wszystkie kwoty są netto. Ofertę przygotowaliśmy dla BDO Advisory.</p>
   </div>
 </section>
 
 </main>
 <footer class="foot">
-  <div class="wrap"><span>Fluinty sp. z o.o. · BDO Advisory · oferta: nowy WPS · wersja z 17.11.2026</span><span>Ceny netto</span></div>
+  <div class="wrap"><span>Fluinty sp. z o.o. · BDO Advisory · oferta: nowy WPS · wersja z 18.11.2026</span><span>Ceny netto</span></div>
 </footer>
 <script>
 /* Oferta WPS dla BDO Advisory: przewijanie, liczniki i pokaz „krok po kroku”.
@@ -1194,7 +1203,7 @@ svg .elab.off { opacity: .12; }
   // ---------- pokaz „Jedna zmiana, krok po kroku” ----------
   const STEPS = [
     { s: 'karta', d: 'term', clk: '06:02', e: 1, h: 'Pracownik odbija kartę',
-      p: 'Pracownik przykłada kartę do czytnika przy linii. Nieznanej albo zablokowanej karty terminal nie przyjmie. Po każdym zapisie ekran wraca do początku, więc następna osoba nie zobaczy cudzych danych.' },
+      p: 'Pracownik przykłada kartę do czytnika przy linii. Nieznanej albo zablokowanej karty terminal nie przyjmie. Po każdym zapisie terminal wraca do ekranu startowego, więc następna osoba nie zobaczy cudzych danych.' },
     { s: 'kafelki', d: 'term', clk: '06:03', e: 1, h: 'Pracownik wybiera czynność',
       p: 'Najpierw wybiera miejsce pracy, a potem czynność z dużych kafelków. Czynności mogą mieć do pięciu poziomów, a te najczęstsze są pod przyciskiem „Szybki wybór”. Nazwy czynności każdy widzi w swoim języku.' },
     { s: 'start', d: 'term', clk: '06:03', e: 1, h: 'Pracownik klika START',
@@ -1202,13 +1211,13 @@ svg .elab.off { opacity: .12; }
     { s: 'dzisiaj', d: 'term', clk: '08:53', e: 1, h: 'Pracownik zmienia czynność',
       p: 'Gdy wybiera nową czynność, poprzednia od razu się zamyka. Nie da się robić dwóch rzeczy naraz, więc żadna minuta nie policzy się dwa razy. W zakładce „Dzisiaj” pracownik widzi, ile czasu spędził przy każdej czynności i która jeszcze trwa.' },
     { s: 'live', d: 'pan', t: 0, e: 1, h: 'Lider widzi, kto teraz pracuje',
-      p: 'Na ekranie „Pracujący” lider widzi, kto pracuje, przy czym, gdzie i od kiedy. Od razu zauważy, że ktoś wczoraj nie kliknął STOP, i poprawi to na miejscu. Każda poprawka zostaje w historii zmian.' },
+      p: 'Na ekranie „Pracujący” lider widzi, kto co robi, gdzie i od kiedy. Od razu zauważy, że ktoś wczoraj nie kliknął STOP, i poprawi to na miejscu. Każda poprawka zostaje w historii zmian.' },
     { s: 'braki', d: 'pan', t: 1, e: 2, h: 'Lider dostaje listę braków',
-      p: 'W aplikacji jest grafik zmian, więc lider widzi, ile kto miał pracować, ile trwały przerwy i ile czasu zostało niewyjaśnione. Co rano dostaje listę rzeczy do wyjaśnienia: zapisy bez końca, zapisy, które na siebie nachodzą, nadgodziny i brak numeru zlecenia.' },
+      p: 'W aplikacji jest grafik zmian, więc lider widzi, ile kto miał pracować, ile trwały przerwy i ile czasu zostało niewyjaśnione. Co rano dostaje listę rzeczy do wyjaśnienia: zapisy bez końca, zapisy, które po ręcznej poprawce nachodzą na siebie, nadgodziny i brak numeru zlecenia.' },
     { s: 'raport', d: 'pan', t: 2, e: 3, h: 'Konsultant widzi, na co idzie czas',
-      p: 'W raporcie konsultant sprawdza, ile czasu zajmują czynności VA, SVA i NVA i gdzie są przestoje oraz wąskie gardła. Wyniki może rozbić na klientów, produkty, projekty i oddziały, a z każdej liczby przejść do pojedynczych pomiarów. Sumy w raporcie i w pliku z eksportu zawsze się zgadzają.' },
+      p: 'W raporcie konsultant sprawdza, ile czasu zajmują czynności VA, SVA i NVA i gdzie są przestoje oraz wąskie gardła. Wyniki może rozbić na klientów, produkty, projekty i oddziały, a z każdej liczby przejść do pojedynczych pomiarów. Przy tych samych filtrach sumy w raporcie i w pliku z eksportu zawsze się zgadzają.' },
     { s: 'ole', d: 'pan', t: 3, e: 4, h: 'Kierownik sprawdza OLE',
-      p: 'Na podstawie norm, ilości i jakości aplikacja liczy osobno dostępność, wydajność i jakość. OLE pokazuje dopiero wtedy, gdy ma wszystkie dane, i nie uśrednia procentów z różnych zmian. Dla przykładu z Waszej specyfikacji wychodzi 89,4%.' }
+      p: 'Kiedy macie już normy, a pracownicy wpisują, ile zrobili i ile z tego było dobrych, aplikacja liczy osobno dostępność, wydajność i jakość. OLE pokazuje dopiero wtedy, gdy ma wszystkie dane, i nie uśrednia procentów z różnych zmian. Dla przykładu z Waszej specyfikacji wychodzi 89,4%.' }
   ];
 
   const demo = $('#demo');
